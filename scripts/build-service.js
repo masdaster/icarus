@@ -1,7 +1,7 @@
 const fs = require('fs')
 const path = require('path')
 const { compile } = require('nexe')
-const changeExe = require('changeexe')
+//const changeExe = require('changeexe')
 const UPX = require('upx')({ brute: false }) // Brute on service seems to hang
 const yargs = require('yargs')
 const commandLineArgs = yargs.argv
@@ -21,7 +21,7 @@ const {
 const DEVELOPMENT_BUILD = commandLineArgs.debug || DEVELOPMENT_BUILD_DEFAULT
 const DEBUG_CONSOLE = commandLineArgs.debug || DEBUG_CONSOLE_DEFAULT
 const ENTRY_POINT = path.join(__dirname, '..', 'src', 'service', 'main.js')
-const COMPRESS_FINAL_BUILD = false
+const COMPRESS_FINAL_BUILD = true
 
 ;(async () => {
   clean()
@@ -57,8 +57,8 @@ async function build () {
     rc: SERVICE_VERSION_INFO
   })
 
-  await changeExe.icon(SERVICE_UNOPTIMIZED_BUILD, SERVICE_ICON)
-  await changeExe.versionInfo(SERVICE_UNOPTIMIZED_BUILD, SERVICE_VERSION_INFO)
+  //await changeExe.icon(SERVICE_UNOPTIMIZED_BUILD, SERVICE_ICON)
+  //await changeExe.versionInfo(SERVICE_UNOPTIMIZED_BUILD, SERVICE_VERSION_INFO)
 
   if (DEVELOPMENT_BUILD) {
     console.log('Development build (skipping compression)')

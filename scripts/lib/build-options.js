@@ -13,7 +13,7 @@ const SIGN_CERT_NAME = process.env?.SIGN_CERT_NAME ?? 'Open Source Developer, Ia
 const SIGN_TIME_SERVER = process.env?.SIGN_TIME_SERVER ?? 'http://time.certum.pl'
 
 // Development builds are faster, larger and can contain debug routines
-const DEVELOPMENT_BUILD = process.env.DEVELOPMENT || false
+const DEVELOPMENT_BUILD = process.env.DEVELOPMENT === 'true'
 const DEBUG_CONSOLE = DEVELOPMENT_BUILD
 
 const ROOT_DIR = path.join(__dirname, '..', '..')

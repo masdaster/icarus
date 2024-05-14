@@ -77,7 +77,7 @@ async function build () {
       'src/service/data' // Include dynamically loaded JSON files
     ],
     debug: DEBUG_CONSOLE,
-    target: 'windows-x86-14.15.3',
+    target: 'windows-x64-14.15.3',
     build: false,
     bundle: true,
     runtime: {
