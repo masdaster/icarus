@@ -1,20 +1,20 @@
 const os = require('os')
 const fs = require('fs')
 const path = require('path')
-// const pjXML = require('pjxml')
-// const sendKeys = require('sendkeys-js')
-// onst keycode = require('keycodes')
+const pjXML = require('pjxml')
+const sendKeys = require('sendkeys-js')
 const { UNKNOWN_VALUE } = require('../../shared/consts')
 
 const { BROADCAST_EVENT: broadcastEvent } = global
 
-// const TARGET_WINDOW_TITLE = 'Elite - Dangerous (CLIENT)'
+const TARGET_WINDOW_TITLE = 'Elite - Dangerous (CLIENT)'
 const KEYBINDS_DIR = path.join(os.homedir(), 'AppData', 'Local', 'Frontier Developments', 'Elite Dangerous', 'Options', 'Bindings')
 
-// Prefer Keybinds v4 file
+// Prefer Keybinds v4.1 file
 // TODO Check what version of game player has active
-const KEYBINDS_FILE_V3 = path.join(KEYBINDS_DIR, 'Custom.3.0.binds') // Horizons
-const KEYBINDS_FILE_V4 = path.join(KEYBINDS_DIR, 'Custom.4.0.binds') // Odyssey
+const KEYBINDS_FILE_V3 = path.join(KEYBINDS_DIR, 'Custom.3.0.binds')
+const KEYBINDS_FILE_V4 = path.join(KEYBINDS_DIR, 'Custom.4.0.binds')
+const KEYBINDS_FILE_V4_1 = path.join(KEYBINDS_DIR, 'Custom.4.1.binds')
 
 // Map ICARUS Terminal names to in-game keybind names
 const KEYBINDS_MAP = {
@@ -126,14 +126,14 @@ class EventHandlers {
           this.textToSpeech.speak(text, voice, true)
         },
         toggleSwitch: async ({ switchName }) => {
-          return false
-          /*
           // TODO Refactor this out into a dedicated library
           try {
             let KEYBINDS_FILE
             const KEYBIND_XML_ELEMENT = KEYBINDS_MAP[switchName]
 
-            if (fs.existsSync(KEYBINDS_FILE_V4)) {
+            if (fs.existsSync(KEYBINDS_FILE_V4_1)) {
+              KEYBINDS_FILE = KEYBINDS_FILE_V4_1
+            } else if (fs.existsSync(KEYBINDS_FILE_V4)) {
               KEYBINDS_FILE = KEYBINDS_FILE_V4
             } else if (fs.existsSync(KEYBINDS_FILE_V3)) {
               KEYBINDS_FILE = KEYBINDS_FILE_V3
@@ -147,57 +147,68 @@ class EventHandlers {
             const primaryElementModifier = doc.select(`//${KEYBIND_XML_ELEMENT}/Primary/Modifier`)
             const secondaryElement = doc.select(`//${KEYBIND_XML_ELEMENT}/Secondary`)
             const secondaryKey = convertEliteDangerousKeyBindingToInputKey(secondaryElement?.attributes?.Key)
-            const secondaryElementModifier = doc.select(`//${KEYBIND_XML_ELEMENT}/Primary/Secondary`)
+            const secondaryElementModifier = doc.select(`//${KEYBIND_XML_ELEMENT}/Secondary/Modifier`)
 
             let keyToSend, modifierKey
             if (primaryElement?.attributes?.Device === 'Keyboard') {
               keyToSend = primaryKey
-              modifierKey = primaryElementModifier?.attributes?.Key.replace(/^Key_/, '')
-            }
-
-            // If the primary key has a modifer, and the secondary key doesn't
-            // then we use the secondary key as the target key instead, as we
-            // don't currently support sending modifier keys.
-            if (modifierKey && primaryElement?.attributes?.Device === 'Keyboard') {
-              if (!secondaryElementModifier) {
-                  keyToSend = secondaryKey
-                  modifierKey = null
-                }
-            }
-
-            // If the secondary key is a single keystroke (with modifer) and the
-            // primary key is not then prefer the secondary key as it's more
-            // likely to work as it won't have to rely on special key mapping.
-            if (primaryKey && secondaryKey && primaryKey.length > 1 && !secondaryElementModifier) {
+              modifierKey = primaryElementModifier?.attributes?.Key.replace(/^Key_/, '').toLowerCase()
+            } else if (secondaryElement?.attributes?.Device === 'Keyboard') {
               keyToSend = secondaryKey
-              modifierKey = null
+              modifierKey = secondaryElementModifier?.attributes?.Key.replace(/^Key_/, '').toLowerCase()
+            } else {
+              console.log('No keyboard binding available for', KEYBINDS_MAP[switchName], "to toggle switch", switchName)
+              return false
             }
 
-            // TODO Support Control and Alt modifiers
-            if (modifierKey?.toLowerCase()?.includes('shift')) modifierKey = 'shift'
-
-            const keyAsKeycode = convertKeyToKeycode(keyToSend)
-            //const modifierKeyAsKeycode =  keycode.codes[modifierKey?.toLowerCase()]
-
-            console.log('KEYBINDS_MAP[switchName]', switchName, KEYBINDS_MAP[switchName])
-            console.log('Key', keyToSend, keyAsKeycode) // modifierKey, modifierKeyAsKeycode)
+            if (modifierKey) {
+              if (modifierKey.includes('shift')) modifierKey = 'shift'
+              else if (modifierKey.includes('control')) modifierKey = 'control'
+              else if (modifierKey.includes('alt')) modifierKey = 'alt'
+              else {
+                console.log('Modifier key', modifierKey, 'for binding ', KEYBINDS_MAP[switchName], "to toggle switch", switchName, 'is not supported')
+                return false
+              }
+            }
 
             // Set Elite Dangerous as the active window
             await sendKeys.activate(TARGET_WINDOW_TITLE)
 
-            // TODO Trigger SendInput (removed for now, being reworked)
-            return true
+            // Trigger key input
+            const keyInput = `${convertModifierKeyToPrefix(modifierKey)}{${keyToSend}}`
+            console.log('Sending input', keyInput, 'for binding ', KEYBINDS_MAP[switchName], "to toggle switch", switchName)
+            return sendKeys.sendKeys(keyInput)
 
           } catch (e) {
             console.error('ERROR_SENDING_KEY', switchName, e.toString())
             return false
           }
-          */
         }
       }
     }
     return this.eventHandlers
   }
+}
+
+function convertEliteDangerousKeyBindingToInputKey (rawKeyValue) {
+  const key = rawKeyValue.replace(/^Key_/, '').toUpperCase()
+  // TODO I'm very sure there are more of these special cases.
+  // I'm not sure why Elite does keybindings this way or how many
+  // special cases there are. I hope someone has reverse engineered it
+  // already.
+  if (key === 'semicolon') return ';'
+  if (key === 'rightbracket') return ']'
+  if (key === 'leftbracket') return '['
+  if (key === 'hash') return '#'
+  if (key === 'backslash') return '\\'
+  return key
+}
+
+function convertModifierKeyToPrefix (key) {
+  if (key === 'shift') return '+';
+  if (key === 'control') return '^';
+  if (key === 'alt') return '%';
+  return '';
 }
 
 module.exports = EventHandlers
