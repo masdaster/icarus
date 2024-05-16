@@ -32,17 +32,6 @@ class EliteLog {
     this.logEventCallback = null
     this.singleInstanceEvents = {}
     this.numberOfEventsImported = 0
-
-    // setInterval(() => {
-    //   const numberOfFilesBeingWatched = Object.entries(this.files)
-    //     .filter(obj => {
-    //       const [fileName, file] = obj
-    //       return file.watch !== false
-    //     }).length
-
-    //   console.log(`events: ${this.numberOfEventsImported}\tmost recent event: ${this.lastActiveTimestamp}\tfiles watched: ${numberOfFilesBeingWatched}`)
-    // }, 2000)
-
     return this
   }
 
@@ -307,17 +296,10 @@ class EliteLog {
   }
 
   async #watchFile(file, callback) {
-    // fs.watch is proving to not be reliable and is not picking up changes
-    // to game logs on Windows at all so falling back to the older
-    // fs.watchFile, which uses polling rather than file system events.
-    let debounce
-    return fs.watchFile(
+    return fs.watch(
       file.name,
-      { interval: 1000 },
       async (event, filename) => {
         if (!filename) return
-        if (debounce) return
-        debounce = setTimeout(() => { debounce = false }, 100)
         const logs = await this.load({ file })
         try {
           // Trigger callback for each log entry loaded
