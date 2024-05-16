@@ -1,7 +1,7 @@
 import { UNKNOWN_VALUE } from '../../../../shared/consts'
 import ShipModules from 'components/panels/ship/ship-status/ship-modules'
 
-export default function ShipStatusPanel ({ ship, selectedModule, setSelectedModule, cmdrStatus, toggleSwitches, toggleSwitch }) {
+export default function ShipStatusPanel ({ ship, selectedModule, setSelectedModule }) {
   if (!ship) return null
 
   if (ship.type === UNKNOWN_VALUE && ship.name === UNKNOWN_VALUE && ship.ident === UNKNOWN_VALUE) {

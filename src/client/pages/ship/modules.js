@@ -12,47 +12,11 @@ export default function ShipStatusPage () {
   const [selectedModule, setSelectedModule] = useState()
   const [cmdrStatus, setCmdrStatus] = useState()
 
-  // Using state for toggle switches like this allow us to have the UI
-  // respond immediately to the input from the user, even if it takes the game
-  // API a second or two to callback and update us with the new state.
-  // It also means that even if they do go out of sync, the UI in ICARUS
-  // Terminal will correctly reflect the in game state after a second or two.
-  const [toggleSwitches, setToggleSwitches] = useState({
-    lights: false,
-    nightVision: false,
-    cargoHatch: false,
-    landingGear: false,
-    hardpoints: false
-  })
-
   useEffect(async () => {
     if (!connected) return
     setShip(await sendEvent('getShipStatus'))
     setCmdrStatus(await sendEvent('getCmdrStatus'))
   }, [connected, ready])
-
-  const toggleSwitch = async (switchName) => {
-
-    /*
-    // Only toggle switch value if we think it was successful
-    const switchToggled = await sendEvent('toggleSwitch', { switchName })
-
-    setToggleSwitches({
-      ...toggleSwitches,
-      [switchName]: switchToggled ? !toggleSwitches[switchName] : toggleSwitches[switchName]
-    })
-    */
-  }
-
-  useEffect(async () => {
-    setToggleSwitches({
-      lights: cmdrStatus?.flags?.lightsOn ?? false,
-      nightVision: cmdrStatus?.flags?.nightVision ?? false,
-      cargoHatch: cmdrStatus?.flags?.cargoScoopDeployed ?? false,
-      landingGear: cmdrStatus?.flags?.landingGearDown ?? false,
-      hardpoints: cmdrStatus?.flags?.hardpointsDeployed ?? false
-    })
-  }, [cmdrStatus])
 
   useEffect(() => eventListener('gameStateChange', async () => {
     setShip(await sendEvent('getShipStatus'))
@@ -72,8 +36,6 @@ export default function ShipStatusPage () {
         <ShipModulesPanel
           ship={ship}
           cmdrStatus={cmdrStatus}
-          toggleSwitches={toggleSwitches}
-          toggleSwitch={toggleSwitch}
           selectedModule={selectedModule}
           setSelectedModule={setSelectedModule}
         />

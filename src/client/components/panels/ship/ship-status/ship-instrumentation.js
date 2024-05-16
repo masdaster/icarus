@@ -18,8 +18,6 @@ export default function ShipInstrumentation ({ ship, cmdrStatus, toggleSwitches,
   const scaledWrapper = useRef()
   const scaledContent = useRef()
 
-  const panelActive = (ship.onBoard || cmdrStatus?.flags?.inSrv)
-  
   useEffect(async () => {
     const resizeEventHandler = () => {
       if (scaledWrapper.current && scaledContent.current) {
