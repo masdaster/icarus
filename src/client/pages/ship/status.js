@@ -32,8 +32,6 @@ export default function ShipStatusPage () {
   }, [connected, ready])
 
   const toggleSwitch = async (switchName) => {
-
-    /*
     // Only toggle switch value if we think it was successful
     const switchToggled = await sendEvent('toggleSwitch', { switchName })
 
@@ -41,7 +39,6 @@ export default function ShipStatusPage () {
       ...toggleSwitches,
       [switchName]: switchToggled ? !toggleSwitches[switchName] : toggleSwitches[switchName]
     })
-    */
   }
 
   useEffect(async () => {
@@ -74,8 +71,6 @@ export default function ShipStatusPage () {
           cmdrStatus={cmdrStatus}
           toggleSwitches={toggleSwitches}
           toggleSwitch={toggleSwitch}
-          selectedModule={selectedModule}
-          setSelectedModule={setSelectedModule}
         />
       </Panel>
       <Panel>
