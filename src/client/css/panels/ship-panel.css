@@ -78,13 +78,14 @@
 }
 
 @keyframes horizontal-activity-animation {
+
   0%,
   100% {
     background-position-x: 0px;
   }
-  50% {
 
-  }
+  50% {}
+
   100% {
     background-position-x: 584px;
   }
@@ -203,12 +204,14 @@
   top: 2.75rem;
   padding: .5rem;
 }
+
 .ship-panel__ship-pip label {
   transform: rotate(45deg);
   font-size: 1rem !important;
   position: relative;
   left: 1.5rem;
 }
+
 .ship-panel__ship-pip progress {
   height: 2rem !important;
   margin-bottom: 1rem;
@@ -228,10 +231,12 @@
 }
 
 @keyframes ship-panel__ship-pip-animation {
+
   0%,
   100% {
     padding-right: 0;
   }
+
   50% {
     padding-right: .3rem;
   }
@@ -305,7 +310,7 @@
 }
 
 table.table--flex-inline.table--interactive tbody tr td.ship-panel__module {
-  box-shadow: 0 0 1.5rem .5rem rgba(var(--color-primary-dark-r),var(--color-primary-dark-g),var(--color-primary-dark-b),.3) inset;
+  box-shadow: 0 0 1.5rem .5rem rgba(var(--color-primary-dark-r), var(--color-primary-dark-g), var(--color-primary-dark-b), .3) inset;
 }
 
 table.table--flex-inline.table--interactive tbody tr:hover td.ship-panel__module,
@@ -315,7 +320,7 @@ table.table--flex-inline.table--interactive tbody tr:focus td.ship-panel__module
 }
 
 table.table--flex-inline.table--interactive tbody tr.table__row--active td.ship-panel__module {
- filter: var(--filter-active-element);
+  filter: var(--filter-active-element);
 }
 
 table.table--flex-inline.table--interactive tbody tr:hover td.ship-panel__module .ship-panel__module-icon,
@@ -403,7 +408,7 @@ table.ship-panel__lights td {
     text-align: center;
     text-overflow: ellipsis;
     hyphens: auto;
-  } 
+  }
 }
 
 @media only screen and (max-width: 599px) {
@@ -434,6 +439,7 @@ table.ship-panel__lights td {
 }
 
 @media only screen and (max-width: 799px) {
+
   .ship-panel__light--off,
   .ship-panel__light--on,
   .ship-panel__light--danger {
@@ -514,7 +520,9 @@ table.ship-panel__lights td {
 }
 
 @keyframes light-blink-animation {
-  50% { opacity: .5; }
+  50% {
+    opacity: .5;
+  }
 }
 
 
@@ -551,16 +559,18 @@ table.ship-panel__lights td {
 .ship-panel__navigation-instrumentation.--active .dial-border {
   xanimation: ship-panel__navigation-instrumentation-animation 3s ease-in-out infinite;
   /* "glowing" animation disabled here as browser rendering bug can cause compass heading icon to "jiggle" */
-  box-shadow: 0 0 1.25rem 0 rgba(255,255,255,.5);
+  box-shadow: 0 0 1.25rem 0 rgba(255, 255, 255, .5);
 }
 
 @keyframes ship-panel__navigation-instrumentation-animation {
+
   0%,
   100% {
-    box-shadow: 0 0 .5rem 0 rgba(255,255,255,.75);
+    box-shadow: 0 0 .5rem 0 rgba(255, 255, 255, .75);
   }
+
   50% {
-    box-shadow: 0 0 1.25rem 0 rgba(255,255,255,.5);
+    box-shadow: 0 0 1.25rem 0 rgba(255, 255, 255, .5);
   }
 }
 
@@ -600,10 +610,11 @@ table.ship-panel__lights td {
 }
 
 .ship-panel__navigation-instrumentation.--active .ring {
-  box-shadow: 0 0 3rem 0 rgba(255,255,255,.5);
+  box-shadow: 0 0 3rem 0 rgba(255, 255, 255, .5);
 }
 
 @keyframes ship-panel__navigation-instrumentation-rings-animation {
+
   0%,
   100% {
     transform: rotateX(250deg);

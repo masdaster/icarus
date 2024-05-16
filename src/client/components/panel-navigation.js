@@ -1,9 +1,9 @@
 
-import { useState, useEffect, Fragment } from 'react'
+import { Fragment, useEffect, useState } from 'react'
 
 import { useRouter } from 'next/router'
 
-export default function PanelNavigation ({ items = [], search = () => {}, exit }) {
+export default function PanelNavigation({ items = [], search = () => { }, exit }) {
   const router = useRouter()
   const [searchValue, setSearchValue] = useState('')
   const [searchInputVisible, setSearchInputVisible] = useState(false)
@@ -11,7 +11,7 @@ export default function PanelNavigation ({ items = [], search = () => {}, exit }
   useEffect(() => {
     document.addEventListener('click', onClickHandler)
     return () => document.removeEventListener('click', onClickHandler)
-    function onClickHandler (event) {
+    function onClickHandler(event) {
       if (!event?.target?.id.startsWith('secondary-navigation__search-')) {
         setSearchInputVisible(false)
       }
@@ -26,7 +26,7 @@ export default function PanelNavigation ({ items = [], search = () => {}, exit }
             <>
               <button
                 id='secondary-navigation__search-toggle'
-                data-secondary-navigation={i+1}
+                data-secondary-navigation={i + 1}
                 tabIndex='2'
                 disabled={search === false}
                 className={`button--icon ${searchInputVisible ? 'button--selected button--secondary' : ''}`}
@@ -71,7 +71,7 @@ export default function PanelNavigation ({ items = [], search = () => {}, exit }
           {!item.type &&
             <button
               tabIndex='2'
-              data-secondary-navigation={i+1}
+              data-secondary-navigation={i + 1}
               className={`button--icon ${item.active ? 'button--active' : ''}`}
               onClick={
                 item.onClick

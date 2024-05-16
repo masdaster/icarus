@@ -1,12 +1,12 @@
 
 class Inventory {
-  constructor ({ eliteLog, eliteJson }) {
+  constructor({ eliteLog, eliteJson }) {
     this.eliteLog = eliteLog
     this.eliteJson = eliteJson
     return this
   }
 
-  async getInventory () {
+  async getInventory() {
     const shipLocker = (await this.eliteJson.json()).ShipLocker
     if (!shipLocker) return []
 

@@ -4,12 +4,12 @@ const BASE_SPEED = 100
 const COMMAND = 'festival'
 
 class SayPlatformLinux extends SayPlatformBase {
-  constructor () {
+  constructor() {
     super()
     this.baseSpeed = BASE_SPEED
   }
 
-  buildSpeakCommand ({ text, voice, speed }) {
+  buildSpeakCommand({ text, voice, speed }) {
     const args = []
     let pipedData = ''
     const options = {}
@@ -29,11 +29,11 @@ class SayPlatformLinux extends SayPlatformBase {
     return { command: COMMAND, args, pipedData, options }
   }
 
-  buildExportCommand ({ text, voice, speed, filename }) {
+  buildExportCommand({ text, voice, speed, filename }) {
     throw new Error(`say.export(): does not support platform ${this.platform}`)
   }
 
-  runStopCommand () {
+  runStopCommand() {
     // TODO: Need to ensure the following is true for all users, not just me. Danger Zone!
     // On my machine, original childD.pid process is completely gone. Instead there is now a
     // childD.pid + 1 sh process. Kill it and nothing happens. There's also a childD.pid + 2
@@ -41,7 +41,7 @@ class SayPlatformLinux extends SayPlatformBase {
     process.kill(this.child.pid + 2)
   }
 
-  getVoices () {
+  getVoices() {
     throw new Error(`say.export(): does not support platform ${this.platform}`)
   }
 }

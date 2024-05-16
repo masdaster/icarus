@@ -15,7 +15,7 @@ const retry = require('async-retry')
 const baseUrl = 'https://www.edsm.net/'
 
 class EDSM {
-  static async bodies (systemName) {
+  static async bodies(systemName) {
     return await retry(async bail => {
       const res = await axios.get(`${baseUrl}api-system-v1/bodies?systemName=${encodeURIComponent(systemName)}`)
       return res.data.bodies
@@ -24,7 +24,7 @@ class EDSM {
     })
   }
 
-  static async stations (systemName) {
+  static async stations(systemName) {
     return await retry(async bail => {
       const res = await axios.get(`${baseUrl}api-system-v1/stations?systemName=${encodeURIComponent(systemName)}`)
       return res.data.stations
@@ -33,7 +33,7 @@ class EDSM {
     })
   }
 
-  static async system (systemName) {
+  static async system(systemName) {
     return await retry(async bail => {
       const resSystem = await axios.get(`${baseUrl}api-v1/system?systemName=${encodeURIComponent(systemName)}&showInformation=1&showCoordinates=1`)
       const resBodies = await axios.get(`${baseUrl}api-system-v1/bodies?systemName=${encodeURIComponent(systemName)}`)

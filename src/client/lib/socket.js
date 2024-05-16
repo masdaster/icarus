@@ -1,6 +1,6 @@
 /* global WebSocket, CustomEvent */
-import { createContext, useState, useContext } from 'react'
 import notification from 'lib/notification'
+import { createContext, useContext, useState } from 'react'
 
 let socket = null// Store socket connection (defaults to null)
 let callbackHandlers = {} // Store callbacks waiting to be executed (pending response from server)
@@ -17,9 +17,9 @@ const socketOptions = {
   notifications: true
 }
 
-function socketDebugMessage () { /* console.log(...arguments) */ }
+function socketDebugMessage() { /* console.log(...arguments) */ }
 
-function connect (socketState, setSocketState) {
+function connect(socketState, setSocketState) {
   if (socket !== null) return
 
   // Reset on reconnect
@@ -145,7 +145,7 @@ function connect (socketState, setSocketState) {
 
 const SocketContext = createContext()
 
-function SocketProvider ({ children }) {
+function SocketProvider({ children }) {
   const [socketState, setSocketState] = useState(defaultSocketState)
 
   if (typeof WebSocket !== 'undefined' && socketState.connected !== true) {
@@ -159,9 +159,9 @@ function SocketProvider ({ children }) {
   )
 }
 
-function useSocket () { return useContext(SocketContext) }
+function useSocket() { return useContext(SocketContext) }
 
-function sendEvent (name, message = null) {
+function sendEvent(name, message = null) {
   return new Promise((resolve, reject) => {
     const requestId = generateUuid()
     callbackHandlers[requestId] = (event, setSocketState) => {
@@ -183,17 +183,17 @@ function sendEvent (name, message = null) {
   })
 }
 
-function eventListener (eventName, callback) {
+function eventListener(eventName, callback) {
   const eventHandler = (e) => { callback(e.detail) }
   window.addEventListener(`socketEvent_${eventName}`, eventHandler)
   return () => window.removeEventListener(`socketEvent_${eventName}`, eventHandler)
 }
 
-function socketRequestsPending () {
+function socketRequestsPending() {
   return !!((Object.keys(callbackHandlers).length > 0 || deferredEventQueue.length > 0 || recentBroadcastEvents > 0))
 }
 
-function generateUuid () {
+function generateUuid() {
   return Math.random().toString(36).substring(2, 15) + Math.random().toString(36).substring(2, 15)
 }
 

@@ -14,15 +14,15 @@ const { RESOURCES_DIR } = require('./lib/build-options')
 const ROOT_INPUT_DATA_DIR = path.join(RESOURCES_DIR, 'data')
 const ROOT_OUTPUT_DATA_DIR = path.join('src', 'service', 'data')
 
-;(async () => {
-  // await codexArticles()
-  fdevids()
-  coriolisDataBlueprints()
-  coriolisDataModules()
-  materialUses()
-})()
+  ; (async () => {
+    // await codexArticles()
+    fdevids()
+    coriolisDataBlueprints()
+    coriolisDataModules()
+    materialUses()
+  })()
 
-async function codexArticles () {
+async function codexArticles() {
   const pathToFile = path.join(RESOURCES_DIR, 'data', 'fandom', 'elite_dangerousfandomcom-20220527-wikidump', 'elite_dangerousfandomcom-20220527-current.xml')
   const xml = fs.readFileSync(pathToFile).toString()
   const wikiData = (await xmlParser.parseStringPromise(xml)).mediawiki
@@ -102,7 +102,7 @@ async function codexArticles () {
   }, null, 2))
 }
 
-function fdevids () {
+function fdevids() {
   // https://github.com/EDCD/FDevIDs
   const dataDir = 'edcd/fdevids'
   fs.mkdirSync(`${ROOT_OUTPUT_DATA_DIR}/${dataDir}`, { recursive: true })
@@ -116,7 +116,7 @@ function fdevids () {
   })
 }
 
-function coriolisDataBlueprints () {
+function coriolisDataBlueprints() {
   // https://github.com/EDCD/coriolis-data
   const dataDir = 'edcd/coriolis/modifications'
   const outputDir = `${ROOT_OUTPUT_DATA_DIR}/edcd/coriolis`
@@ -167,7 +167,7 @@ function coriolisDataBlueprints () {
   fs.writeFileSync(`${outputDir}/blueprints.json`, JSON.stringify(output, null, 2))
 }
 
-function coriolisDataModules () {
+function coriolisDataModules() {
   // https://github.com/EDCD/coriolis-data
   const dataDir = 'edcd/coriolis/modules'
   const outputDir = `${ROOT_OUTPUT_DATA_DIR}/edcd/coriolis`
@@ -203,7 +203,7 @@ function coriolisDataModules () {
   })
 }
 
-function materialUses () {
+function materialUses() {
   const materials = JSON.parse(fs.readFileSync(`${ROOT_OUTPUT_DATA_DIR}/edcd/fdevids/material.json`))
   const blueprints = JSON.parse(fs.readFileSync(`${ROOT_OUTPUT_DATA_DIR}/edcd/coriolis/blueprints.json`))
 
@@ -236,7 +236,7 @@ function materialUses () {
   fs.writeFileSync(`${ROOT_OUTPUT_DATA_DIR}/material-uses.json`, JSON.stringify(materialUses, null, 2))
 }
 
-function getEngineeringPropertyName (engineeringPropertyName) {
+function getEngineeringPropertyName(engineeringPropertyName) {
   const engineeringPropertyNames = {
     fallofffromrange: 'Damage Falloff Start',
     power: 'Power Draw',

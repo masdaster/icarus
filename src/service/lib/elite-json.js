@@ -56,7 +56,7 @@ class EliteJson {
   }
 
   async json(forceUpdate = false) {
-    const files = forceUpdate ? await this.load(): this.files
+    const files = forceUpdate ? await this.load() : this.files
     const response = {}
     for (const name in files) {
       response[files[name].label] = files[name].contents
@@ -71,7 +71,7 @@ class EliteJson {
         if (!filename) return
         if (debounce) return
         debounce = setTimeout(() => { debounce = false }, 100)
-        this.files[file.name] = await this.load({file})
+        this.files[file.name] = await this.load({ file })
         // Send data for all files in the callback
         if (callback) callback(await this.json())
       } catch (e) {
@@ -87,7 +87,7 @@ class EliteJson {
 
         const response = files.map(name => {
           const { size, mtime: lastModified } = fs.statSync(name)
-          return new File({ 
+          return new File({
             name,
             lastModified,
             size,
@@ -102,11 +102,11 @@ class EliteJson {
 }
 
 class File {
-  constructor({name, lastModified, size, label, contents, watch = false}) {
+  constructor({ name, lastModified, size, label, contents, watch = false }) {
     this.name = name // Full path to file
     this.lastModified = lastModified
     this.size = size,
-    this.label = label
+      this.label = label
     this.contents = contents
     this.watch = watch
   }

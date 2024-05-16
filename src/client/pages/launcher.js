@@ -1,8 +1,8 @@
-import { useState, useEffect } from 'react'
-import { formatBytes, eliteDateTime } from 'lib/format'
-import { newWindow, checkForUpdate, installUpdate, openReleaseNotes, openTerminalInBrowser } from 'lib/window'
-import { useSocket, eventListener, sendEvent } from 'lib/socket'
 import Loader from 'components/loader'
+import { eliteDateTime, formatBytes } from 'lib/format'
+import { eventListener, sendEvent, useSocket } from 'lib/socket'
+import { checkForUpdate, installUpdate, newWindow, openReleaseNotes, openTerminalInBrowser } from 'lib/window'
+import { useEffect, useState } from 'react'
 import packageJson from '../../../package.json'
 
 const defaultloadingStats = {
@@ -15,7 +15,7 @@ const defaultloadingStats = {
   loadingTime: 0
 }
 
-export default function IndexPage () {
+export default function IndexPage() {
   const { connected } = useSocket()
   const [hostInfo, setHostInfo] = useState()
   const [update, setUpdate] = useState()
@@ -82,7 +82,7 @@ export default function IndexPage () {
               ><i className='icon icarus-terminal-download' /> Install Update
               </button>}
             {downloadingUpdate && <p className='text-primary text-blink-slow'>
-              <i style={{position: 'relative', top: '.2rem', marginRight: '.2rem'}} className='icon icarus-terminal-download' /> Downloading update...
+              <i style={{ position: 'relative', top: '.2rem', marginRight: '.2rem' }} className='icon icarus-terminal-download' /> Downloading update...
             </p>}
           </div>}
         <div style={{ position: 'absolute', bottom: '.5rem', left: '1rem' }}>

@@ -6,16 +6,16 @@ const Package = require('../../../package.json')
 const PREFERENCES_FILE = 'Preferences.json'
 
 class Preferences {
-  getPreferences () {
+  getPreferences() {
     return fs.readSync(path.join(this.preferencesDir(), PREFERENCES_FILE))
   }
 
-  savePreferences (preferencesObject) {
+  savePreferences(preferencesObject) {
     preferencesObject.version = Package.version
     return fs.writeSync(path.join(this.preferencesDir(), PREFERENCES_FILE), JSON.stringify(preferencesObject))
   }
 
-  preferencesDir () {
+  preferencesDir() {
     switch (os.platform()) {
       case 'win32': // Windows (all versions)
         return path.join(os.homedir(), 'AppData', 'Local', 'ICARUS Terminal')

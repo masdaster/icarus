@@ -4,12 +4,12 @@ const BASE_SPEED = 175
 const COMMAND = 'say'
 
 class SayPlatformDarwin extends SayPlatformBase {
-  constructor () {
+  constructor() {
     super()
     this.baseSpeed = BASE_SPEED
   }
 
-  buildSpeakCommand ({ text, voice, speed }) {
+  buildSpeakCommand({ text, voice, speed }) {
     const args = []
     const pipedData = ''
     const options = {}
@@ -27,7 +27,7 @@ class SayPlatformDarwin extends SayPlatformBase {
     return { command: COMMAND, args, pipedData, options }
   }
 
-  buildExportCommand ({ text, voice, speed, filename }) {
+  buildExportCommand({ text, voice, speed, filename }) {
     const args = []
     const pipedData = ''
     const options = {}
@@ -49,12 +49,12 @@ class SayPlatformDarwin extends SayPlatformBase {
     return { command: COMMAND, args, pipedData, options }
   }
 
-  runStopCommand () {
+  runStopCommand() {
     this.child.stdin.pause()
     this.child.kill()
   }
 
-  getVoices () {
+  getVoices() {
     throw new Error(`say.export(): does not support platform ${this.platform}`)
   }
 }

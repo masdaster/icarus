@@ -4,7 +4,7 @@ const SystemMap = require('../system-map')
 const distance = require('../../../shared/distance')
 
 class NavRoute {
-  constructor ({ eliteLog, eliteJson, system }) {
+  constructor({ eliteLog, eliteJson, system }) {
     this.eliteLog = eliteLog
     this.eliteJson = eliteJson
     this.system = system
@@ -12,7 +12,7 @@ class NavRoute {
     return this
   }
 
-  async getNavRoute () {
+  async getNavRoute() {
     const currentSystem = await this.system.getSystem()
 
     let inSystemOnRoute = false
@@ -47,7 +47,7 @@ class NavRoute {
           }
         }
         const cacheResponse = global.CACHE.SYSTEMS[system.StarSystem.toLowerCase()]
-        
+
         // FIXME Refactor this if how objects orbiting a null point changes
         // Currently there is always at least one "star" for a system, an 
         // object that is a placeholder for bodies not orbiting a star

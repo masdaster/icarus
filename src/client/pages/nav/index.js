@@ -1,9 +1,9 @@
-import Router from 'next/router'
 import Layout from 'components/layout'
 import Panel from 'components/panel'
 import { useSocket } from 'lib/socket'
+import Router from 'next/router'
 
-export default function NavPage () {
+export default function NavPage() {
   const { connected, active } = useSocket()
 
   // Client side redirect to default map view

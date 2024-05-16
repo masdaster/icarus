@@ -1,7 +1,7 @@
-import { useState, useEffect, Fragment } from 'react'
-import { sendEvent, eventListener } from 'lib/socket'
+import { eventListener, sendEvent } from 'lib/socket'
+import { Fragment, useEffect, useState } from 'react'
 
-export default function StatusPage () {
+export default function StatusPage() {
   const [cmdrStatus, setCmdrStatus] = useState()
 
   useEffect(async () => {
@@ -26,13 +26,13 @@ export default function StatusPage () {
       </p>
       <p>
         location: {cmdrStatus?._location && cmdrStatus._location.map((loc, i) => {
-        return (
-          <Fragment key={`location_${loc}_${i}`}>
-            {i > 0 && <span className='seperator' />}
-            {loc}
-          </Fragment>
-        )
-      })}
+          return (
+            <Fragment key={`location_${loc}_${i}`}>
+              {i > 0 && <span className='seperator' />}
+              {loc}
+            </Fragment>
+          )
+        })}
       </p>
       <hr />
       {cmdrStatus && Object.keys(cmdrStatus).map(key =>

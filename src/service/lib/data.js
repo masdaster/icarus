@@ -1,10 +1,10 @@
 module.exports = class Data {
-  constructor (asset) {
+  constructor(asset) {
     this.asset = asset
     this.data = require(`../data/${asset}.json`)
   }
 
-  getBySymbol (itemSymbol) {
+  getBySymbol(itemSymbol) {
     let result
     Object.values(this.data).some(item => {
       if (item?.symbol?.toLowerCase() === itemSymbol?.toLowerCase()) {

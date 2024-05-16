@@ -1,4 +1,4 @@
-function distance (p1, p2) {
+function distance(p1, p2) {
   try {
     const x = p1[0] - p2[0]
     const y = p1[1] - p2[1]

@@ -7,7 +7,7 @@ const LINUX = 'linux'
 const WIN32 = 'win32'
 
 class Say {
-  constructor (platform) {
+  constructor(platform) {
     if (!platform) {
       platform = process.platform
     }

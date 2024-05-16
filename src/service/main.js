@@ -47,7 +47,7 @@ if (!fs.existsSync(LOG_DIR)) {
   console.log('Loading save game data from', LOG_DIR)
 }
 
-function getLogDir () {
+function getLogDir() {
   // Hard coded fallback
   const FALLBACK_LOG_DIR = path.join(os.homedir(), 'Saved Games', 'Frontier Developments', 'Elite Dangerous')
   let logDir = FALLBACK_LOG_DIR
@@ -107,7 +107,7 @@ if (DEVELOPMENT) {
 
 const webSocketServer = new WebSocket.Server({ server: httpServer })
 
-function webSocketDebugMessage () { /* console.log(...arguments) */ }
+function webSocketDebugMessage() { /* console.log(...arguments) */ }
 
 // Bind message event handler to WebSocket server before starting server
 webSocketServer.on('connection', socket => {
@@ -127,7 +127,7 @@ webSocketServer.on('connection', socket => {
 })
 
 // A function for broadcasting events to all connected clients
-function broadcastEvent (name, message) {
+function broadcastEvent(name, message) {
   // Use try/catch here to suppress errors caused when main window is
   // closed and app is in process of shutting down
   try {

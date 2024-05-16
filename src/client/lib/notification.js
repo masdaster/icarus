@@ -4,7 +4,7 @@ import ReactDOMServer from 'react-dom/server'
 import toast from 'react-hot-toast'
 
 // Message can be string or JSX
-function notification (message, args = {}) {
+function notification(message, args = {}) {
   let toastId = args?.id
 
   if (!toastId) {
@@ -27,7 +27,7 @@ function notification (message, args = {}) {
 }
 
 // Fast non-secure hash (signed int)
-function fastHash (string) {
+function fastHash(string) {
   let hash = 0
   for (let i = 0; i < string.length; i++) {
     const char = string.charCodeAt(i)

@@ -1,9 +1,9 @@
+import { loadColorSettings, saveColorSettings } from 'components/settings'
+import { SocketProvider, eventListener } from 'lib/socket'
 import App from 'next/app'
 import { Toaster } from 'react-hot-toast'
-import { SocketProvider, eventListener } from 'lib/socket'
-import { loadColorSettings, saveColorSettings } from 'components/settings'
-import '../public/fonts/icarus-terminal/icarus-terminal.css'
 import '../css/main.css'
+import '../public/fonts/icarus-terminal/icarus-terminal.css'
 
 const handleKeyPress = (event) => {
   const element = document.activeElement.tagName
@@ -12,7 +12,7 @@ const handleKeyPress = (event) => {
   if (element.toLowerCase() === 'input') {
     // If ESC is pressed, then remove focus from input
     if (event.key === 'Escape') document.body.click()
-    
+
     // If UP or DOWN arrow is pressed then remove focus
     if (['ArrowUp', 'ArrowDown'].includes(event.key)) document.body.click()
 
@@ -20,46 +20,46 @@ const handleKeyPress = (event) => {
   }
 
   try {
-    switch(event.key) {
+    switch (event.key) {
       case "1":
         if (event.getModifierState('Alt')) {
-          return document.querySelector(`#secondaryNavigation button[data-secondary-navigation='1']`).click() 
+          return document.querySelector(`#secondaryNavigation button[data-secondary-navigation='1']`).click()
         } else {
           return document.querySelector(`#primaryNavigation button[data-primary-navigation='1']`).click()
         }
       case "2":
         if (event.getModifierState('Alt')) {
-          return document.querySelector(`#secondaryNavigation button[data-secondary-navigation='2']`).click() 
+          return document.querySelector(`#secondaryNavigation button[data-secondary-navigation='2']`).click()
         } else {
           return document.querySelector(`#primaryNavigation button[data-primary-navigation='2']`).click()
         }
       case "3":
         if (event.getModifierState('Alt')) {
-          return document.querySelector(`#secondaryNavigation button[data-secondary-navigation='3']`).click() 
+          return document.querySelector(`#secondaryNavigation button[data-secondary-navigation='3']`).click()
         } else {
           return document.querySelector(`#primaryNavigation button[data-primary-navigation='3']`).click()
         }
       case "4":
         if (event.getModifierState('Alt')) {
-          return document.querySelector(`#secondaryNavigation button[data-secondary-navigation='4']`).click() 
+          return document.querySelector(`#secondaryNavigation button[data-secondary-navigation='4']`).click()
         } else {
           return document.querySelector(`#primaryNavigation button[data-primary-navigation='4']`).click()
         }
       case "5":
         if (event.getModifierState('Alt')) {
-          return document.querySelector(`#secondaryNavigation button[data-secondary-navigation='5']`).click() 
+          return document.querySelector(`#secondaryNavigation button[data-secondary-navigation='5']`).click()
         } else {
           return document.querySelector(`#primaryNavigation button[data-primary-navigation='5']`).click()
         }
       case "6":
         if (event.getModifierState('Alt')) {
-          return document.querySelector(`#secondaryNavigation button[data-secondary-navigation='6']`).click() 
+          return document.querySelector(`#secondaryNavigation button[data-secondary-navigation='6']`).click()
         } else {
           return document.querySelector(`#primaryNavigation button[data-primary-navigation='6']`).click()
         }
       case "6":
         if (event.getModifierState('Alt')) {
-          return document.querySelector(`#secondaryNavigation button[data-secondary-navigation='7']`).click() 
+          return document.querySelector(`#secondaryNavigation button[data-secondary-navigation='7']`).click()
         } else {
           return document.querySelector(`#primaryNavigation button[data-primary-navigation='7']`).click()
         }
@@ -84,9 +84,9 @@ const handleKeyPress = (event) => {
         const nextPrimaryButtonNumber = parseInt(document.querySelector('#primaryNavigation button.button--active').dataset.primaryNavigation) + 1
         const nextPrimaryButton = document.querySelector(`#primaryNavigation button[data-primary-navigation='${nextPrimaryButtonNumber}']`)
         if (nextPrimaryButton) nextPrimaryButton.click()
-        return 
+        return
       default:
-        //console.log(`Key pressed: ${event.key}`)
+      //console.log(`Key pressed: ${event.key}`)
     }
   } catch (e) {
     //console.log(e)
@@ -94,7 +94,7 @@ const handleKeyPress = (event) => {
 }
 
 export default class MyApp extends App {
-  constructor (props) {
+  constructor(props) {
     super(props)
     if (typeof window !== 'undefined') {
       // Load settings at startup
@@ -122,10 +122,10 @@ export default class MyApp extends App {
       })
 
       document.addEventListener('keydown', handleKeyPress)
-    } 
+    }
   }
 
-  render () {
+  render() {
     const { Component, pageProps } = this.props
     return (
       <SocketProvider>

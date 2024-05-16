@@ -1,5 +1,5 @@
 import Icons from 'lib/icons'
-import { SURFACE_PORTS, PLANETARY_OUTPOSTS, SETTLEMENTS } from '../../../../../shared/consts'
+import { PLANETARY_OUTPOSTS, SETTLEMENTS, SURFACE_PORTS } from '../../../../../shared/consts'
 
 const USE_ICONS_FOR_PLANETS = false
 const SHOW_LABELS = true
@@ -7,7 +7,7 @@ const DEFAULT_RADIUS = 2000
 
 // TODO This has been ported to JSX but would be easier to maintain if each
 // type of object was refactored out into it's own component
-export default function SystemMapObject ({ systemObject, setSystemObject, parentSystemObject, labels = true }) {
+export default function SystemMapObject({ systemObject, setSystemObject, parentSystemObject, labels = true }) {
   const CLICKABLE_AREA_PADDING = 250
   const MAX_LABEL_WIDTH = 3000
 
@@ -321,7 +321,7 @@ export default function SystemMapObject ({ systemObject, setSystemObject, parent
   }
 }
 
-function truncateString (string, maxLength) {
+function truncateString(string, maxLength) {
   if (string.length > maxLength) {
     return `${string.substring(0, maxLength - 1)}…`
   }

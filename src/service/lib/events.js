@@ -115,7 +115,7 @@ eliteJson.loadFileCallback = loadFileCallback
 eliteLog.loadFileCallback = loadFileCallback
 eliteLog.logEventCallback = logEventCallback
 
-async function init ({ days = 7 } = {}) {
+async function init({ days = 7 } = {}) {
   // If already run (or already started) don't run again
   if (loadingComplete || loadingInProgress) return getLoadingStatus()
 
@@ -143,7 +143,7 @@ async function init ({ days = 7 } = {}) {
   return getLoadingStatus()
 }
 
-function getLoadingStatus () {
+function getLoadingStatus() {
   return {
     loadingComplete,
     loadingInProgress,
@@ -157,7 +157,7 @@ function getLoadingStatus () {
   }
 }
 
-function eliteJsonCallback (event) {
+function eliteJsonCallback(event) {
   broadcastEvent('gameStateChange')
   gameStateChangeHandler(event)
 }

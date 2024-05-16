@@ -1,6 +1,7 @@
 @-moz-document url-prefix() {
   html {
-    height: 100vh; /* Firefox needs this or the use of filter() breaks rendering! */
+    height: 100vh;
+    /* Firefox needs this or the use of filter() breaks rendering! */
     /* Firefox renders with a smaller base font size */
     font-size: .9rem !important;
   }
@@ -9,7 +10,7 @@
     scrollbar-width: auto !important;
     scrollbar-color: auto !important;
   }
-  
+
   progress {
     background: var(--color-primary-dark);
   }
@@ -32,6 +33,6 @@
   }
 
   table:not(.table--layout) tbody tr {
-    border-top-color: rgba(0,0,0,.6) !important;
+    border-top-color: rgba(0, 0, 0, .6) !important;
   }
 }

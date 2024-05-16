@@ -65,7 +65,7 @@ const SERVICE_VERSION_INFO = {
 
 // Some of the third party libraries used in buildings choke on characters
 // like spaces in filenames; to work around this they are replaced during build
-function safeBinaryName (binaryName) {
+function safeBinaryName(binaryName) {
   return binaryName.replace(/ /g, '_')
 }
 

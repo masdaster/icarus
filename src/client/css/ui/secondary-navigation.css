@@ -28,7 +28,8 @@
   margin: 0;
 }
 
-@media only screen and (orientation: portrait), (max-width: 599px) {
+@media only screen and (orientation: portrait),
+(max-width: 599px) {
   .secondary-navigation__exit-button {
     position: relative !important;
     bottom: 0;
@@ -80,8 +81,13 @@
 }
 
 @keyframes search-input-animation {
-  from { width: 0rem; }
-  to { width: 15rem; }
+  from {
+    width: 0rem;
+  }
+
+  to {
+    width: 15rem;
+  }
 }
 
 

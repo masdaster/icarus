@@ -3,13 +3,13 @@ const DataLoader = require('../data')
 const engineersWithLocation = new DataLoader('engineers').data
 
 class Engineers {
-  constructor ({ eliteLog, eliteJson }) {
+  constructor({ eliteLog, eliteJson }) {
     this.eliteLog = eliteLog
     this.eliteJson = eliteJson
     return this
   }
 
-  async getEngineers () {
+  async getEngineers() {
     const engineersWithProgress = await this.eliteLog.getEvent('EngineerProgress')
 
     if (!engineersWithProgress?.Engineers) return null

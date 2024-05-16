@@ -2,14 +2,14 @@ const DataLoader = require('../data')
 const coriolisBlueprints = new DataLoader('edcd/coriolis/blueprints').data
 
 class Blueprints {
-  constructor ({ engineers, materials, shipStatus }) {
+  constructor({ engineers, materials, shipStatus }) {
     this.engineers = engineers
     this.materials = materials
     this.shipStatus = shipStatus
     return this
   }
 
-  async getBlueprints () {
+  async getBlueprints() {
     const engineers = await this.engineers.getEngineers()
     const materials = await this.materials.getMaterials()
     const ship = await this.shipStatus.getShipStatus()

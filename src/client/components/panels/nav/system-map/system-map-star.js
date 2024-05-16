@@ -1,6 +1,6 @@
 import SystemMapObject from 'components/panels/nav/system-map/system-map-object'
 
-export default function SystemMapStar ({ star, setSystemObject }) {
+export default function SystemMapStar({ star, setSystemObject }) {
   if (star.type === 'Null' && (!star._children || star._children.length === 0)) return null
 
   let useLargerViewBox = false

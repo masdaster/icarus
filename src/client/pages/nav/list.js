@@ -1,14 +1,14 @@
-import { useState, useEffect } from 'react'
-import animateTableEffect from 'lib/animate-table-effect'
-import { useRouter } from 'next/router'
-import { useSocket, sendEvent, eventListener } from 'lib/socket'
-import { NavPanelNavItems } from 'lib/navigation-items'
 import Layout from 'components/layout'
 import Panel from 'components/panel'
-import NavigationListPanel from 'components/panels/nav/navigation-list-panel'
 import NavigationInspectorPanel from 'components/panels/nav/navigation-inspector-panel'
+import NavigationListPanel from 'components/panels/nav/navigation-list-panel'
+import animateTableEffect from 'lib/animate-table-effect'
+import { NavPanelNavItems } from 'lib/navigation-items'
+import { eventListener, sendEvent, useSocket } from 'lib/socket'
+import { useRouter } from 'next/router'
+import { useEffect, useState } from 'react'
 
-export default function NavListPage () {
+export default function NavListPage() {
   const router = useRouter()
   const { query } = router
   const { connected, active, ready } = useSocket()
@@ -16,7 +16,7 @@ export default function NavListPage () {
   const [system, setSystem] = useState()
   const [systemObject, setSystemObject] = useState()
   const [helpVisible, setHelpVisible] = useState(false)
-  
+
   useEffect(animateTableEffect)
 
   const getSystem = async (systemName, useCache = true) => {

@@ -40,7 +40,7 @@ const NavRoute = require('./event-handlers/nav-route')
 const TextToSpeech = require('./event-handlers/text-to-speech')
 
 class EventHandlers {
-  constructor ({ eliteLog, eliteJson }) {
+  constructor({ eliteLog, eliteJson }) {
     this.eliteLog = eliteLog
     this.eliteJson = eliteJson
 
@@ -60,16 +60,16 @@ class EventHandlers {
   }
 
   // logEventHandler is fired on every in-game log event
-  logEventHandler (logEvent) {
+  logEventHandler(logEvent) {
     this.textToSpeech.logEventHandler(logEvent)
   }
 
-  gameStateChangeHandler (event) {
+  gameStateChangeHandler(event) {
     this.textToSpeech.gameStateChangeHandler(event)
   }
 
   // Return handlers for events that are fired from the client
-  getEventHandlers () {
+  getEventHandlers() {
     if (!this.eventHandlers) {
       this.eventHandlers = {
         getCmdr: async () => {
@@ -115,7 +115,7 @@ class EventHandlers {
         //     return null
         //   }
         // },
-        testMessage: ({name, message}) => {
+        testMessage: ({ name, message }) => {
           // Method to simulate messages, intended for developers
           if (name !== 'testMessage') broadcastEvent(name, message)
         },

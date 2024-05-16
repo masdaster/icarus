@@ -2,7 +2,7 @@ const childProcess = require('child_process')
 const once = require('one-time')
 
 class SayPlatformBase {
-  constructor () {
+  constructor() {
     this.child = null
     this.baseSpeed = 0
   }
@@ -15,9 +15,9 @@ class SayPlatformBase {
    * @param {number|null} speed Speed of text (e.g. 1.0 for normal, 0.5 half, 2.0 double)
    * @param {Function|null} callback A callback of type function(err) to return.
    */
-  speak (text, voice, speed, callback) {
+  speak(text, voice, speed, callback) {
     if (typeof callback !== 'function') {
-      callback = () => {}
+      callback = () => { }
     }
 
     callback = once(callback)
@@ -64,9 +64,9 @@ class SayPlatformBase {
    * @param {string} filename Path to file to write audio to, e.g. "greeting.wav"
    * @param {Function|null} callback A callback of type function(err) to return.
    */
-  export (text, voice, speed, filename, callback) {
+  export(text, voice, speed, filename, callback) {
     if (typeof callback !== 'function') {
-      callback = () => {}
+      callback = () => { }
     }
 
     callback = once(callback)
@@ -123,9 +123,9 @@ class SayPlatformBase {
    *
    * @param {Function|null} callback A callback of type function(err) to return.
    */
-  stop (callback) {
+  stop(callback) {
     if (typeof callback !== 'function') {
-      callback = () => {}
+      callback = () => { }
     }
 
     callback = once(callback)
@@ -143,7 +143,7 @@ class SayPlatformBase {
     callback(null)
   }
 
-  convertSpeed (speed) {
+  convertSpeed(speed) {
     return Math.ceil(this.baseSpeed * speed)
   }
 
@@ -151,9 +151,9 @@ class SayPlatformBase {
    * Get Installed voices on system
    * @param {Function} callback A callback of type function(err,voices) to return.
    */
-  getInstalledVoices (callback) {
+  getInstalledVoices(callback) {
     if (typeof callback !== 'function') {
-      callback = () => {}
+      callback = () => { }
     }
     callback = once(callback)
 

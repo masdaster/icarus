@@ -79,7 +79,8 @@ on slow devices (e.g. Amazon Fire) to be the default */
 .system-map__info--icons {
   white-space: nowrap !important;
   text-overflow: ellipsis !important;
-  overflow-x: clip !important; /* avoids clipping text shadow on y axis */
+  overflow-x: clip !important;
+  /* avoids clipping text shadow on y axis */
   pointer-events: none;
   margin-bottom: .25rem;
 }
@@ -143,9 +144,9 @@ on slow devices (e.g. Amazon Fire) to be the default */
 }
 
 .system-map__system-information--open {
-  background: rgba(0,0,0,.75);
+  background: rgba(0, 0, 0, .75);
   backdrop-filter: blur(.5rem) brightness(.25);
-  clip-path: polygon(0 2.00rem,2.00rem 0,100% 0,100% calc(100% - 2.00rem),calc(100% - 2.00rem) 100%,0 100%);
+  clip-path: polygon(0 2.00rem, 2.00rem 0, 100% 0, 100% calc(100% - 2.00rem), calc(100% - 2.00rem) 100%, 0 100%);
   border-radius: .2rem;
   padding: .5rem 2.5rem .6rem .75rem;
   background: var(--linear-gradient-background);
@@ -164,7 +165,7 @@ on slow devices (e.g. Amazon Fire) to be the default */
   background: var(--color-info);
   background: var(--color-primary);
   opacity: .25;
-  clip-path: polygon(0 2.00rem,2.00rem 0,100% 0,100% calc(100% - 2.00rem),calc(100% - 2.00rem) 100%,0 100%,0 2.00rem,.15rem  calc(2.00rem + 0.06rem),.15rem calc(100% - .15rem),calc(100% - 2.00rem - 0.06rem) calc(100% - .15rem),calc(100% - .15rem) calc(100% - 2.00rem - 0.06rem),calc(100% - .15rem) .15rem,calc(2.00rem + 0.06rem) .15rem,.15rem calc(2.00rem + 0.06rem));
+  clip-path: polygon(0 2.00rem, 2.00rem 0, 100% 0, 100% calc(100% - 2.00rem), calc(100% - 2.00rem) 100%, 0 100%, 0 2.00rem, .15rem calc(2.00rem + 0.06rem), .15rem calc(100% - .15rem), calc(100% - 2.00rem - 0.06rem) calc(100% - .15rem), calc(100% - .15rem) calc(100% - 2.00rem - 0.06rem), calc(100% - .15rem) .15rem, calc(2.00rem + 0.06rem) .15rem, .15rem calc(2.00rem + 0.06rem));
   border-radius: .2rem;
 }
 
@@ -194,7 +195,7 @@ on slow devices (e.g. Amazon Fire) to be the default */
   width: 8.5rem;
   padding: .5rem;
   overflow: hidden;
-  background: rgba(0,0,0,.75);
+  background: rgba(0, 0, 0, .75);
 }
 
 .system-map__system-telemetry--text {
@@ -223,7 +224,7 @@ on slow devices (e.g. Amazon Fire) to be the default */
   animation: svg-fade-in-animation 1s ease-in-out;
   animation-fill-mode: forwards;
   /* Wait until after other animations on page are done for best performance on slow devices */
-  animation-delay: 1s; 
+  animation-delay: 1s;
 }
 
 .system-map__planetary-system-star-icon svg {
@@ -232,12 +233,21 @@ on slow devices (e.g. Amazon Fire) to be the default */
   animation: fx-fade-in-animation 1s ease-in-out;
   animation-fill-mode: forwards;
   /* Wait until after other animations on page are done for best performance on slow devices */
-  animation-delay: .5s; 
+  animation-delay: .5s;
 }
 
 @keyframes svg-fade-in-animation {
-  from { filter: contrast(2) blur(2rem); visibility: visible; opacity : 0; }
-  to { filter: contrast(1) blur(0); visibility: visible; opacity: 1; }
+  from {
+    filter: contrast(2) blur(2rem);
+    visibility: visible;
+    opacity: 0;
+  }
+
+  to {
+    filter: contrast(1) blur(0);
+    visibility: visible;
+    opacity: 1;
+  }
 }
 
 
@@ -264,7 +274,7 @@ on slow devices (e.g. Amazon Fire) to be the default */
 }
 
 @media only screen and (max-width: 799px) {
-  .system-map__planetary-system-star h2 { 
+  .system-map__planetary-system-star h2 {
     font-size: 1.75rem;
     line-height: 2rem;
   }
@@ -325,9 +335,7 @@ on slow devices (e.g. Amazon Fire) to be the default */
   opacity: 0.7;
 } */
 
-.system-map__system-object[data-system-object-type="Planet"]:not([data-system-object-atmosphere="No atmosphere"]) .system-map__planet {
-
-}
+.system-map__system-object[data-system-object-type="Planet"]:not([data-system-object-atmosphere="No atmosphere"]) .system-map__planet {}
 
 .system-map__system-object[data-system-object-type="Star"][data-system-object-sub-type="Supermassive Black Hole" i] .system-map__planet,
 .system-map__system-object[data-system-object-type="Star"][data-system-object-sub-type="Black Hole" i] .system-map__planet {
@@ -338,6 +346,7 @@ on slow devices (e.g. Amazon Fire) to be the default */
   fill: url(#system-map-svg-gradient__planet);
   filter: url(#svg-filter__planet-shadow) var(--filter-system-map-planet-not-landable);
 }
+
 .system-map__system-object[data-system-object-type="Planet"][data-system-object-sub-type*="gas giant" i] .system-map__planet-surface {
   fill: url(#svg-pattern__planet-surface--gas-giant);
 }
@@ -438,14 +447,14 @@ on slow devices (e.g. Amazon Fire) to be the default */
 }
 
 .system-map__system-object[data-system-object-type="Star"][data-system-object-sub-type^="M "] .system-map__planet-surface {
-  filter: contrast(0.25) sepia(100%) hue-rotate(360deg) saturate(4) brightness(.9) contrast(1.5)  drop-shadow(0 0 5rem #ff8c00) drop-shadow(0 0 10rem #ff8c00) drop-shadow(0 0 10rem #ff8c00);
+  filter: contrast(0.25) sepia(100%) hue-rotate(360deg) saturate(4) brightness(.9) contrast(1.5) drop-shadow(0 0 5rem #ff8c00) drop-shadow(0 0 10rem #ff8c00) drop-shadow(0 0 10rem #ff8c00);
 }
 
 .system-map__system-object[data-system-object-type="Star"][data-system-object-sub-type^="L "] .system-map__planet-surface,
 .system-map__system-object[data-system-object-type="Star"][data-system-object-sub-type^="Y "] .system-map__planet-surface,
 .system-map__system-object[data-system-object-type="Star"][data-system-object-sub-type^="T "] .system-map__planet-surface,
 .system-map__system-object[data-system-object-type="Star"][data-system-object-sub-type*="Brown dwarf" i] .system-map__planet-surface {
-  filter: contrast(0.2) sepia(100%) hue-rotate(300deg) saturate(1.4) brightness(.4)  contrast(2) drop-shadow(0 0 15rem rgb(200,20,20));
+  filter: contrast(0.2) sepia(100%) hue-rotate(300deg) saturate(1.4) brightness(.4) contrast(2) drop-shadow(0 0 15rem rgb(200, 20, 20));
 }
 
 /* 
@@ -563,15 +572,15 @@ on slow devices (e.g. Amazon Fire) to be the default */
   display: block;
   fill: var(--color-info);
   filter: drop-shadow(0 0 5rem var(--color-secondary)) drop-shadow(0 0 10rem var(--color-secondary)) drop-shadow(0 0 10rem var(--color-secondary-dark)) !important;
- }
+}
 
- .system-map__system-object:focus .system-map__planetary-facility-icon,
- .system-map__system-object:focus .system-map__planetary-port-icon,
- .system-map__system-object:focus .system-map__planetary-lander-icon {
+.system-map__system-object:focus .system-map__planetary-facility-icon,
+.system-map__system-object:focus .system-map__planetary-port-icon,
+.system-map__system-object:focus .system-map__planetary-lander-icon {
   filter: drop-shadow(0 0 5rem var(--color-primary)) drop-shadow(0 0 10rem var(--color-primary)) !important;
- }
+}
 
- .system-map__system-object .system-map__station {
+.system-map__system-object .system-map__station {
   stroke: var(--color-secondary);
   fill: var(--color-secondary-dark);
   stroke-width: 100;
@@ -598,21 +607,24 @@ on slow devices (e.g. Amazon Fire) to be the default */
   stop-color: var(--color-primary);
   stop-color: #005c81;
 }
+
 #system-map-svg-gradient__planet stop:nth-child(2) {
   stop-color: var(--color-primary-dark);
-  stop-color:  #551b00;
+  stop-color: #551b00;
 }
 
 #system-map-svg-gradient__planet--landable stop:nth-child(1) {
   stop-color: #00b3f7;
 }
+
 #system-map-svg-gradient__planet--landable stop:nth-child(2) {
-  stop-color:  #8f3c15;
+  stop-color: #8f3c15;
 }
 
 #system-map-svg-gradient__planet-ring stop:nth-child(1) {
   stop-color: rgba(160, 160, 160, 0.05);
 }
+
 #system-map-svg-gradient__planet-ring stop:nth-child(2) {
   stop-color: rgba(160, 160, 160, 0.1);
 }

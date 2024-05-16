@@ -1,10 +1,10 @@
-import { useState, useEffect } from 'react'
-import { useRouter } from 'next/router'
+import { Settings } from 'components/settings'
+import { eliteDateTime } from 'lib/format'
+import notification from 'lib/notification'
 import { socketOptions } from 'lib/socket'
 import { isWindowFullScreen, isWindowPinned, toggleFullScreen, togglePinWindow } from 'lib/window'
-import { eliteDateTime } from 'lib/format'
-import { Settings } from 'components/settings'
-import notification from 'lib/notification'
+import { useRouter } from 'next/router'
+import { useEffect, useState } from 'react'
 
 const NAV_BUTTONS = [
   {
@@ -31,7 +31,7 @@ const NAV_BUTTONS = [
 
 let IS_WINDOWS_APP = false
 
-export default function Header ({ connected, active }) {
+export default function Header({ connected, active }) {
   const router = useRouter()
   const [dateTime, setDateTime] = useState(eliteDateTime())
   const [isFullScreen, setIsFullScreen] = useState(false)
@@ -39,20 +39,20 @@ export default function Header ({ connected, active }) {
   const [notificationsVisible, setNotificationsVisible] = useState(socketOptions.notifications)
   const [settingsVisible, setSettingsVisible] = useState(false)
 
-  async function fullScreen () {
+  async function fullScreen() {
     const newFullScreenState = await toggleFullScreen()
     setIsFullScreen(newFullScreenState)
     if (newFullScreenState === true) setIsPinned(false)
     document.activeElement.blur()
   }
 
-  async function pinWindow () {
+  async function pinWindow() {
     const newPinState = await togglePinWindow()
     setIsPinned(newPinState)
     document.activeElement.blur()
   }
 
-  function toggleNotifications () {
+  function toggleNotifications() {
     socketOptions.notifications = !notificationsVisible
     setNotificationsVisible(socketOptions.notifications)
     // FIXME Uses document.getElementById('notifications') hack to force
@@ -116,11 +116,11 @@ export default function Header ({ connected, active }) {
           className='text-primary text-center text-uppercase'
           style={{ display: 'inline-block', padding: 0, margin: 0, lineHeight: '1rem', minWidth: '7.5rem' }}
         >
-           <span style={{position: 'relative', top: '.3rem', fontSize: '2.4rem', paddingTop: '.25rem'}}>
-           {dateTime.time}
+          <span style={{ position: 'relative', top: '.3rem', fontSize: '2.4rem', paddingTop: '.25rem' }}>
+            {dateTime.time}
           </span>
-          <br/>
-          <span style={{fontSize: '1.1rem', position: 'relative', top: '.4rem'}}>
+          <br />
+          <span style={{ fontSize: '1.1rem', position: 'relative', top: '.4rem' }}>
             {dateTime.day} {dateTime.month} {dateTime.year}
           </span>
         </p>
@@ -153,7 +153,7 @@ export default function Header ({ connected, active }) {
         {NAV_BUTTONS.filter(button => button).map((button, i) =>
           <button
             key={button.name}
-            data-primary-navigation={i+1}
+            data-primary-navigation={i + 1}
             tabIndex='1'
             disabled={button.path === currentPath}
             className={button.path === currentPath ? 'button--active' : ''}

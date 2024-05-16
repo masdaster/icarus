@@ -1,7 +1,7 @@
 import CopyOnClick from 'components/copy-on-click'
-import { SPACE_STATIONS, SURFACE_PORTS, PLANETARY_BASES, MEGASHIPS } from '../../../../shared/consts'
+import { MEGASHIPS, PLANETARY_BASES, SPACE_STATIONS, SURFACE_PORTS } from '../../../../shared/consts'
 
-export default function NavigationListPanel ({ system, systemObject, setSystemObject, showHelp }) {
+export default function NavigationListPanel({ system, systemObject, setSystemObject, showHelp }) {
   if (!system) return null
 
   // Check if any bodies are visible on map (i.e. any stars *or* any "additional objects")
@@ -61,7 +61,7 @@ export default function NavigationListPanel ({ system, systemObject, setSystemOb
   )
 }
 
-function NavigationTableBody ({ system, setSystemObject }) {
+function NavigationTableBody({ system, setSystemObject }) {
   let tableRows = []
 
   if (!system?.stars) return tableRows // Handle unknown systems
@@ -77,7 +77,7 @@ function NavigationTableBody ({ system, setSystemObject }) {
   return tableRows
 }
 
-function NavigationTableRowChildren ({ stars, systemObject, setSystemObject, depth = 1 }) {
+function NavigationTableRowChildren({ stars, systemObject, setSystemObject, depth = 1 }) {
   let tableRows = []
 
   tableRows.push(<NavigationTableRow key={`${systemObject.name}_${systemObject.id}`} stars={stars} systemObject={systemObject} depth={depth} setSystemObject={setSystemObject} />)
@@ -97,7 +97,7 @@ function NavigationTableRowChildren ({ stars, systemObject, setSystemObject, dep
   return tableRows
 }
 
-function NavigationTableRow ({ stars, systemObject, depth = 0, setSystemObject }) {
+function NavigationTableRow({ stars, systemObject, depth = 0, setSystemObject }) {
   if (!systemObject.type) {
     console.warn('Unknown type of system object', systemObject)
     return null
@@ -172,9 +172,9 @@ function NavigationTableRow ({ stars, systemObject, depth = 0, setSystemObject }
           <i className={iconClass} />
           {systemObject.label
             ? <>
-                <span className='visible-medium'>{systemObject.label}</span>
-                <span className='hidden-medium'>{systemObject.name}</span>
-              </>
+              <span className='visible-medium'>{systemObject.label}</span>
+              <span className='hidden-medium'>{systemObject.name}</span>
+            </>
             : systemObject.name}
           <span className={systemObject.isLandable ? 'text-secondary' : ''}>
             {(systemObject.atmosphereComposition && !systemObject?.subType?.toLowerCase()?.includes('gas giant')) && <i className='float-right icon icarus-terminal-planet-atmosphere' />}

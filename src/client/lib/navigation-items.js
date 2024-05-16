@@ -1,4 +1,4 @@
-function ShipPanelNavItems (activePanel) {
+function ShipPanelNavItems(activePanel) {
   const navigationItems = [
     {
       name: 'Status',
@@ -27,7 +27,7 @@ function ShipPanelNavItems (activePanel) {
   return navigationItems
 }
 
-function NavPanelNavItems (activePanel, query) {
+function NavPanelNavItems(activePanel, query) {
   const navigationItems = [
     {
       name: 'Search',
@@ -65,7 +65,7 @@ function NavPanelNavItems (activePanel, query) {
   return navigationItems
 }
 
-function EngineeringPanelNavItems (activePanel) {
+function EngineeringPanelNavItems(activePanel) {
   const navigationItems = [
     {
       name: 'Blueprints',
@@ -104,7 +104,7 @@ function EngineeringPanelNavItems (activePanel) {
   return navigationItems
 }
 
-function SettingsNavItems (activePanel) {
+function SettingsNavItems(activePanel) {
   const navigationItems = [
     {
       name: 'Theme',

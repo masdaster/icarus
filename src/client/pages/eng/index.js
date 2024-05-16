@@ -1,9 +1,9 @@
-import Router from 'next/router'
 import Layout from 'components/layout'
 import Panel from 'components/panel'
 import { useSocket } from 'lib/socket'
+import Router from 'next/router'
 
-export default function EngineeringPage () {
+export default function EngineeringPage() {
   const { connected, active } = useSocket()
 
   if (typeof window !== 'undefined') Router.push('/eng/blueprints')

@@ -17,19 +17,19 @@ const {
 const ICON_FONT_DIR = path.join(ASSETS_DIR, 'icon-font')
 const ICONS_DIR = path.join(ASSETS_DIR, 'icons')
 
-;(async () => {
-  clean()
-  await build()
-  copy()
-})()
+  ; (async () => {
+    clean()
+    await build()
+    copy()
+  })()
 
-function clean () {
+function clean() {
   if (!fs.existsSync(ASSETS_DIR)) fs.mkdirSync(ASSETS_DIR, { recursive: true })
   if (!fs.existsSync(ICONS_DIR)) fs.mkdirSync(ICONS_DIR, { recursive: true })
   if (fs.existsSync(ICON_FONT_DIR)) fs.rmdirSync(ICON_FONT_DIR, { recursive: true })
 }
 
-async function build () {
+async function build() {
   // Note: Overrides maskable icon, so put back the right icon afterwords
   execSync(`npx generate-icons --manifest ${path.join(ASSETS_DIR, 'icon-manifest.json')} ${path.join(RESOURCES_DIR, 'images/icon.svg')}`)
   fse.copySync(
@@ -69,7 +69,7 @@ async function build () {
   })
 }
 
-function copy () {
+function copy() {
   [
     'icarus-terminal.css',
     'icarus-terminal.eot',
