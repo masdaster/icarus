@@ -42,7 +42,7 @@ async function build() {
     ico: SERVICE_ICON,
     input: ENTRY_POINT,
     output: SERVICE_UNOPTIMIZED_BUILD,
-    target: 'windows-x86-14.15.3', // from https://github.com/nexe/nexe/releases/tag/v3.3.3
+    target: 'windows-x64-14.15.3', // from https://github.com/nexe/nexe/releases/tag/v3.3.3
     resources: [
       path.join(BUILD_DIR, 'client'), // Include web client
       'src/service/data' // Include dynamically loaded JSON files
