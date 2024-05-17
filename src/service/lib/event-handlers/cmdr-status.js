@@ -1,7 +1,7 @@
 const System = require('./system')
 
 class CmdrStatus {
-  constructor ({ eliteJson, eliteLog }) {
+  constructor({ eliteJson, eliteLog }) {
     this.eliteJson = eliteJson
     this.eliteLog = eliteLog
     this.system = new System({ eliteLog })
@@ -61,11 +61,11 @@ class CmdrStatus {
     return this
   }
 
-  getFlag (flags, flag) {
+  getFlag(flags, flag) {
     return (flags & flag) !== 0
   }
 
-  async getStatusFlags (StatusJson) {
+  async getStatusFlags(StatusJson) {
     const statusFlags = {}
 
     for (const flag of Object.keys(this.flags)) {
@@ -87,7 +87,7 @@ class CmdrStatus {
     return statusFlags
   }
 
-  async getCmdrStatus () {
+  async getCmdrStatus() {
     const StatusJson = (await this.eliteJson.json()).Status
     const currentSystem = await this.system.getSystem()
 
@@ -145,7 +145,7 @@ class CmdrStatus {
         // This logic is "best effort" and I would not be surprised if there
         // are edge cases to the logic.
         if ((dockedEvent && dockedEvent.StationName && dockedEvent?.StarSystem === currentSystem?.name)
-           || locationEvent?.StarSystem === currentSystem?.name) {
+          || locationEvent?.StarSystem === currentSystem?.name) {
           if (dockedEvent?.StationType === 'FleetCarrier') {
             location.push(`Carrier ${dockedEvent.StationName}`)
           } else {
@@ -184,7 +184,7 @@ class CmdrStatus {
       // FIXME: This is technically incorrect and it should use whatever is the
       //  most recent event
       if (!dockedEvent && embarkEvent?.StationName) {
-        location.push(embarkEvent.StationName) 
+        location.push(embarkEvent.StationName)
       } else if (!embarkEvent && dockedEvent?.StationName) {
         if (dockedEvent?.StationType === 'FleetCarrier') {
           location.push(`Carrier ${dockedEvent.StationName}`)
@@ -204,8 +204,8 @@ class CmdrStatus {
 
       if (dockedEvent && embarkEvent) {
         if (touchdownEvent &&
-            Date.parse(touchdownEvent?.timestamp) > Date.parse(dockedEvent?.timestamp) &&
-            Date.parse(touchdownEvent?.timestamp) > Date.parse(embarkEvent?.timestamp)
+          Date.parse(touchdownEvent?.timestamp) > Date.parse(dockedEvent?.timestamp) &&
+          Date.parse(touchdownEvent?.timestamp) > Date.parse(embarkEvent?.timestamp)
         ) {
           if (touchdownEvent?.NearestDestination) location.push(touchdownEvent.NearestDestination)
         } else if (embarkEvent?.StationName && dockedEvent?.StationName) {

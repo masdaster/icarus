@@ -1,9 +1,9 @@
-import { useState, useEffect, Fragment } from 'react'
-import { sendEvent, eventListener } from 'lib/socket'
 import { SettingsNavItems } from 'lib/navigation-items'
+import { eventListener, sendEvent } from 'lib/socket'
+import { Fragment, useEffect, useState } from 'react'
 import packageJson from '../../../package.json'
 
-function Settings ({ visible, toggleVisible = () => {}, defaultActiveSettingsPanel = 'Theme' }) {
+function Settings({ visible, toggleVisible = () => { }, defaultActiveSettingsPanel = 'Theme' }) {
   const [activeSettingsPanel, setActiveSettingsPanel] = useState(defaultActiveSettingsPanel)
 
   return (
@@ -38,7 +38,7 @@ function Settings ({ visible, toggleVisible = () => {}, defaultActiveSettingsPan
   )
 }
 
-function SoundSettings ({ visible }) {
+function SoundSettings({ visible }) {
   const [preferences, setPreferences] = useState()
   const [voices, setVoices] = useState()
 
@@ -104,7 +104,7 @@ function SoundSettings ({ visible }) {
   )
 }
 
-function ThemeSettings () {
+function ThemeSettings() {
   const [primaryColor, setPrimaryColor] = useState(getPrimaryColorAsHex())
   const [primaryColorModifier, setPrimaryColorModifier] = useState(getPrimaryColorModifier())
   const [secondaryColor, setSecondaryColor] = useState(getSecondaryColorAsHex())
@@ -392,7 +392,7 @@ const loadDefaultColorSettings = () => {
 }
 
 // Returns: 1 = v1 is bigger, 0 = same version, -1 = v1 is smaller
-function compareVersions (v1, v2) {
+function compareVersions(v1, v2) {
   const v1Parts = v1.split('.')
   const v2Parts = v2.split('.')
   const length = Math.max(v1Parts.length, v2Parts.length)

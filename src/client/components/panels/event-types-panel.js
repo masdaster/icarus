@@ -1,7 +1,7 @@
-import { useState, useEffect } from 'react'
-import { useSocket, eventListener, sendEvent } from 'lib/socket'
+import { eventListener, sendEvent, useSocket } from 'lib/socket'
+import { useEffect, useState } from 'react'
 
-function gameEventsToArray (gameEvents) {
+function gameEventsToArray(gameEvents) {
   return Object.keys(gameEvents).map(event => {
     return {
       name: event,
@@ -10,7 +10,7 @@ function gameEventsToArray (gameEvents) {
   }).sort((a, b) => a.count > b.count ? -1 : 0)
 }
 
-export default function EventTypesPanel () {
+export default function EventTypesPanel() {
   const { connected } = useSocket()
   const [gameEvents, setGameEvents] = useState()
 

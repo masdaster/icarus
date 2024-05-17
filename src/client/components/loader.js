@@ -1,5 +1,5 @@
 
-export default function Loader ({ visible }) {
+export default function Loader({ visible }) {
   return (
     <div id='loader' style={{ opacity: visible ? 0.75 : 0 }}>
       <div className='loader__row'>

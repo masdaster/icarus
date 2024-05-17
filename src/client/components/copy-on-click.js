@@ -1,14 +1,14 @@
-import { useRef } from 'react'
 import notification from 'lib/notification'
+import { useRef } from 'react'
 
-export default function CopyOnClick ({ children, prepend, append }) {
+export default function CopyOnClick({ children, prepend, append }) {
   const selectableText = useRef()
-  function copyText (e) {
+  function copyText(e) {
     try {
       const text = selectableText.current.innerHTML
       document.execCommand('copy')
       navigator.clipboard.writeText(text)
-      notification(() => <p><span className='text-primary'>text copied</span><br/><span>{`"${text}"`}</span></p>)
+      notification(() => <p><span className='text-primary'>text copied</span><br /><span>{`"${text}"`}</span></p>)
     } catch { /* don't care */ }
   }
   return (

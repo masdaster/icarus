@@ -32,17 +32,6 @@ class EliteLog {
     this.logEventCallback = null
     this.singleInstanceEvents = {}
     this.numberOfEventsImported = 0
-
-    // setInterval(() => {
-    //   const numberOfFilesBeingWatched = Object.entries(this.files)
-    //     .filter(obj => {
-    //       const [fileName, file] = obj
-    //       return file.watch !== false
-    //     }).length
-
-    //   console.log(`events: ${this.numberOfEventsImported}\tmost recent event: ${this.lastActiveTimestamp}\tfiles watched: ${numberOfFilesBeingWatched}`)
-    // }, 2000)
-
     return this
   }
 
@@ -51,7 +40,7 @@ class EliteLog {
   }
 
   // Get all log entries
-  load({ 
+  load({
     file = null, // Load a particular file (used internally when file changes)
     days = null, // Days since last activity to load (if null, load all events)
     reload = false // Attempt to reload all events if they are older (safe, won't result in duplicates)
@@ -83,7 +72,7 @@ class EliteLog {
             retries: 10
           })
         }
-        
+
         // Store in human readable timestamp for easier debugging
         // (performance impact is minimal)
         if (newestTimestamp) { // Conditonal to suppress errors when no data loaded
@@ -130,7 +119,7 @@ class EliteLog {
       // where it makes sense to do so, otherwise we just keep the most recent 
       // copy of each event type in memory.
       await db.ensureIndex({ fieldName: '_checksum', unique: true })
-      
+
       const logsIngested = []
       for (const log of logs) {
         this.numberOfEventsImported++
@@ -148,7 +137,7 @@ class EliteLog {
         // (so when we are called again can skip over logs we've already seen)
         if (!this.lastActiveTimestamp)
           this.lastActiveTimestamp = eventTimestamp
-        
+
         if (Date.parse(eventTimestamp) > Date.parse(this.lastActiveTimestamp))
           this.lastActiveTimestamp = eventTimestamp
 
@@ -269,7 +258,7 @@ class EliteLog {
       const files = await this.#getFiles()
 
       // If no files found, nothing to do
-      if (files.length === 0) return 
+      if (files.length === 0) return
 
       // Get currently active log file (mostly recently modified) in case that
       // has changed since we loaded (e.g. due to log rotation)
@@ -290,7 +279,7 @@ class EliteLog {
       for (const file in this.files) {
         if (file.watch && file.name !== activeLogFile.name) {
           // Check for any logs we might have missed during log rotation
-          const logs = await this.load({file})
+          const logs = await this.load({ file })
           if (callback) logs.map(log => callback(log))
           // Remove watch from file
           fs.unwatchFile(file.name, file.watch)
@@ -307,39 +296,32 @@ class EliteLog {
   }
 
   async #watchFile(file, callback) {
-    // fs.watch is proving to not be reliable and is not picking up changes
-    // to game logs on Windows at all so falling back to the older
-    // fs.watchFile, which uses polling rather than file system events.
-    let debounce
-    return fs.watchFile(
+    return fs.watch(
       file.name,
-      { interval: 1000 },
       async (event, filename) => {
         if (!filename) return
-        if (debounce) return
-        debounce = setTimeout(() => { debounce = false }, 100)
-        const logs = await this.load({file})
+        const logs = await this.load({ file })
         try {
           // Trigger callback for each log entry loaded
           if (callback) logs.map(log => callback(log))
         } catch (e) {
           console.error(e)
         }
-    })
+      })
   }
-  
+
   async #insertUnique(log) {
     return await new Promise(async (resolve, reject) => {
       db.insert(log)
-      .then(() => { return resolve(true) }) // Return true if not duplicate
-      .catch(e => {
-        if (e.errorType === 'uniqueViolated') {
-          return resolve(false) // Return false (but don't error) if duplicate
-        } else {
-          // Error for other failure conditions
-          return reject(e)
-        }
-      })
+        .then(() => { return resolve(true) }) // Return true if not duplicate
+        .catch(e => {
+          if (e.errorType === 'uniqueViolated') {
+            return resolve(false) // Return false (but don't error) if duplicate
+          } else {
+            // Error for other failure conditions
+            return reject(e)
+          }
+        })
     })
   }
 
@@ -388,11 +370,11 @@ class EliteLog {
 }
 
 class File {
-  constructor({name, lastModified, size, lineCount, watch = false}) {
+  constructor({ name, lastModified, size, lineCount, watch = false }) {
     this.name = name // Full path to file
     this.lastModified = lastModified
     this.size = size,
-    this.lineCount = lineCount
+      this.lineCount = lineCount
     this.watch = watch
   }
 }

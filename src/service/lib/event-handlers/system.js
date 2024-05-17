@@ -4,12 +4,12 @@ const { UNKNOWN_VALUE } = require('../../../shared/consts')
 const distance = require('../../../shared/distance')
 
 class System {
-  constructor ({ eliteLog }) {
+  constructor({ eliteLog }) {
     this.eliteLog = eliteLog
     return this
   }
 
-  async getCurrentLocation () {
+  async getCurrentLocation() {
     // Get most recent Location event (written at startup and after respawn)
     const Location = await this.eliteLog.getEvent('Location')
 
@@ -71,7 +71,7 @@ class System {
     return currentLocation
   }
 
-  async getSystem ({ name = null, useCache = true } = {}) {
+  async getSystem({ name = null, useCache = true } = {}) {
     const currentLocation = await this.getCurrentLocation()
 
     // If no system name was specified, get the star system the player is in
@@ -105,11 +105,11 @@ class System {
             biological: 0,
             human: 0
           }
-          
+
           // Merge in body signal scan data
           const FSSBodySignals = await this.eliteLog._query({ event: 'FSSBodySignals', BodyName: body.name }, 1)
           if (FSSBodySignals[0]?.Signals) {
-            ;(FSSBodySignals[0]?.Signals).map(signal => {
+            ; (FSSBodySignals[0]?.Signals).map(signal => {
               if (signal?.Type === '$SAA_SignalType_Geological;') {
                 body.signals.geological = signal?.Count ?? 0
               }
@@ -125,7 +125,7 @@ class System {
           // Merge in surface scan data
           const SAASignalsFound = await this.eliteLog._query({ event: 'SAASignalsFound', BodyName: body.name }, 1)
           if (SAASignalsFound[0]?.Signals) {
-            ;(SAASignalsFound[0]?.Signals).map(signal => {
+            ; (SAASignalsFound[0]?.Signals).map(signal => {
               if (signal?.Type === '$SAA_SignalType_Geological;') {
                 body.signals.geological = signal?.Count ?? 0
               }
@@ -141,9 +141,9 @@ class System {
           // If we have data from a surface scan about the plants, merge it
           if (body.signals.biological > 0 && SAASignalsFound[0]?.Genuses) {
             body.biologicalGenuses = []
-            ;(SAASignalsFound[0]?.Genuses).map(biologicalSamples => {
-              body.biologicalGenuses.push(biologicalSamples.Genus_Localised)
-            })
+              ; (SAASignalsFound[0]?.Genuses).map(biologicalSamples => {
+                body.biologicalGenuses.push(biologicalSamples.Genus_Localised)
+              })
           }
 
           // Only log discovered / mapped if in an unhabited system

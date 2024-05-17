@@ -1,9 +1,9 @@
-import { useState, useEffect } from 'react'
-import { useRouter } from 'next/router'
-import Link from 'next/link'
 import { sendEvent, useSocket } from 'lib/socket'
+import Link from 'next/link'
+import { useRouter } from 'next/router'
+import { useEffect, useState } from 'react'
 
-export default function CodexPage () {
+export default function CodexPage() {
   const router = useRouter()
   const { query } = router
   const { connected } = useSocket()
@@ -32,7 +32,7 @@ export default function CodexPage () {
   }
 }
 
-function CodexEntry ({ codexEntry }) {
+function CodexEntry({ codexEntry }) {
   return (
     <div style={{ padding: '1rem' }}>
       <h1 style={{ marginBottom: '1rem' }}>{codexEntry.title}</h1>
@@ -45,7 +45,7 @@ function CodexEntry ({ codexEntry }) {
   )
 }
 
-function CodexEntries ({ codexEntries }) {
+function CodexEntries({ codexEntries }) {
   return (
     <div style={{ padding: '1rem' }}>
       <h1>Codex</h1>

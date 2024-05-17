@@ -6,12 +6,12 @@ const BASE_SPEED = 0 // Unsupported
 const COMMAND = 'powershell'
 
 class SayPlatformWin32 extends SayPlatformBase {
-  constructor () {
+  constructor() {
     super()
     this.baseSpeed = BASE_SPEED
   }
 
-  buildSpeakCommand ({ text, voice, speed }) {
+  buildSpeakCommand({ text, voice, speed }) {
     const args = []
     let pipedData = ''
     const options = {}
@@ -37,7 +37,7 @@ class SayPlatformWin32 extends SayPlatformBase {
     return { command: COMMAND, args, pipedData, options }
   }
 
-  buildExportCommand ({ text, voice, speed, filename }) {
+  buildExportCommand({ text, voice, speed, filename }) {
     const args = []
     let pipedData = ''
     const options = {}
@@ -68,17 +68,17 @@ class SayPlatformWin32 extends SayPlatformBase {
     return { command: COMMAND, args, pipedData, options }
   }
 
-  runStopCommand () {
+  runStopCommand() {
     this.child.stdin.pause()
     childProcess.exec(`taskkill /pid ${this.child.pid} /T /F`)
   }
 
-  convertSpeed (speed) {
+  convertSpeed(speed) {
     // Overriden to map playback speed (as a ratio) to Window's values (-10 to 10, zero meaning x1.0)
     return Math.max(-10, Math.min(Math.round((9.0686 * Math.log(speed)) - 0.1806), 10))
   }
 
-  getVoices () {
+  getVoices() {
     const args = []
     const psCommand = 'Add-Type -AssemblyName System.speech;$speak = New-Object System.Speech.Synthesis.SpeechSynthesizer;$speak.GetInstalledVoices() | % {$_.VoiceInfo.Name}'
     args.push(psCommand)

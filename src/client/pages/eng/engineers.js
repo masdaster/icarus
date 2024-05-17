@@ -1,15 +1,15 @@
-import { useState, useEffect, Fragment } from 'react'
-import animateTableEffect from 'lib/animate-table-effect'
-import { useRouter } from 'next/router'
-import distance from '../../../shared/distance'
-import { UNKNOWN_VALUE } from '../../../shared/consts'
-import { useSocket, sendEvent, eventListener } from 'lib/socket'
-import { EngineeringPanelNavItems } from 'lib/navigation-items'
+import CopyOnClick from 'components/copy-on-click'
 import Layout from 'components/layout'
 import Panel from 'components/panel'
-import CopyOnClick from 'components/copy-on-click'
+import animateTableEffect from 'lib/animate-table-effect'
+import { EngineeringPanelNavItems } from 'lib/navigation-items'
+import { eventListener, sendEvent, useSocket } from 'lib/socket'
+import { useRouter } from 'next/router'
+import { useEffect, useState } from 'react'
+import { UNKNOWN_VALUE } from '../../../shared/consts'
+import distance from '../../../shared/distance'
 
-export default function EngineeringEngineersPage () {
+export default function EngineeringEngineersPage() {
   const router = useRouter()
   const { query } = router
   const { connected, active, ready } = useSocket()
@@ -18,7 +18,7 @@ export default function EngineeringEngineersPage () {
   const [engineers, setEngineers] = useState()
 
   useEffect(animateTableEffect)
-  
+
   useEffect(async () => {
     if (!connected || !router.isReady) return
 
@@ -78,7 +78,7 @@ export default function EngineeringEngineersPage () {
   )
 }
 
-function ListEngineers ({ engineers, currentSystem }) {
+function ListEngineers({ engineers, currentSystem }) {
   return (
     <>
       <table className='table--animated'>

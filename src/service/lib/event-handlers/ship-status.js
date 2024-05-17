@@ -9,14 +9,14 @@ const { UNKNOWN_VALUE } = require('../../../shared/consts')
 let lastKnownShipState = null
 
 class ShipStatus {
-  constructor ({ eliteLog, eliteJson }) {
+  constructor({ eliteLog, eliteJson }) {
     this.eliteLog = eliteLog
     this.eliteJson = eliteJson
     this.cmdrStatus = new CmdrStatus({ eliteLog, eliteJson })
     return this
   }
 
-  async getShipStatus () {
+  async getShipStatus() {
     const [Loadout, Json] = await Promise.all([
       this.eliteLog.getEvent('Loadout'),
       this.eliteJson.json()
@@ -219,23 +219,23 @@ class ShipStatus {
 
     const inventory = (Json?.Cargo?.Inventory)
       ? await Promise.all(await Json.Cargo.Inventory.map(async (item) => {
-          const commodity = await EDCDCommodity.getBySymbol(item?.Name)
-          let description = commodity?.category?.replace(/_/g, ' ')?.replace(/([a-z])([A-Z])/g, '$1 $2')?.trim() ?? ''
-          if (item?.Name === 'drones') description = 'Limpet drones'
+        const commodity = await EDCDCommodity.getBySymbol(item?.Name)
+        let description = commodity?.category?.replace(/_/g, ' ')?.replace(/([a-z])([A-Z])/g, '$1 $2')?.trim() ?? ''
+        if (item?.Name === 'drones') description = 'Limpet drones'
 
-          // Include cargo in mass
-          if (item?.Count) totalMass += item?.Count
+        // Include cargo in mass
+        if (item?.Count) totalMass += item?.Count
 
-          return {
-            symbol: item?.Name ?? UNKNOWN_VALUE,
-            name: item?.Name_Localised ?? item?.Name ?? UNKNOWN_VALUE,
-            count: item?.Count ?? UNKNOWN_VALUE,
-            stolen: Boolean(item?.Stolen) ?? UNKNOWN_VALUE,
-            mission: item?.MissionID ?? false,
-            description
-          }
-        })
-        )
+        return {
+          symbol: item?.Name ?? UNKNOWN_VALUE,
+          name: item?.Name_Localised ?? item?.Name ?? UNKNOWN_VALUE,
+          count: item?.Count ?? UNKNOWN_VALUE,
+          stolen: Boolean(item?.Stolen) ?? UNKNOWN_VALUE,
+          mission: item?.MissionID ?? false,
+          description
+        }
+      })
+      )
       : []
 
     // Include fuel in mass

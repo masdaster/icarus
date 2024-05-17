@@ -1,7 +1,7 @@
-import { UNKNOWN_VALUE } from '../../../../shared/consts'
 import ShipModules from 'components/panels/ship/ship-status/ship-modules'
+import { UNKNOWN_VALUE } from '../../../../shared/consts'
 
-export default function ShipStatusPanel ({ ship, selectedModule, setSelectedModule }) {
+export default function ShipStatusPanel({ ship, selectedModule, setSelectedModule }) {
   if (!ship) return null
 
   if (ship.type === UNKNOWN_VALUE && ship.name === UNKNOWN_VALUE && ship.ident === UNKNOWN_VALUE) {
@@ -25,10 +25,10 @@ export default function ShipStatusPanel ({ ship, selectedModule, setSelectedModu
         <ShipModules
           name='Hardpoints'
           modules={
-              Object.values(ship.modules)
-                .filter(module => ['huge', 'large', 'medium', 'small']
-                  .includes(module?.size))
-            }
+            Object.values(ship.modules)
+              .filter(module => ['huge', 'large', 'medium', 'small']
+                .includes(module?.size))
+          }
           selectedModule={selectedModule}
           setSelectedModule={setSelectedModule}
         />
@@ -42,19 +42,19 @@ export default function ShipStatusPanel ({ ship, selectedModule, setSelectedModu
                 if (module.slot === 'CodexScanner') return false // special case
                 return true
               })
-            }
+          }
           selectedModule={selectedModule}
           setSelectedModule={setSelectedModule}
         />
         <ShipModules
           name='Core Internals'
           modules={
-              Object.values(ship.modules)
-                .filter(module => {
-                  if (!module.core && !ship.armour.includes(module.name)) return false
-                  return true
-                })
-            }
+            Object.values(ship.modules)
+              .filter(module => {
+                if (!module.core && !ship.armour.includes(module.name)) return false
+                return true
+              })
+          }
           selectedModule={selectedModule}
           setSelectedModule={setSelectedModule}
         />

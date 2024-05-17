@@ -6,7 +6,11 @@
     "name": "Didi Vatermann",
     "description": "Shields and shield boosters",
     "systemName": "Leesti",
-    "systemPosition": [72.75,48.75,68.25]
+    "systemPosition": [
+      72.75,
+      48.75,
+      68.25
+    ]
   },
   {
     "id": "300010",
@@ -15,7 +19,11 @@
     "name": "Bill Turner",
     "description": "Plasma Accelerators and utilities",
     "systemName": "Alioth",
-    "systemPosition": [-33.65625,72.46875,-20.65625]
+    "systemPosition": [
+      -33.65625,
+      72.46875,
+      -20.65625
+    ]
   },
   {
     "id": "300030",
@@ -24,7 +32,11 @@
     "name": "Broo Tarquin",
     "description": "Laser weapons",
     "systemName": "Muang",
-    "systemPosition": [17.03125,-172.78125,-3.46875]
+    "systemPosition": [
+      17.03125,
+      -172.78125,
+      -3.46875
+    ]
   },
   {
     "id": "300040",
@@ -33,7 +45,11 @@
     "name": "The Sarge",
     "description": "Cannons and limpets",
     "systemName": "Beta-3 Tucani",
-    "systemPosition": [32.25,-55.1875,23.875]
+    "systemPosition": [
+      32.25,
+      -55.1875,
+      23.875
+    ]
   },
   {
     "id": "300050",
@@ -42,7 +58,11 @@
     "name": "Zacariah Nemo",
     "description": "Projectile weapons",
     "systemName": "Yoru",
-    "systemPosition": [97.875,-86.90625,64.125]
+    "systemPosition": [
+      97.875,
+      -86.90625,
+      64.125
+    ]
   },
   {
     "id": "300080",
@@ -51,7 +71,11 @@
     "name": "Liz Ryder",
     "description": "Explosive weapons",
     "systemName": "Eurybia",
-    "systemPosition": [ 51.40625,-54.40625,-30.5]
+    "systemPosition": [
+      51.40625,
+      -54.40625,
+      -30.5
+    ]
   },
   {
     "id": "300090",
@@ -60,7 +84,11 @@
     "name": "Hera Tani",
     "description": "Power Plants and Power Distributors",
     "systemName": "Kuwemaki",
-    "systemPosition": [134.65625,-226.90625,-7.8125]
+    "systemPosition": [
+      134.65625,
+      -226.90625,
+      -7.8125
+    ]
   },
   {
     "id": "300100",
@@ -69,7 +97,11 @@
     "name": "Felicity Farseer",
     "description": "Frame Shift Drives, thrusters, scanners and sensors",
     "systemName": "Deciat",
-    "systemPosition": [122.625,-0.8125,-47.28125]
+    "systemPosition": [
+      122.625,
+      -0.8125,
+      -47.28125
+    ]
   },
   {
     "id": "300110",
@@ -78,7 +110,11 @@
     "name": "Ram Tah",
     "description": "Limpet controllers and utilities",
     "systemName": "Meene",
-    "systemPosition": [118.78125,-56.4375,-97.1875]
+    "systemPosition": [
+      118.78125,
+      -56.4375,
+      -97.1875
+    ]
   },
   {
     "id": "300120",
@@ -87,7 +123,11 @@
     "name": "Lei Cheung",
     "description": "Shields and sensors",
     "systemName": "Laksak",
-    "systemPosition": [-21.53125,-6.3125,116.03125]
+    "systemPosition": [
+      -21.53125,
+      -6.3125,
+      116.03125
+    ]
   },
   {
     "id": "300130",
@@ -96,7 +136,11 @@
     "name": "Petra Olmanova",
     "description": "Weapons and utilities",
     "systemName": "Asura",
-    "systemPosition": [-9550.28125,-916.65625,19816.1875]
+    "systemPosition": [
+      -9550.28125,
+      -916.65625,
+      19816.1875
+    ]
   },
   {
     "id": "300140",
@@ -105,7 +149,11 @@
     "name": "Colonel Bris Dekker",
     "description": "Frame Shift Drives",
     "systemName": "Sol",
-    "systemPosition": [0,0,0]
+    "systemPosition": [
+      0,
+      0,
+      0
+    ]
   },
   {
     "id": "300150",
@@ -114,7 +162,11 @@
     "name": "Marsha Hicks",
     "description": "Projectile weapons and limpet controllers",
     "systemName": "Tir",
-    "systemPosition": [ -9532.9375,-923.4375,19799.125]
+    "systemPosition": [
+      -9532.9375,
+      -923.4375,
+      19799.125
+    ]
   },
   {
     "id": "300160",
@@ -123,7 +175,11 @@
     "name": "Elvira Martuuk",
     "description": "Frame Shift Drives, thrusters and shields",
     "systemName": "Khun",
-    "systemPosition": [-171.59375,19.96875,-56.96875]
+    "systemPosition": [
+      -171.59375,
+      19.96875,
+      -56.96875
+    ]
   },
   {
     "id": "300180",
@@ -132,7 +188,11 @@
     "name": "The Dweller",
     "description": "Thermal weapons and Power Distributors",
     "systemName": "Wyrd",
-    "systemPosition": [-11.625,31.53125,-3.9375]
+    "systemPosition": [
+      -11.625,
+      31.53125,
+      -3.9375
+    ]
   },
   {
     "id": "300200",
@@ -141,7 +201,11 @@
     "name": "Marco Qwent",
     "description": "Power Plants and Power Distributors",
     "systemName": "Sirius",
-    "systemPosition": [6.25,-1.28125,-5.75]
+    "systemPosition": [
+      6.25,
+      -1.28125,
+      -5.75
+    ]
   },
   {
     "id": "300210",
@@ -150,7 +214,11 @@
     "name": "Selene Jean",
     "description": "Hull reinforcements and armour",
     "systemName": "Kuk",
-    "systemPosition": [-21.28125,69.09375,-16.3125]
+    "systemPosition": [
+      -21.28125,
+      69.09375,
+      -16.3125
+    ]
   },
   {
     "id": "300220",
@@ -159,7 +227,11 @@
     "name": "Professor Palin",
     "description": "Frame Shift Drives and thrusters",
     "systemName": "Arque",
-    "systemPosition": [66.5,38.0625,61.125]
+    "systemPosition": [
+      66.5,
+      38.0625,
+      61.125
+    ]
   },
   {
     "id": "300230",
@@ -168,7 +240,11 @@
     "name": "Lori Jameson",
     "description": "Scanners and utilities",
     "systemName": "Shinrarta Dezhra",
-    "systemPosition": [55.71875,17.59375,27.15625]
+    "systemPosition": [
+      55.71875,
+      17.59375,
+      27.15625
+    ]
   },
   {
     "id": "300250",
@@ -177,7 +253,11 @@
     "name": "Juri Ishmaak",
     "description": "Explosive weapons",
     "systemName": "Giryak",
-    "systemPosition": [14.6875,27.65625,108.65625]
+    "systemPosition": [
+      14.6875,
+      27.65625,
+      108.65625
+    ]
   },
   {
     "id": "300260",
@@ -186,7 +266,11 @@
     "name": "Tod 'The Blaster' McQuinn",
     "description": "Kinetic weapons",
     "systemName": "Wolf 397",
-    "systemPosition": [14.6875,27.65625,108.65625]
+    "systemPosition": [
+      14.6875,
+      27.65625,
+      108.65625
+    ]
   },
   {
     "id": "300270",
@@ -195,7 +279,11 @@
     "name": "Tiana Fortune",
     "description": "Scanners, sensors and utilities",
     "systemName": "Achenar",
-    "systemPosition": [67.5,-119.46875,24.84375]
+    "systemPosition": [
+      67.5,
+      -119.46875,
+      24.84375
+    ]
   },
   {
     "id": "300280",
@@ -204,7 +292,11 @@
     "name": "Mel Brandon",
     "description": "Laser weapons, shields, Frame Shift Drives and thrusters",
     "systemName": "Luchtaine",
-    "systemPosition": [ -9523.3125,-914.46875,19825.90625]
+    "systemPosition": [
+      -9523.3125,
+      -914.46875,
+      19825.90625
+    ]
   },
   {
     "id": "300290",
@@ -213,7 +305,11 @@
     "name": "Etienne Dorn",
     "description": "Plasma Accelerators, Rail Guns, Scanners and core modules",
     "systemName": "Los",
-    "systemPosition": [-9509.34375,-886.3125,19820.125]
+    "systemPosition": [
+      -9509.34375,
+      -886.3125,
+      19820.125
+    ]
   },
   {
     "id": "300300",
@@ -222,7 +318,11 @@
     "name": "Chloe Sedesi",
     "description": "Frame Shift Drives and thrusters",
     "systemName": "Shenve",
-    "systemPosition": [ 351.96875,-373.46875,-711.09375]
+    "systemPosition": [
+      351.96875,
+      -373.46875,
+      -711.09375
+    ]
   },
   {
     "id": "400001",
@@ -231,7 +331,11 @@
     "name": "Jude Navarro",
     "description": "Suits and handheld weapons",
     "systemName": "Aurai",
-    "systemPosition": [0.9375,-47.8125,46.28125]
+    "systemPosition": [
+      0.9375,
+      -47.8125,
+      46.28125
+    ]
   },
   {
     "id": "400002",
@@ -240,7 +344,11 @@
     "name": "Domino Green",
     "description": "Suits and handheld weapons",
     "systemName": "Orishis",
-    "systemPosition": [-31,93.96875,-3.5625]
+    "systemPosition": [
+      -31,
+      93.96875,
+      -3.5625
+    ]
   },
   {
     "id": "400003",
@@ -249,7 +357,11 @@
     "name": "Hero Ferrari",
     "description": "Suits and handheld weapons",
     "systemName": "Siris",
-    "systemPosition": [131.0625,-73.59375,-11.25]
+    "systemPosition": [
+      131.0625,
+      -73.59375,
+      -11.25
+    ]
   },
   {
     "id": "400004",
@@ -258,7 +370,11 @@
     "name": "Kit Fowler",
     "description": "Suits and handheld weapons",
     "systemName": "Capoya",
-    "systemPosition": [-60.65625,82.4375,-45.0625]
+    "systemPosition": [
+      -60.65625,
+      82.4375,
+      -45.0625
+    ]
   },
   {
     "id": "400005",
@@ -267,7 +383,11 @@
     "name": "Wellington Beck",
     "description": "Suits and handheld weapons",
     "systemName": "Jolapa",
-    "systemPosition": [100.1875,-41.34375,-78]
+    "systemPosition": [
+      100.1875,
+      -41.34375,
+      -78
+    ]
   },
   {
     "id": "400006",
@@ -276,7 +396,11 @@
     "name": "Terra Velasquez",
     "description": "Suits and handheld weapons",
     "systemName": "Shou Xing",
-    "systemPosition": [-16.28125,-44.53125,94.375]
+    "systemPosition": [
+      -16.28125,
+      -44.53125,
+      94.375
+    ]
   },
   {
     "id": "400007",
@@ -285,7 +409,11 @@
     "name": "Uma Laszlo",
     "description": "Suits and handheld weapons",
     "systemName": "Xuane",
-    "systemPosition": [93.875,-9.25,-32.53125]
+    "systemPosition": [
+      93.875,
+      -9.25,
+      -32.53125
+    ]
   },
   {
     "id": "400008",
@@ -294,7 +422,11 @@
     "name": "Oden Geiger",
     "description": "Suits and handheld weapons",
     "systemName": "Candiaei",
-    "systemPosition": [-113.5,-4.9375,66.84375]
+    "systemPosition": [
+      -113.5,
+      -4.9375,
+      66.84375
+    ]
   },
   {
     "id": "400009",
@@ -303,7 +435,11 @@
     "name": "Yarden Bond",
     "description": "Suits and handheld weapons",
     "systemName": "Bayan",
-    "systemPosition": [ -19.96875,117.625,-90.46875]
+    "systemPosition": [
+      -19.96875,
+      117.625,
+      -90.46875
+    ]
   },
   {
     "id": "400010",
@@ -312,7 +448,11 @@
     "name": "Baltanos",
     "description": "Suits and handheld weapons",
     "systemName": "Deriso",
-    "systemPosition": [-9520.3125,-909.5,19808.75]
+    "systemPosition": [
+      -9520.3125,
+      -909.5,
+      19808.75
+    ]
   },
   {
     "id": "400011",
@@ -321,7 +461,11 @@
     "name": "Eleanor Bresa",
     "description": "Suits and handheld weapons",
     "systemName": "Desy",
-    "systemPosition": [-9534.21875,-912.21875,19792.375]
+    "systemPosition": [
+      -9534.21875,
+      -912.21875,
+      19792.375
+    ]
   },
   {
     "id": "400012",
@@ -330,7 +474,11 @@
     "name": "Rosa Dayette",
     "description": "Suits and handheld weapons",
     "systemName": "Kojeara",
-    "systemPosition": [-9513.09375,-908.84375,19814.28125]
+    "systemPosition": [
+      -9513.09375,
+      -908.84375,
+      19814.28125
+    ]
   },
   {
     "id": "400013",
@@ -339,6 +487,10 @@
     "name": "Yi Shen",
     "description": "Suits and handheld weapons",
     "systemName": "Einheriar",
-    "systemPosition": [-9557.8125,-880.1875,19801.5625]
+    "systemPosition": [
+      -9557.8125,
+      -880.1875,
+      19801.5625
+    ]
   }
 ]

@@ -8,7 +8,7 @@ const PREFERENCES_DIR = path.join(os.homedir(), 'AppData', 'Local', 'ICARUS Term
 const PREFERENCES_FILE = path.join(PREFERENCES_DIR, 'Preferences.json')
 
 class TextToSpeech {
-  constructor ({ eliteLog, eliteJson, cmdrStatus, shipStatus }) {
+  constructor({ eliteLog, eliteJson, cmdrStatus, shipStatus }) {
     this.eliteLog = eliteLog
     this.eliteJson = eliteJson
     this.cmdrStatus = cmdrStatus
@@ -20,7 +20,7 @@ class TextToSpeech {
     return this
   }
 
-  async speak (text, voice, force) {
+  async speak(text, voice, force) {
     // Only fire if Text To Speech voice has been selected in preferences
     const preferences = fs.existsSync(PREFERENCES_FILE) ? JSON.parse(fs.readFileSync(PREFERENCES_FILE)) : {}
     if (!force && !preferences?.voice) return
@@ -32,7 +32,7 @@ class TextToSpeech {
     say.speak(text, _voice)
   }
 
-  logEventHandler (logEvent) {
+  logEventHandler(logEvent) {
     if (logEvent.event === 'StartJump' && logEvent.StarSystem) this.speak(`Jumping to ${logEvent.StarSystem}`)
     if (logEvent.event === 'FSDJump') this.speak(`Jump complete. Arrived in ${logEvent.StarSystem}`)
     if (logEvent.event === 'ApproachBody') this.speak(`Approaching ${logEvent.Body}`)
@@ -52,7 +52,7 @@ class TextToSpeech {
     if (logEvent.event === 'FSSDiscoveryScan') this.speak(`Discovery Scan Complete. ${logEvent.BodyCount} ${logEvent.BodyCount === 1 ? 'Body' : 'Bodies'} found in system.`)
   }
 
-  async gameStateChangeHandler () {
+  async gameStateChangeHandler() {
     // TODO Refine so this logic is only evaluated on changes to Status.json
     const previousCmdStatus = JSON.parse(JSON.stringify(this.currentCmdrStatus))
     this.currentCmdrStatus = await this.cmdrStatus.getCmdrStatus()
@@ -87,14 +87,14 @@ class TextToSpeech {
     }
   }
 
-  async getVoice () {
+  async getVoice() {
     const preferences = fs.existsSync(PREFERENCES_FILE) ? JSON.parse(fs.readFileSync(PREFERENCES_FILE)) : {}
     if (preferences?.voice) return preferences.voice
 
     return await this.getVoices()[0]
   }
 
-  getVoices () {
+  getVoices() {
     return new Promise(resolve =>
       say.getInstalledVoices((err, voices) => {
         resolve(voices)

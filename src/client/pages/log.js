@@ -1,12 +1,12 @@
-import { useState, useEffect } from 'react'
-import animateTableEffect from 'lib/animate-table-effect'
 import Layout from 'components/layout'
 import Panel from 'components/panel'
-import LogListPanel from 'components/panels/log/log-list-panel'
 import LogInspectorPanel from 'components/panels/log/log-inspector-panel'
-import { useSocket, eventListener, sendEvent } from 'lib/socket'
+import LogListPanel from 'components/panels/log/log-list-panel'
+import animateTableEffect from 'lib/animate-table-effect'
+import { eventListener, sendEvent, useSocket } from 'lib/socket'
+import { useEffect, useState } from 'react'
 
-export default function LogPage () {
+export default function LogPage() {
   const { connected, active, ready } = useSocket()
   const [componentReady, setComponentReady] = useState(false)
   const [logEntries, setLogEntries] = useState([])

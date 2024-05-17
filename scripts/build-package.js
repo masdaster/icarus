@@ -17,18 +17,18 @@ const {
   SIGN_TIME_SERVER
 } = require('./lib/build-options')
 
-;(async () => {
-  clean()
-  await build()
-})()
+  ; (async () => {
+    clean()
+    await build()
+  })()
 
-function clean () {
+function clean() {
   if (!fs.existsSync(BUILD_DIR)) fs.mkdirSync(BUILD_DIR, { recursive: true })
   if (!fs.existsSync(DIST_DIR)) fs.mkdirSync(DIST_DIR, { recursive: true })
   if (fs.existsSync(INSTALLER_EXE)) fs.unlinkSync(INSTALLER_EXE)
 }
 
-async function build () {
+async function build() {
   // Sign binaries before packaging
   if (SIGN_BUILD) {
     execSync(`"${PATH_TO_SIGNTOOL}" sign /a /n "${SIGN_CERT_NAME}" /t ${SIGN_TIME_SERVER} /fd SHA256 /v "${APP_FINAL_BUILD}"`)

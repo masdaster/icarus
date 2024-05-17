@@ -1,7 +1,7 @@
 import Header from 'components/header'
 import Loader from 'components/loader'
 
-export default function Layout ({ children, connected, active, ready = true, loader = false, className = '' }) {
+export default function Layout({ children, connected, active, ready = true, loader = false, className = '' }) {
   return (
     <>
       <div className='layout'>

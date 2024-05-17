@@ -21,18 +21,18 @@ const {
 const DEBUG_CONSOLE = commandLineArgs.debug || DEBUG_CONSOLE_DEFAULT
 const ENTRY_POINT = path.join(__dirname, '..', 'src', 'service', 'main.js')
 
-;(async () => {
-  clean()
-  await build()
-})()
+  ; (async () => {
+    clean()
+    await build()
+  })()
 
-function clean () {
+function clean() {
   if (!fs.existsSync(BUILD_DIR)) fs.mkdirSync(BUILD_DIR, { recursive: true })
   if (!fs.existsSync(BIN_DIR)) fs.mkdirSync(BIN_DIR, { recursive: true })
   if (fs.existsSync(DIST_DIR)) fs.rmdirSync(DIST_DIR, { recursive: true })
 }
 
-async function build () {
+async function build() {
   await compile({
     name: 'ICARUS Service',
     ico: SERVICE_ICON,

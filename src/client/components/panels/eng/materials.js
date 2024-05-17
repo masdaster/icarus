@@ -1,7 +1,7 @@
-import { Fragment } from 'react'
 import CopyOnClick from 'components/copy-on-click'
+import { Fragment } from 'react'
 
-export default function Materials ({ materialType, materials }) {
+export default function Materials({ materialType, materials }) {
   if (materials.length === 0) return (<p className='text-info text-uppercase'>No materials found.</p>)
 
   const materialsByType = materials.filter(item => item.type === materialType)
@@ -21,7 +21,7 @@ export default function Materials ({ materialType, materials }) {
   )
 }
 
-function MaterialsTable ({ materialType, materialCategory, materials }) {
+function MaterialsTable({ materialType, materialCategory, materials }) {
   if (materials.length === 0) return (<p className='text-info text-uppercase'>No materials.</p>)
 
   return (
@@ -60,8 +60,8 @@ function MaterialsTable ({ materialType, materialCategory, materials }) {
                 <span>
                   {item.blueprints
                     .map(blueprint => {
-                    // TODO Highlight engineering uses relevant to equipped engineered modules
-                    // TODO Highlight engineering uses relevant to pinned engineering blueprints
+                      // TODO Highlight engineering uses relevant to equipped engineered modules
+                      // TODO Highlight engineering uses relevant to pinned engineering blueprints
                       let name = blueprint.symbol.replace(/_(.*?)$/, '').replace(/([a-z])([A-Z])/g, '$1 $2').trim()
                       if (['Weapon', 'Engine', 'Sensor'].includes(name)) name = `${name}s`
                       if (name === 'AFM') name = 'AFMU'

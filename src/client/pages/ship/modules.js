@@ -1,12 +1,12 @@
-import { useState, useEffect } from 'react'
-import { useSocket, sendEvent, eventListener } from 'lib/socket'
-import { ShipPanelNavItems } from 'lib/navigation-items'
 import Layout from 'components/layout'
 import Panel from 'components/panel'
-import ShipModulesPanel from 'components/panels/ship/ship-modules-panel'
 import ShipModuleInspectorPanel from 'components/panels/ship/ship-module-inspector-panel'
+import ShipModulesPanel from 'components/panels/ship/ship-modules-panel'
+import { ShipPanelNavItems } from 'lib/navigation-items'
+import { eventListener, sendEvent, useSocket } from 'lib/socket'
+import { useEffect, useState } from 'react'
 
-export default function ShipStatusPage () {
+export default function ShipStatusPage() {
   const { connected, active, ready } = useSocket()
   const [ship, setShip] = useState()
   const [selectedModule, setSelectedModule] = useState()

@@ -1,16 +1,16 @@
-import { useState, useEffect } from 'react'
-import animateTableEffect from 'lib/animate-table-effect'
-import { useRouter } from 'next/router'
-import Link from 'next/link'
-import { UNKNOWN_VALUE } from '../../../shared/consts'
-import distance from '../../../shared/distance'
-import { useSocket, sendEvent, eventListener } from 'lib/socket'
-import { EngineeringPanelNavItems } from 'lib/navigation-items'
+import CopyOnClick from 'components/copy-on-click'
 import Layout from 'components/layout'
 import Panel from 'components/panel'
-import CopyOnClick from 'components/copy-on-click'
+import animateTableEffect from 'lib/animate-table-effect'
+import { EngineeringPanelNavItems } from 'lib/navigation-items'
+import { eventListener, sendEvent, useSocket } from 'lib/socket'
+import Link from 'next/link'
+import { useRouter } from 'next/router'
+import { useEffect, useState } from 'react'
+import { UNKNOWN_VALUE } from '../../../shared/consts'
+import distance from '../../../shared/distance'
 
-export default function EngineeringMaterialsPage () {
+export default function EngineeringMaterialsPage() {
   const router = useRouter()
   const { query } = router
   const { connected, active, ready } = useSocket()
@@ -22,7 +22,7 @@ export default function EngineeringMaterialsPage () {
   const [selectedBlueprint, setSelectedBlueprint] = useState()
 
   useEffect(animateTableEffect)
-  
+
   useEffect(async () => {
     if (!connected || !router.isReady) return
 
@@ -262,13 +262,13 @@ export default function EngineeringMaterialsPage () {
                       <span className='visible-medium text-primary'>
                         <br />
                         {
-                            Math.min(...selectedBlueprint?.engineers?.[engineer]?.grades) !== Math.max(...selectedBlueprint?.engineers?.[engineer]?.grades) &&
-                            `Grade ${Math.min(...selectedBlueprint?.engineers?.[engineer]?.grades)} — ${Math.max(...selectedBlueprint?.engineers?.[engineer]?.grades)}`
-                          }
+                          Math.min(...selectedBlueprint?.engineers?.[engineer]?.grades) !== Math.max(...selectedBlueprint?.engineers?.[engineer]?.grades) &&
+                          `Grade ${Math.min(...selectedBlueprint?.engineers?.[engineer]?.grades)} — ${Math.max(...selectedBlueprint?.engineers?.[engineer]?.grades)}`
+                        }
                         {
-                            Math.min(...selectedBlueprint?.engineers?.[engineer]?.grades) === Math.max(...selectedBlueprint?.engineers?.[engineer]?.grades) &&
-                            `Grade ${Math.min(...selectedBlueprint?.engineers?.[engineer]?.grades)}`
-                          }
+                          Math.min(...selectedBlueprint?.engineers?.[engineer]?.grades) === Math.max(...selectedBlueprint?.engineers?.[engineer]?.grades) &&
+                          `Grade ${Math.min(...selectedBlueprint?.engineers?.[engineer]?.grades)}`
+                        }
                       </span>
                     </span>
                   </td>

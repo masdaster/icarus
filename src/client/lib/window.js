@@ -1,40 +1,40 @@
-function isWindowsApp () { return (typeof window !== 'undefined' && typeof window.icarusTerminal_version === 'function') }
-function isWindowFullScreen () { if (isWindowsApp()) { return window.icarusTerminal_isFullScreen() } }
-function isWindowPinned () { if (isWindowsApp()) { return window.icarusTerminal_isPinned() } }
-function openReleaseNotes () { if (isWindowsApp()) { return window.icarusTerminal_openReleaseNotes() } }
-function openTerminalInBrowser () { if (isWindowsApp()) { return window.icarusTerminal_openTerminalInBrowser() } }
+function isWindowsApp() { return (typeof window !== 'undefined' && typeof window.icarusTerminal_version === 'function') }
+function isWindowFullScreen() { if (isWindowsApp()) { return window.icarusTerminal_isFullScreen() } }
+function isWindowPinned() { if (isWindowsApp()) { return window.icarusTerminal_isPinned() } }
+function openReleaseNotes() { if (isWindowsApp()) { return window.icarusTerminal_openReleaseNotes() } }
+function openTerminalInBrowser() { if (isWindowsApp()) { return window.icarusTerminal_openTerminalInBrowser() } }
 
-function appVersion () {
+function appVersion() {
   if (isWindowsApp()) { return window.icarusTerminal_version() }
   return null
 }
 
-function newWindow () {
+function newWindow() {
   if (isWindowsApp()) { return window.icarusTerminal_newWindow() }
 
   window.open(`//${window.location.host}`)
 }
 
-function closeWindow () {
+function closeWindow() {
   if (isWindowsApp()) { return window.icarusTerminal_quit() }
 
   window.close()
 }
 
-async function checkForUpdate () {
+async function checkForUpdate() {
   if (isWindowsApp()) {
     try {
       return JSON.parse(await window.icarusTerminal_checkForUpdate())
-    } catch {}
+    } catch { }
     return null
   }
 }
 
-function installUpdate () {
+function installUpdate() {
   if (isWindowsApp()) { return window.icarusTerminal_installUpdate() }
 }
 
-async function toggleFullScreen () {
+async function toggleFullScreen() {
   if (isWindowsApp()) { return await window.icarusTerminal_toggleFullScreen() }
 
   if (!document.fullscreenElement && !document.mozFullScreenElement && !document.webkitFullscreenElement && !document.webkitCurrentFullScreenElement) {
@@ -60,7 +60,7 @@ async function toggleFullScreen () {
   }
 }
 
-async function togglePinWindow () {
+async function togglePinWindow() {
   if (isWindowsApp()) { return await window.icarusTerminal_togglePinWindow() }
 }
 

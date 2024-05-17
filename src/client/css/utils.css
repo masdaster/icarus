@@ -22,6 +22,7 @@
   .seperator::before {
     display: none;
   }
+
   .seperator {
     display: block;
   }

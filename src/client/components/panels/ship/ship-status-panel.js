@@ -1,7 +1,7 @@
-import { UNKNOWN_VALUE } from '../../../../shared/consts'
 import ShipInstrumentation from 'components/panels/ship/ship-status/ship-instrumentation'
+import { UNKNOWN_VALUE } from '../../../../shared/consts'
 
-export default function ShipStatusPanel ({ ship, cmdrStatus, toggleSwitches, toggleSwitch }) {
+export default function ShipStatusPanel({ ship, cmdrStatus, toggleSwitches, toggleSwitch }) {
   if (!ship) return null
 
   if (ship.type === UNKNOWN_VALUE && ship.name === UNKNOWN_VALUE && ship.ident === UNKNOWN_VALUE) {
@@ -30,8 +30,8 @@ export default function ShipStatusPanel ({ ship, cmdrStatus, toggleSwitches, tog
             <h5 className='text-right text-info text-uppercase' style={{ position: 'absolute', right: '.5rem', opacity: ship.onBoard ? 1 : 0.5 }}>
               {ship.onBoard ? 'Online' : 'Offline'}
             </h5>
-            <div className={`ship-panel__horizontal-activity ${ship.onBoard ? 'ship-panel__horizontal-activity--online' : ''}`}/>
-            <div className='ship-panel__horizontal-activity-marker'/>
+            <div className={`ship-panel__horizontal-activity ${ship.onBoard ? 'ship-panel__horizontal-activity--online' : ''}`} />
+            <div className='ship-panel__horizontal-activity-marker' />
           </div>
         </div>
         <hr style={{ margin: '0 0 1rem 0' }} />

@@ -1,7 +1,7 @@
-import { useRouter } from 'next/router'
 import EngineeringModifier from 'components/panels/ship/ship-status/engineering-modifer'
+import { useRouter } from 'next/router'
 
-export default function ShipModuleInspectorPanel ({ module, setSelectedModule }) {
+export default function ShipModuleInspectorPanel({ module, setSelectedModule }) {
   const router = useRouter()
 
   if (!module) return (<div className='ship-panel__module-inspector ship-panel__module-inspector--hidden' />)

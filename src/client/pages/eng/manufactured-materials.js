@@ -1,17 +1,17 @@
-import { useState, useEffect } from 'react'
-import animateTableEffect from 'lib/animate-table-effect'
-import { useSocket, sendEvent, eventListener } from 'lib/socket'
-import { EngineeringPanelNavItems } from 'lib/navigation-items'
 import Layout from 'components/layout'
 import Panel from 'components/panel'
 import Materials from 'components/panels/eng/materials'
+import animateTableEffect from 'lib/animate-table-effect'
+import { EngineeringPanelNavItems } from 'lib/navigation-items'
+import { eventListener, sendEvent, useSocket } from 'lib/socket'
+import { useEffect, useState } from 'react'
 
-export default function EngineeringMaterialsPage () {
+export default function EngineeringMaterialsPage() {
   const { connected, active, ready } = useSocket()
   const [materials, setMaterials] = useState()
 
   useEffect(animateTableEffect)
-  
+
   useEffect(async () => {
     if (!connected) return
     setMaterials(await sendEvent('getMaterials'))

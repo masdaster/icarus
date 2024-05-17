@@ -1,4 +1,4 @@
-export default function EngineeringModifier ({ module, modifier }) {
+export default function EngineeringModifier({ module, modifier }) {
   return (
     <p
       key={`${module.name}_${module.slot}_engineering_modifier_${modifier.name}`}

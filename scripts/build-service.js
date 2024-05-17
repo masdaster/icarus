@@ -23,12 +23,12 @@ const DEBUG_CONSOLE = commandLineArgs.debug || DEBUG_CONSOLE_DEFAULT
 const ENTRY_POINT = path.join(__dirname, '..', 'src', 'service', 'main.js')
 const COMPRESS_FINAL_BUILD = true
 
-;(async () => {
-  clean()
-  await build()
-})()
+  ; (async () => {
+    clean()
+    await build()
+  })()
 
-function clean () {
+function clean() {
   if (!fs.existsSync(BUILD_DIR)) fs.mkdirSync(BUILD_DIR, { recursive: true })
   if (!fs.existsSync(BIN_DIR)) fs.mkdirSync(BIN_DIR, { recursive: true })
   if (fs.existsSync(SERVICE_UNOPTIMIZED_BUILD)) fs.unlinkSync(SERVICE_UNOPTIMIZED_BUILD)
@@ -36,13 +36,13 @@ function clean () {
   if (fs.existsSync(SERVICE_FINAL_BUILD)) fs.unlinkSync(SERVICE_FINAL_BUILD)
 }
 
-async function build () {
+async function build() {
   await compile({
     name: 'ICARUS Service',
     ico: SERVICE_ICON,
     input: ENTRY_POINT,
     output: SERVICE_UNOPTIMIZED_BUILD,
-    target: 'windows-x86-14.15.3', // from https://github.com/nexe/nexe/releases/tag/v3.3.3
+    target: 'windows-x64-14.15.3', // from https://github.com/nexe/nexe/releases/tag/v3.3.3
     resources: [
       path.join(BUILD_DIR, 'client'), // Include web client
       'src/service/data' // Include dynamically loaded JSON files

@@ -1,6 +1,6 @@
 module.exports = () => {
   const observer = new IntersectionObserver(callbackFunction, {})
-  function callbackFunction (entries) {
+  function callbackFunction(entries) {
     let shownItems = 0
     for (let i = 0; i < entries.length; i++) {
       if (entries[i].isIntersecting) {

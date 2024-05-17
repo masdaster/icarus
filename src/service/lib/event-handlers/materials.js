@@ -26,13 +26,13 @@ const materialGrades = {
 }
 
 class Materials {
-  constructor ({ eliteLog, eliteJson }) {
+  constructor({ eliteLog, eliteJson }) {
     this.eliteLog = eliteLog
     this.eliteJson = eliteJson
     return this
   }
 
-  async getMaterials () {
+  async getMaterials() {
     const [Materials] = await Promise.all([
       this.eliteLog.getEvent('Materials')
     ])

@@ -1,12 +1,12 @@
-import { useState, useEffect } from 'react'
-import animateTableEffect from 'lib/animate-table-effect'
-import { useSocket, sendEvent, eventListener } from 'lib/socket'
-import { ShipPanelNavItems } from 'lib/navigation-items'
+import CopyOnClick from 'components/copy-on-click'
 import Layout from 'components/layout'
 import Panel from 'components/panel'
-import CopyOnClick from 'components/copy-on-click'
+import animateTableEffect from 'lib/animate-table-effect'
+import { ShipPanelNavItems } from 'lib/navigation-items'
+import { eventListener, sendEvent, useSocket } from 'lib/socket'
+import { useEffect, useState } from 'react'
 
-export default function ShipInventoryPage () {
+export default function ShipInventoryPage() {
   const { connected, active, ready } = useSocket()
   const [inventory, setInventory] = useState()
   const [componentReady, setComponentReady] = useState(false)
@@ -48,7 +48,7 @@ export default function ShipInventoryPage () {
   )
 }
 
-function LockerItems ({ heading, items, count = false, max = false }) {
+function LockerItems({ heading, items, count = false, max = false }) {
   return (
     <>
       <div className='section-heading'>

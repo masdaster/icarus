@@ -14,12 +14,12 @@ const MIN_VIEWBOX_WIDTH = 20000
 
 const SOLAR_RADIUS = 696340 // Size of Sol in km
 
-function escapeRegExp (text) {
+function escapeRegExp(text) {
   return text.replace(/[[\]{}()*+?.,\-\\^$|#\s]/g, '\\$&')
 }
 
 class SystemMap {
-  constructor (system) {
+  constructor(system) {
     this.detail = system
     let { name = '', bodies: _bodies, stations = [] } = this.detail
     this.name = this.getSystemObjectName(name)
@@ -108,7 +108,7 @@ class SystemMap {
     return [...new Map(prunedArrayOfSystemObjects.map(item => [item[key], item])).values()]
   }
 
-  #findStarsOrbitingOtherStarsLikePlanets (_bodies) {
+  #findStarsOrbitingOtherStarsLikePlanets(_bodies) {
     const bodies = JSON.parse(JSON.stringify(_bodies))
 
     const starsOrbitingStarsLikePlanets = []
@@ -156,27 +156,27 @@ class SystemMap {
         }
       })
     })
-    
+
     return bodies
   }
 
   #getNearestNotNullParent(body) {
     let nonNullParent = null
-    ;(body?.parents || []).every(parent => {
-      const [k, v] = Object.entries(parent)[0]
-      if (k !== 'Null') {
-        nonNullParent = v
-        return false
-      }
-      return true
-    })
+      ; (body?.parents || []).every(parent => {
+        const [k, v] = Object.entries(parent)[0]
+        if (k !== 'Null') {
+          nonNullParent = v
+          return false
+        }
+        return true
+      })
     return nonNullParent
   }
 
-  init () {
+  init() {
     for (const systemObject of this.objectsInSystem) {
       if (!systemObject._type) systemObject._type = systemObject.type
-      
+
       systemObject.name = this.getSystemObjectName(systemObject.name)
       systemObject.label = this.getSystemObjectLabelFromSystemObject(systemObject)
 
@@ -210,12 +210,12 @@ class SystemMap {
         systemObject.parents = parentBodyId === null
           ? nearestStar ? [{ Star: nearestStar.bodyId }] : [{ Null: 0 }]
           : [{ Planet: parentBodyId }]
-        
+
         systemObject.radius = 1000
 
         const shipServices = []
         const otherServices = []
-      
+
         if (systemObject.otherServices.includes('Repair')) shipServices.push('Repair')
         if (systemObject.otherServices.includes('Refuel')) shipServices.push('Refuel')
         if (systemObject.otherServices.includes('Restock')) shipServices.push('Restock')
@@ -281,7 +281,7 @@ class SystemMap {
     }
   }
 
-  plotObjectsAroundStar (star) {
+  plotObjectsAroundStar(star) {
     // If USE_ICONS_FOR_PLANETS is set, use alternate metrics
     const MIN_R = USE_ICONS_FOR_PLANETS ? 800 : 800
     const MAX_R = USE_ICONS_FOR_PLANETS ? 800 : 2000
@@ -397,30 +397,30 @@ class SystemMap {
     return star
   }
 
-  getBodyById (bodyId) {
+  getBodyById(bodyId) {
     return this?.objectsInSystem?.filter(body => body.bodyId === bodyId)
   }
 
-  getNearestPlanet (systemObject) {
+  getNearestPlanet(systemObject) {
     const targetDistanceToArrival = systemObject.distanceToArrival
     const planets = this.objectsInSystem.filter(body => body._type === 'Planet')
     if (planets.length === 0) return null
     return planets.reduce((ob1, ob2) => {
-        return Math.abs(targetDistanceToArrival - ob2.distanceToArrival) < Math.abs(targetDistanceToArrival - ob1.distanceToArrival)
-          ? ob2
-          : ob1
-      })
+      return Math.abs(targetDistanceToArrival - ob2.distanceToArrival) < Math.abs(targetDistanceToArrival - ob1.distanceToArrival)
+        ? ob2
+        : ob1
+    })
   }
 
-  getNearestLandablePlanet (systemObject) {
+  getNearestLandablePlanet(systemObject) {
     const targetDistanceToArrival = systemObject.distanceToArrival
     const landablePlanets = this.objectsInSystem.filter(body => body._type === 'Planet' && body.isLandable)
     if (landablePlanets.length === 0) return null
     return landablePlanets.reduce((ob1, ob2) => {
-        return Math.abs(targetDistanceToArrival - ob2.distanceToArrival) < Math.abs(targetDistanceToArrival - ob1.distanceToArrival)
-          ? ob2
-          : ob1
-      })
+      return Math.abs(targetDistanceToArrival - ob2.distanceToArrival) < Math.abs(targetDistanceToArrival - ob1.distanceToArrival)
+        ? ob2
+        : ob1
+    })
   }
 
   getNearestStar(systemObject) {
@@ -429,13 +429,13 @@ class SystemMap {
     if (stars.length === 0) return null
     if (stars.length === 1) return stars[0]
     return stars.reduce((ob1, ob2) => {
-        return Math.abs(targetDistanceToArrival - ob2?.distanceToArrival ?? 0) < Math.abs(targetDistanceToArrival - ob1?.distanceToArrival ?? 0)
-          ? ob2
-          : ob1
-      })
+      return Math.abs(targetDistanceToArrival - ob2?.distanceToArrival ?? 0) < Math.abs(targetDistanceToArrival - ob1?.distanceToArrival ?? 0)
+        ? ob2
+        : ob1
+    })
   }
 
-  getChildren (targetBody, immediateChildren = true, filter = ['Planet'].concat(SPACE_STATIONS).concat(MEGASHIPS)) {
+  getChildren(targetBody, immediateChildren = true, filter = ['Planet'].concat(SPACE_STATIONS).concat(MEGASHIPS)) {
     const children = []
     if (!targetBody?._type) return []
 
@@ -465,12 +465,12 @@ class SystemMap {
       if (!systemObject.parents) continue
 
       const nearestNonNullParent = this.#getNearestNotNullParent(systemObject)
-      
+
       // Some systems to have multiple Null points round which bodies orbit.
       // We noramlize these all into one Null orbit (Body ID 0) to allow the map
       // to better visualize bodies that are not orbiting any specific star.
       // This ONLY applies to bodies that are not also orbiting another body.
-      if ( primaryOrbitType === 'Null' && nearestNonNullParent === null) {
+      if (primaryOrbitType === 'Null' && nearestNonNullParent === null) {
         primaryOrbit = 0
       }
 
@@ -506,7 +506,7 @@ class SystemMap {
   // screen space, but do include still include it in things like station names.
   // e.g "Colonia 5" is fine with the label "5" in the system map, but the name
   // "Colonia Outpost" should not be truncated to "Outpost".
-  getSystemObjectLabelFromSystemObject (systemObject) {
+  getSystemObjectLabelFromSystemObject(systemObject) {
     if (systemObject._type && systemObject._type === 'Planet') {
       return systemObject.name
         // Next line is special case handling for renamed systems in Witch Head
@@ -521,7 +521,7 @@ class SystemMap {
       // If the label contains 'Witch Head Sector' but does not start with it
       // then it is a renamed system and the Witch Head Sector bit is stripped
       if (systemObjectLabel.match(/Witch Head Sector/i) && !systemObjectLabel.match(/^Witch Head Sector/i)) {
-       systemObjectLabel = systemObjectLabel.replace(/ Witch Head Sector ([A-z0-9\-]+) ([A-z0-9\-]+)/i, '').trim()
+        systemObjectLabel = systemObjectLabel.replace(/ Witch Head Sector ([A-z0-9\-]+) ([A-z0-9\-]+)/i, '').trim()
       }
       return systemObjectLabel
     } else {
@@ -529,11 +529,11 @@ class SystemMap {
     }
   }
 
-  getSystemObjectName (systemObjectName) {
+  getSystemObjectName(systemObjectName) {
     // If the name contains 'Witch Head Sector' but does not start with it
     // then it is a renamed system and the Witch Head Sector bit is stripped
     if (systemObjectName.match(/Witch Head Sector/i) && !systemObjectName.match(/^Witch Head Sector/i)) {
-     return systemObjectName.replace(/ Witch Head Sector ([A-z0-9\-]+) ([A-z0-9\-]+)/i, '').trim()
+      return systemObjectName.replace(/ Witch Head Sector ([A-z0-9\-]+) ([A-z0-9\-]+)/i, '').trim()
     }
     return systemObjectName
   }

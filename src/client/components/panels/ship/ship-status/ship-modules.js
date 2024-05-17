@@ -1,4 +1,4 @@
-export default function ShipModules ({ name, modules, selectedModule, setSelectedModule = () => {} }) {
+export default function ShipModules({ name, modules, selectedModule, setSelectedModule = () => { } }) {
   return (
     <>
       <div className='section-heading' style={{ margin: '1rem 0 .25rem 0' }}>

@@ -1,6 +1,6 @@
 import { objectToHtml } from 'lib/format'
 
-export default function LogInspectorPanel ({ logEntry }) {
+export default function LogInspectorPanel({ logEntry }) {
   if (!logEntry) return null
 
   return (

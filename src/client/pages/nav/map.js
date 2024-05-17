@@ -1,13 +1,13 @@
-import { useState, useEffect } from 'react'
-import { useRouter } from 'next/router'
-import { useSocket, sendEvent, eventListener } from 'lib/socket'
-import { NavPanelNavItems } from 'lib/navigation-items'
 import Layout from 'components/layout'
 import Panel from 'components/panel'
-import NavigationSystemMapPanel from 'components/panels/nav/navigation-system-map-panel'
 import NavigationInspectorPanel from 'components/panels/nav/navigation-inspector-panel'
+import NavigationSystemMapPanel from 'components/panels/nav/navigation-system-map-panel'
+import { NavPanelNavItems } from 'lib/navigation-items'
+import { eventListener, sendEvent, useSocket } from 'lib/socket'
+import { useRouter } from 'next/router'
+import { useEffect, useState } from 'react'
 
-export default function NavMapPage () {
+export default function NavMapPage() {
   const router = useRouter()
   const { query } = router
   const { connected, active, ready } = useSocket()
@@ -101,7 +101,7 @@ export default function NavMapPage () {
   useEffect(() => eventListener('gameStateChange', async (log) => {
     //setCmdrStatus(await sendEvent('getCmdrStatus'))
   }))
-  
+
 
   useEffect(() => {
     if (!router.isReady) return
@@ -118,7 +118,7 @@ export default function NavMapPage () {
   return (
     <Layout connected={connected} active={active} ready={ready} loader={!componentReady}>
       <Panel layout='full-width' navigation={NavPanelNavItems('Map', query)} search={search} exit={system?.isCurrentLocation === false ? () => getSystem() : null}>
-        <NavigationSystemMapPanel system={system} systemObject={systemObject} setSystemObject={setSystemObject} getSystem={getSystem} cmdrStatus={cmdrStatus} rescanSystem={rescanSystem} rescanInProgress={rescanInProgress}/>
+        <NavigationSystemMapPanel system={system} systemObject={systemObject} setSystemObject={setSystemObject} getSystem={getSystem} cmdrStatus={cmdrStatus} rescanSystem={rescanSystem} rescanInProgress={rescanInProgress} />
         <NavigationInspectorPanel systemObject={systemObject} setSystemObjectByName={setSystemObjectByName} />
       </Panel>
     </Layout>

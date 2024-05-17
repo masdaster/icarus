@@ -23,13 +23,13 @@ const DEVELOPMENT_BUILD = commandLineArgs.debug || DEVELOPMENT_BUILD_DEFAULT
 const DEBUG_CONSOLE = commandLineArgs.debug || DEBUG_CONSOLE_DEFAULT
 const COMPRESS_FINAL_BUILD = false
 
-;(async () => {
-  clean()
-  await build()
-  copy()
-})()
+  ; (async () => {
+    clean()
+    await build()
+    copy()
+  })()
 
-function clean () {
+function clean() {
   if (!fs.existsSync(BUILD_DIR)) fs.mkdirSync(BUILD_DIR, { recursive: true })
   if (!fs.existsSync(BIN_DIR)) fs.mkdirSync(BIN_DIR, { recursive: true })
   if (fs.existsSync(APP_UNOPTIMIZED_BUILD)) fs.unlinkSync(APP_UNOPTIMIZED_BUILD)
@@ -37,7 +37,7 @@ function clean () {
   if (fs.existsSync(APP_FINAL_BUILD)) fs.unlinkSync(APP_FINAL_BUILD)
 }
 
-async function build () {
+async function build() {
   if (DEBUG_CONSOLE) {
     // Build that opens console output to a terminal
     execSync(`cd src/app && go build -o "${APP_UNOPTIMIZED_BUILD}"`)
@@ -70,7 +70,7 @@ async function build () {
   await changeExe.versionInfo(APP_OPTIMIZED_BUILD, APP_VERSION_INFO)
 }
 
-function copy () {
+function copy() {
   fs.copyFileSync(APP_OPTIMIZED_BUILD, APP_FINAL_BUILD)
   // Resources required by the app
   fs.copyFileSync(path.join(RESOURCES_DIR, 'dll', 'webview.dll'), path.join(BIN_DIR, 'webview.dll'))

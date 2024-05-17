@@ -1,4 +1,4 @@
-function formatBytes (bytes) {
+function formatBytes(bytes) {
   if (bytes >= 1073741824) {
     bytes = (bytes / 1073741824).toFixed(2) + ' GB'
   } else if (bytes >= 1048576) {
@@ -15,7 +15,7 @@ function formatBytes (bytes) {
   return bytes
 }
 
-function eliteDateTime (timestamp = Date.now()) {
+function eliteDateTime(timestamp = Date.now()) {
   const date = new Date(timestamp)
   date.setFullYear(date.getFullYear() + 1286) // We are living in the future
   const dateTimeString = date.toUTCString()
@@ -29,14 +29,14 @@ function eliteDateTime (timestamp = Date.now()) {
     date: dateTimeString.split(/^(.*)? (\d\d:\d\d)/)[1],
     time: dateTimeString.split(/^(.*)? (\d\d:\d\d)/)[2],
     day: date.getDate(),
-    month: date.toLocaleString('en-us',{month:'short'}),
+    month: date.toLocaleString('en-us', { month: 'short' }),
     year: date.getFullYear()
   }
 
   return dateTimeObject
 }
 
-function objectToHtml (obj, depth = 0, type = null, previousPropertyName) {
+function objectToHtml(obj, depth = 0, type = null, previousPropertyName) {
   const tag = 'div'
   let str = ''
 

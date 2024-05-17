@@ -1,4 +1,4 @@
-import Document, { Html, Head, Main, NextScript } from 'next/document'
+import Document, { Head, Html, Main, NextScript } from 'next/document'
 
 // Disable onContextMenu, except in development
 const onContextMenu = process.env.NODE_ENV === 'development'
@@ -6,12 +6,12 @@ const onContextMenu = process.env.NODE_ENV === 'development'
   : 'document.oncontextmenu = (e) => e.preventDefault()'
 
 class MyDocument extends Document {
-  static async getInitialProps (ctx) {
+  static async getInitialProps(ctx) {
     const initialProps = await Document.getInitialProps(ctx)
     return { ...initialProps }
   }
 
-  render () {
+  render() {
     return (
       <Html lang='en' data-fx-crt='true' data-fx-crt-text='false' data-fx-crt-text-animated='false'>
         <Head>
