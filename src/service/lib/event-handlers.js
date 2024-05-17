@@ -194,7 +194,7 @@ class EventHandlers {
   }
 }
 
-function convertEliteDangerousKeyBindingToInputKey (rawKeyValue) {
+function convertEliteDangerousKeyBindingToInputKey(rawKeyValue) {
   const key = rawKeyValue.replace(/^Key_/, '').toUpperCase()
   // TODO I'm very sure there are more of these special cases.
   // I'm not sure why Elite does keybindings this way or how many
