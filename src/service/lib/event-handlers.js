@@ -2,7 +2,7 @@ const os = require('os')
 const fs = require('fs')
 const path = require('path')
 const pjXML = require('pjxml')
-const sendKeys = require('sendkeys-js')
+const keysender = require('keysender')
 const { UNKNOWN_VALUE } = require('../../shared/consts')
 
 const { BROADCAST_EVENT: broadcastEvent } = global
@@ -151,10 +151,10 @@ class EventHandlers {
 
             let keyToSend, modifierKey
             if (primaryElement?.attributes?.Device === 'Keyboard') {
-              keyToSend = primaryKey
+              keyToSend = primaryKey.toLowerCase()
               modifierKey = primaryElementModifier?.attributes?.Key.replace(/^Key_/, '').toLowerCase()
             } else if (secondaryElement?.attributes?.Device === 'Keyboard') {
-              keyToSend = secondaryKey
+              keyToSend = secondaryKey.toLowerCase()
               modifierKey = secondaryElementModifier?.attributes?.Key.replace(/^Key_/, '').toLowerCase()
             } else {
               console.log('No keyboard binding available for', KEYBINDS_MAP[switchName], "to toggle switch", switchName)
@@ -163,7 +163,7 @@ class EventHandlers {
 
             if (modifierKey) {
               if (modifierKey.includes('shift')) modifierKey = 'shift'
-              else if (modifierKey.includes('control')) modifierKey = 'control'
+              else if (modifierKey.includes('control')) modifierKey = 'ctrl'
               else if (modifierKey.includes('alt')) modifierKey = 'alt'
               else {
                 console.log('Modifier key', modifierKey, 'for binding ', KEYBINDS_MAP[switchName], "to toggle switch", switchName, 'is not supported')
@@ -171,14 +171,18 @@ class EventHandlers {
               }
             }
 
-            // Set Elite Dangerous as the active window
-            await sendKeys.activate(TARGET_WINDOW_TITLE)
+            // Set up hardware reference
+            const hardware = new keysender.Hardware(TARGET_WINDOW_TITLE)
 
             // Trigger key input
-            const keyInput = `${convertModifierKeyToPrefix(modifierKey)}{${keyToSend}}`
-            console.log('Sending input', keyInput, 'for binding ', KEYBINDS_MAP[switchName], "to toggle switch", switchName)
-            return sendKeys.sendKeys(keyInput)
-
+            if (modifierKey) {
+              console.log('Sending key', keyToSend, 'with modifier', modifierKey, 'for binding ', KEYBINDS_MAP[switchName], 'to toggle switch', switchName)
+              await hardware.keyboard.sendKey([modifierKey, keyToSend])
+            } else {
+              console.log('Sending key', keyToSend, 'for binding ', KEYBINDS_MAP[switchName], 'to toggle switch', switchName)
+              await hardware.keyboard.sendKey(keyToSend)
+            }
+            return true
           } catch (e) {
             console.error('ERROR_SENDING_KEY', switchName, e.toString())
             return false
@@ -202,13 +206,6 @@ function convertEliteDangerousKeyBindingToInputKey (rawKeyValue) {
   if (key === 'hash') return '#'
   if (key === 'backslash') return '\\'
   return key
-}
-
-function convertModifierKeyToPrefix (key) {
-  if (key === 'shift') return '+';
-  if (key === 'control') return '^';
-  if (key === 'alt') return '%';
-  return '';
 }
 
 module.exports = EventHandlers
