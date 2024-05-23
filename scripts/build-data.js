@@ -190,13 +190,13 @@ function coriolisDataModules() {
         delete module.ukDiscript
       }
 
-      module.properties = {}
+      /*module.properties = {}
       Object.keys(module).forEach(moduleProperty => {
         if (getEngineeringPropertyName(moduleProperty) !== moduleProperty) {
           module.properties[getEngineeringPropertyName(moduleProperty)] = module[moduleProperty]
           delete module[moduleProperty]
         }
-      })
+      })*/
     })
 
     fs.writeFileSync(`${outputDir}/modules.json`, JSON.stringify(modules, null, 2))
