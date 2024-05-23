@@ -1520,6 +1520,29 @@
     }
   },
   {
+    "ammocost": 10,
+    "class": 0,
+    "cost": 50000,
+    "edID": 129019262,
+    "eps": 0.4,
+    "fireint": 5,
+    "grp": "csl",
+    "id": "4A",
+    "name": "Caustic Sink Launcher",
+    "passive": 1,
+    "rating": "I",
+    "symbol": "Hpt_CausticSinkLauncher_Turret_Tiny",
+    "properties": {
+      "Ammo Maximum": 5,
+      "Ammo Clip Size": 1,
+      "Distributer Draw": 2,
+      "Integrity": 45,
+      "Mass": 1.7,
+      "Power Draw": 0.6,
+      "Reload Time": 10
+    }
+  },
+  {
     "ammocost": 100,
     "class": 0,
     "cost": 8500,
@@ -3138,6 +3161,72 @@
       "Power Draw": 1.62,
       "Reload Time": 12,
       "Shot Speed": 625,
+      "Thermal Load": 3.6
+    }
+  },
+  {
+    "breachdmg": 20,
+    "breachmax": 1,
+    "breachmin": 1,
+    "class": 1,
+    "cost": 32180,
+    "damagedist": {
+      "E": 1
+    },
+    "edID": 128935982,
+    "eddbID": 1813,
+    "fireint": 2,
+    "grp": "mr",
+    "id": "yT",
+    "missile": "D",
+    "mount": "F",
+    "name": "Advanced Missile Rack",
+    "rating": "B",
+    "symbol": "Hpt_DumbfireMissileRack_Fixed_Small_Advanced",
+    "properties": {
+      "Ammo Maximum": 64,
+      "Ammo Clip Size": 8,
+      "Damage": 50,
+      "Distributer Draw": 0.24,
+      "Integrity": 40,
+      "Mass": 2,
+      "Armour Piercing": 60,
+      "Power Draw": 0.4,
+      "Reload Time": 5,
+      "Shot Speed": 750,
+      "Thermal Load": 3.6
+    }
+  },
+  {
+    "breachdmg": 20,
+    "breachmax": 1,
+    "breachmin": 1,
+    "class": 2,
+    "cost": 1471030,
+    "damagedist": {
+      "E": 1
+    },
+    "edID": 128935983,
+    "eddbID": 1814,
+    "fireint": 2,
+    "grp": "mr",
+    "id": "yU",
+    "missile": "D",
+    "mount": "F",
+    "name": "Advanced Missile Rack",
+    "rating": "B",
+    "symbol": "Hpt_DumbfireMissileRack_Fixed_Medium_Advanced",
+    "properties": {
+      "Ammo Maximum": 64,
+      "Ammo Clip Size": 12,
+      "Damage": 50,
+      "Distributer Draw": 0.24,
+      "Integrity": 51,
+      "Mass": 4,
+      "Armour Piercing": 60,
+      "Power Draw": 1.2,
+      "Reload Time": 5,
+      "Shot Speed": 750,
       "Thermal Load": 3.6
     }
   },
@@ -4876,6 +4965,26 @@
     }
   },
   {
+    "class": 0,
+    "cost": 0,
+    "grp": "sfn",
+    "id": "4E",
+    "edID": 129022663,
+    "name": "Thargoid Pulse Neutraliser",
+    "passive": 1,
+    "activepower": 0.33,
+    "rating": "E",
+    "cooldown": 10,
+    "symbol": "Hpt_AntiUnknownShutdown_Tiny_V2",
+    "properties": {
+      "Integrity": 70,
+      "Mass": 3,
+      "Power Draw": 0.4,
+      "Duration": 1,
+      "Maximum Range": 0
+    }
+  },
+  {
     "breachdmg": 0.5,
     "breachmax": 0.2,
     "breachmin": 0.1,
@@ -5122,6 +5231,44 @@
       "Mass": 1.3,
       "Power Draw": 0.2,
       "Maximum Range": 500,
+      "Boot time": 2,
+      "Scan Time": 10,
+      "Scan Angle": 23
+    }
+  },
+  {
+    "class": 0,
+    "cost": 745950,
+    "edID": 128808878,
+    "grp": "xs",
+    "id": "3y",
+    "name": "Enhanced Xeno Scanner",
+    "rating": "C",
+    "symbol": "Hpt_XenoScannerMk2_Basic_Tiny",
+    "properties": {
+      "Integrity": 56,
+      "Mass": 1.3,
+      "Power Draw": 0.8,
+      "Maximum Range": 2000,
+      "Boot time": 2,
+      "Scan Time": 10,
+      "Scan Angle": 23
+    }
+  },
+  {
+    "class": 0,
+    "cost": 745950,
+    "edID": 129022952,
+    "grp": "xs",
+    "id": "4B",
+    "name": "Pulse Wave Xeno Scanner",
+    "rating": "C",
+    "symbol": "Hpt_XenoScanner_Advanced_Tiny",
+    "properties": {
+      "Integrity": 100,
+      "Mass": 3,
+      "Power Draw": 1,
+      "Maximum Range": 1000,
       "Boot time": 2,
       "Scan Time": 10,
       "Scan Angle": 23
@@ -6886,6 +7033,38 @@
     "description": "Economy Class Passenger Cabin.",
     "properties": {
       "Mass": 40
+    }
+  },
+  {
+    "rating": "F",
+    "class": 3,
+    "id": "3z",
+    "edID": 129019260,
+    "eddbID": 1836,
+    "cost": 1930500,
+    "symbol": "Int_ExpModuleStabiliser_Size3_Class3",
+    "grp": "ews",
+    "ukName": "Experimental Weapon Stabilizer",
+    "description": "Stabilises the stress typically applied to a ship's structural integrity by experimental weapons",
+    "properties": {
+      "Mass": 8,
+      "Power Draw": 1.5
+    }
+  },
+  {
+    "rating": "F",
+    "class": 5,
+    "id": "4D",
+    "edID": 129019261,
+    "eddbID": 1837,
+    "cost": 4000000,
+    "symbol": "Int_ExpModuleStabiliser_Size5_Class3",
+    "grp": "ews",
+    "ukName": "Experimental Weapon Stabilizer",
+    "description": "Stabilises the stress typically applied to a ship's structural integrity by experimental weapons",
+    "properties": {
+      "Mass": 20,
+      "Power Draw": 3
     }
   },
   {
@@ -10148,6 +10327,194 @@
     "properties": {
       "Integrity": 350,
       "Mass": 16
+    }
+  },
+  {
+    "class": 3,
+    "cost": 15000,
+    "edID": 129001921,
+    "eddbID": 1816,
+    "grp": "mlc",
+    "id": "0V",
+    "maximum": 4,
+    "name": "Mining Multi Limpet Controller",
+    "rating": "E",
+    "symbol": "Int_MultiDroneControl_Mining_Size3_Class1",
+    "type": "M",
+    "properties": {
+      "Mass": 12,
+      "Power Draw": 0.5,
+      "Maximum Range": 3.3
+    }
+  },
+  {
+    "class": 3,
+    "cost": 50000,
+    "edID": 129001922,
+    "eddbID": 1817,
+    "grp": "mlc",
+    "id": "xA",
+    "maximum": 4,
+    "name": "Mining Multi Limpet Controller",
+    "rating": "C",
+    "symbol": "Int_MultiDroneControl_Mining_Size3_Class3",
+    "type": "M",
+    "properties": {
+      "Mass": 10,
+      "Power Draw": 0.35,
+      "Maximum Range": 5
+    }
+  },
+  {
+    "class": 3,
+    "cost": 50000,
+    "edID": 129001923,
+    "eddbID": 1818,
+    "grp": "mlc",
+    "hacktime": 16,
+    "id": "xB",
+    "maximum": 4,
+    "name": "Operations Multi Limpet Controller",
+    "rating": "C",
+    "symbol": "Int_MultiDroneControl_Operations_Size3_Class3",
+    "type": "O",
+    "properties": {
+      "Mass": 10,
+      "Power Draw": 0.35,
+      "Maximum Range": 2.6
+    }
+  },
+  {
+    "class": 3,
+    "cost": 80000,
+    "edID": 129001924,
+    "eddbID": 1819,
+    "grp": "mlc",
+    "hacktime": 22,
+    "id": "xC",
+    "maximum": 4,
+    "name": "Operations Multi Limpet Controller",
+    "rating": "B",
+    "symbol": "Int_MultiDroneControl_Operations_Size3_Class4",
+    "type": "O",
+    "properties": {
+      "Mass": 15,
+      "Power Draw": 0.3,
+      "Maximum Range": 3.1
+    }
+  },
+  {
+    "class": 3,
+    "cost": 80000,
+    "edID": 129001925,
+    "eddbID": 1820,
+    "grp": "mlc",
+    "hacktime": 19,
+    "id": "xD",
+    "maximum": 4,
+    "name": "Rescue Multi Limpet Controller",
+    "rating": "D",
+    "symbol": "Int_MultiDroneControl_Rescue_Size3_Class2",
+    "type": "R",
+    "properties": {
+      "Mass": 8,
+      "Power Draw": 0.4,
+      "Maximum Range": 2.1
+    }
+  },
+  {
+    "class": 3,
+    "cost": 80000,
+    "edID": 129001926,
+    "eddbID": 1821,
+    "grp": "mlc",
+    "hacktime": 16,
+    "id": "xI",
+    "maximum": 4,
+    "name": "Rescue Multi Limpet Controller",
+    "rating": "C",
+    "symbol": "Int_MultiDroneControl_Rescue_Size3_Class3",
+    "type": "R",
+    "properties": {
+      "Mass": 10,
+      "Power Draw": 0.35,
+      "Maximum Range": 2.6
+    }
+  },
+  {
+    "class": 3,
+    "cost": 50000,
+    "edID": 129001927,
+    "eddbID": 1822,
+    "grp": "mlc",
+    "id": "xH",
+    "maximum": 4,
+    "name": "Xeno Multi Limpet Controller",
+    "rating": "C",
+    "symbol": "Int_MultiDroneControl_Xeno_Size3_Class3",
+    "time": 300,
+    "type": "X",
+    "properties": {
+      "Mass": 10,
+      "Power Draw": 0.35,
+      "Maximum Range": 5
+    }
+  },
+  {
+    "class": 3,
+    "cost": 80000,
+    "edID": 129001928,
+    "eddbID": 1823,
+    "grp": "mlc",
+    "id": "xE",
+    "maximum": 4,
+    "name": "Xeno Multi Limpet Controller",
+    "rating": "B",
+    "symbol": "Int_MultiDroneControl_Xeno_Size3_Class4",
+    "time": 300,
+    "type": "X",
+    "properties": {
+      "Mass": 15,
+      "Power Draw": 0.3,
+      "Maximum Range": 5
+    }
+  },
+  {
+    "class": 7,
+    "cost": 4000000,
+    "edID": 129001929,
+    "eddbID": 1824,
+    "grp": "mlc",
+    "hacktime": 8,
+    "id": "xF",
+    "maximum": 8,
+    "name": "Universal Multi Limpet Controller",
+    "rating": "C",
+    "symbol": "Int_MultiDroneControl_Universal_Size7_Class3",
+    "type": "U",
+    "properties": {
+      "Mass": 125,
+      "Power Draw": 0.8,
+      "Maximum Range": 6.5
+    }
+  },
+  {
+    "class": 7,
+    "cost": 8000000,
+    "edID": 129001930,
+    "eddbID": 1825,
+    "grp": "mlc",
+    "hacktime": 5,
+    "id": "xG",
+    "maximum": 8,
+    "name": "Universal Multi Limpet Controller",
+    "rating": "A",
+    "symbol": "Int_MultiDroneControl_Universal_Size7_Class5",
+    "type": "U",
+    "properties": {
+      "Mass": 140,
+      "Power Draw": 1.1,
+      "Maximum Range": 9.1
     }
   },
   {
@@ -14488,6 +14855,636 @@
       "Mass": 2.5,
       "Optimal Mass": 90,
       "Power Draw": 0.3
+    }
+  },
+  {
+    "class": 7,
+    "cost": 61546935,
+    "edID": 129030600,
+    "fuelmul": 0.013,
+    "fuelpower": 2.75,
+    "grp": "fsd",
+    "id": "Fz",
+    "name": "Frame Shift Drive (SCO)",
+    "maxfuel": 13.1,
+    "rating": "A",
+    "symbol": "Int_Hyperdrive_Overcharge_Size7_Class5",
+    "ukName": "FSD",
+    "description": "Faster-than-light capable ship drive, featuring experimental overcharge capabilities, necessary for supercruise travel and hyperspace jumps between star systems.",
+    "properties": {
+      "Integrity": 164,
+      "Mass": 80,
+      "Optimal Mass": 3000,
+      "Power Draw": 0.9
+    }
+  },
+  {
+    "class": 7,
+    "cost": 20515645,
+    "edID": 129030599,
+    "fuelmul": 0.012,
+    "fuelpower": 2.75,
+    "grp": "fsd",
+    "id": "FA",
+    "name": "Frame Shift Drive (SCO)",
+    "maxfuel": 12.8,
+    "rating": "B",
+    "symbol": "Int_Hyperdrive_Overcharge_Size7_Class4",
+    "ukName": "FSD",
+    "description": "Faster-than-light capable ship drive, featuring experimental overcharge capabilities, necessary for supercruise travel and hyperspace jumps between star systems.",
+    "properties": {
+      "Integrity": 150,
+      "Mass": 80,
+      "Optimal Mass": 2700,
+      "Power Draw": 0.75
+    }
+  },
+  {
+    "class": 7,
+    "cost": 6838548,
+    "edID": 129030483,
+    "fuelmul": 0.012,
+    "fuelpower": 2.75,
+    "grp": "fsd",
+    "id": "FB",
+    "name": "Frame Shift Drive (SCO)",
+    "maxfuel": 12.8,
+    "rating": "C",
+    "symbol": "Int_Hyperdrive_Overcharge_Size7_Class3",
+    "ukName": "FSD",
+    "description": "Faster-than-light capable ship drive, featuring experimental overcharge capabilities, necessary for supercruise travel and hyperspace jumps between star systems.",
+    "properties": {
+      "Integrity": 150,
+      "Mass": 80,
+      "Optimal Mass": 2700,
+      "Power Draw": 0.75
+    }
+  },
+  {
+    "class": 7,
+    "cost": 20515645,
+    "edID": 129030598,
+    "fuelmul": 0.012,
+    "fuelpower": 2.75,
+    "grp": "fsd",
+    "id": "FC",
+    "name": "Frame Shift Drive (SCO)",
+    "maxfuel": 12.8,
+    "rating": "D",
+    "symbol": "Int_Hyperdrive_Overcharge_Size7_Class2",
+    "ukName": "FSD",
+    "description": "Faster-than-light capable ship drive, featuring experimental overcharge capabilities, necessary for supercruise travel and hyperspace jumps between star systems.",
+    "properties": {
+      "Integrity": 2700,
+      "Mass": 32,
+      "Optimal Mass": 2700,
+      "Power Draw": 0.75
+    }
+  },
+  {
+    "class": 7,
+    "cost": 6838548,
+    "edID": 129030597,
+    "fuelmul": 0.008,
+    "fuelpower": 2.75,
+    "grp": "fsd",
+    "id": "FD",
+    "name": "Frame Shift Drive (SCO)",
+    "maxfuel": 8.5,
+    "rating": "E",
+    "symbol": "Int_Hyperdrive_Overcharge_Size7_Class1",
+    "ukName": "FSD",
+    "description": "Faster-than-light capable ship drive, featuring experimental overcharge capabilities, necessary for supercruise travel and hyperspace jumps between star systems.",
+    "properties": {
+      "Integrity": 131,
+      "Mass": 80,
+      "Optimal Mass": 1800,
+      "Power Draw": 0.6
+    }
+  },
+  {
+    "class": 6,
+    "cost": 19415437,
+    "edID": 129030596,
+    "fuelmul": 0.013,
+    "fuelpower": 2.6,
+    "grp": "fsd",
+    "id": "FE",
+    "name": "Frame Shift Drive (SCO)",
+    "maxfuel": 8.3,
+    "rating": "A",
+    "symbol": "Int_Hyperdrive_Overcharge_Size6_Class5",
+    "ukName": "FSD",
+    "description": "Faster-than-light capable ship drive, featuring experimental overcharge capabilities, necessary for supercruise travel and hyperspace jumps between star systems.",
+    "properties": {
+      "Integrity": 141,
+      "Mass": 40,
+      "Optimal Mass": 2000,
+      "Power Draw": 0.75
+    }
+  },
+  {
+    "class": 6,
+    "cost": 6471812,
+    "edID": 129030595,
+    "fuelmul": 0.012,
+    "fuelpower": 2.6,
+    "grp": "fsd",
+    "id": "FF",
+    "name": "Frame Shift Drive (SCO)",
+    "maxfuel": 8,
+    "rating": "B",
+    "symbol": "Int_Hyperdrive_Overcharge_Size6_Class4",
+    "ukName": "FSD",
+    "description": "Faster-than-light capable ship drive, featuring experimental overcharge capabilities, necessary for supercruise travel and hyperspace jumps between star systems.",
+    "properties": {
+      "Integrity": 130,
+      "Mass": 40,
+      "Optimal Mass": 1800,
+      "Power Draw": 0.63
+    }
+  },
+  {
+    "class": 6,
+    "cost": 2157271,
+    "edID": 129030484,
+    "fuelmul": 0.012,
+    "fuelpower": 2.6,
+    "grp": "fsd",
+    "id": "FG",
+    "name": "Frame Shift Drive (SCO)",
+    "maxfuel": 8,
+    "rating": "C",
+    "symbol": "Int_Hyperdrive_Overcharge_Size6_Class3",
+    "ukName": "FSD",
+    "description": "Faster-than-light capable ship drive, featuring experimental overcharge capabilities, necessary for supercruise travel and hyperspace jumps between star systems.",
+    "properties": {
+      "Integrity": 130,
+      "Mass": 40,
+      "Optimal Mass": 1800,
+      "Power Draw": 0.63
+    }
+  },
+  {
+    "class": 6,
+    "cost": 6471812,
+    "edID": 129030594,
+    "fuelmul": 0.012,
+    "fuelpower": 2.6,
+    "grp": "fsd",
+    "id": "FH",
+    "name": "Frame Shift Drive (SCO)",
+    "maxfuel": 8,
+    "rating": "D",
+    "symbol": "Int_Hyperdrive_Overcharge_Size6_Class2",
+    "ukName": "FSD",
+    "description": "Faster-than-light capable ship drive, featuring experimental overcharge capabilities, necessary for supercruise travel and hyperspace jumps between star systems.",
+    "properties": {
+      "Integrity": 130,
+      "Mass": 16,
+      "Optimal Mass": 1800,
+      "Power Draw": 0.63
+    }
+  },
+  {
+    "class": 6,
+    "cost": 2157271,
+    "edID": 129030593,
+    "fuelmul": 0.008,
+    "fuelpower": 2.6,
+    "grp": "fsd",
+    "id": "FI",
+    "name": "Frame Shift Drive (SCO)",
+    "maxfuel": 5.3,
+    "rating": "E",
+    "symbol": "Int_Hyperdrive_Overcharge_Size6_Class1",
+    "ukName": "FSD",
+    "description": "Faster-than-light capable ship drive, featuring experimental overcharge capabilities, necessary for supercruise travel and hyperspace jumps between star systems.",
+    "properties": {
+      "Integrity": 113,
+      "Mass": 40,
+      "Optimal Mass": 1200,
+      "Power Draw": 0.5
+    }
+  },
+  {
+    "class": 5,
+    "cost": 6124743,
+    "edID": 129030592,
+    "fuelmul": 0.013,
+    "fuelpower": 2.45,
+    "grp": "fsd",
+    "id": "FJ",
+    "name": "Frame Shift Drive (SCO)",
+    "maxfuel": 5.2,
+    "rating": "A",
+    "symbol": "Int_Hyperdrive_Overcharge_Size5_Class5",
+    "ukName": "FSD",
+    "description": "Faster-than-light capable ship drive, featuring experimental overcharge capabilities, necessary for supercruise travel and hyperspace jumps between star systems.",
+    "properties": {
+      "Integrity": 120,
+      "Mass": 20,
+      "Optimal Mass": 1175,
+      "Power Draw": 0.6
+    }
+  },
+  {
+    "class": 5,
+    "cost": 2041581,
+    "edID": 129030591,
+    "fuelmul": 0.012,
+    "fuelpower": 2.45,
+    "grp": "fsd",
+    "id": "FK",
+    "name": "Frame Shift Drive (SCO)",
+    "maxfuel": 5,
+    "rating": "B",
+    "symbol": "Int_Hyperdrive_Overcharge_Size5_Class4",
+    "ukName": "FSD",
+    "description": "Faster-than-light capable ship drive, featuring experimental overcharge capabilities, necessary for supercruise travel and hyperspace jumps between star systems.",
+    "properties": {
+      "Integrity": 110,
+      "Mass": 20,
+      "Optimal Mass": 1050,
+      "Power Draw": 0.5
+    }
+  },
+  {
+    "class": 5,
+    "cost": 623816,
+    "edID": 129030474,
+    "fuelmul": 0.012,
+    "fuelpower": 2.45,
+    "grp": "fsd",
+    "id": "FL",
+    "name": "Frame Shift Drive (SCO)",
+    "maxfuel": 5,
+    "rating": "C",
+    "symbol": "Int_Hyperdrive_Overcharge_Size5_Class3",
+    "ukName": "FSD",
+    "description": "Faster-than-light capable ship drive, featuring experimental overcharge capabilities, necessary for supercruise travel and hyperspace jumps between star systems.",
+    "properties": {
+      "Integrity": 110,
+      "Mass": 20,
+      "Optimal Mass": 1050,
+      "Power Draw": 0.5
+    }
+  },
+  {
+    "class": 5,
+    "cost": 2041581,
+    "edID": 129030590,
+    "fuelmul": 0.012,
+    "fuelpower": 2.45,
+    "grp": "fsd",
+    "id": "FM",
+    "name": "Frame Shift Drive (SCO)",
+    "maxfuel": 5,
+    "rating": "D",
+    "symbol": "Int_Hyperdrive_Overcharge_Size5_Class2",
+    "ukName": "FSD",
+    "description": "Faster-than-light capable ship drive, featuring experimental overcharge capabilities, necessary for supercruise travel and hyperspace jumps between star systems.",
+    "properties": {
+      "Integrity": 110,
+      "Mass": 8,
+      "Optimal Mass": 1050,
+      "Power Draw": 0.5
+    }
+  },
+  {
+    "class": 5,
+    "cost": 623816,
+    "edID": 129030589,
+    "fuelmul": 0.008,
+    "fuelpower": 2.45,
+    "grp": "fsd",
+    "id": "FN",
+    "name": "Frame Shift Drive (SCO)",
+    "maxfuel": 3.3,
+    "rating": "E",
+    "symbol": "Int_Hyperdrive_Overcharge_Size5_Class1",
+    "ukName": "FSD",
+    "description": "Faster-than-light capable ship drive, featuring experimental overcharge capabilities, necessary for supercruise travel and hyperspace jumps between star systems.",
+    "properties": {
+      "Integrity": 95,
+      "Mass": 20,
+      "Optimal Mass": 700,
+      "Power Draw": 0.45
+    }
+  },
+  {
+    "class": 4,
+    "cost": 1932096,
+    "edID": 129030588,
+    "fuelmul": 0.013,
+    "fuelpower": 2.3,
+    "grp": "fsd",
+    "id": "FO",
+    "name": "Frame Shift Drive (SCO)",
+    "maxfuel": 3.2,
+    "rating": "A",
+    "symbol": "Int_Hyperdrive_Overcharge_Size4_Class5",
+    "ukName": "FSD",
+    "description": "Faster-than-light capable ship drive, featuring experimental overcharge capabilities, necessary for supercruise travel and hyperspace jumps between star systems.",
+    "properties": {
+      "Integrity": 100,
+      "Mass": 10,
+      "Optimal Mass": 585,
+      "Power Draw": 0.45
+    }
+  },
+  {
+    "class": 4,
+    "cost": 644032,
+    "edID": 129030587,
+    "fuelmul": 0.012,
+    "fuelpower": 2.3,
+    "grp": "fsd",
+    "id": "FP",
+    "name": "Frame Shift Drive (SCO)",
+    "maxfuel": 3,
+    "rating": "B",
+    "symbol": "Int_Hyperdrive_Overcharge_Size4_Class4",
+    "ukName": "FSD",
+    "description": "Faster-than-light capable ship drive, featuring experimental overcharge capabilities, necessary for supercruise travel and hyperspace jumps between star systems.",
+    "properties": {
+      "Integrity": 90,
+      "Mass": 10,
+      "Optimal Mass": 525,
+      "Power Draw": 0.38
+    }
+  },
+  {
+    "class": 4,
+    "cost": 214677,
+    "edID": 129030485,
+    "fuelmul": 0.012,
+    "fuelpower": 2.3,
+    "grp": "fsd",
+    "id": "FQ",
+    "name": "Frame Shift Drive (SCO)",
+    "maxfuel": 3,
+    "rating": "C",
+    "symbol": "Int_Hyperdrive_Overcharge_Size4_Class3",
+    "ukName": "FSD",
+    "description": "Faster-than-light capable ship drive, featuring experimental overcharge capabilities, necessary for supercruise travel and hyperspace jumps between star systems.",
+    "properties": {
+      "Integrity": 90,
+      "Mass": 10,
+      "Optimal Mass": 525,
+      "Power Draw": 0.38
+    }
+  },
+  {
+    "class": 4,
+    "cost": 644032,
+    "edID": 129030586,
+    "fuelmul": 0.012,
+    "fuelpower": 2.3,
+    "grp": "fsd",
+    "id": "FR",
+    "name": "Frame Shift Drive (SCO)",
+    "maxfuel": 3,
+    "rating": "D",
+    "symbol": "Int_Hyperdrive_Overcharge_Size4_Class2",
+    "ukName": "FSD",
+    "description": "Faster-than-light capable ship drive, featuring experimental overcharge capabilities, necessary for supercruise travel and hyperspace jumps between star systems.",
+    "properties": {
+      "Integrity": 90,
+      "Mass": 4,
+      "Optimal Mass": 525,
+      "Power Draw": 0.38
+    }
+  },
+  {
+    "class": 4,
+    "cost": 214677,
+    "edID": 129030585,
+    "fuelmul": 0.008,
+    "fuelpower": 2.3,
+    "grp": "fsd",
+    "id": "FS",
+    "name": "Frame Shift Drive (SCO)",
+    "maxfuel": 2,
+    "rating": "E",
+    "symbol": "Int_Hyperdrive_Overcharge_Size4_Class1",
+    "ukName": "FSD",
+    "description": "Faster-than-light capable ship drive, featuring experimental overcharge capabilities, necessary for supercruise travel and hyperspace jumps between star systems.",
+    "properties": {
+      "Integrity": 80,
+      "Mass": 10,
+      "Optimal Mass": 350,
+      "Power Draw": 0.3
+    }
+  },
+  {
+    "class": 3,
+    "cost": 609494,
+    "edID": 129030584,
+    "fuelmul": 0.013,
+    "fuelpower": 2.15,
+    "grp": "fsd",
+    "id": "FT",
+    "name": "Frame Shift Drive (SCO)",
+    "maxfuel": 1.9,
+    "rating": "A",
+    "symbol": "Int_Hyperdrive_Overcharge_Size3_Class5",
+    "ukName": "FSD",
+    "description": "Faster-than-light capable ship drive, featuring experimental overcharge capabilities, necessary for supercruise travel and hyperspace jumps between star systems.",
+    "properties": {
+      "Integrity": 80,
+      "Mass": 5,
+      "Optimal Mass": 167,
+      "Power Draw": 0.45
+    }
+  },
+  {
+    "class": 3,
+    "cost": 203165,
+    "edID": 129030583,
+    "fuelmul": 0.012,
+    "fuelpower": 2.15,
+    "grp": "fsd",
+    "id": "FU",
+    "name": "Frame Shift Drive (SCO)",
+    "maxfuel": 1.8,
+    "rating": "B",
+    "symbol": "Int_Hyperdrive_Overcharge_Size3_Class4",
+    "ukName": "FSD",
+    "description": "Faster-than-light capable ship drive, featuring experimental overcharge capabilities, necessary for supercruise travel and hyperspace jumps between star systems.",
+    "properties": {
+      "Integrity": 70,
+      "Mass": 5,
+      "Optimal Mass": 150,
+      "Power Draw": 0.38
+    }
+  },
+  {
+    "class": 3,
+    "cost": 67722,
+    "edID": 129030486,
+    "fuelmul": 0.012,
+    "fuelpower": 2.15,
+    "grp": "fsd",
+    "id": "FV",
+    "name": "Frame Shift Drive (SCO)",
+    "maxfuel": 1.8,
+    "rating": "C",
+    "symbol": "Int_Hyperdrive_Overcharge_Size3_Class3",
+    "ukName": "FSD",
+    "description": "Faster-than-light capable ship drive, featuring experimental overcharge capabilities, necessary for supercruise travel and hyperspace jumps between star systems.",
+    "properties": {
+      "Integrity": 70,
+      "Mass": 5,
+      "Optimal Mass": 150,
+      "Power Draw": 0.38
+    }
+  },
+  {
+    "class": 3,
+    "cost": 203165,
+    "edID": 129030582,
+    "fuelmul": 0.012,
+    "fuelpower": 2.15,
+    "grp": "fsd",
+    "id": "FW",
+    "name": "Frame Shift Drive (SCO)",
+    "maxfuel": 1.8,
+    "rating": "D",
+    "symbol": "Int_Hyperdrive_Overcharge_Size3_Class2",
+    "ukName": "FSD",
+    "description": "Faster-than-light capable ship drive, featuring experimental overcharge capabilities, necessary for supercruise travel and hyperspace jumps between star systems.",
+    "properties": {
+      "Integrity": 70,
+      "Mass": 2,
+      "Optimal Mass": 150,
+      "Power Draw": 0.38
+    }
+  },
+  {
+    "class": 3,
+    "cost": 67722,
+    "edID": 129030581,
+    "fuelmul": 0.008,
+    "fuelpower": 2.15,
+    "grp": "fsd",
+    "id": "FX",
+    "name": "Frame Shift Drive (SCO)",
+    "maxfuel": 1.2,
+    "rating": "E",
+    "symbol": "Int_Hyperdrive_Overcharge_Size3_Class1",
+    "ukName": "FSD",
+    "description": "Faster-than-light capable ship drive, featuring experimental overcharge capabilities, necessary for supercruise travel and hyperspace jumps between star systems.",
+    "properties": {
+      "Integrity": 64,
+      "Mass": 5,
+      "Optimal Mass": 100,
+      "Power Draw": 0.3
+    }
+  },
+  {
+    "class": 2,
+    "cost": 192269,
+    "edID": 129030580,
+    "fuelmul": 0.013,
+    "fuelpower": 2,
+    "grp": "fsd2",
+    "id": "FY",
+    "name": "Frame Shift Drive (SCO)",
+    "maxfuel": 1,
+    "rating": "A",
+    "symbol": "Int_Hyperdrive_Overcharge_Size2_Class5",
+    "ukName": "FSD",
+    "description": "Faster-than-light capable ship drive, featuring experimental overcharge capabilities, necessary for supercruise travel and hyperspace jumps between star systems.",
+    "properties": {
+      "Integrity": 64,
+      "Mass": 2.5,
+      "Optimal Mass": 100,
+      "Power Draw": 0.3
+    }
+  },
+  {
+    "class": 2,
+    "cost": 64090,
+    "edID": 129030579,
+    "fuelmul": 0.012,
+    "fuelpower": 2,
+    "grp": "fsd",
+    "id": "FZ",
+    "name": "Frame Shift Drive (SCO)",
+    "maxfuel": 0.9,
+    "rating": "B",
+    "symbol": "Int_Hyperdrive_Overcharge_Size2_Class4",
+    "ukName": "FSD",
+    "description": "Faster-than-light capable ship drive, featuring experimental overcharge capabilities, necessary for supercruise travel and hyperspace jumps between star systems.",
+    "properties": {
+      "Integrity": 57,
+      "Mass": 2.5,
+      "Optimal Mass": 90,
+      "Power Draw": 0.25
+    }
+  },
+  {
+    "class": 2,
+    "cost": 21363,
+    "edID": 129030487,
+    "fuelmul": 0.012,
+    "fuelpower": 2,
+    "grp": "fsd",
+    "id": "O1",
+    "name": "Frame Shift Drive (SCO)",
+    "maxfuel": 0.9,
+    "rating": "C",
+    "symbol": "Int_Hyperdrive_Overcharge_Size2_Class3",
+    "ukName": "FSD",
+    "description": "Faster-than-light capable ship drive, featuring experimental overcharge capabilities, necessary for supercruise travel and hyperspace jumps between star systems.",
+    "properties": {
+      "Integrity": 57,
+      "Mass": 2.5,
+      "Optimal Mass": 90,
+      "Power Draw": 0.25
+    }
+  },
+  {
+    "class": 2,
+    "cost": 64090,
+    "edID": 129030578,
+    "fuelmul": 0.012,
+    "fuelpower": 2,
+    "grp": "fsd",
+    "id": "O2",
+    "name": "Frame Shift Drive (SCO)",
+    "maxfuel": 0.9,
+    "rating": "D",
+    "symbol": "Int_Hyperdrive_Overcharge_Size2_Class2",
+    "ukName": "FSD",
+    "description": "Faster-than-light capable ship drive, featuring experimental overcharge capabilities, necessary for supercruise travel and hyperspace jumps between star systems.",
+    "properties": {
+      "Integrity": 57,
+      "Mass": 2.5,
+      "Optimal Mass": 90,
+      "Power Draw": 0.25
+    }
+  },
+  {
+    "class": 2,
+    "cost": 21363,
+    "edID": 129030577,
+    "fuelmul": 0.008,
+    "fuelpower": 2,
+    "grp": "fsd",
+    "id": "O3",
+    "name": "Frame Shift Drive (SCO)",
+    "maxfuel": 0.6,
+    "rating": "E",
+    "symbol": "Int_Hyperdrive_Overcharge_Size2_Class1",
+    "ukName": "FSD",
+    "description": "Faster-than-light capable ship drive, featuring experimental overcharge capabilities, necessary for supercruise travel and hyperspace jumps between star systems.",
+    "properties": {
+      "Integrity": 51,
+      "Mass": 2.5,
+      "Optimal Mass": 60,
+      "Power Draw": 0.2
     }
   },
   {

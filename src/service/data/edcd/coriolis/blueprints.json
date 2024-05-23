@@ -142,7 +142,7 @@
     },
     "id": 3,
     "modulename": [
-      "Auto field maintenance unit",
+      "Auto field mainentance unit",
       "AFMU"
     ],
     "name": "Shielded",
@@ -219,7 +219,7 @@
             "improvement": true
           }
         },
-        "uuid": "fb33c5c9-24e4-48b5-8227-cc7b855572cd"
+        "uuid": "d5a539c5-120a-450f-bb68-e10abbeca8a9"
       },
       "2": {
         "components": {
@@ -273,7 +273,7 @@
             "improvement": true
           }
         },
-        "uuid": "a9417081-356c-43d7-bf30-9cc1de0c62a1"
+        "uuid": "b6a80556-c22a-466e-931c-239c208c9890"
       },
       "3": {
         "components": {
@@ -328,7 +328,7 @@
             "improvement": true
           }
         },
-        "uuid": "b93f110f-c467-4340-8496-9ea99332ef55"
+        "uuid": "cbec8003-80e4-455a-84fe-257d2018386e"
       },
       "4": {
         "components": {
@@ -383,7 +383,7 @@
             "improvement": true
           }
         },
-        "uuid": "4b9c30c9-0acf-4b56-bce9-3fc65be95382"
+        "uuid": "3a57effa-ccac-448d-8d1c-3e0966042e24"
       },
       "5": {
         "components": {
@@ -438,7 +438,7 @@
             "improvement": true
           }
         },
-        "uuid": "b97b8100-b8bb-4ef3-84bf-65f9b49eaa30"
+        "uuid": "89f5d8e2-4f4c-4ef0-9e74-9f0691244b22"
       }
     },
     "id": 6,
@@ -455,6 +455,15 @@
         ]
       },
       "Selene Jean": {
+        "grades": [
+          "1",
+          "2",
+          "3",
+          "4",
+          "5"
+        ]
+      },
+      "Petra Olmanova": {
         "grades": [
           "1",
           "2",
@@ -664,6 +673,15 @@
         ]
       },
       "Selene Jean": {
+        "grades": [
+          "1",
+          "2",
+          "3",
+          "4",
+          "5"
+        ]
+      },
+      "Petra Olmanova": {
         "grades": [
           "1",
           "2",
@@ -971,6 +989,15 @@
           "4",
           "5"
         ]
+      },
+      "Petra Olmanova": {
+        "grades": [
+          "1",
+          "2",
+          "3",
+          "4",
+          "5"
+        ]
       }
     }
   },
@@ -1174,6 +1201,15 @@
         ]
       },
       "Selene Jean": {
+        "grades": [
+          "1",
+          "2",
+          "3",
+          "4",
+          "5"
+        ]
+      },
+      "Petra Olmanova": {
         "grades": [
           "1",
           "2",
@@ -1391,6 +1427,15 @@
           "4",
           "5"
         ]
+      },
+      "Petra Olmanova": {
+        "grades": [
+          "1",
+          "2",
+          "3",
+          "4",
+          "5"
+        ]
       }
     }
   },
@@ -1421,7 +1466,7 @@
             "improvement": true
           }
         },
-        "uuid": "5ebd5d76-7bb8-4958-9cc3-f5e2176f2b5e"
+        "uuid": "d5a539c5-120a-450f-bb68-e10abbeca8a9"
       },
       "2": {
         "components": {
@@ -1448,7 +1493,7 @@
             "improvement": true
           }
         },
-        "uuid": "c49d42a8-cd8f-4576-9c60-85725f635185"
+        "uuid": "b6a80556-c22a-466e-931c-239c208c9890"
       },
       "3": {
         "components": {
@@ -1476,7 +1521,7 @@
             "improvement": true
           }
         },
-        "uuid": "bc048a95-b5aa-4f6c-a696-6c40b87a1606"
+        "uuid": "cbec8003-80e4-455a-84fe-257d2018386e"
       },
       "4": {
         "components": {
@@ -1504,7 +1549,7 @@
             "improvement": true
           }
         },
-        "uuid": "4f9467f7-0c5f-4ab3-856b-aaad019bd79d"
+        "uuid": "3a57effa-ccac-448d-8d1c-3e0966042e24"
       },
       "5": {
         "components": {
@@ -1532,7 +1577,7 @@
             "improvement": true
           }
         },
-        "uuid": "15d2a67d-71b5-405a-ba21-4f94583064a3"
+        "uuid": "89f5d8e2-4f4c-4ef0-9e74-9f0691244b22"
       }
     },
     "id": 9,
@@ -1617,7 +1662,7 @@
             "improvement": false
           }
         },
-        "uuid": "9b714883-e0e7-46b5-a2bb-5367f2cc9b3f"
+        "uuid": "c952091e-30de-4b13-8e7e-c59aee4c1466"
       },
       "2": {
         "components": {
@@ -1644,7 +1689,7 @@
             "improvement": false
           }
         },
-        "uuid": "9de3e096-fbfa-4694-a2e4-919494d39ee1"
+        "uuid": "5f868185-7351-49ec-95b4-87dab4d08e02"
       },
       "3": {
         "components": {
@@ -1672,7 +1717,7 @@
             "improvement": false
           }
         },
-        "uuid": "4a5d7441-2543-4405-8587-9b969fffd3f2"
+        "uuid": "33e63006-29ae-4466-b240-7708ddd9804b"
       },
       "4": {
         "components": {
@@ -1700,7 +1745,7 @@
             "improvement": false
           }
         },
-        "uuid": "f4b41ce9-d3a8-4362-9821-0d45f2b975bc"
+        "uuid": "5d0cb508-a654-4dc8-8e04-6cafac0ea86d"
       },
       "5": {
         "components": {
@@ -1728,7 +1773,7 @@
             "improvement": false
           }
         },
-        "uuid": "d5d06450-a1cf-4dd2-b8f0-12d0142ad773"
+        "uuid": "06a5631b-036b-47ac-9d41-4c1728a5d34e"
       }
     },
     "id": 10,
@@ -1813,7 +1858,7 @@
             "improvement": false
           }
         },
-        "uuid": "f3684224-dfb1-4b30-81df-827246ccce14"
+        "uuid": "ac3908c2-c5aa-44a1-a847-a9d27c34a326"
       },
       "2": {
         "components": {
@@ -1840,7 +1885,7 @@
             "improvement": false
           }
         },
-        "uuid": "0fec52b1-3a81-4260-8168-7af698e9ebf3"
+        "uuid": "ee1ad091-7a25-44ac-b3e4-9ee5e4228483"
       },
       "3": {
         "components": {
@@ -1868,7 +1913,7 @@
             "improvement": false
           }
         },
-        "uuid": "6ca69c4f-07b6-43e4-97c9-e9134cb1eaf4"
+        "uuid": "eddd7f16-035d-4e9e-96fc-bf82e9ce7397"
       },
       "4": {
         "components": {
@@ -1896,7 +1941,7 @@
             "improvement": false
           }
         },
-        "uuid": "e6ebc222-ec93-4f0f-ac8a-e690ab50656d"
+        "uuid": "1fef7b64-bf77-4024-a9b4-24146d5cefe3"
       },
       "5": {
         "components": {
@@ -1924,7 +1969,7 @@
             "improvement": false
           }
         },
-        "uuid": "b307db6f-a54c-49e9-be82-5a4458661fe1"
+        "uuid": "f6df4a5b-58f4-4854-843c-a99b2f106154"
       }
     },
     "id": 11,
@@ -2069,7 +2114,7 @@
             "improvement": true
           }
         },
-        "uuid": "40d015c8-e3c3-4e6c-8703-0e5dc0c0ca7a"
+        "uuid": "d5a539c5-120a-450f-bb68-e10abbeca8a9"
       },
       "2": {
         "components": {
@@ -2096,7 +2141,7 @@
             "improvement": true
           }
         },
-        "uuid": "4f4f23cf-fb43-4542-8d60-c96cf884c3c9"
+        "uuid": "b6a80556-c22a-466e-931c-239c208c9890"
       },
       "3": {
         "components": {
@@ -2124,7 +2169,7 @@
             "improvement": true
           }
         },
-        "uuid": "9c4ebeff-12e1-4f0e-a972-bb8d4d7e4f08"
+        "uuid": "cbec8003-80e4-455a-84fe-257d2018386e"
       },
       "4": {
         "components": {
@@ -2152,7 +2197,7 @@
             "improvement": true
           }
         },
-        "uuid": "befa7711-25fa-49d2-97fb-3f8a4cc8b91e"
+        "uuid": "3a57effa-ccac-448d-8d1c-3e0966042e24"
       },
       "5": {
         "components": {
@@ -2180,7 +2225,7 @@
             "improvement": true
           }
         },
-        "uuid": "d5c4d258-6597-4557-bc1b-b4afc7b59784"
+        "uuid": "89f5d8e2-4f4c-4ef0-9e74-9f0691244b22"
       }
     },
     "id": 16,
@@ -2860,7 +2905,7 @@
           "2"
         ]
       },
-      "Felicity Farseer": {
+      "Felicty Farseer": {
         "grades": [
           "1",
           "2",
@@ -3078,7 +3123,7 @@
           "2"
         ]
       },
-      "Felicity Farseer": {
+      "Felicty Farseer": {
         "grades": [
           "1",
           "2",
@@ -3368,7 +3413,7 @@
           "2"
         ]
       },
-      "Felicity Farseer": {
+      "Felicty Farseer": {
         "grades": [
           "1",
           "2",
@@ -4352,6 +4397,43 @@
           }
         },
         "uuid": "6c9f4098-99fa-4777-bd21-367937d1391f"
+      },
+      "5": {
+        "components": {
+          "Mechanical Components": 1,
+          "Eccentric Hyperspace Trajectories": 1,
+          "Classified Scan Fragment": 1
+        },
+        "features": {
+          "Facing Limit": {
+            "value": [
+              1,
+              1.2
+            ],
+            "type": "percentage",
+            "method": "multiplicative",
+            "improvement": true
+          },
+          "Power Draw": {
+            "value": [
+              0.5,
+              0.5
+            ],
+            "type": "percentage",
+            "method": "multiplicative",
+            "improvement": false
+          },
+          "Range": {
+            "value": [
+              -0.3,
+              -0.3
+            ],
+            "type": "percentage",
+            "method": "multiplicative",
+            "improvement": false
+          }
+        },
+        "uuid": "dd804ba4-5186-44b5-a096-6490b5806165"
       }
     },
     "id": 28,
@@ -4380,6 +4462,15 @@
           "1",
           "2",
           "3"
+        ]
+      },
+      "Mel Brandon": {
+        "grades": [
+          "1",
+          "2",
+          "3",
+          "4",
+          "5"
         ]
       }
     }
@@ -4642,6 +4733,15 @@
           "2",
           "3"
         ]
+      },
+      "Mel Brandon": {
+        "grades": [
+          "1",
+          "2",
+          "3",
+          "4",
+          "5"
+        ]
       }
     }
   },
@@ -4837,7 +4937,7 @@
             "improvement": true
           }
         },
-        "uuid": "b4abda7b-ac4c-4ddf-ac76-f3d9640e217b"
+        "uuid": "d5a539c5-120a-450f-bb68-e10abbeca8a9"
       },
       "2": {
         "components": {
@@ -4864,7 +4964,7 @@
             "improvement": true
           }
         },
-        "uuid": "7bae1015-d4b9-4c33-8286-79c93386cf33"
+        "uuid": "b6a80556-c22a-466e-931c-239c208c9890"
       },
       "3": {
         "components": {
@@ -4892,7 +4992,7 @@
             "improvement": true
           }
         },
-        "uuid": "b69e0eb2-67c4-402a-8b4d-69d64c899fdc"
+        "uuid": "cbec8003-80e4-455a-84fe-257d2018386e"
       },
       "4": {
         "components": {
@@ -4920,7 +5020,7 @@
             "improvement": true
           }
         },
-        "uuid": "36d13200-4c1d-4d49-9936-af8562a6fbce"
+        "uuid": "3a57effa-ccac-448d-8d1c-3e0966042e24"
       },
       "5": {
         "components": {
@@ -4948,7 +5048,7 @@
             "improvement": true
           }
         },
-        "uuid": "e7ac0755-b319-4e35-b736-8235b68a1b09"
+        "uuid": "89f5d8e2-4f4c-4ef0-9e74-9f0691244b22"
       }
     },
     "id": 31,
@@ -5365,7 +5465,7 @@
             "improvement": true
           }
         },
-        "uuid": "3434789e-7555-4bca-a901-09ddbae0d323"
+        "uuid": "d5a539c5-120a-450f-bb68-e10abbeca8a9"
       },
       "2": {
         "components": {
@@ -5392,7 +5492,7 @@
             "improvement": true
           }
         },
-        "uuid": "c62a09da-8157-474e-8b8f-04b43792a372"
+        "uuid": "b6a80556-c22a-466e-931c-239c208c9890"
       },
       "3": {
         "components": {
@@ -5420,7 +5520,7 @@
             "improvement": true
           }
         },
-        "uuid": "ad0166b8-9313-4c7a-a95c-5e4b0e53fc40"
+        "uuid": "cbec8003-80e4-455a-84fe-257d2018386e"
       },
       "4": {
         "components": {
@@ -5448,7 +5548,7 @@
             "improvement": true
           }
         },
-        "uuid": "cf482f0a-de37-4fec-8bcd-f087203e0f2d"
+        "uuid": "3a57effa-ccac-448d-8d1c-3e0966042e24"
       },
       "5": {
         "components": {
@@ -5476,7 +5576,7 @@
             "improvement": true
           }
         },
-        "uuid": "80d2445b-47ef-4738-8729-152f45c732f9"
+        "uuid": "89f5d8e2-4f4c-4ef0-9e74-9f0691244b22"
       }
     },
     "id": 34,
@@ -6134,6 +6234,15 @@
           "4",
           "5"
         ]
+      },
+      "Petra Olmanova": {
+        "grades": [
+          "1",
+          "2",
+          "3",
+          "4",
+          "5"
+        ]
       }
     }
   },
@@ -6383,6 +6492,15 @@
         ]
       },
       "Selene Jean": {
+        "grades": [
+          "1",
+          "2",
+          "3",
+          "4",
+          "5"
+        ]
+      },
+      "Petra Olmanova": {
         "grades": [
           "1",
           "2",
@@ -6691,6 +6809,15 @@
           "4",
           "5"
         ]
+      },
+      "Petra Olmanova": {
+        "grades": [
+          "1",
+          "2",
+          "3",
+          "4",
+          "5"
+        ]
       }
     }
   },
@@ -6947,6 +7074,15 @@
           "4",
           "5"
         ]
+      },
+      "Petra Olmanova": {
+        "grades": [
+          "1",
+          "2",
+          "3",
+          "4",
+          "5"
+        ]
       }
     }
   },
@@ -7196,6 +7332,15 @@
         ]
       },
       "Selene Jean": {
+        "grades": [
+          "1",
+          "2",
+          "3",
+          "4",
+          "5"
+        ]
+      },
+      "Petra Olmanova": {
         "grades": [
           "1",
           "2",
@@ -9300,7 +9445,7 @@
             "improvement": true
           }
         },
-        "uuid": "dd023cf4-0b4d-4d18-957f-4b1eecb71c0a"
+        "uuid": "05883145-2407-46a1-9eea-5a56ac549cfd"
       },
       "2": {
         "components": {
@@ -9363,7 +9508,7 @@
             "improvement": true
           }
         },
-        "uuid": "cac790f3-9852-4673-a219-0f5e4dc6a0ad"
+        "uuid": "5822ff0c-fa6c-4072-95be-e2534f37be00"
       },
       "3": {
         "components": {
@@ -9427,7 +9572,7 @@
             "improvement": true
           }
         },
-        "uuid": "cc5507e8-613b-4d43-a7fe-a874be963125"
+        "uuid": "d5040eac-fa75-4613-828d-ea71aefd9051"
       },
       "4": {
         "components": {
@@ -9491,7 +9636,7 @@
             "improvement": true
           }
         },
-        "uuid": "34c9c5e5-8a42-4509-a22a-7313528263f2"
+        "uuid": "32c94fd6-71c3-461b-80ed-bfe1543f9651"
       },
       "5": {
         "components": {
@@ -9555,7 +9700,7 @@
             "improvement": true
           }
         },
-        "uuid": "23d55bbf-af1c-46ac-b77b-214e70628fe2"
+        "uuid": "1b073867-c10f-474b-88d7-5fb6c602b838"
       }
     },
     "id": 60,
@@ -10533,7 +10678,7 @@
             "improvement": true
           }
         },
-        "uuid": "bb27a6b6-5c10-41e8-a6b3-3abc8a4ed23e"
+        "uuid": "d5a539c5-120a-450f-bb68-e10abbeca8a9"
       },
       "2": {
         "components": {
@@ -10560,7 +10705,7 @@
             "improvement": true
           }
         },
-        "uuid": "95af3c55-ec45-4f5d-848d-1639307fee41"
+        "uuid": "b6a80556-c22a-466e-931c-239c208c9890"
       },
       "3": {
         "components": {
@@ -10588,7 +10733,7 @@
             "improvement": true
           }
         },
-        "uuid": "a3b84b26-d67e-4d8c-9653-f23181cce9f8"
+        "uuid": "cbec8003-80e4-455a-84fe-257d2018386e"
       },
       "4": {
         "components": {
@@ -10616,7 +10761,7 @@
             "improvement": true
           }
         },
-        "uuid": "363a9543-4072-4211-8c89-8e9477fa72eb"
+        "uuid": "3a57effa-ccac-448d-8d1c-3e0966042e24"
       },
       "5": {
         "components": {
@@ -10644,7 +10789,7 @@
             "improvement": true
           }
         },
-        "uuid": "4de10a2c-e440-4b2e-95fb-e1121bff19a4"
+        "uuid": "89f5d8e2-4f4c-4ef0-9e74-9f0691244b22"
       }
     },
     "id": 65,
@@ -11471,7 +11616,7 @@
             "improvement": true
           }
         },
-        "uuid": "1b566f8d-56ef-4b11-bb06-1fd9c603ab1c"
+        "uuid": "2689c846-02d7-4694-97f1-85cd5437b42f"
       },
       "2": {
         "components": {
@@ -11507,7 +11652,7 @@
             "improvement": true
           }
         },
-        "uuid": "9371ee9f-12a1-4859-9b97-e3c3c87ee0a0"
+        "uuid": "c2160767-b03f-491e-9a45-31976fb78899"
       },
       "3": {
         "components": {
@@ -11544,7 +11689,7 @@
             "improvement": true
           }
         },
-        "uuid": "317bbfd2-7b05-4f7a-b6ca-55e0a7d3f147"
+        "uuid": "4d9ccdb6-89cc-4f27-a8c8-584de68dae4b"
       },
       "4": {
         "components": {
@@ -11581,7 +11726,7 @@
             "improvement": true
           }
         },
-        "uuid": "5e3ac270-69ef-4301-9e86-8c9cbc5ada89"
+        "uuid": "0ecb3bee-4033-4937-a5ed-161f50cb6024"
       },
       "5": {
         "components": {
@@ -11618,7 +11763,7 @@
             "improvement": true
           }
         },
-        "uuid": "993b050e-b308-4010-8ba6-58e08483793d"
+        "uuid": "8ec2cbd4-b944-448b-b230-d9de87aea5b8"
       }
     },
     "id": 104,
@@ -12828,7 +12973,7 @@
             "improvement": true
           }
         },
-        "uuid": "ea7dfe28-95d0-4939-bcf2-282dbed7d80f\n"
+        "uuid": "ea7dfe28-95d0-4939-bcf2-282dbed7d80f"
       }
     },
     "id": 93,
@@ -15905,7 +16050,7 @@
     "name": "Double shot",
     "symbol": "Weapon_DoubleShot",
     "engineers": {
-      "Tod 'The Blaster' McQuinn": {
+      "Tod McQuinn": {
         "grades": [
           "1",
           "2",
@@ -16752,7 +16897,7 @@
           "3"
         ]
       },
-      "Tod 'The Blaster' McQuinn": {
+      "Tod McQuinn": {
         "grades": [
           "1",
           "2",
@@ -17540,7 +17685,7 @@
     "name": "Overcharged",
     "symbol": "MC_Overcharged",
     "engineers": {
-      "Tod 'The Blaster' McQuinn": {
+      "Tod McQuinn": {
         "grades": [
           "1",
           "2",
