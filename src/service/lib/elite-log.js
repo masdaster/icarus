@@ -1,10 +1,10 @@
 const fs = require('fs')
-const path = require('path')
 const crypto = require('crypto')
 const glob = require('glob')
 const retry = require('async-retry')
 const Datastore = require('nedb-promises')
 const db = new Datastore()
+const filePositionMap = new Map();
 
 // Do not fire log events for these event types
 const INGORED_EVENT_TYPES = [
@@ -91,10 +91,13 @@ class EliteLog {
         // backoff and while single failures are quite common more than one
         // retry is extremely rare.
         await retry(() => {
-          const rawLog = fs.readFileSync(file.name).toString()
+          const size = fs.statSync(file.name).size
+          const offset = reload ? 0 : filePositionMap.get(file.name) ?? 0
+          const rawLog = this.#readFileSync(file.name, offset, size).toString()
           const parsedLog = this.#parse(rawLog)
           logs = logs.concat(parsedLog) // Add new log entries to existing logs
           if (this.loadFileCallback) this.loadFileCallback(file)
+          filePositionMap.set(file.name, size)
         }, {
           retries: 10
         })
@@ -184,6 +187,21 @@ class EliteLog {
       lastActivity: this.lastActiveTimestamp,
       files: this.files
     }
+  }
+
+  #readFileSync(path, start, end) {
+    var stats = fs.statSync(path)
+    if (!end) end = stats.size
+    if (start < 0 || end < 0 || end < start || end - start > 0x3fffffff || end > stats.size)
+      throw new Error('Bad start or end position of file')
+    var buffer = Buffer.alloc(end - start + 1)
+    var fd = fs.openSync(path, 'r')
+    try {
+      fs.readSync(fd, buffer, 0, end - start + 1, start)
+    } finally {
+      fs.closeSync(fd)
+    }
+    return buffer
   }
 
   async count() {
