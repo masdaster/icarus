@@ -296,10 +296,13 @@ class EliteLog {
   }
 
   async #watchFile(file, callback) {
+    let debounce
     return fs.watch(
       file.name,
       async (event, filename) => {
         if (!filename) return
+        if (debounce) return
+        debounce = setTimeout(() => { debounce = false }, 100)
         const logs = await this.load({ file })
         try {
           // Trigger callback for each log entry loaded
