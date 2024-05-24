@@ -119,6 +119,32 @@ export default function ShipInstrumentation({ ship, cmdrStatus, toggleSwitches, 
                   <span className='checkbox__control' />
                 </label>
               </td>
+              <td>
+                <label className='checkbox'>
+                  <span className={`checkbox__text ${(!ship.onBoard || !toggleSwitches.flightAssist) && 'text-muted'}`}>
+                    Flight Assist
+                  </span>
+                  <input
+                    type='checkbox'
+                    checked={ship.onBoard && toggleSwitches?.flightAssist}
+                    onChange={() => toggleSwitch('flightAssist')}
+                  />
+                  <span className='checkbox__control' />
+                </label>
+              </td>
+              <td>
+                <label className='checkbox'>
+                  <span className={`checkbox__text ${(!ship.onBoard || !toggleSwitches.silentRunning) && 'text-muted'}`}>
+                    Silent Running
+                  </span>
+                  <input
+                    type='checkbox'
+                    checked={ship.onBoard && toggleSwitches?.silentRunning}
+                    onChange={() => toggleSwitch('silentRunning')}
+                  />
+                  <span className='checkbox__control' />
+                </label>
+              </td>
             </tr>
           </tbody>
         </table>
@@ -274,8 +300,8 @@ export default function ShipInstrumentation({ ship, cmdrStatus, toggleSwitches, 
                 </span>
               </td>
               <td>
-                <span className={ship.onBoard && cmdrStatus?.flags?.flightAssistOff ? 'ship-panel__light--on' : 'ship-panel__light--off'}>
-                  <span className='ship-panel__light-text'>Flight assist off</span>
+                <span className={ship.onBoard && cmdrStatus?.flags?.shieldsUp ? 'ship-panel__light--on' : 'ship-panel__light--off'}>
+                  <span className='ship-panel__light-text'>Shield up</span>
                 </span>
               </td>
               <td>
@@ -284,8 +310,8 @@ export default function ShipInstrumentation({ ship, cmdrStatus, toggleSwitches, 
                 </span>
               </td>
               <td>
-                <span className={ship.onBoard && cmdrStatus?.flags?.silentRunning ? 'ship-panel__light--on' : 'ship-panel__light--off'}>
-                  <span className='ship-panel__light-text'>Silent running</span>
+                <span className={ship.onBoard && ['Wanted', 'Hostile', 'Warrant'].includes(cmdrStatus?.legalstate) ? 'ship-panel__light--on' : 'ship-panel__light--off'}>
+                  <span className='ship-panel__light-text'>{cmdrStatus?.legalstate ?? 'None'}</span>
                 </span>
               </td>
               <td>

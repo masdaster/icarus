@@ -22,7 +22,9 @@ export default function ShipStatusPage() {
     nightVision: false,
     cargoHatch: false,
     landingGear: false,
-    hardpoints: false
+    hardpoints: false,
+    flightAssist: false,
+    silentRunning: false
   })
 
   useEffect(async () => {

@@ -22,7 +22,9 @@ const KEYBINDS_MAP = {
   nightVision: 'NightVisionToggle',
   landingGear: 'LandingGearToggle',
   cargoHatch: 'ToggleCargoScoop',
-  hardpoints: 'DeployHardpointToggle'
+  hardpoints: 'DeployHardpointToggle',
+  flightAssist: 'ToggleFlightAssist',
+  silentRunning: 'ToggleButtonUpInput'
 }
 
 // FIXME Refactor Preferences handling into a singleton
