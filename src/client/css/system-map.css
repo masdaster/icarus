@@ -112,7 +112,6 @@ on slow devices (e.g. Amazon Fire) to be the default */
   position: absolute;
   top: .25rem;
   z-index: 50;
-  pointer-events: none;
   height: 3.5rem;
   font-size: 1rem;
   right: 1rem;
@@ -126,6 +125,19 @@ on slow devices (e.g. Amazon Fire) to be the default */
   display: inline;
   position: absolute;
   right: 0;
+}
+
+.system-map__location__foreign-system h3 {
+  right: 3em;
+}
+
+.system-map__location__foreign-system button {
+  position: absolute;
+  right: 0;
+}
+
+.system-map__location button:not(:hover, :focus) {
+  background: none;
 }
 
 

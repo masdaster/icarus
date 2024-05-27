@@ -3,6 +3,7 @@ const fs = require('fs')
 const path = require('path')
 const pjXML = require('pjxml')
 const keysender = require('keysender')
+const clipboard = require('node-clipboardy')
 const { UNKNOWN_VALUE } = require('../../shared/consts')
 
 const { BROADCAST_EVENT: broadcastEvent } = global
@@ -24,7 +25,8 @@ const KEYBINDS_MAP = {
   cargoHatch: 'ToggleCargoScoop',
   hardpoints: 'DeployHardpointToggle',
   flightAssist: 'ToggleFlightAssist',
-  silentRunning: 'ToggleButtonUpInput'
+  silentRunning: 'ToggleButtonUpInput',
+  galaxyMap: 'GalaxyMapOpen'
 }
 
 // FIXME Refactor Preferences handling into a singleton
@@ -127,72 +129,78 @@ class EventHandlers {
           const text = `Voice assistant will use ${voice.replace(/[^a-z0-9 -]/gi, '')}`
           this.textToSpeech.speak(text, voice, true)
         },
-        toggleSwitch: async ({ switchName }) => {
-          // TODO Refactor this out into a dedicated library
-          try {
-            let KEYBINDS_FILE
-            const KEYBIND_XML_ELEMENT = KEYBINDS_MAP[switchName]
-
-            if (fs.existsSync(KEYBINDS_FILE_V4_1)) {
-              KEYBINDS_FILE = KEYBINDS_FILE_V4_1
-            } else if (fs.existsSync(KEYBINDS_FILE_V4)) {
-              KEYBINDS_FILE = KEYBINDS_FILE_V4
-            } else if (fs.existsSync(KEYBINDS_FILE_V3)) {
-              KEYBINDS_FILE = KEYBINDS_FILE_V3
-            }
-
-            const keyBinds = fs.readFileSync(KEYBINDS_FILE).toString()
-
-            const doc = pjXML.parse(keyBinds)
-            const primaryElement = doc.select(`//${KEYBIND_XML_ELEMENT}/Primary`)
-            const primaryKey = convertEliteDangerousKeyBindingToInputKey(primaryElement?.attributes?.Key)
-            const primaryElementModifier = doc.select(`//${KEYBIND_XML_ELEMENT}/Primary/Modifier`)
-            const secondaryElement = doc.select(`//${KEYBIND_XML_ELEMENT}/Secondary`)
-            const secondaryKey = convertEliteDangerousKeyBindingToInputKey(secondaryElement?.attributes?.Key)
-            const secondaryElementModifier = doc.select(`//${KEYBIND_XML_ELEMENT}/Secondary/Modifier`)
-
-            let keyToSend, modifierKey
-            if (primaryElement?.attributes?.Device === 'Keyboard') {
-              keyToSend = primaryKey.toLowerCase()
-              modifierKey = primaryElementModifier?.attributes?.Key.replace(/^Key_/, '').toLowerCase()
-            } else if (secondaryElement?.attributes?.Device === 'Keyboard') {
-              keyToSend = secondaryKey.toLowerCase()
-              modifierKey = secondaryElementModifier?.attributes?.Key.replace(/^Key_/, '').toLowerCase()
-            } else {
-              console.log('No keyboard binding available for', KEYBINDS_MAP[switchName], "to toggle switch", switchName)
-              return false
-            }
-
-            if (modifierKey) {
-              if (modifierKey.includes('shift')) modifierKey = 'shift'
-              else if (modifierKey.includes('control')) modifierKey = 'ctrl'
-              else if (modifierKey.includes('alt')) modifierKey = 'alt'
-              else {
-                console.log('Modifier key', modifierKey, 'for binding ', KEYBINDS_MAP[switchName], "to toggle switch", switchName, 'is not supported')
-                return false
-              }
-            }
-
-            // Set up hardware reference
-            const hardware = new keysender.Hardware(TARGET_WINDOW_TITLE)
-
-            // Trigger key input
-            if (modifierKey) {
-              console.log('Sending key', keyToSend, 'with modifier', modifierKey, 'for binding ', KEYBINDS_MAP[switchName], 'to toggle switch', switchName)
-              await hardware.keyboard.sendKey([modifierKey, keyToSend])
-            } else {
-              console.log('Sending key', keyToSend, 'for binding ', KEYBINDS_MAP[switchName], 'to toggle switch', switchName)
-              await hardware.keyboard.sendKey(keyToSend)
-            }
-            return true
-          } catch (e) {
-            console.error('ERROR_SENDING_KEY', switchName, e.toString())
-            return false
-          }
+        toggleSwitch: async ({ switchName }) => sendKey(switchName),
+        plotRoute: async ({ systemName }) => {
+          await clipboard.write(systemName)
+          return sendKey('galaxyMap')
         }
       }
     }
     return this.eventHandlers
+  }
+}
+
+async function sendKey(bindingName) {
+  // TODO Refactor this out into a dedicated library
+  try {
+    let KEYBINDS_FILE
+    const KEYBIND_XML_ELEMENT = KEYBINDS_MAP[bindingName]
+
+    if (fs.existsSync(KEYBINDS_FILE_V4_1)) {
+      KEYBINDS_FILE = KEYBINDS_FILE_V4_1
+    } else if (fs.existsSync(KEYBINDS_FILE_V4)) {
+      KEYBINDS_FILE = KEYBINDS_FILE_V4
+    } else if (fs.existsSync(KEYBINDS_FILE_V3)) {
+      KEYBINDS_FILE = KEYBINDS_FILE_V3
+    }
+
+    const keyBinds = fs.readFileSync(KEYBINDS_FILE).toString()
+
+    const doc = pjXML.parse(keyBinds)
+    const primaryElement = doc.select(`//${KEYBIND_XML_ELEMENT}/Primary`)
+    const primaryKey = convertEliteDangerousKeyBindingToInputKey(primaryElement?.attributes?.Key)
+    const primaryElementModifier = doc.select(`//${KEYBIND_XML_ELEMENT}/Primary/Modifier`)
+    const secondaryElement = doc.select(`//${KEYBIND_XML_ELEMENT}/Secondary`)
+    const secondaryKey = convertEliteDangerousKeyBindingToInputKey(secondaryElement?.attributes?.Key)
+    const secondaryElementModifier = doc.select(`//${KEYBIND_XML_ELEMENT}/Secondary/Modifier`)
+
+    let keyToSend, modifierKey
+    if (primaryElement?.attributes?.Device === 'Keyboard') {
+      keyToSend = primaryKey.toLowerCase()
+      modifierKey = primaryElementModifier?.attributes?.Key.replace(/^Key_/, '').toLowerCase()
+    } else if (secondaryElement?.attributes?.Device === 'Keyboard') {
+      keyToSend = secondaryKey.toLowerCase()
+      modifierKey = secondaryElementModifier?.attributes?.Key.replace(/^Key_/, '').toLowerCase()
+    } else {
+      console.log('No keyboard binding available for', KEYBINDS_MAP[bindingName])
+      return false
+    }
+
+    if (modifierKey) {
+      if (modifierKey.includes('shift')) modifierKey = 'shift'
+      else if (modifierKey.includes('control')) modifierKey = 'ctrl'
+      else if (modifierKey.includes('alt')) modifierKey = 'alt'
+      else {
+        console.log('Modifier key', modifierKey, 'for binding ', KEYBINDS_MAP[bindingName])
+        return false
+      }
+    }
+
+    // Set up hardware reference
+    const hardware = new keysender.Hardware(TARGET_WINDOW_TITLE)
+
+    // Trigger key input
+    if (modifierKey) {
+      console.log('Sending key', keyToSend, 'with modifier', modifierKey, 'for binding', KEYBINDS_MAP[bindingName])
+      await hardware.keyboard.sendKey([modifierKey, keyToSend])
+    } else {
+      console.log('Sending key', keyToSend, 'for binding', KEYBINDS_MAP[bindingName])
+      await hardware.keyboard.sendKey(keyToSend)
+    }
+    return true
+  } catch (e) {
+    console.error('ERROR_SENDING_KEY', bindingName, e.toString())
+    return false
   }
 }
 
