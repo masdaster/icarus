@@ -4,7 +4,7 @@ import SystemMap from 'components/panels/nav/system-map/system-map'
 import { useState } from 'react'
 import factionStates from '../../../../shared/faction-states'
 
-export default function NavigationSystemMapPanel({ system, systemObject, setSystemObject, getSystem, cmdrStatus, rescanSystem = () => { }, rescanInProgress = false }) {
+export default function NavigationSystemMapPanel({ system, systemObject, setSystemObject, cmdrStatus, rescanSystem = () => { }, rescanInProgress = false, plotRoute }) {
   const [showSystemDetails, setShowSystemDetails] = useState(true)
 
   if (!system) return null
@@ -20,17 +20,6 @@ export default function NavigationSystemMapPanel({ system, systemObject, setSyst
       return false
     })
   }
-
-  // /*
-  // const onScroll = (event) => {
-  //   document.getElementById('navigation-panel__map-background').style.setProperty('--background-position-y-offset-stars', '-'+(event.target.scrollTop / 20)+'px')
-  //   document.getElementById('navigation-panel__map-background').style.setProperty('--background-position-y-offset-grid', '-'+(event.target.scrollTop / 10)+'px')
-  // }
-
-  // useEffect(() => {
-  //   document.getElementById('navigation-panel__map-foreground').addEventListener('scroll', onScroll);
-  // },[])
-  // */
 
   // Check if any bodies are visible on map (i.e. any stars *or* any "additional objects")
   const visibleBodiesOnMap = (!system.stars || (system.stars.length === 1 && (system.stars?.[0]?._children?.length) === 0))
@@ -56,7 +45,7 @@ export default function NavigationSystemMapPanel({ system, systemObject, setSyst
           </div>
           <div className='system-map__toolbar-background' />
           <div className='system-map__toolbar'>
-            <LocationInformation system={system} cmdrStatus={cmdrStatus} rescanSystem={rescanSystem} rescanInProgress={rescanInProgress} />
+            <LocationInformation system={system} cmdrStatus={cmdrStatus} plotRoute={plotRoute} />
             <div className='system-map__info fx-fade-in text-uppercase'>
               <span className='text-info'>
                 <i className='icarus-terminal-system-orbits' style={{ fontSize: '1.5rem', float: 'left', position: 'relative', left: '-.15rem' }} />
@@ -179,7 +168,7 @@ export default function NavigationSystemMapPanel({ system, systemObject, setSyst
 
         <div className='system-map__toolbar-background' />
         <div className='system-map__toolbar'>
-          <LocationInformation system={system} cmdrStatus={cmdrStatus} />
+          <LocationInformation system={system} cmdrStatus={cmdrStatus} plotRoute={plotRoute} />
           <div className='system-map__info fx-fade-in text-uppercase'>
             <span className='text-info'>
               <i className='icarus-terminal-system-orbits' style={{ fontSize: '1.5rem', float: 'left', position: 'relative', left: '-.15rem' }} />
@@ -272,17 +261,20 @@ function PointsOfInterest({ system }) {
   )
 }
 
-function LocationInformation({ system, cmdrStatus, rescanSystem, rescanInProgress }) {
+function LocationInformation({ system, cmdrStatus, plotRoute }) {
   return (
     <div className='system-map__location fx-fade-in hidden-small'>
       {system?.distance > 0 &&
-        <div className='text-center-vertical text-right'>
+        <div className='system-map__location__foreign-system text-center-vertical text-right'>
           <h3 className='text-primary text-no-wrap'>
             <div>
               {system.distance.toLocaleString(undefined, { maximumFractionDigits: 2 })} LY <span className='text-muted'>from</span>
             </div>
             <div className='text-muted'>current system</div>
           </h3>
+          <button className='button--icon' onClick={() => plotRoute(system?.name)}>
+            <i className='icon icarus-terminal-route' />
+          </button>
         </div>}
       {system?.distance === 0 && system.isCurrentLocation === false &&
         <div className='text-primary text-muted text-center-vertical'>

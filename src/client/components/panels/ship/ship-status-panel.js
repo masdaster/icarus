@@ -1,7 +1,7 @@
 import ShipInstrumentation from 'components/panels/ship/ship-status/ship-instrumentation'
 import { UNKNOWN_VALUE } from '../../../../shared/consts'
 
-export default function ShipStatusPanel({ ship, selectedModule, setSelectedModule, cmdrStatus, toggleSwitches, toggleSwitch }) {
+export default function ShipStatusPanel({ ship, cmdrStatus, toggleSwitches, toggleSwitch }) {
   if (!ship) return null
 
   if (ship.type === UNKNOWN_VALUE && ship.name === UNKNOWN_VALUE && ship.ident === UNKNOWN_VALUE) {
