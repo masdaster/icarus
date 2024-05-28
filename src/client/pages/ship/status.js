@@ -35,7 +35,8 @@ export default function ShipStatusPage() {
 
   const toggleSwitch = async (switchName) => {
     // Only toggle switch value if we think it was successful
-    const switchToggled = await sendEvent('toggleSwitch', { switchName })
+    const switchToggled = (['lights', 'nightVision'].includes(switchName) || cmdrStatus?.flags?.supercruise === false)
+      && await sendEvent('toggleSwitch', { switchName })
 
     setToggleSwitches({
       ...toggleSwitches,
@@ -49,7 +50,9 @@ export default function ShipStatusPage() {
       nightVision: cmdrStatus?.flags?.nightVision ?? false,
       cargoHatch: cmdrStatus?.flags?.cargoScoopDeployed ?? false,
       landingGear: cmdrStatus?.flags?.landingGearDown ?? false,
-      hardpoints: cmdrStatus?.flags?.hardpointsDeployed ?? false
+      hardpoints: cmdrStatus?.flags?.hardpointsDeployed ?? false,
+      flightAssist: cmdrStatus?.flags?.flightAssistOff === false ?? true,
+      silentRunning: cmdrStatus?.flags?.silentRunning ?? false
     })
   }, [cmdrStatus])
 

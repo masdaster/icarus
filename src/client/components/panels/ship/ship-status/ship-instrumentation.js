@@ -108,12 +108,12 @@ export default function ShipInstrumentation({ ship, cmdrStatus, toggleSwitches, 
               </td>
               <td>
                 <label className='checkbox'>
-                  <span className={`checkbox__text ${(!ship.onBoard || !toggleSwitches.hardpoints || cmdrStatus?.flags?.supercruise) ? 'text-muted' : ''}`}>
+                  <span className={`checkbox__text ${(!ship.onBoard || !toggleSwitches.hardpoints) ? 'text-muted' : ''}`}>
                     Hard points
                   </span>
                   <input
                     type='checkbox'
-                    checked={ship.onBoard && cmdrStatus?.flags?.supercruise === false && toggleSwitches?.hardpoints}
+                    checked={ship.onBoard && toggleSwitches?.hardpoints}
                     onChange={() => toggleSwitch('hardpoints')}
                   />
                   <span className='checkbox__control' />
@@ -310,7 +310,7 @@ export default function ShipInstrumentation({ ship, cmdrStatus, toggleSwitches, 
                 </span>
               </td>
               <td>
-                <span className={ship.onBoard && ['Wanted', 'Hostile', 'Warrant'].includes(cmdrStatus?.legalstate) ? 'ship-panel__light--on' : 'ship-panel__light--off'}>
+                <span className={ship.onBoard && ['Wanted', 'Hostile', 'Warrant'].includes(cmdrStatus?.legalstate) ? 'ship-panel__light--danger' : 'ship-panel__light--off'}>
                   <span className='ship-panel__light-text'>{cmdrStatus?.legalstate ?? 'None'}</span>
                 </span>
               </td>
