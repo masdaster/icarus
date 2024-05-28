@@ -42,7 +42,7 @@ function MaterialsTable({ materialType, materialCategory, materials }) {
           {materials.map(item =>
             <tr
               key={`material_${materialType}_${materialCategory}_${item.symbol}`}
-              className={`${item.count === item?.maxCount ? 'text-secondary' : ''} ${item.count === 0 ? 'text-muted text-danger' : ''}`}
+              className={`${item.count >= item?.maxCount * 0.9 ? 'text-secondary' : ''} ${item.count === 0 ? 'text-muted text-danger' : ''}`}
             >
               <td style={{ width: '30rem' }}>
                 <h4><CopyOnClick>{item.name}</CopyOnClick></h4>
@@ -52,7 +52,7 @@ function MaterialsTable({ materialType, materialCategory, materials }) {
                     <span className='text-muted'>/{item.maxCount}</span>
                   </div>
                   <div style={{ width: '70%', display: 'inline-block' }}>
-                    <progress style={{ height: '1.25rem' }} value={item.count} max={item?.maxCount ?? item.count} className={item.count === item?.maxCount ? 'progress--secondary' : ''} />
+                    <progress style={{ height: '1.25rem' }} value={item.count} max={item?.maxCount ?? item.count} className={item.count >= item?.maxCount * 0.9 ? 'progress--secondary' : ''} />
                   </div>
                 </div>
               </td>
