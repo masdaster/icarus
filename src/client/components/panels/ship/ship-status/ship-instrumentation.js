@@ -310,7 +310,7 @@ export default function ShipInstrumentation({ ship, cmdrStatus, toggleSwitches, 
                 </span>
               </td>
               <td>
-                <span className={ship.onBoard && ['Wanted', 'Hostile', 'Warrant'].includes(cmdrStatus?.legalstate) ? 'ship-panel__light--on' : 'ship-panel__light--off'}>
+                <span className={ship.onBoard && ['Wanted', 'Hostile', 'Warrant'].includes(cmdrStatus?.legalstate) ? 'ship-panel__light--danger' : 'ship-panel__light--off'}>
                   <span className='ship-panel__light-text'>{cmdrStatus?.legalstate ?? 'None'}</span>
                 </span>
               </td>

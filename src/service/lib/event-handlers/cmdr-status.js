@@ -16,7 +16,7 @@ class CmdrStatus {
       inWing: 128,
       lightsOn: 256,
       cargoScoopDeployed: 512,
-      slientRunning: 1024,
+      silentRunning: 1024,
       scoopingFuel: 2048,
       srvHandbrake: 4096,
       srvUsignTurrentView: 8192,
