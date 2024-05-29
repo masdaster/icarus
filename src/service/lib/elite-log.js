@@ -1,6 +1,6 @@
 const fs = require('fs')
 const crypto = require('crypto')
-const glob = require('glob')
+const { glob } = require('glob')
 const retry = require('async-retry')
 const Datastore = require('nedb-promises')
 const db = new Datastore()
@@ -347,28 +347,26 @@ class EliteLog {
   }
 
   // Get path to all log files in dir
-  #getFiles() {
-    return new Promise(resolve => {
-      // Note: Journal.*.log excludes files like JournalAlpha.*.log so that
-      // alpha / beta test data doesn't get included by mistake.
-      glob(`${this.dir}/Journal.*.log`, {}, async (error, globFiles) => {
-        if (error) return console.error(error)
-
-        const files = globFiles.map(name => {
-          const { size, mtime: lastModified } = fs.statSync(name)
-          const lineCount = fs.readFileSync(name).toString().split('\n').length
-          return new File({ name, lastModified, size, lineCount })
-        })
-
-        // Track most (mostly recently modified) log file
-        if (files.length > 0) {
-          const activeLogFile = files.sort((a, b) => b.lastModified - a.lastModified)[0]
-          this.lastActiveLogFileName = activeLogFile.name
-        }
-
-        resolve(files)
+  async #getFiles() {
+    // Note: Journal.*.log excludes files like JournalAlpha.*.log so that
+    // alpha / beta test data doesn't get included by mistake.
+    try {
+      const globFiles = await glob(`${this.dir}/Journal.*.log`)
+      const files = globFiles.map(name => {
+        const { size, mtime: lastModified } = fs.statSync(name)
+        const lineCount = fs.readFileSync(name).toString().split('\n').length
+        return new File({ name, lastModified, size, lineCount })
       })
-    })
+
+      // Track most (mostly recently modified) log file
+      if (files.length > 0) {
+        const activeLogFile = files.sort((a, b) => b.lastModified - a.lastModified)[0]
+        this.lastActiveLogFileName = activeLogFile.name
+      }
+      return files
+    } catch (error) {
+      console.error(error)
+    }
   }
 
   // Load log file and parse into an array of objects

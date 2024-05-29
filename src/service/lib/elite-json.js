@@ -1,6 +1,6 @@
 const fs = require('fs')
 const path = require('path')
-const glob = require('glob')
+const { glob } = require('glob')
 const retry = require('async-retry')
 
 class EliteJson {
@@ -80,24 +80,21 @@ class EliteJson {
     })
   }
 
-  #getFiles() {
-    return new Promise(resolve => {
-      glob(`${this.dir}/*.json`, {}, async (error, files) => {
-        if (error) return console.error(error)
-
-        const response = files.map(name => {
-          const { size, mtime: lastModified } = fs.statSync(name)
-          return new File({
-            name,
-            lastModified,
-            size,
-            label: path.basename(name).replace(/\.json$/, '')
-          })
+  async #getFiles() {
+    try {
+      const files = await glob(`${this.dir}/*.json`)
+      return files.map(name => {
+        const { size, mtime: lastModified } = fs.statSync(name)
+        return new File({
+          name,
+          lastModified,
+          size,
+          label: path.basename(name).replace(/\.json$/, '')
         })
-
-        resolve(response)
       })
-    })
+    } catch (error) {
+      console.error(error)
+    }
   }
 }
 
