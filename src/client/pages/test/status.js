@@ -4,8 +4,11 @@ import { Fragment, useEffect, useState } from 'react'
 export default function StatusPage() {
   const [cmdrStatus, setCmdrStatus] = useState()
 
-  useEffect(async () => {
-    setCmdrStatus(await sendEvent('getCmdrStatus'))
+  useEffect(() => {
+    async function core() {
+      setCmdrStatus(await sendEvent('getCmdrStatus'))
+    }
+    core()
   }, [])
 
   useEffect(() => eventListener('newLogEntry', async (log) => {

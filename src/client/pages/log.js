@@ -14,16 +14,19 @@ export default function LogPage() {
 
   useEffect(animateTableEffect)
 
-  useEffect(async () => {
-    if (!connected) return
-    setComponentReady(false)
-    const newLogEntries = await sendEvent('getLogEntries', { count: 100 })
-    if (Array.isArray(newLogEntries) && newLogEntries.length > 0) {
-      setLogEntries(newLogEntries)
-      // Only select a log entry if one isn't set already
-      setSelectedLogEntry(prevState => prevState || newLogEntries[0])
+  useEffect(() => {
+    async function core() {
+      if (!connected) return
+      setComponentReady(false)
+      const newLogEntries = await sendEvent('getLogEntries', { count: 100 })
+      if (Array.isArray(newLogEntries) && newLogEntries.length > 0) {
+        setLogEntries(newLogEntries)
+        // Only select a log entry if one isn't set already
+        setSelectedLogEntry(prevState => prevState || newLogEntries[0])
+      }
+      setComponentReady(true)
     }
-    setComponentReady(true)
+    core()
   }, [connected, ready])
 
   useEffect(() => eventListener('newLogEntry', async (newLogEntry) => {

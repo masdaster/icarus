@@ -27,10 +27,14 @@ export default function ShipStatusPage() {
     silentRunning: false
   })
 
-  useEffect(async () => {
+  useEffect(() => {
+    async function core() {
+      setShip(await sendEvent('getShipStatus'))
+      setCmdrStatus(await sendEvent('getCmdrStatus'))
+    }
+
     if (!connected) return
-    setShip(await sendEvent('getShipStatus'))
-    setCmdrStatus(await sendEvent('getCmdrStatus'))
+    core()
   }, [connected, ready])
 
   const toggleSwitch = async (switchName) => {
@@ -44,7 +48,7 @@ export default function ShipStatusPage() {
     })
   }
 
-  useEffect(async () => {
+  useEffect(() => {
     setToggleSwitches({
       lights: cmdrStatus?.flags?.lightsOn ?? false,
       nightVision: cmdrStatus?.flags?.nightVision ?? false,

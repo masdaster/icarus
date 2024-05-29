@@ -12,10 +12,14 @@ export default function ShipStatusPage() {
   const [selectedModule, setSelectedModule] = useState()
   const [cmdrStatus, setCmdrStatus] = useState()
 
-  useEffect(async () => {
+  useEffect(() => {
+    async function core() {
+      setShip(await sendEvent('getShipStatus'))
+      setCmdrStatus(await sendEvent('getCmdrStatus'))
+    }
+
     if (!connected) return
-    setShip(await sendEvent('getShipStatus'))
-    setCmdrStatus(await sendEvent('getCmdrStatus'))
+    core()
   }, [connected, ready])
 
   useEffect(() => eventListener('gameStateChange', async () => {

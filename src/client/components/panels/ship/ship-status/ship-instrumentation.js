@@ -18,7 +18,7 @@ export default function ShipInstrumentation({ ship, cmdrStatus, toggleSwitches, 
   const scaledWrapper = useRef()
   const scaledContent = useRef()
 
-  useEffect(async () => {
+  useEffect(() => {
     const resizeEventHandler = () => {
       if (scaledWrapper.current && scaledContent.current) {
         applyScaling(scaledWrapper.current, scaledContent.current)

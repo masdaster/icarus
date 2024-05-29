@@ -56,32 +56,35 @@ export default function NavMapPage() {
     }
   }
 
-  useEffect(async () => {
+  useEffect(() => {
+    async function core() {
+      setCmdrStatus(await sendEvent('getCmdrStatus'))
+
+      const newSystem = await sendEvent('getSystem', query.system ? { name: query.system, useCache: true } : { useCache: true })
+
+      if (newSystem) {
+        setSystem(newSystem)
+      } else {
+        // If system lookup fails (i.e. no game data), fallback to Sol system
+        setSystem(await sendEvent('getSystem', { name: 'Sol', useCache: true }))
+      }
+
+      if (query.selected) {
+        const newSystemObject = newSystem.objectsInSystem.filter(child => child.name.toLowerCase() === query.selected.toLowerCase())[0]
+        if (!newSystemObject) return
+        setSystemObject(newSystemObject)
+        // TODO Highlight body on map (or, if ground facility, the nearest planet)
+        // setTimeout(() => {
+        //   const el = document.querySelector(`[data-system-object-name="${newSystemObject?.name}" i]`)
+        //   if (el) el.focus()
+        // }, 750) // Delay to allow map to render
+      }
+
+      setComponentReady(true)
+    }
+
     if (!connected || !router.isReady) return
-
-    setCmdrStatus(await sendEvent('getCmdrStatus'))
-
-    const newSystem = await sendEvent('getSystem', query.system ? { name: query.system, useCache: true } : { useCache: true })
-
-    if (newSystem) {
-      setSystem(newSystem)
-    } else {
-      // If system lookup fails (i.e. no game data), fallback to Sol system
-      setSystem(await sendEvent('getSystem', { name: 'Sol', useCache: true }))
-    }
-
-    if (query.selected) {
-      const newSystemObject = newSystem.objectsInSystem.filter(child => child.name.toLowerCase() === query.selected.toLowerCase())[0]
-      if (!newSystemObject) return
-      setSystemObject(newSystemObject)
-      // TODO Highlight body on map (or, if ground facility, the nearest planet)
-      // setTimeout(() => {
-      //   const el = document.querySelector(`[data-system-object-name="${newSystemObject?.name}" i]`)
-      //   if (el) el.focus()
-      // }, 750) // Delay to allow map to render
-    }
-
-    setComponentReady(true)
+    core()
   }, [connected, ready, router.isReady])
 
   useEffect(() => eventListener('newLogEntry', async (log) => {

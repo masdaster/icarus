@@ -13,10 +13,14 @@ export default function ShipInventoryPage() {
 
   useEffect(animateTableEffect)
 
-  useEffect(async () => {
+  useEffect(() => {
+    async function core() {
+      setInventory(await sendEvent('getInventory'))
+      setComponentReady(true)
+    }
+
     if (!connected) return
-    setInventory(await sendEvent('getInventory'))
-    setComponentReady(true)
+    core()
   }, [connected, ready])
 
   useEffect(() => eventListener('gameStateChange', async () => {

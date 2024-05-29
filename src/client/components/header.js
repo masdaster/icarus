@@ -76,15 +76,19 @@ export default function Header({ connected, active }) {
     document.activeElement.blur()
   }
 
-  useEffect(async () => {
+  useEffect(() => {
+    async function core() {
+      setIsFullScreen(await isWindowFullScreen())
+      setIsPinned(await isWindowPinned())
+    }
+
     // icarusTerminal_* methods are not always accessible while the app is loading.
     // This handles that by calling them when the component is mounted.
     // It uses a global for isWindowsApp to reduce UI flicker.
     if (typeof window !== 'undefined' && typeof window.icarusTerminal_version === 'function') {
       IS_WINDOWS_APP = true
     }
-    setIsFullScreen(await isWindowFullScreen())
-    setIsPinned(await isWindowPinned())
+    core()
   }, [])
 
   useEffect(() => {

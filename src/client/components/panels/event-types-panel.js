@@ -14,9 +14,12 @@ export default function EventTypesPanel() {
   const { connected } = useSocket()
   const [gameEvents, setGameEvents] = useState()
 
-  useEffect(async () => {
-    const message = await sendEvent('getLoadingStatus')
-    setGameEvents(gameEventsToArray(message.eventTypesLoaded))
+  useEffect(() => {
+    async function core() {
+      const message = await sendEvent('getLoadingStatus')
+      setGameEvents(gameEventsToArray(message.eventTypesLoaded))
+    }
+    core()
   }, [connected])
 
   useEffect(() => eventListener('loadingProgress', (message) => {

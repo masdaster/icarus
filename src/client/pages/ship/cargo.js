@@ -14,11 +14,15 @@ export default function ShipCargoPage() {
 
   useEffect(animateTableEffect)
 
-  useEffect(async () => {
+  useEffect(() => {
+    async function core() {
+      const newShip = await sendEvent('getShipStatus')
+      setShip(newShip)
+      setCargo(newShip?.cargo?.inventory ?? [])
+    }
+
     if (!connected) return
-    const newShip = await sendEvent('getShipStatus')
-    setShip(newShip)
-    setCargo(newShip?.cargo?.inventory ?? [])
+    core()
   }, [connected, ready])
 
   useEffect(() => eventListener('gameStateChange', async () => {

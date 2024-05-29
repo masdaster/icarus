@@ -12,9 +12,13 @@ export default function EngineeringMaterialsPage() {
 
   useEffect(animateTableEffect)
 
-  useEffect(async () => {
+  useEffect(() => {
+    async function core() {
+      setMaterials(await sendEvent('getMaterials'))
+    }
+
     if (!connected) return
-    setMaterials(await sendEvent('getMaterials'))
+    core()
   }, [connected, ready])
 
   useEffect(() => eventListener('newLogEntry', async (log) => {

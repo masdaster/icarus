@@ -19,17 +19,20 @@ export default function EngineeringEngineersPage() {
 
   useEffect(animateTableEffect)
 
-  useEffect(async () => {
+  useEffect(() => {
+    async function core() {
+      // Always refetch list of engineers to ensure up to date
+      const newEngineers = await sendEvent('getEngineers')
+      setEngineers(newEngineers)
+
+      // Always refetch current system
+      const newSystem = await sendEvent('getSystem')
+      if (newSystem?.address) setCurrentSystem(newSystem)
+      setComponentReady(true)
+    }
+
     if (!connected || !router.isReady) return
-
-    // Always refetch list of engineers to ensure up to date
-    const newEngineers = await sendEvent('getEngineers')
-    setEngineers(newEngineers)
-
-    // Always refetch current system
-    const newSystem = await sendEvent('getSystem')
-    if (newSystem?.address) setCurrentSystem(newSystem)
-    setComponentReady(true)
+    core()
   }, [connected, ready, router.isReady, query])
 
   useEffect(() => eventListener('newLogEntry', async (log) => {
