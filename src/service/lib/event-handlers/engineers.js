@@ -10,12 +10,12 @@ class Engineers {
   }
 
   async getEngineers() {
-    const engineersWithProgress = await this.eliteLog.getEvent('EngineerProgress')
+    const engineersWithProgress = await this.#getEngineersWithProgress()
 
-    if (!engineersWithProgress?.Engineers) return null
+    if (!engineersWithProgress) return null
 
     // Get all engineers the Cmdr knows about, and add location information
-    const engineers = engineersWithProgress.Engineers.map(engineer => {
+    const engineers = engineersWithProgress.map(engineer => {
       const engineerWithLocation = engineersWithLocation.filter(e => Number(e.id) === Number(engineer.EngineerID))[0]
 
       if (!engineerWithLocation) console.log('No location data for engineer', engineer)
@@ -65,6 +65,30 @@ class Engineers {
     engineers.sort((a, b) => a.name.localeCompare(b.name))
 
     return engineers
+  }
+
+  async #getEngineersWithProgress() {
+    const engineersWithProgressUpdates = []
+    for (const event of await this.eliteLog.getEvents('EngineerProgress')) {
+      if (!!event?.Engineers) {
+        const engineersWithProgress = event.Engineers;
+        for (const engineerWithProgressUpdate of engineersWithProgressUpdates) {
+          const engineerWithProgress = engineersWithProgress.find(engineerWithProgress => engineerWithProgress.EngineerID == engineerWithProgressUpdate.EngineerID)
+          engineerWithProgress.Progress = engineerWithProgressUpdate.Progress
+          engineerWithProgress.Rank = engineerWithProgressUpdate.Rank
+          engineerWithProgress.RankProgress = engineerWithProgressUpdate.RankProgress
+        }
+        return engineersWithProgress
+      } else {
+        engineersWithProgressUpdates.push({
+          Engineer: event?.Engineer,
+          EngineerID: event?.EngineerID,
+          Progress: event?.Progress,
+          Rank: event?.Rank,
+          RankProgress: event?.RankProgress
+        })
+      }
+    }
   }
 }
 
