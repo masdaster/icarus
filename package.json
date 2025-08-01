@@ -62,6 +62,10 @@
     "ws": "^8.2.3",
     "yargs": "^17.2.1"
   },
+  "engines": {
+    "npm": "9.6.7",
+    "node": "18.17.1"
+  },
   "overrides": {
     "node-gyp": "../_EXCLUDED_"
   }
