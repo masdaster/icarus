@@ -17,19 +17,18 @@ https://elite-dangerous.fandom.com/api.php?action=query&list=allpages&aplimit=50
 
 ## Data Dump via API
 
-The Wiki Team have writen a python2 script to help with exporting data in bulk:
+The Save The Web Team have writen a python tool to help with exporting data in bulk:
 
-https://github.com/WikiTeam/wikiteam/wiki/Tutorial
+https://github.com/saveweb/wikiteam3
 
-To use this script you will need to have Python v2 installed and install dependancies:
+To use this tool you will need to have Python v3 installed and install with pip:
 
-    curl https://bootstrap.pypa.io/pip/2.7/get-pip.py --output get-pip.py
-    sudo python2 get-pip.py
-    pip2 install kitchen requests mwclient lxml
+    pip install wikiteam3
 
-Note: Some of the documentation on the offical site is wrong, this is an example of the correct way to use this script:
+This is an example how to use this tool:
 
-    python2 dumpgenerator.py --api=https://elite-dangerous.fandom.com/api.php --xml --curonly --images --resume --delay=1
+    
+    wikiteam3dumpgenerator https://elite-dangerous.fandom.com --xml --curonly --images --delay=1
 
 This will generate an XML dump of the site.
 
