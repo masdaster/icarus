@@ -186,5 +186,57 @@
   {
     "sku": "ELITE_SPECIFIC_V_POWER_100120",
     "requirement": "unlocked via allegiance to Yuri Grom power"
+  },
+  {
+    "sku": "ELITE_V_COBRA_MKV",
+    "requirement": "was early access purchase in the arx store (not required anymore)"
+  },
+  {
+    "sku": "ELITE_V_CORSAIR",
+    "requirement": "was early access purchase in the arx store (not required anymore)"
+  },
+  {
+    "sku": "ELITE_V_EXPLORER_NX",
+    "requirement": "early access purchase in the arx store"
+  },
+  {
+    "sku": "ELITE_V_LAKON_MINER",
+    "requirement": "early access purchase in the arx store"
+  },
+  {
+    "sku": "ELITE_V_MANDALAY",
+    "requirement": "was early access purchase in the arx store (not required anymore)"
+  },
+  {
+    "sku": "ELITE_V_PANTHER_MKII",
+    "requirement": "was early access purchase in the arx store (not required anymore)"
+  },
+  {
+    "sku": "ELITE_V_PYTHON_NX",
+    "requirement": "was early access purchase in the arx store (not required anymore)"
+  },
+  {
+    "sku": "ELITE_V_TYPE8",
+    "requirement": "was early access purchase in the arx store (not required anymore)"
+  },
+  {
+    "sku": "FORC_FDEV_V_CHIEFTAIN_BUNDLE_001",
+    "requirement": "purchase in the arx store"
+  },
+  {
+    "sku": "FORC_FDEV_V_DIAMOND_EXPLORER_BUNDLE_001",
+    "requirement": "purchase in the arx store"
+  },
+  {
+    "sku": "FORC_FDEV_V_PYTHON_MKII_BUNDLE_001",
+    "requirement": "purchase in the arx store"
+  },
+  {
+    "sku": "FORC_FDEV_V_PYTHON_MKII_BUNDLE_002",
+    "requirement": "purchase in the arx store"
+  },
+  {
+    "sku": "FORC_FDEV_V_TYPE6_BUNDLE_001",
+    "requirement": "purchase in the arx store"
   }
 ]

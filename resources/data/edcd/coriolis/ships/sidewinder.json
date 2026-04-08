@@ -6,10 +6,12 @@
       "name": "Sidewinder",
       "manufacturer": "Faulcon DeLacy",
       "class": 1,
-      "hullCost": 4070,
+      "hullCost": 4588,
       "speed": 220,
       "boost": 320,
+      "minthrust": 45.454,
       "boostEnergy": 7,
+      "boostInt": 4,
       "heatCapacity": 140,
       "baseShieldStrength": 40,
       "baseArmour": 60,
@@ -36,7 +38,8 @@
         "explres": -0.4,
         "kinres": -0.2,
         "thermres": 0,
-        "hullboost": 0.8
+        "hullboost": 0.8,
+        "name": "Lightweight Alloy"
       },
       {
         "id": "b1",
@@ -49,7 +52,8 @@
         "explres": -0.4,
         "kinres": -0.2,
         "thermres": 0,
-        "hullboost": 1.52
+        "hullboost": 1.52,
+        "name": "Reinforced Alloy"
       },
       {
         "id": "b2",
@@ -62,33 +66,36 @@
         "explres": -0.4,
         "kinres": -0.2,
         "thermres": 0,
-        "hullboost": 2.5
+        "hullboost": 2.5,
+        "name": "Military Grade Composite"
       },
       {
         "id": "b3",
         "edID": 128049253,
         "eddbID": 741,
         "grp": "bh",
-        "cost": 132060,
+        "cost": 132064,
         "mass": 4,
         "causres": 0,
         "explres": -0.5,
         "kinres": -0.75,
         "thermres": 0.5,
-        "hullboost": 2.5
+        "hullboost": 2.5,
+        "name": "Mirrored Surface Composite"
       },
       {
         "id": "b4",
         "edID": 128049254,
         "eddbID": 742,
         "grp": "bh",
-        "cost": 139420,
+        "cost": 139424,
         "mass": 4,
         "causres": 0,
         "explres": 0.2,
         "kinres": 0.25,
         "thermres": -0.4,
-        "hullboost": 2.5
+        "hullboost": 2.5,
+        "name": "Reactive Surface Composite"
       }
     ],
     "slots": {
@@ -113,7 +120,14 @@
         1,
         1,
         1,
-        1
+        1,
+        {
+          "class": 1,
+          "name": "PlanetaryApproachSuite",
+          "eligible": {
+            "pas": 1
+          }
+        }
       ]
     },
     "defaults": {
@@ -138,7 +152,8 @@
         "",
         0,
         0,
-        0
+        0,
+        "4F"
       ]
     }
   }

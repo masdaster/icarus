@@ -6,10 +6,12 @@
       "name": "Hauler",
       "manufacturer": "Zorgon Peterson",
       "class": 1,
-      "hullCost": 29790,
+      "hullCost": 30308,
       "speed": 200,
       "boost": 300,
+      "minthrust": 35.0,
       "boostEnergy": 7,
+      "boostInt": 4,
       "baseShieldStrength": 50,
       "baseArmour": 100,
       "hardness": 20,
@@ -36,59 +38,64 @@
         "explres": -0.4,
         "kinres": -0.2,
         "thermres": 0,
-        "hullboost": 0.8
+        "hullboost": 0.8,
+        "name": "Lightweight Alloy"
       },
       {
         "id": "Bj",
         "edID": 128049263,
         "eddbID": 749,
         "grp": "bh",
-        "cost": 42180,
+        "cost": 42176,
         "mass": 1,
         "causres": 0,
         "explres": -0.4,
         "kinres": -0.2,
         "thermres": 0,
-        "hullboost": 1.52
+        "hullboost": 1.52,
+        "name": "Reinforced Alloy"
       },
       {
         "id": "Bk",
         "edID": 128049264,
         "eddbID": 750,
         "grp": "bh",
-        "cost": 185050,
+        "cost": 185047,
         "mass": 2,
         "causres": 0,
         "explres": -0.4,
         "kinres": -0.2,
         "thermres": 0,
-        "hullboost": 2.5
+        "hullboost": 2.5,
+        "name": "Military Grade Composite"
       },
       {
         "id": "Bl",
         "edID": 128049265,
         "eddbID": 751,
         "grp": "bh",
-        "cost": 270300,
+        "cost": 270295,
         "mass": 2,
         "causres": 0,
         "explres": -0.5,
         "kinres": -0.75,
         "thermres": 0.5,
-        "hullboost": 2.5
+        "hullboost": 2.5,
+        "name": "Mirrored Surface Composite"
       },
       {
         "id": "Bm",
         "edID": 128049266,
         "eddbID": 752,
         "grp": "bh",
-        "cost": 282420,
+        "cost": 282421,
         "mass": 2,
         "causres": 0,
         "explres": 0.2,
         "kinres": 0.25,
         "thermres": -0.4,
-        "hullboost": 2.5
+        "hullboost": 2.5,
+        "name": "Reactive Surface Composite"
       }
     ],
     "slots": {
@@ -112,7 +119,14 @@
         2,
         1,
         1,
-        1
+        1,
+        {
+          "class": 1,
+          "name": "PlanetaryApproachSuite",
+          "eligible": {
+            "pas": 1
+          }
+        }
       ]
     },
     "defaults": {
@@ -136,7 +150,8 @@
         "3v",
         "",
         0,
-        0
+        0,
+        "4F"
       ]
     }
   }

@@ -6,10 +6,12 @@
       "name": "Viper",
       "manufacturer": "Faulcon DeLacy",
       "class": 1,
-      "hullCost": 95900,
+      "hullCost": 96733,
       "speed": 320,
       "boost": 400,
+      "minthrust": 62.5,
       "boostEnergy": 10,
+      "boostInt": 5,
       "baseShieldStrength": 105,
       "baseArmour": 70,
       "hardness": 35,
@@ -23,7 +25,7 @@
       "crew": 1,
       "reserveFuelCapacity": 0.41
     },
-    "retailCost": 142930,
+    "retailCost": 142931,
     "bulkheads": [
       {
         "id": "B3",
@@ -36,59 +38,64 @@
         "explres": -0.4,
         "kinres": -0.2,
         "thermres": 0,
-        "hullboost": 0.8
+        "hullboost": 0.8,
+        "name": "Lightweight Alloy"
       },
       {
         "id": "B4",
         "edID": 128049275,
         "eddbID": 759,
         "grp": "bh",
-        "cost": 57170,
+        "cost": 57172,
         "mass": 5,
         "causres": 0,
         "explres": -0.4,
         "kinres": -0.2,
         "thermres": 0,
-        "hullboost": 1.52
+        "hullboost": 1.52,
+        "name": "Reinforced Alloy"
       },
       {
         "id": "B5",
         "edID": 128049276,
         "eddbID": 760,
         "grp": "bh",
-        "cost": 128640,
+        "cost": 128637,
         "mass": 9,
         "causres": 0,
         "explres": -0.4,
         "kinres": -0.2,
         "thermres": 0,
-        "hullboost": 2.5
+        "hullboost": 2.5,
+        "name": "Military Grade Composite"
       },
       {
         "id": "B6",
         "edID": 128049277,
         "eddbID": 761,
         "grp": "bh",
-        "cost": 304010,
+        "cost": 304014,
         "mass": 9,
         "causres": 0,
         "explres": -0.5,
         "kinres": -0.75,
         "thermres": 0.5,
-        "hullboost": 2.5
+        "hullboost": 2.5,
+        "name": "Mirrored Surface Composite"
       },
       {
         "id": "B7",
         "edID": 128049278,
         "eddbID": 762,
         "grp": "bh",
-        "cost": 336890,
+        "cost": 336888,
         "mass": 9,
         "causres": 0,
         "explres": 0.2,
         "kinres": 0.25,
         "thermres": -0.4,
-        "hullboost": 2.5
+        "hullboost": 2.5,
+        "name": "Reactive Surface Composite"
       }
     ],
     "slots": {
@@ -128,7 +135,14 @@
         2,
         1,
         1,
-        1
+        1,
+        {
+          "class": 1,
+          "name": "PlanetaryApproachSuite",
+          "eligible": {
+            "pas": 1
+          }
+        }
       ]
     },
     "defaults": {
@@ -156,7 +170,8 @@
         0,
         "",
         0,
-        0
+        0,
+        "4F"
       ]
     }
   }

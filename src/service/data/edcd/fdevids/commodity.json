@@ -1371,7 +1371,7 @@
     "id": "128924332",
     "symbol": "Opal",
     "category": "Minerals",
-    "name": "Void Opals"
+    "name": "Void Opal"
   },
   {
     "id": "128924333",
@@ -1522,5 +1522,17 @@
     "symbol": "ThargoidOrganSample",
     "category": "Salvage",
     "name": "Organ Sample"
+  },
+  {
+    "id": "129031238",
+    "symbol": "Steel",
+    "category": "Metals",
+    "name": "Steel"
+  },
+  {
+    "id": "129031327",
+    "symbol": "Haematite",
+    "category": "Minerals",
+    "name": "Haematite"
   }
 ]

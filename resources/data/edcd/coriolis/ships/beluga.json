@@ -6,10 +6,12 @@
       "name": "Beluga Liner",
       "manufacturer": "Saud Kruger",
       "class": 3,
-      "hullCost": 79654610,
+      "hullCost": 79694761,
       "speed": 200,
       "boost": 280,
+      "minthrust": 55.0,
       "boostEnergy": 19,
+      "boostInt": 6,
       "baseShieldStrength": 280,
       "heatCapacity": 283,
       "baseArmour": 280,
@@ -25,7 +27,7 @@
       "crew": 3,
       "reserveFuelCapacity": 0.81
     },
-    "retailCost": 84532770,
+    "retailCost": 84532764,
     "requirements": {
       "horizons": true
     },
@@ -41,59 +43,64 @@
         "explres": -0.4,
         "kinres": -0.2,
         "thermres": 0,
-        "hullboost": 0.8
+        "hullboost": 0.8,
+        "name": "Lightweight Alloy"
       },
       {
         "id": "cm",
         "edID": 128049347,
         "eddbID": 1555,
         "grp": "bh",
-        "cost": 33813120,
+        "cost": 33813105,
         "mass": 83,
         "causres": 0,
         "explres": -0.4,
         "kinres": -0.2,
         "thermres": 0,
-        "hullboost": 1.52
+        "hullboost": 1.52,
+        "name": "Reinforced Alloy"
       },
       {
         "id": "cn",
         "edID": 128049348,
         "eddbID": 1556,
         "grp": "bh",
-        "cost": 76079500,
+        "cost": 76079487,
         "mass": 165,
         "causres": 0,
         "explres": -0.4,
         "kinres": -0.2,
         "thermres": 0,
-        "hullboost": 2.5
+        "hullboost": 2.5,
+        "name": "Military Grade Composite"
       },
       {
         "id": "co",
         "edID": 128049349,
         "eddbID": 1557,
         "grp": "bh",
-        "cost": 179801200,
+        "cost": 179801189,
         "mass": 165,
         "causres": 0,
         "explres": -0.5,
         "kinres": -0.75,
         "thermres": 0.5,
-        "hullboost": 2.5
+        "hullboost": 2.5,
+        "name": "Mirrored Surface Composite"
       },
       {
         "id": "cp",
         "edID": 128049350,
         "eddbID": 1558,
         "grp": "bh",
-        "cost": 199243730,
+        "cost": 199243724,
         "mass": 165,
         "causres": 0,
         "explres": 0.2,
         "kinres": 0.25,
         "thermres": -0.4,
-        "hullboost": 2.5
+        "hullboost": 2.5,
+        "name": "Reactive Surface Composite"
       }
     ],
     "slots": {
@@ -131,7 +138,14 @@
         3,
         3,
         3,
-        1
+        1,
+        {
+          "class": 1,
+          "name": "PlanetaryApproachSuite",
+          "eligible": {
+            "pas": 1
+          }
+        }
       ]
     },
     "defaults": {
@@ -169,7 +183,8 @@
         0,
         0,
         "",
-        0
+        0,
+        "4F"
       ]
     }
   }

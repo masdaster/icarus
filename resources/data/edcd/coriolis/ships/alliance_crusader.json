@@ -6,10 +6,12 @@
       "name": "Alliance Crusader",
       "manufacturer": "Lakon",
       "class": 2,
-      "hullCost": 22866341,
+      "hullCost": 22096565,
       "speed": 180,
       "boost": 300,
+      "minthrust": 61.11,
       "boostEnergy": 19,
+      "boostInt": 6,
       "baseShieldStrength": 200,
       "baseArmour": 300,
       "heatCapacity": 316,
@@ -24,7 +26,7 @@
       "crew": 3,
       "reserveFuelCapacity": 0.77
     },
-    "retailCost": 19382252,
+    "retailCost": 22866341,
     "requirements": {
       "horizons": true
     },
@@ -40,7 +42,8 @@
         "explres": -0.4,
         "kinres": -0.2,
         "thermres": 0,
-        "hullboost": 0.8
+        "hullboost": 0.8,
+        "name": "Lightweight Alloy"
       },
       {
         "id": "3V",
@@ -53,7 +56,8 @@
         "explres": -0.4,
         "kinres": -0.2,
         "thermres": 0,
-        "hullboost": 1.52
+        "hullboost": 1.52,
+        "name": "Reinforced Alloy"
       },
       {
         "id": "3W",
@@ -66,7 +70,8 @@
         "explres": -0.4,
         "kinres": -0.2,
         "thermres": 0,
-        "hullboost": 2.5
+        "hullboost": 2.5,
+        "name": "Military Grade Composite"
       },
       {
         "id": "3X",
@@ -79,7 +84,8 @@
         "explres": -0.5,
         "kinres": -0.75,
         "thermres": 0.5,
-        "hullboost": 2.5
+        "hullboost": 2.5,
+        "name": "Mirrored Surface Composite"
       },
       {
         "id": "3Z",
@@ -92,7 +98,8 @@
         "explres": 0.2,
         "kinres": 0.25,
         "thermres": -0.4,
-        "hullboost": 2.5
+        "hullboost": 2.5,
+        "name": "Reactive Surface Composite"
       }
     ],
     "slots": {
@@ -163,7 +170,14 @@
             "ghrp": 1
           }
         },
-        1
+        1,
+        {
+          "class": 1,
+          "name": "PlanetaryApproachSuite",
+          "eligible": {
+            "pas": 1
+          }
+        }
       ]
     },
     "defaults": {
@@ -196,7 +210,9 @@
         "",
         "",
         "",
-        0
+        0,
+        "",
+        "4F"
       ]
     }
   }

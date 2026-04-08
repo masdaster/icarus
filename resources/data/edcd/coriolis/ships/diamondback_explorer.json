@@ -6,10 +6,12 @@
       "name": "Diamondback Explorer",
       "manufacturer": "Lakon",
       "class": 1,
-      "hullCost": 1635700,
+      "hullCost": 1638277,
       "speed": 260,
       "boost": 340,
+      "minthrust": 61.538,
       "boostEnergy": 13,
+      "boostInt": 4,
       "baseShieldStrength": 150,
       "baseArmour": 150,
       "hardness": 42,
@@ -36,59 +38,64 @@
         "explres": -0.4,
         "kinres": -0.2,
         "thermres": 0,
-        "hullboost": 0.8
+        "hullboost": 0.8,
+        "name": "Lightweight Alloy"
       },
       {
         "id": "bb",
         "edID": 128671833,
         "eddbID": 1457,
         "grp": "bh",
-        "cost": 800000,
+        "cost": 757904,
         "mass": 23,
         "causres": 0,
         "explres": -0.4,
         "kinres": -0.2,
         "thermres": 0,
-        "hullboost": 1.52
+        "hullboost": 1.52,
+        "name": "Reinforced Alloy"
       },
       {
         "id": "bc",
         "edID": 128671834,
         "eddbID": 1458,
         "grp": "bh",
-        "cost": 1800000,
+        "cost": 1705284,
         "mass": 47,
         "causres": 0,
         "explres": -0.4,
         "kinres": -0.2,
         "thermres": 0,
-        "hullboost": 2.5
+        "hullboost": 2.5,
+        "name": "Military Grade Composite"
       },
       {
         "id": "bd",
         "edID": 128671835,
         "eddbID": 1459,
         "grp": "bh",
-        "cost": 4200000,
+        "cost": 3978996,
         "mass": 26,
         "causres": 0,
         "explres": -0.5,
         "kinres": -0.75,
         "thermres": 0.5,
-        "hullboost": 2.5
+        "hullboost": 2.5,
+        "name": "Mirrored Surface Composite"
       },
       {
         "id": "be",
         "edID": 128671836,
         "eddbID": 1460,
         "grp": "bh",
-        "cost": 4714000,
+        "cost": 4465949,
         "mass": 47,
         "causres": 0,
         "explres": 0.2,
         "kinres": 0.25,
         "thermres": -0.4,
-        "hullboost": 2.5
+        "hullboost": 2.5,
+        "name": "Reactive Surface Composite"
       }
     ],
     "slots": {
@@ -118,7 +125,14 @@
         2,
         2,
         1,
-        1
+        1,
+        {
+          "class": 1,
+          "name": "PlanetaryApproachSuite",
+          "eligible": {
+            "pas": 1
+          }
+        }
       ]
     },
     "defaults": {
@@ -148,7 +162,8 @@
         "",
         0,
         0,
-        0
+        0,
+        "4F"
       ]
     }
   }

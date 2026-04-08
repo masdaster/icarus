@@ -6,11 +6,13 @@
       "name": "Type-7 Transporter",
       "manufacturer": "Lakon",
       "class": 3,
-      "hullCost": 16780510,
+      "hullCost": 16783094,
       "speed": 180,
       "heatCapacity": 226,
       "boost": 300,
+      "minthrust": 33.333,
       "boostEnergy": 10,
+      "boostInt": 6,
       "baseShieldStrength": 155,
       "baseArmour": 340,
       "hardness": 54,
@@ -23,10 +25,10 @@
       "crew": 1,
       "reserveFuelCapacity": 0.52
     },
-    "retailCost": 17472260,
+    "retailCost": 17472252,
     "bulkheads": [
       {
-        "id": "Bs",
+        "id": "7C",
         "edID": 128049298,
         "eddbID": 773,
         "grp": "bh",
@@ -36,10 +38,11 @@
         "explres": -0.4,
         "kinres": -0.2,
         "thermres": 0,
-        "hullboost": 0.8
+        "hullboost": 0.8,
+        "name": "Lightweight Alloy"
       },
       {
-        "id": "Bt",
+        "id": "7D",
         "edID": 128049299,
         "eddbID": 774,
         "grp": "bh",
@@ -49,23 +52,25 @@
         "explres": -0.4,
         "kinres": -0.2,
         "thermres": 0,
-        "hullboost": 1.52
+        "hullboost": 1.52,
+        "name": "Reinforced Alloy"
       },
       {
-        "id": "Bu",
+        "id": "7E",
         "edID": 128049300,
         "eddbID": 775,
         "grp": "bh",
-        "cost": 15725030,
+        "cost": 15725026,
         "mass": 63,
         "causres": 0,
         "explres": -0.4,
         "kinres": -0.2,
         "thermres": 0,
-        "hullboost": 2.5
+        "hullboost": 2.5,
+        "name": "Military Grade Composite"
       },
       {
-        "id": "Bv",
+        "id": "7F",
         "edID": 128049301,
         "eddbID": 776,
         "grp": "bh",
@@ -75,20 +80,22 @@
         "explres": -0.5,
         "kinres": -0.75,
         "thermres": 0.5,
-        "hullboost": 2.5
+        "hullboost": 2.5,
+        "name": "Mirrored Surface Composite"
       },
       {
-        "id": "Bw",
+        "id": "7G",
         "edID": 128049302,
         "eddbID": 777,
         "grp": "bh",
-        "cost": 41182100,
+        "cost": 41182097,
         "mass": 63,
         "causres": 0,
         "explres": 0.2,
         "kinres": 0.25,
         "thermres": -0.4,
-        "hullboost": 2.5
+        "hullboost": 2.5,
+        "name": "Reactive Surface Composite"
       }
     ],
     "slots": {
@@ -121,7 +128,14 @@
         3,
         3,
         2,
-        1
+        1,
+        {
+          "class": 1,
+          "name": "PlanetaryApproachSuite",
+          "eligible": {
+            "pas": 1
+          }
+        }
       ]
     },
     "defaults": {
@@ -154,7 +168,8 @@
         0,
         0,
         "",
-        0
+        0,
+        "4F"
       ]
     }
   }

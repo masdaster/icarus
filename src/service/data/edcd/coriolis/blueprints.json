@@ -162,6 +162,15 @@
           "3",
           "4"
         ]
+      },
+      "Petra Olmanova": {
+        "grades": [
+          "1",
+          "2",
+          "3",
+          "4",
+          "5"
+        ]
       }
     }
   },
@@ -1630,7 +1639,10 @@
       "Etienne Dorn": {
         "grades": [
           "1",
-          "2"
+          "2",
+          "3",
+          "4",
+          "5"
         ]
       }
     }
@@ -1826,7 +1838,10 @@
       "Etienne Dorn": {
         "grades": [
           "1",
-          "2"
+          "2",
+          "3",
+          "4",
+          "5"
         ]
       }
     }
@@ -2022,7 +2037,10 @@
       "Etienne Dorn": {
         "grades": [
           "1",
-          "2"
+          "2",
+          "3",
+          "4",
+          "5"
         ]
       }
     }
@@ -2235,6 +2253,15 @@
     "name": "Lightweight",
     "symbol": "CollectionLimpet_LightWeight",
     "engineers": {
+      "Marsha Hicks": {
+        "grades": [
+          "1",
+          "2",
+          "3",
+          "4",
+          "5"
+        ]
+      },
       "Ram Tah": {
         "grades": [
           "1",
@@ -2411,6 +2438,15 @@
     "name": "Reinforced",
     "symbol": "CollectionLimpet_Reinforced",
     "engineers": {
+      "Marsha Hicks": {
+        "grades": [
+          "1",
+          "2",
+          "3",
+          "4",
+          "5"
+        ]
+      },
       "Ram Tah": {
         "grades": [
           "1",
@@ -2587,6 +2623,15 @@
     "name": "Shielded",
     "symbol": "CollectionLimpet_Shielded",
     "engineers": {
+      "Marsha Hicks": {
+        "grades": [
+          "1",
+          "2",
+          "3",
+          "4",
+          "5"
+        ]
+      },
       "Ram Tah": {
         "grades": [
           "1",
@@ -2905,7 +2950,7 @@
           "2"
         ]
       },
-      "Felicity Farseer": {
+      "Felicty Farseer": {
         "grades": [
           "1",
           "2",
@@ -2913,6 +2958,24 @@
         ]
       },
       "Professor Palin": {
+        "grades": [
+          "1",
+          "2",
+          "3",
+          "4",
+          "5"
+        ]
+      },
+      "Mel Brandon": {
+        "grades": [
+          "1",
+          "2",
+          "3",
+          "4",
+          "5"
+        ]
+      },
+      "Chloe Sedesi": {
         "grades": [
           "1",
           "2",
@@ -3123,7 +3186,7 @@
           "2"
         ]
       },
-      "Felicity Farseer": {
+      "Felicty Farseer": {
         "grades": [
           "1",
           "2",
@@ -3131,6 +3194,24 @@
         ]
       },
       "Professor Palin": {
+        "grades": [
+          "1",
+          "2",
+          "3",
+          "4",
+          "5"
+        ]
+      },
+      "Mel Brandon": {
+        "grades": [
+          "1",
+          "2",
+          "3",
+          "4",
+          "5"
+        ]
+      },
+      "Chloe Sedesi": {
         "grades": [
           "1",
           "2",
@@ -3413,7 +3494,7 @@
           "2"
         ]
       },
-      "Felicity Farseer": {
+      "Felicty Farseer": {
         "grades": [
           "1",
           "2",
@@ -3421,6 +3502,24 @@
         ]
       },
       "Professor Palin": {
+        "grades": [
+          "1",
+          "2",
+          "3",
+          "4",
+          "5"
+        ]
+      },
+      "Mel Brandon": {
+        "grades": [
+          "1",
+          "2",
+          "3",
+          "4",
+          "5"
+        ]
+      },
+      "Chloe Sedesi": {
         "grades": [
           "1",
           "2",
@@ -3701,6 +3800,22 @@
           "2",
           "3"
         ]
+      },
+      "Chloe Sedesi": {
+        "grades": [
+          "1",
+          "2",
+          "3"
+        ]
+      },
+      "Mel Brandon": {
+        "grades": [
+          "1",
+          "2",
+          "3",
+          "4",
+          "5"
+        ]
       }
     }
   },
@@ -3974,6 +4089,22 @@
           "2",
           "3"
         ]
+      },
+      "Chloe Sedesi": {
+        "grades": [
+          "1",
+          "2",
+          "3"
+        ]
+      },
+      "Mel Brandon": {
+        "grades": [
+          "1",
+          "2",
+          "3",
+          "4",
+          "5"
+        ]
       }
     }
   },
@@ -4246,6 +4377,22 @@
           "1",
           "2",
           "3"
+        ]
+      },
+      "Chloe Sedesi": {
+        "grades": [
+          "1",
+          "2",
+          "3"
+        ]
+      },
+      "Mel Brandon": {
+        "grades": [
+          "1",
+          "2",
+          "3",
+          "4",
+          "5"
         ]
       }
     }
@@ -4907,6 +5054,15 @@
           "3",
           "4"
         ]
+      },
+      "Marsha Hicks": {
+        "grades": [
+          "1",
+          "2",
+          "3",
+          "4",
+          "5"
+        ]
       }
     }
   },
@@ -5058,6 +5214,15 @@
     "name": "Lightweight",
     "symbol": "FuelTransferLimpet_LightWeight",
     "engineers": {
+      "Marsha Hicks": {
+        "grades": [
+          "1",
+          "2",
+          "3",
+          "4",
+          "5"
+        ]
+      },
       "Ram Tah": {
         "grades": [
           "1",
@@ -5234,6 +5399,15 @@
     "name": "Reinforced",
     "symbol": "FuelTransferLimpet_Reinforced",
     "engineers": {
+      "Marsha Hicks": {
+        "grades": [
+          "1",
+          "2",
+          "3",
+          "4",
+          "5"
+        ]
+      },
       "Ram Tah": {
         "grades": [
           "1",
@@ -5410,6 +5584,15 @@
     "name": "Shielded",
     "symbol": "FuelTransferLimpet_Shielded",
     "engineers": {
+      "Marsha Hicks": {
+        "grades": [
+          "1",
+          "2",
+          "3",
+          "4",
+          "5"
+        ]
+      },
       "Ram Tah": {
         "grades": [
           "1",
@@ -5586,6 +5769,15 @@
     "name": "Lightweight",
     "symbol": "HatchBreakerLimpet_LightWeight",
     "engineers": {
+      "Marsha Hicks": {
+        "grades": [
+          "1",
+          "2",
+          "3",
+          "4",
+          "5"
+        ]
+      },
       "Ram Tah": {
         "grades": [
           "1",
@@ -5762,6 +5954,15 @@
     "name": "Reinforced",
     "symbol": "HatchBreakerLimpet_Reinforced",
     "engineers": {
+      "Marsha Hicks": {
+        "grades": [
+          "1",
+          "2",
+          "3",
+          "4",
+          "5"
+        ]
+      },
       "Ram Tah": {
         "grades": [
           "1",
@@ -5938,6 +6139,15 @@
     "name": "Shielded",
     "symbol": "HatchBreakerLimpet_Shielded",
     "engineers": {
+      "Marsha Hicks": {
+        "grades": [
+          "1",
+          "2",
+          "3",
+          "4",
+          "5"
+        ]
+      },
       "Ram Tah": {
         "grades": [
           "1",
@@ -5978,8 +6188,8 @@
         "features": {
           "Ammo Maximum": {
             "value": [
-              0.5,
-              0.5
+              0.49,
+              0.49
             ],
             "type": "percentage",
             "method": "multiplicative",
@@ -7516,6 +7726,11 @@
       },
       "Etienne Dorn": {
         "grades": [
+          "1",
+          "2",
+          "3",
+          "4",
+          "5",
           "5"
         ]
       }
@@ -7686,6 +7901,11 @@
       },
       "Etienne Dorn": {
         "grades": [
+          "1",
+          "2",
+          "3",
+          "4",
+          "5",
           "5"
         ]
       }
@@ -7856,6 +8076,11 @@
       },
       "Etienne Dorn": {
         "grades": [
+          "1",
+          "2",
+          "3",
+          "4",
+          "5",
           "5"
         ]
       }
@@ -8317,6 +8542,15 @@
           "4",
           "5"
         ]
+      },
+      "Etienne Dorn": {
+        "grades": [
+          "1",
+          "2",
+          "3",
+          "4",
+          "5"
+        ]
       }
     }
   },
@@ -8664,6 +8898,15 @@
         ]
       },
       "The Dweller": {
+        "grades": [
+          "1",
+          "2",
+          "3",
+          "4",
+          "5"
+        ]
+      },
+      "Etienne Dorn": {
         "grades": [
           "1",
           "2",
@@ -9025,6 +9268,15 @@
           "4",
           "5"
         ]
+      },
+      "Etienne Dorn": {
+        "grades": [
+          "1",
+          "2",
+          "3",
+          "4",
+          "5"
+        ]
       }
     }
   },
@@ -9372,6 +9624,15 @@
         ]
       },
       "The Dweller": {
+        "grades": [
+          "1",
+          "2",
+          "3",
+          "4",
+          "5"
+        ]
+      },
+      "Etienne Dorn": {
         "grades": [
           "1",
           "2",
@@ -9733,6 +9994,15 @@
           "4",
           "5"
         ]
+      },
+      "Etienne Dorn": {
+        "grades": [
+          "1",
+          "2",
+          "3",
+          "4",
+          "5"
+        ]
       }
     }
   },
@@ -9945,6 +10215,15 @@
         ]
       },
       "The Dweller": {
+        "grades": [
+          "1",
+          "2",
+          "3",
+          "4",
+          "5"
+        ]
+      },
+      "Etienne Dorn": {
         "grades": [
           "1",
           "2",
@@ -10214,6 +10493,15 @@
           "3",
           "4"
         ]
+      },
+      "Etienne Dorn": {
+        "grades": [
+          "1",
+          "2",
+          "3",
+          "4",
+          "5"
+        ]
       }
     }
   },
@@ -10430,6 +10718,15 @@
           "2",
           "3",
           "4"
+        ]
+      },
+      "Etienne Dorn": {
+        "grades": [
+          "1",
+          "2",
+          "3",
+          "4",
+          "5"
         ]
       }
     }
@@ -10648,6 +10945,15 @@
           "3",
           "4"
         ]
+      },
+      "Etienne Dorn": {
+        "grades": [
+          "1",
+          "2",
+          "3",
+          "4",
+          "5"
+        ]
       }
     }
   },
@@ -10799,6 +11105,15 @@
     "name": "Lightweight",
     "symbol": "ProspectingLimpet_LightWeight",
     "engineers": {
+      "Marsha Hicks": {
+        "grades": [
+          "1",
+          "2",
+          "3",
+          "4",
+          "5"
+        ]
+      },
       "Ram Tah": {
         "grades": [
           "1",
@@ -10975,6 +11290,15 @@
     "name": "Reinforced",
     "symbol": "ProspectingLimpet_Reinforced",
     "engineers": {
+      "Marsha Hicks": {
+        "grades": [
+          "1",
+          "2",
+          "3",
+          "4",
+          "5"
+        ]
+      },
       "Ram Tah": {
         "grades": [
           "1",
@@ -11151,6 +11475,15 @@
     "name": "Shielded",
     "symbol": "ProspectingLimpet_Shielded",
     "engineers": {
+      "Marsha Hicks": {
+        "grades": [
+          "1",
+          "2",
+          "3",
+          "4",
+          "5"
+        ]
+      },
       "Ram Tah": {
         "grades": [
           "1",
@@ -11340,6 +11673,15 @@
           "2",
           "3",
           "4"
+        ]
+      },
+      "Marsha Hicks": {
+        "grades": [
+          "1",
+          "2",
+          "3",
+          "4",
+          "5"
         ]
       }
     }
@@ -11575,7 +11917,10 @@
       "Etienne Dorn": {
         "grades": [
           "1",
-          "2"
+          "2",
+          "3",
+          "4",
+          "5"
         ]
       }
     }
@@ -11811,7 +12156,10 @@
       "Etienne Dorn": {
         "grades": [
           "1",
-          "2"
+          "2",
+          "3",
+          "4",
+          "5"
         ]
       }
     }
@@ -12047,7 +12395,10 @@
       "Etienne Dorn": {
         "grades": [
           "1",
-          "2"
+          "2",
+          "3",
+          "4",
+          "5"
         ]
       }
     }
@@ -12308,7 +12659,9 @@
         "grades": [
           "1",
           "2",
-          "3"
+          "3",
+          "4",
+          "5"
         ]
       }
     }
@@ -12569,7 +12922,9 @@
         "grades": [
           "1",
           "2",
-          "3"
+          "3",
+          "4",
+          "5"
         ]
       }
     }
@@ -12830,7 +13185,9 @@
         "grades": [
           "1",
           "2",
-          "3"
+          "3",
+          "4",
+          "5"
         ]
       }
     }
@@ -13032,6 +13389,24 @@
           "1",
           "2",
           "3"
+        ]
+      },
+      "Etienne Dorn": {
+        "grades": [
+          "1",
+          "2",
+          "3",
+          "4",
+          "5"
+        ]
+      },
+      "Hera Tani": {
+        "grades": [
+          "1",
+          "2",
+          "3",
+          "4",
+          "5"
         ]
       }
     }
@@ -13248,6 +13623,15 @@
           "1",
           "2",
           "3"
+        ]
+      },
+      "Mel Brandon": {
+        "grades": [
+          "1",
+          "2",
+          "3",
+          "4",
+          "5"
         ]
       }
     }
@@ -13510,6 +13894,15 @@
           "2",
           "3"
         ]
+      },
+      "Mel Brandon": {
+        "grades": [
+          "1",
+          "2",
+          "3",
+          "4",
+          "5"
+        ]
       }
     }
   },
@@ -13725,6 +14118,15 @@
           "1",
           "2",
           "3"
+        ]
+      },
+      "Mel Brandon": {
+        "grades": [
+          "1",
+          "2",
+          "3",
+          "4",
+          "5"
         ]
       }
     }
@@ -14032,6 +14434,15 @@
           "2",
           "3"
         ]
+      },
+      "Mel Brandon": {
+        "grades": [
+          "1",
+          "2",
+          "3",
+          "4",
+          "5"
+        ]
       }
     }
   },
@@ -14248,6 +14659,15 @@
           "2",
           "3"
         ]
+      },
+      "Mel Brandon": {
+        "grades": [
+          "1",
+          "2",
+          "3",
+          "4",
+          "5"
+        ]
       }
     }
   },
@@ -14458,6 +14878,9 @@
       },
       "Mel Brandon": {
         "grades": [
+          "1",
+          "2",
+          "3",
           "4"
         ]
       }
@@ -14706,6 +15129,9 @@
       },
       "Mel Brandon": {
         "grades": [
+          "1",
+          "2",
+          "3",
           "4"
         ]
       }
@@ -14920,6 +15346,15 @@
         ]
       },
       "Lei Cheung": {
+        "grades": [
+          "1",
+          "2",
+          "3",
+          "4",
+          "5"
+        ]
+      },
+      "Mel Brandon": {
         "grades": [
           "1",
           "2",
@@ -15229,6 +15664,15 @@
         ]
       },
       "Lei Cheung": {
+        "grades": [
+          "1",
+          "2",
+          "3",
+          "4",
+          "5"
+        ]
+      },
+      "Mel Brandon": {
         "grades": [
           "1",
           "2",
@@ -15590,6 +16034,15 @@
           "4",
           "5"
         ]
+      },
+      "Mel Brandon": {
+        "grades": [
+          "1",
+          "2",
+          "3",
+          "4",
+          "5"
+        ]
       }
     }
   },
@@ -15802,6 +16255,15 @@
         ]
       },
       "Lei Cheung": {
+        "grades": [
+          "1",
+          "2",
+          "3",
+          "4",
+          "5"
+        ]
+      },
+      "Mel Brandon": {
         "grades": [
           "1",
           "2",
@@ -16050,7 +16512,16 @@
     "name": "Double shot",
     "symbol": "Weapon_DoubleShot",
     "engineers": {
-      "Tod 'The Blaster' McQuinn": {
+      "Marsha Hicks": {
+        "grades": [
+          "1",
+          "2",
+          "3",
+          "4",
+          "5"
+        ]
+      },
+      "Tod \"The Blaster\" McQuinn": {
         "grades": [
           "1",
           "2",
@@ -16302,6 +16773,15 @@
           "1",
           "2",
           "3"
+        ]
+      },
+      "Mel Brandon": {
+        "grades": [
+          "1",
+          "2",
+          "3",
+          "4",
+          "5"
         ]
       }
     }
@@ -16604,6 +17084,15 @@
           "2",
           "3"
         ]
+      },
+      "Mel Brandon": {
+        "grades": [
+          "1",
+          "2",
+          "3",
+          "4",
+          "5"
+        ]
       }
     }
   },
@@ -16897,7 +17386,16 @@
           "3"
         ]
       },
-      "Tod 'The Blaster' McQuinn": {
+      "Tod \"The Blaster\" McQuinn": {
+        "grades": [
+          "1",
+          "2",
+          "3",
+          "4",
+          "5"
+        ]
+      },
+      "Etienne Dorn": {
         "grades": [
           "1",
           "2",
@@ -17143,6 +17641,15 @@
           "2",
           "3"
         ]
+      },
+      "Mel Brandon": {
+        "grades": [
+          "1",
+          "2",
+          "3",
+          "4",
+          "5"
+        ]
       }
     }
   },
@@ -17161,7 +17668,7 @@
             ],
             "type": "numeric",
             "method": "overwrite",
-            "improvement": true
+            "improvement": false
           },
           "Mass": {
             "value": [
@@ -17215,7 +17722,7 @@
             ],
             "type": "numeric",
             "method": "overwrite",
-            "improvement": true
+            "improvement": false
           },
           "Mass": {
             "value": [
@@ -17270,7 +17777,7 @@
             ],
             "type": "numeric",
             "method": "overwrite",
-            "improvement": true
+            "improvement": false
           },
           "Mass": {
             "value": [
@@ -17325,7 +17832,7 @@
             ],
             "type": "numeric",
             "method": "overwrite",
-            "improvement": true
+            "improvement": false
           },
           "Mass": {
             "value": [
@@ -17380,7 +17887,7 @@
             ],
             "type": "numeric",
             "method": "overwrite",
-            "improvement": true
+            "improvement": false
           },
           "Mass": {
             "value": [
@@ -17444,11 +17951,20 @@
           "2",
           "3"
         ]
+      },
+      "Mel Brandon": {
+        "grades": [
+          "1",
+          "2",
+          "3",
+          "4",
+          "5"
+        ]
       }
     }
   },
   {
-    "fdname": "MC_Overcharged",
+    "fdname": "Weapon_Overcharged",
     "grades": {
       "1": {
         "components": {
@@ -17492,7 +18008,7 @@
             "improvement": false
           }
         },
-        "uuid": "e917ebe3-d5f1-4016-b8a9-2c759e16a7d4"
+        "uuid": "2eed699d-0840-4669-bc49-5f298441bde5"
       },
       "2": {
         "components": {
@@ -17537,7 +18053,7 @@
             "improvement": false
           }
         },
-        "uuid": "f5921fc1-fb10-4d2f-8e0a-cd8d8e9e3a84"
+        "uuid": "cf26b291-7f22-473c-81d7-928644f08f42"
       },
       "3": {
         "components": {
@@ -17583,7 +18099,7 @@
             "improvement": false
           }
         },
-        "uuid": "4389883f-c2b3-4487-9b1a-b668a761057a"
+        "uuid": "41e39424-9e5a-4320-868e-df0fecbe838b"
       },
       "4": {
         "components": {
@@ -17629,7 +18145,7 @@
             "improvement": false
           }
         },
-        "uuid": "25ec26dd-63b8-4e83-9a6e-86e5b80c4771"
+        "uuid": "f8ce2bac-1556-4073-991c-b45e8f9053ef"
       },
       "5": {
         "components": {
@@ -17675,7 +18191,7 @@
             "improvement": false
           }
         },
-        "uuid": "4dcf6bdc-bcff-448a-92a0-7612de548db7"
+        "uuid": "54b792c8-e968-4608-ba5a-6340231a4bd1"
       }
     },
     "id": 88,
@@ -17685,7 +18201,7 @@
     "name": "Overcharged",
     "symbol": "MC_Overcharged",
     "engineers": {
-      "Tod 'The Blaster' McQuinn": {
+      "Tod \"The Blaster\" McQuinn": {
         "grades": [
           "1",
           "2",
@@ -17699,6 +18215,15 @@
           "1",
           "2",
           "3"
+        ]
+      },
+      "Marsha Hicks": {
+        "grades": [
+          "1",
+          "2",
+          "3",
+          "4",
+          "5"
         ]
       }
     }
@@ -17910,6 +18435,15 @@
           "1",
           "2",
           "3"
+        ]
+      },
+      "Mel Brandon": {
+        "grades": [
+          "1",
+          "2",
+          "3",
+          "4",
+          "5"
         ]
       }
     }
@@ -18203,6 +18737,15 @@
           "2",
           "3"
         ]
+      },
+      "Mel Brandon": {
+        "grades": [
+          "1",
+          "2",
+          "3",
+          "4",
+          "5"
+        ]
       }
     }
   },
@@ -18404,6 +18947,15 @@
           "1",
           "2",
           "3"
+        ]
+      },
+      "Mel Brandon": {
+        "grades": [
+          "1",
+          "2",
+          "3",
+          "4",
+          "5"
         ]
       }
     }
@@ -18660,6 +19212,15 @@
           "1",
           "2",
           "3"
+        ]
+      },
+      "Mel Brandon": {
+        "grades": [
+          "1",
+          "2",
+          "3",
+          "4",
+          "5"
         ]
       }
     }

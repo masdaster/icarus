@@ -6,10 +6,12 @@
       "name": "Type-10 Defender",
       "manufacturer": "Lakon",
       "class": 3,
-      "hullCost": 121454652,
+      "hullCost": 121334619,
       "speed": 179,
       "boost": 219,
+      "minthrust": 83.333,
       "boostEnergy": 19,
+      "boostInt": 6,
       "baseShieldStrength": 320,
       "baseArmour": 580,
       "hardness": 75,
@@ -37,20 +39,22 @@
         "explres": -0.4,
         "kinres": -0.2,
         "thermres": 0,
-        "hullboost": 0.8
+        "hullboost": 0.8,
+        "name": "Lightweight Alloy"
       },
       {
         "id": "1R",
         "edID": 128785622,
         "eddbID": 1628,
         "grp": "bh",
-        "cost": 49902137,
+        "cost": 49902136,
         "mass": 75,
         "causres": 0,
         "explres": -0.4,
         "kinres": -0.2,
         "thermres": 0,
-        "hullboost": 1.52
+        "hullboost": 1.52,
+        "name": "Reinforced Alloy"
       },
       {
         "id": "1S",
@@ -63,7 +67,8 @@
         "explres": -0.4,
         "kinres": -0.2,
         "thermres": 0,
-        "hullboost": 2.5
+        "hullboost": 2.5,
+        "name": "Military Grade Composite"
       },
       {
         "id": "1T",
@@ -76,20 +81,22 @@
         "explres": -0.5,
         "kinres": -0.75,
         "thermres": 0.5,
-        "hullboost": 2.5
+        "hullboost": 2.5,
+        "name": "Mirrored Surface Composite"
       },
       {
         "id": "1U",
         "edID": 128785625,
         "eddbID": 1631,
         "grp": "bh",
-        "cost": 294048342,
+        "cost": 294048341,
         "mass": 150,
         "causres": 0,
         "explres": 0.2,
         "kinres": 0.25,
         "thermres": -0.4,
-        "hullboost": 2.5
+        "hullboost": 2.5,
+        "name": "Reactive Surface Composite"
       }
     ],
     "slots": {
@@ -156,7 +163,14 @@
             "ghrp": 1
           }
         },
-        1
+        1,
+        {
+          "class": 1,
+          "name": "PlanetaryApproachSuite",
+          "eligible": {
+            "pas": 1
+          }
+        }
       ]
     },
     "defaults": {
@@ -200,7 +214,8 @@
         "",
         0,
         0,
-        0
+        0,
+        "4F"
       ]
     }
   }

@@ -6,10 +6,12 @@
       "name": "Federal Dropship",
       "manufacturer": "Core Dynamics",
       "class": 2,
-      "hullCost": 13469990,
+      "hullCost": 13510106,
       "speed": 180,
       "boost": 300,
+      "minthrust": 55.556,
       "boostEnergy": 19,
+      "boostInt": 6,
       "baseShieldStrength": 200,
       "baseArmour": 300,
       "hardness": 60,
@@ -39,59 +41,64 @@
         "explres": -0.4,
         "kinres": -0.2,
         "thermres": 0,
-        "hullboost": 0.8
+        "hullboost": 0.8,
+        "name": "Lightweight Alloy"
       },
       {
         "id": "bF",
         "edID": 128049323,
         "eddbID": 794,
         "grp": "bh",
-        "cost": 5725680,
+        "cost": 5725682,
         "mass": 44,
         "causres": 0,
         "explres": -0.4,
         "kinres": -0.2,
         "thermres": 0,
-        "hullboost": 1.52
+        "hullboost": 1.52,
+        "name": "Reinforced Alloy"
       },
       {
         "id": "bG",
         "edID": 128049324,
         "eddbID": 795,
         "grp": "bh",
-        "cost": 12882780,
+        "cost": 12882784,
         "mass": 87,
         "causres": 0,
         "explres": -0.4,
         "kinres": -0.2,
         "thermres": 0,
-        "hullboost": 2.5
+        "hullboost": 2.5,
+        "name": "Military Grade Composite"
       },
       {
         "id": "bH",
         "edID": 128049325,
         "eddbID": 796,
         "grp": "bh",
-        "cost": 30446310,
+        "cost": 30446314,
         "mass": 87,
         "causres": 0,
         "explres": -0.5,
         "kinres": -0.75,
         "thermres": 0.5,
-        "hullboost": 2.5
+        "hullboost": 2.5,
+        "name": "Mirrored Surface Composite"
       },
       {
         "id": "bI",
         "edID": 128049326,
         "eddbID": 797,
         "grp": "bh",
-        "cost": 33738580,
+        "cost": 33738581,
         "mass": 87,
         "causres": 0,
         "explres": 0.2,
         "kinres": 0.25,
         "thermres": -0.4,
-        "hullboost": 2.5
+        "hullboost": 2.5,
+        "name": "Reactive Surface Composite"
       }
     ],
     "slots": {
@@ -149,7 +156,14 @@
         3,
         3,
         2,
-        1
+        1,
+        {
+          "class": 1,
+          "name": "PlanetaryApproachSuite",
+          "eligible": {
+            "pas": 1
+          }
+        }
       ]
     },
     "defaults": {
@@ -183,7 +197,8 @@
         0,
         0,
         "",
-        0
+        0,
+        "4F"
       ]
     }
   }

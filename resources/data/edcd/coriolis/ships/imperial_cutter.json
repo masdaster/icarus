@@ -6,10 +6,12 @@
       "name": "Imperial Cutter",
       "manufacturer": "Gutamaya",
       "class": 3,
-      "hullCost": 199926890,
+      "hullCost": 200493413,
       "speed": 200,
       "boost": 320,
+      "minthrust": 80.0,
       "boostEnergy": 23,
+      "boostInt": 6,
       "baseShieldStrength": 600,
       "baseArmour": 400,
       "hardness": 70,
@@ -24,7 +26,7 @@
       "crew": 3,
       "reserveFuelCapacity": 1.16
     },
-    "retailCost": 208969450,
+    "retailCost": 208969451,
     "requirements": {
       "empireRank": 12
     },
@@ -40,59 +42,64 @@
         "explres": -0.4,
         "kinres": -0.2,
         "thermres": 0,
-        "hullboost": 0.8
+        "hullboost": 0.8,
+        "name": "Lightweight Alloy"
       },
       {
         "id": "BS",
         "edID": 128049377,
         "eddbID": 1494,
         "grp": "bh",
-        "cost": 83587790,
+        "cost": 83587780,
         "mass": 30,
         "causres": 0,
         "explres": -0.4,
         "kinres": -0.2,
         "thermres": 0,
-        "hullboost": 1.52
+        "hullboost": 1.52,
+        "name": "Reinforced Alloy"
       },
       {
         "id": "BT",
         "edID": 128049378,
         "eddbID": 1495,
         "grp": "bh",
-        "cost": 188072510,
+        "cost": 188072505,
         "mass": 60,
         "causres": 0,
         "explres": -0.4,
         "kinres": -0.2,
         "thermres": 0,
-        "hullboost": 2.5
+        "hullboost": 2.5,
+        "name": "Military Grade Composite"
       },
       {
         "id": "BU",
         "edID": 128049379,
         "eddbID": 1496,
         "grp": "bh",
-        "cost": 444478020,
+        "cost": 444478021,
         "mass": 60,
         "causres": 0,
         "explres": -0.5,
         "kinres": -0.75,
         "thermres": 0.5,
-        "hullboost": 2.5
+        "hullboost": 2.5,
+        "name": "Mirrored Surface Composite"
       },
       {
         "id": "BV",
         "edID": 128049380,
         "eddbID": 1497,
         "grp": "bh",
-        "cost": 492541000,
+        "cost": 492540995,
         "mass": 60,
         "causres": 0,
         "explres": 0.2,
         "kinres": 0.25,
         "thermres": -0.4,
-        "hullboost": 2.5
+        "hullboost": 2.5,
+        "name": "Reactive Surface Composite"
       }
     ],
     "slots": {
@@ -158,7 +165,14 @@
         },
         4,
         3,
-        1
+        1,
+        {
+          "class": 1,
+          "name": "PlanetaryApproachSuite",
+          "eligible": {
+            "pas": 1
+          }
+        }
       ]
     },
     "defaults": {
@@ -200,7 +214,8 @@
         0,
         "01",
         "",
-        0
+        0,
+        "4F"
       ]
     }
   }

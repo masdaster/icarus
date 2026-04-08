@@ -226,5 +226,53 @@
     "symbol": "Mamba",
     "name": "Mamba",
     "entitlement": "ELITE_HORIZONS_V_PLANETARY_LANDINGS"
+  },
+  {
+    "id": "129030464",
+    "symbol": "Python_NX",
+    "name": "Python MkII",
+    "entitlement": "ELITE_V_PYTHON_NX"
+  },
+  {
+    "id": "129030534",
+    "symbol": "Type8",
+    "name": "Type-8 Transporter",
+    "entitlement": "ELITE_V_TYPE8"
+  },
+  {
+    "id": "129030680",
+    "symbol": "Mandalay",
+    "name": "Mandalay",
+    "entitlement": "ELITE_V_MANDALAY"
+  },
+  {
+    "id": "129031229",
+    "symbol": "CobraMkV",
+    "name": "Cobra MkV",
+    "entitlement": "ELITE_V_COBRA_MKV"
+  },
+  {
+    "id": "129031320",
+    "symbol": "Corsair",
+    "name": "Corsair",
+    "entitlement": "ELITE_V_CORSAIR"
+  },
+  {
+    "id": "129034269",
+    "symbol": "PantherMkII",
+    "name": "Panther Clipper MkII",
+    "entitlement": "ELITE_V_PANTHER_MKII"
+  },
+  {
+    "id": "129036130",
+    "symbol": "LakonMiner",
+    "name": "Type-11 Prospector",
+    "entitlement": "ELITE_V_LAKON_MINER"
+  },
+  {
+    "id": "129036569",
+    "symbol": "Explorer_NX",
+    "name": "Caspian Explorer",
+    "entitlement": "ELITE_V_EXPLORER_NX"
   }
 ]
