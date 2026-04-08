@@ -680,14 +680,14 @@
           "1": {
             "engineers": [
               "The Sarge",
-              "Tod \"The Blaster\" McQuinn",
+              "Tod 'The Blaster' McQuinn",
               "Marsha Hicks"
             ]
           },
           "2": {
             "engineers": [
               "The Sarge",
-              "Tod \"The Blaster\" McQuinn",
+              "Tod 'The Blaster' McQuinn",
               "Marsha Hicks"
             ]
           },
@@ -716,14 +716,14 @@
           "1": {
             "engineers": [
               "The Sarge",
-              "Tod \"The Blaster\" McQuinn",
+              "Tod 'The Blaster' McQuinn",
               "Marsha Hicks"
             ]
           },
           "2": {
             "engineers": [
               "The Sarge",
-              "Tod \"The Blaster\" McQuinn",
+              "Tod 'The Blaster' McQuinn",
               "Marsha Hicks"
             ]
           },
@@ -752,14 +752,14 @@
           "1": {
             "engineers": [
               "The Sarge",
-              "Tod \"The Blaster\" McQuinn",
+              "Tod 'The Blaster' McQuinn",
               "Marsha Hicks"
             ]
           },
           "2": {
             "engineers": [
               "The Sarge",
-              "Tod \"The Blaster\" McQuinn",
+              "Tod 'The Blaster' McQuinn",
               "Marsha Hicks"
             ]
           },
@@ -788,14 +788,14 @@
           "1": {
             "engineers": [
               "The Sarge",
-              "Tod \"The Blaster\" McQuinn",
+              "Tod 'The Blaster' McQuinn",
               "Marsha Hicks"
             ]
           },
           "2": {
             "engineers": [
               "The Sarge",
-              "Tod \"The Blaster\" McQuinn",
+              "Tod 'The Blaster' McQuinn",
               "Marsha Hicks"
             ]
           },
@@ -824,14 +824,14 @@
           "1": {
             "engineers": [
               "The Sarge",
-              "Tod \"The Blaster\" McQuinn",
+              "Tod 'The Blaster' McQuinn",
               "Marsha Hicks"
             ]
           },
           "2": {
             "engineers": [
               "The Sarge",
-              "Tod \"The Blaster\" McQuinn",
+              "Tod 'The Blaster' McQuinn",
               "Marsha Hicks"
             ]
           },
@@ -860,14 +860,14 @@
           "1": {
             "engineers": [
               "The Sarge",
-              "Tod \"The Blaster\" McQuinn",
+              "Tod 'The Blaster' McQuinn",
               "Marsha Hicks"
             ]
           },
           "2": {
             "engineers": [
               "The Sarge",
-              "Tod \"The Blaster\" McQuinn",
+              "Tod 'The Blaster' McQuinn",
               "Marsha Hicks"
             ]
           },
@@ -896,14 +896,14 @@
           "1": {
             "engineers": [
               "The Sarge",
-              "Tod \"The Blaster\" McQuinn",
+              "Tod 'The Blaster' McQuinn",
               "Marsha Hicks"
             ]
           },
           "2": {
             "engineers": [
               "The Sarge",
-              "Tod \"The Blaster\" McQuinn",
+              "Tod 'The Blaster' McQuinn",
               "Marsha Hicks"
             ]
           },
@@ -932,14 +932,14 @@
           "1": {
             "engineers": [
               "The Sarge",
-              "Tod \"The Blaster\" McQuinn",
+              "Tod 'The Blaster' McQuinn",
               "Marsha Hicks"
             ]
           },
           "2": {
             "engineers": [
               "The Sarge",
-              "Tod \"The Blaster\" McQuinn",
+              "Tod 'The Blaster' McQuinn",
               "Marsha Hicks"
             ]
           },
@@ -1258,22 +1258,16 @@
     ]
   },
   "cr": {
-    "blueprints": {
-    },
-    "modifications": [
-    ]
+    "blueprints": {},
+    "modifications": []
   },
   "crl": {
-    "blueprints": {
-    },
-    "modifications": [
-    ]
+    "blueprints": {},
+    "modifications": []
   },
   "rpl": {
-    "blueprints": {
-    },
-    "modifications": [
-    ]
+    "blueprints": {},
+    "modifications": []
   },
   "cs": {
     "blueprints": {
@@ -1771,10 +1765,8 @@
     ]
   },
   "dc": {
-    "blueprints": {
-    },
-    "modifications": [
-    ]
+    "blueprints": {},
+    "modifications": []
   },
   "ec": {
     "blueprints": {
@@ -1894,21 +1886,21 @@
           "1": {
             "engineers": [
               "Marsha Hicks",
-              "Tod \"The Blaster\" McQuinn",
+              "Tod 'The Blaster' McQuinn",
               "Zacariah Nemo"
             ]
           },
           "2": {
             "engineers": [
               "Marsha Hicks",
-              "Tod \"The Blaster\" McQuinn",
+              "Tod 'The Blaster' McQuinn",
               "Zacariah Nemo"
             ]
           },
           "3": {
             "engineers": [
               "Marsha Hicks",
-              "Tod \"The Blaster\" McQuinn",
+              "Tod 'The Blaster' McQuinn",
               "Zacariah Nemo"
             ]
           },
@@ -1931,21 +1923,21 @@
           "1": {
             "engineers": [
               "Marsha Hicks",
-              "Tod \"The Blaster\" McQuinn",
+              "Tod 'The Blaster' McQuinn",
               "Zacariah Nemo"
             ]
           },
           "2": {
             "engineers": [
               "Marsha Hicks",
-              "Tod \"The Blaster\" McQuinn",
+              "Tod 'The Blaster' McQuinn",
               "Zacariah Nemo"
             ]
           },
           "3": {
             "engineers": [
               "Marsha Hicks",
-              "Tod \"The Blaster\" McQuinn",
+              "Tod 'The Blaster' McQuinn",
               "Zacariah Nemo"
             ]
           },
@@ -1968,21 +1960,21 @@
           "1": {
             "engineers": [
               "Marsha Hicks",
-              "Tod \"The Blaster\" McQuinn",
+              "Tod 'The Blaster' McQuinn",
               "Zacariah Nemo"
             ]
           },
           "2": {
             "engineers": [
               "Marsha Hicks",
-              "Tod \"The Blaster\" McQuinn",
+              "Tod 'The Blaster' McQuinn",
               "Zacariah Nemo"
             ]
           },
           "3": {
             "engineers": [
               "Marsha Hicks",
-              "Tod \"The Blaster\" McQuinn",
+              "Tod 'The Blaster' McQuinn",
               "Zacariah Nemo"
             ]
           },
@@ -2005,21 +1997,21 @@
           "1": {
             "engineers": [
               "Marsha Hicks",
-              "Tod \"The Blaster\" McQuinn",
+              "Tod 'The Blaster' McQuinn",
               "Zacariah Nemo"
             ]
           },
           "2": {
             "engineers": [
               "Marsha Hicks",
-              "Tod \"The Blaster\" McQuinn",
+              "Tod 'The Blaster' McQuinn",
               "Zacariah Nemo"
             ]
           },
           "3": {
             "engineers": [
               "Marsha Hicks",
-              "Tod \"The Blaster\" McQuinn",
+              "Tod 'The Blaster' McQuinn",
               "Zacariah Nemo"
             ]
           },
@@ -2042,21 +2034,21 @@
           "1": {
             "engineers": [
               "Marsha Hicks",
-              "Tod \"The Blaster\" McQuinn",
+              "Tod 'The Blaster' McQuinn",
               "Zacariah Nemo"
             ]
           },
           "2": {
             "engineers": [
               "Marsha Hicks",
-              "Tod \"The Blaster\" McQuinn",
+              "Tod 'The Blaster' McQuinn",
               "Zacariah Nemo"
             ]
           },
           "3": {
             "engineers": [
               "Marsha Hicks",
-              "Tod \"The Blaster\" McQuinn",
+              "Tod 'The Blaster' McQuinn",
               "Zacariah Nemo"
             ]
           },
@@ -2079,21 +2071,21 @@
           "1": {
             "engineers": [
               "Marsha Hicks",
-              "Tod \"The Blaster\" McQuinn",
+              "Tod 'The Blaster' McQuinn",
               "Zacariah Nemo"
             ]
           },
           "2": {
             "engineers": [
               "Marsha Hicks",
-              "Tod \"The Blaster\" McQuinn",
+              "Tod 'The Blaster' McQuinn",
               "Zacariah Nemo"
             ]
           },
           "3": {
             "engineers": [
               "Marsha Hicks",
-              "Tod \"The Blaster\" McQuinn",
+              "Tod 'The Blaster' McQuinn",
               "Zacariah Nemo"
             ]
           },
@@ -2116,21 +2108,21 @@
           "1": {
             "engineers": [
               "Marsha Hicks",
-              "Tod \"The Blaster\" McQuinn",
+              "Tod 'The Blaster' McQuinn",
               "Zacariah Nemo"
             ]
           },
           "2": {
             "engineers": [
               "Marsha Hicks",
-              "Tod \"The Blaster\" McQuinn",
+              "Tod 'The Blaster' McQuinn",
               "Zacariah Nemo"
             ]
           },
           "3": {
             "engineers": [
               "Marsha Hicks",
-              "Tod \"The Blaster\" McQuinn",
+              "Tod 'The Blaster' McQuinn",
               "Zacariah Nemo"
             ]
           },
@@ -2183,16 +2175,12 @@
     ]
   },
   "rfl": {
-    "blueprints": {
-    },
-    "modifications": [
-    ]
+    "blueprints": {},
+    "modifications": []
   },
   "fh": {
-    "blueprints": {
-    },
-    "modifications": [
-    ]
+    "blueprints": {},
+    "modifications": []
   },
   "fi": {
     "blueprints": {
@@ -2489,10 +2477,8 @@
     ]
   },
   "ft": {
-    "blueprints": {
-    },
-    "modifications": [
-    ]
+    "blueprints": {},
+    "modifications": []
   },
   "fx": {
     "blueprints": {
@@ -3483,34 +3469,34 @@
         "grades": {
           "1": {
             "engineers": [
-              "Tod \"The Blaster\" McQuinn",
+              "Tod 'The Blaster' McQuinn",
               "Zacariah Nemo",
               "Marsha Hicks"
             ]
           },
           "2": {
             "engineers": [
-              "Tod \"The Blaster\" McQuinn",
+              "Tod 'The Blaster' McQuinn",
               "Zacariah Nemo",
               "Marsha Hicks"
             ]
           },
           "3": {
             "engineers": [
-              "Tod \"The Blaster\" McQuinn",
+              "Tod 'The Blaster' McQuinn",
               "Zacariah Nemo",
               "Marsha Hicks"
             ]
           },
           "4": {
             "engineers": [
-              "Tod \"The Blaster\" McQuinn",
+              "Tod 'The Blaster' McQuinn",
               "Marsha Hicks"
             ]
           },
           "5": {
             "engineers": [
-              "Tod \"The Blaster\" McQuinn",
+              "Tod 'The Blaster' McQuinn",
               "Marsha Hicks"
             ]
           }
@@ -3520,34 +3506,34 @@
         "grades": {
           "1": {
             "engineers": [
-              "Tod \"The Blaster\" McQuinn",
+              "Tod 'The Blaster' McQuinn",
               "Zacariah Nemo",
               "Marsha Hicks"
             ]
           },
           "2": {
             "engineers": [
-              "Tod \"The Blaster\" McQuinn",
+              "Tod 'The Blaster' McQuinn",
               "Zacariah Nemo",
               "Marsha Hicks"
             ]
           },
           "3": {
             "engineers": [
-              "Tod \"The Blaster\" McQuinn",
+              "Tod 'The Blaster' McQuinn",
               "Zacariah Nemo",
               "Marsha Hicks"
             ]
           },
           "4": {
             "engineers": [
-              "Tod \"The Blaster\" McQuinn",
+              "Tod 'The Blaster' McQuinn",
               "Marsha Hicks"
             ]
           },
           "5": {
             "engineers": [
-              "Tod \"The Blaster\" McQuinn",
+              "Tod 'The Blaster' McQuinn",
               "Marsha Hicks"
             ]
           }
@@ -3557,34 +3543,34 @@
         "grades": {
           "1": {
             "engineers": [
-              "Tod \"The Blaster\" McQuinn",
+              "Tod 'The Blaster' McQuinn",
               "Zacariah Nemo",
               "Marsha Hicks"
             ]
           },
           "2": {
             "engineers": [
-              "Tod \"The Blaster\" McQuinn",
+              "Tod 'The Blaster' McQuinn",
               "Zacariah Nemo",
               "Marsha Hicks"
             ]
           },
           "3": {
             "engineers": [
-              "Tod \"The Blaster\" McQuinn",
+              "Tod 'The Blaster' McQuinn",
               "Zacariah Nemo",
               "Marsha Hicks"
             ]
           },
           "4": {
             "engineers": [
-              "Tod \"The Blaster\" McQuinn",
+              "Tod 'The Blaster' McQuinn",
               "Marsha Hicks"
             ]
           },
           "5": {
             "engineers": [
-              "Tod \"The Blaster\" McQuinn",
+              "Tod 'The Blaster' McQuinn",
               "Marsha Hicks"
             ]
           }
@@ -3594,34 +3580,34 @@
         "grades": {
           "1": {
             "engineers": [
-              "Tod \"The Blaster\" McQuinn",
+              "Tod 'The Blaster' McQuinn",
               "Zacariah Nemo",
               "Marsha Hicks"
             ]
           },
           "2": {
             "engineers": [
-              "Tod \"The Blaster\" McQuinn",
+              "Tod 'The Blaster' McQuinn",
               "Zacariah Nemo",
               "Marsha Hicks"
             ]
           },
           "3": {
             "engineers": [
-              "Tod \"The Blaster\" McQuinn",
+              "Tod 'The Blaster' McQuinn",
               "Zacariah Nemo",
               "Marsha Hicks"
             ]
           },
           "4": {
             "engineers": [
-              "Tod \"The Blaster\" McQuinn",
+              "Tod 'The Blaster' McQuinn",
               "Marsha Hicks"
             ]
           },
           "5": {
             "engineers": [
-              "Tod \"The Blaster\" McQuinn",
+              "Tod 'The Blaster' McQuinn",
               "Marsha Hicks"
             ]
           }
@@ -3631,34 +3617,34 @@
         "grades": {
           "1": {
             "engineers": [
-              "Tod \"The Blaster\" McQuinn",
+              "Tod 'The Blaster' McQuinn",
               "Zacariah Nemo",
               "Marsha Hicks"
             ]
           },
           "2": {
             "engineers": [
-              "Tod \"The Blaster\" McQuinn",
+              "Tod 'The Blaster' McQuinn",
               "Zacariah Nemo",
               "Marsha Hicks"
             ]
           },
           "3": {
             "engineers": [
-              "Tod \"The Blaster\" McQuinn",
+              "Tod 'The Blaster' McQuinn",
               "Zacariah Nemo",
               "Marsha Hicks"
             ]
           },
           "4": {
             "engineers": [
-              "Tod \"The Blaster\" McQuinn",
+              "Tod 'The Blaster' McQuinn",
               "Marsha Hicks"
             ]
           },
           "5": {
             "engineers": [
-              "Tod \"The Blaster\" McQuinn",
+              "Tod 'The Blaster' McQuinn",
               "Marsha Hicks"
             ]
           }
@@ -3668,34 +3654,34 @@
         "grades": {
           "1": {
             "engineers": [
-              "Tod \"The Blaster\" McQuinn",
+              "Tod 'The Blaster' McQuinn",
               "Zacariah Nemo",
               "Marsha Hicks"
             ]
           },
           "2": {
             "engineers": [
-              "Tod \"The Blaster\" McQuinn",
+              "Tod 'The Blaster' McQuinn",
               "Zacariah Nemo",
               "Marsha Hicks"
             ]
           },
           "3": {
             "engineers": [
-              "Tod \"The Blaster\" McQuinn",
+              "Tod 'The Blaster' McQuinn",
               "Zacariah Nemo",
               "Marsha Hicks"
             ]
           },
           "4": {
             "engineers": [
-              "Tod \"The Blaster\" McQuinn",
+              "Tod 'The Blaster' McQuinn",
               "Marsha Hicks"
             ]
           },
           "5": {
             "engineers": [
-              "Tod \"The Blaster\" McQuinn",
+              "Tod 'The Blaster' McQuinn",
               "Marsha Hicks"
             ]
           }
@@ -3705,34 +3691,34 @@
         "grades": {
           "1": {
             "engineers": [
-              "Tod \"The Blaster\" McQuinn",
+              "Tod 'The Blaster' McQuinn",
               "Zacariah Nemo",
               "Marsha Hicks"
             ]
           },
           "2": {
             "engineers": [
-              "Tod \"The Blaster\" McQuinn",
+              "Tod 'The Blaster' McQuinn",
               "Zacariah Nemo",
               "Marsha Hicks"
             ]
           },
           "3": {
             "engineers": [
-              "Tod \"The Blaster\" McQuinn",
+              "Tod 'The Blaster' McQuinn",
               "Zacariah Nemo",
               "Marsha Hicks"
             ]
           },
           "4": {
             "engineers": [
-              "Tod \"The Blaster\" McQuinn",
+              "Tod 'The Blaster' McQuinn",
               "Marsha Hicks"
             ]
           },
           "5": {
             "engineers": [
-              "Tod \"The Blaster\" McQuinn",
+              "Tod 'The Blaster' McQuinn",
               "Marsha Hicks"
             ]
           }
@@ -3742,34 +3728,34 @@
         "grades": {
           "1": {
             "engineers": [
-              "Tod \"The Blaster\" McQuinn",
+              "Tod 'The Blaster' McQuinn",
               "Zacariah Nemo",
               "Marsha Hicks"
             ]
           },
           "2": {
             "engineers": [
-              "Tod \"The Blaster\" McQuinn",
+              "Tod 'The Blaster' McQuinn",
               "Zacariah Nemo",
               "Marsha Hicks"
             ]
           },
           "3": {
             "engineers": [
-              "Tod \"The Blaster\" McQuinn",
+              "Tod 'The Blaster' McQuinn",
               "Zacariah Nemo",
               "Marsha Hicks"
             ]
           },
           "4": {
             "engineers": [
-              "Tod \"The Blaster\" McQuinn",
+              "Tod 'The Blaster' McQuinn",
               "Marsha Hicks"
             ]
           },
           "5": {
             "engineers": [
-              "Tod \"The Blaster\" McQuinn",
+              "Tod 'The Blaster' McQuinn",
               "Marsha Hicks"
             ]
           }
@@ -3814,34 +3800,34 @@
         "grades": {
           "1": {
             "engineers": [
-              "Tod \"The Blaster\" McQuinn",
+              "Tod 'The Blaster' McQuinn",
               "Zacariah Nemo",
               "Marsha Hicks"
             ]
           },
           "2": {
             "engineers": [
-              "Tod \"The Blaster\" McQuinn",
+              "Tod 'The Blaster' McQuinn",
               "Zacariah Nemo",
               "Marsha Hicks"
             ]
           },
           "3": {
             "engineers": [
-              "Tod \"The Blaster\" McQuinn",
+              "Tod 'The Blaster' McQuinn",
               "Zacariah Nemo",
               "Marsha Hicks"
             ]
           },
           "4": {
             "engineers": [
-              "Tod \"The Blaster\" McQuinn",
+              "Tod 'The Blaster' McQuinn",
               "Marsha Hicks"
             ]
           },
           "5": {
             "engineers": [
-              "Tod \"The Blaster\" McQuinn",
+              "Tod 'The Blaster' McQuinn",
               "Marsha Hicks"
             ]
           }
@@ -3851,34 +3837,34 @@
         "grades": {
           "1": {
             "engineers": [
-              "Tod \"The Blaster\" McQuinn",
+              "Tod 'The Blaster' McQuinn",
               "Zacariah Nemo",
               "Marsha Hicks"
             ]
           },
           "2": {
             "engineers": [
-              "Tod \"The Blaster\" McQuinn",
+              "Tod 'The Blaster' McQuinn",
               "Zacariah Nemo",
               "Marsha Hicks"
             ]
           },
           "3": {
             "engineers": [
-              "Tod \"The Blaster\" McQuinn",
+              "Tod 'The Blaster' McQuinn",
               "Zacariah Nemo",
               "Marsha Hicks"
             ]
           },
           "4": {
             "engineers": [
-              "Tod \"The Blaster\" McQuinn",
+              "Tod 'The Blaster' McQuinn",
               "Marsha Hicks"
             ]
           },
           "5": {
             "engineers": [
-              "Tod \"The Blaster\" McQuinn",
+              "Tod 'The Blaster' McQuinn",
               "Marsha Hicks"
             ]
           }
@@ -3888,34 +3874,34 @@
         "grades": {
           "1": {
             "engineers": [
-              "Tod \"The Blaster\" McQuinn",
+              "Tod 'The Blaster' McQuinn",
               "Zacariah Nemo",
               "Marsha Hicks"
             ]
           },
           "2": {
             "engineers": [
-              "Tod \"The Blaster\" McQuinn",
+              "Tod 'The Blaster' McQuinn",
               "Zacariah Nemo",
               "Marsha Hicks"
             ]
           },
           "3": {
             "engineers": [
-              "Tod \"The Blaster\" McQuinn",
+              "Tod 'The Blaster' McQuinn",
               "Zacariah Nemo",
               "Marsha Hicks"
             ]
           },
           "4": {
             "engineers": [
-              "Tod \"The Blaster\" McQuinn",
+              "Tod 'The Blaster' McQuinn",
               "Marsha Hicks"
             ]
           },
           "5": {
             "engineers": [
-              "Tod \"The Blaster\" McQuinn",
+              "Tod 'The Blaster' McQuinn",
               "Marsha Hicks"
             ]
           }
@@ -3925,34 +3911,34 @@
         "grades": {
           "1": {
             "engineers": [
-              "Tod \"The Blaster\" McQuinn",
+              "Tod 'The Blaster' McQuinn",
               "Zacariah Nemo",
               "Marsha Hicks"
             ]
           },
           "2": {
             "engineers": [
-              "Tod \"The Blaster\" McQuinn",
+              "Tod 'The Blaster' McQuinn",
               "Zacariah Nemo",
               "Marsha Hicks"
             ]
           },
           "3": {
             "engineers": [
-              "Tod \"The Blaster\" McQuinn",
+              "Tod 'The Blaster' McQuinn",
               "Zacariah Nemo",
               "Marsha Hicks"
             ]
           },
           "4": {
             "engineers": [
-              "Tod \"The Blaster\" McQuinn",
+              "Tod 'The Blaster' McQuinn",
               "Marsha Hicks"
             ]
           },
           "5": {
             "engineers": [
-              "Tod \"The Blaster\" McQuinn",
+              "Tod 'The Blaster' McQuinn",
               "Marsha Hicks"
             ]
           }
@@ -3962,34 +3948,34 @@
         "grades": {
           "1": {
             "engineers": [
-              "Tod \"The Blaster\" McQuinn",
+              "Tod 'The Blaster' McQuinn",
               "Zacariah Nemo",
               "Marsha Hicks"
             ]
           },
           "2": {
             "engineers": [
-              "Tod \"The Blaster\" McQuinn",
+              "Tod 'The Blaster' McQuinn",
               "Zacariah Nemo",
               "Marsha Hicks"
             ]
           },
           "3": {
             "engineers": [
-              "Tod \"The Blaster\" McQuinn",
+              "Tod 'The Blaster' McQuinn",
               "Zacariah Nemo",
               "Marsha Hicks"
             ]
           },
           "4": {
             "engineers": [
-              "Tod \"The Blaster\" McQuinn",
+              "Tod 'The Blaster' McQuinn",
               "Marsha Hicks"
             ]
           },
           "5": {
             "engineers": [
-              "Tod \"The Blaster\" McQuinn",
+              "Tod 'The Blaster' McQuinn",
               "Marsha Hicks"
             ]
           }
@@ -3999,34 +3985,34 @@
         "grades": {
           "1": {
             "engineers": [
-              "Tod \"The Blaster\" McQuinn",
+              "Tod 'The Blaster' McQuinn",
               "Zacariah Nemo",
               "Marsha Hicks"
             ]
           },
           "2": {
             "engineers": [
-              "Tod \"The Blaster\" McQuinn",
+              "Tod 'The Blaster' McQuinn",
               "Zacariah Nemo",
               "Marsha Hicks"
             ]
           },
           "3": {
             "engineers": [
-              "Tod \"The Blaster\" McQuinn",
+              "Tod 'The Blaster' McQuinn",
               "Zacariah Nemo",
               "Marsha Hicks"
             ]
           },
           "4": {
             "engineers": [
-              "Tod \"The Blaster\" McQuinn",
+              "Tod 'The Blaster' McQuinn",
               "Marsha Hicks"
             ]
           },
           "5": {
             "engineers": [
-              "Tod \"The Blaster\" McQuinn",
+              "Tod 'The Blaster' McQuinn",
               "Marsha Hicks"
             ]
           }
@@ -4036,34 +4022,34 @@
         "grades": {
           "1": {
             "engineers": [
-              "Tod \"The Blaster\" McQuinn",
+              "Tod 'The Blaster' McQuinn",
               "Zacariah Nemo",
               "Marsha Hicks"
             ]
           },
           "2": {
             "engineers": [
-              "Tod \"The Blaster\" McQuinn",
+              "Tod 'The Blaster' McQuinn",
               "Zacariah Nemo",
               "Marsha Hicks"
             ]
           },
           "3": {
             "engineers": [
-              "Tod \"The Blaster\" McQuinn",
+              "Tod 'The Blaster' McQuinn",
               "Zacariah Nemo",
               "Marsha Hicks"
             ]
           },
           "4": {
             "engineers": [
-              "Tod \"The Blaster\" McQuinn",
+              "Tod 'The Blaster' McQuinn",
               "Marsha Hicks"
             ]
           },
           "5": {
             "engineers": [
-              "Tod \"The Blaster\" McQuinn",
+              "Tod 'The Blaster' McQuinn",
               "Marsha Hicks"
             ]
           }
@@ -4073,34 +4059,34 @@
         "grades": {
           "1": {
             "engineers": [
-              "Tod \"The Blaster\" McQuinn",
+              "Tod 'The Blaster' McQuinn",
               "Zacariah Nemo",
               "Marsha Hicks"
             ]
           },
           "2": {
             "engineers": [
-              "Tod \"The Blaster\" McQuinn",
+              "Tod 'The Blaster' McQuinn",
               "Zacariah Nemo",
               "Marsha Hicks"
             ]
           },
           "3": {
             "engineers": [
-              "Tod \"The Blaster\" McQuinn",
+              "Tod 'The Blaster' McQuinn",
               "Zacariah Nemo",
               "Marsha Hicks"
             ]
           },
           "4": {
             "engineers": [
-              "Tod \"The Blaster\" McQuinn",
+              "Tod 'The Blaster' McQuinn",
               "Marsha Hicks"
             ]
           },
           "5": {
             "engineers": [
-              "Tod \"The Blaster\" McQuinn",
+              "Tod 'The Blaster' McQuinn",
               "Marsha Hicks"
             ]
           }
@@ -4140,22 +4126,16 @@
     ]
   },
   "axmc": {
-    "blueprints": {
-    },
-    "modifications": [
-    ]
+    "blueprints": {},
+    "modifications": []
   },
   "axmce": {
-    "blueprints": {
-    },
-    "modifications": [
-    ]
+    "blueprints": {},
+    "modifications": []
   },
   "ml": {
-    "blueprints": {
-    },
-    "modifications": [
-    ]
+    "blueprints": {},
+    "modifications": []
   },
   "mr": {
     "blueprints": {
@@ -4689,28 +4669,20 @@
     ]
   },
   "axmr": {
-    "blueprints": {
-    },
-    "modifications": [
-    ]
+    "blueprints": {},
+    "modifications": []
   },
   "axmre": {
-    "blueprints": {
-    },
-    "modifications": [
-    ]
+    "blueprints": {},
+    "modifications": []
   },
   "ews": {
-    "blueprints": {
-    },
-    "modifications": [
-    ]
+    "blueprints": {},
+    "modifications": []
   },
   "mrp": {
-    "blueprints": {
-    },
-    "modifications": [
-    ]
+    "blueprints": {},
+    "modifications": []
   },
   "nl": {
     "blueprints": {
@@ -4894,64 +4866,44 @@
     ]
   },
   "gpc": {
-    "blueprints": {
-    },
-    "modifications": [
-    ]
+    "blueprints": {},
+    "modifications": []
   },
   "gpl": {
-    "blueprints": {
-    },
-    "modifications": [
-    ]
+    "blueprints": {},
+    "modifications": []
   },
   "gsrp": {
-    "blueprints": {
-    },
-    "modifications": [
-    ]
+    "blueprints": {},
+    "modifications": []
   },
   "gfsb": {
-    "blueprints": {
-    },
-    "modifications": [
-    ]
+    "blueprints": {},
+    "modifications": []
   },
   "ghrp": {
-    "blueprints": {
-    },
-    "modifications": [
-    ]
+    "blueprints": {},
+    "modifications": []
   },
   "gmrp": {
-    "blueprints": {
-    },
-    "modifications": [
-    ]
+    "blueprints": {},
+    "modifications": []
   },
   "tbsc": {
-    "blueprints": {
-    },
-    "modifications": [
-    ]
+    "blueprints": {},
+    "modifications": []
   },
   "gsc": {
-    "blueprints": {
-    },
-    "modifications": [
-    ]
+    "blueprints": {},
+    "modifications": []
   },
   "gpp": {
-    "blueprints": {
-    },
-    "modifications": [
-    ]
+    "blueprints": {},
+    "modifications": []
   },
   "ggc": {
-    "blueprints": {
-    },
-    "modifications": [
-    ]
+    "blueprints": {},
+    "modifications": []
   },
   "pa": {
     "blueprints": {
@@ -5278,10 +5230,8 @@
     ]
   },
   "pas": {
-    "blueprints": {
-    },
-    "modifications": [
-    ]
+    "blueprints": {},
+    "modifications": []
   },
   "pc": {
     "blueprints": {
@@ -5422,28 +5372,20 @@
     ]
   },
   "pce": {
-    "blueprints": {
-    },
-    "modifications": [
-    ]
+    "blueprints": {},
+    "modifications": []
   },
   "pci": {
-    "blueprints": {
-    },
-    "modifications": [
-    ]
+    "blueprints": {},
+    "modifications": []
   },
   "pcm": {
-    "blueprints": {
-    },
-    "modifications": [
-    ]
+    "blueprints": {},
+    "modifications": []
   },
   "pcq": {
-    "blueprints": {
-    },
-    "modifications": [
-    ]
+    "blueprints": {},
+    "modifications": []
   },
   "pd": {
     "blueprints": {
@@ -6486,10 +6428,8 @@
     ]
   },
   "pv": {
-    "blueprints": {
-    },
-    "modifications": [
-    ]
+    "blueprints": {},
+    "modifications": []
   },
   "rf": {
     "blueprints": {
@@ -6542,33 +6482,33 @@
           "1": {
             "engineers": [
               "The Sarge",
-              "Tod \"The Blaster\" McQuinn",
+              "Tod 'The Blaster' McQuinn",
               "Etienne Dorn"
             ]
           },
           "2": {
             "engineers": [
               "The Sarge",
-              "Tod \"The Blaster\" McQuinn",
+              "Tod 'The Blaster' McQuinn",
               "Etienne Dorn"
             ]
           },
           "3": {
             "engineers": [
               "The Sarge",
-              "Tod \"The Blaster\" McQuinn",
+              "Tod 'The Blaster' McQuinn",
               "Etienne Dorn"
             ]
           },
           "4": {
             "engineers": [
-              "Tod \"The Blaster\" McQuinn",
+              "Tod 'The Blaster' McQuinn",
               "Etienne Dorn"
             ]
           },
           "5": {
             "engineers": [
-              "Tod \"The Blaster\" McQuinn",
+              "Tod 'The Blaster' McQuinn",
               "Etienne Dorn"
             ]
           }
@@ -6579,33 +6519,33 @@
           "1": {
             "engineers": [
               "The Sarge",
-              "Tod \"The Blaster\" McQuinn",
+              "Tod 'The Blaster' McQuinn",
               "Etienne Dorn"
             ]
           },
           "2": {
             "engineers": [
               "The Sarge",
-              "Tod \"The Blaster\" McQuinn",
+              "Tod 'The Blaster' McQuinn",
               "Etienne Dorn"
             ]
           },
           "3": {
             "engineers": [
               "The Sarge",
-              "Tod \"The Blaster\" McQuinn",
+              "Tod 'The Blaster' McQuinn",
               "Etienne Dorn"
             ]
           },
           "4": {
             "engineers": [
-              "Tod \"The Blaster\" McQuinn",
+              "Tod 'The Blaster' McQuinn",
               "Etienne Dorn"
             ]
           },
           "5": {
             "engineers": [
-              "Tod \"The Blaster\" McQuinn",
+              "Tod 'The Blaster' McQuinn",
               "Etienne Dorn"
             ]
           }
@@ -6616,33 +6556,33 @@
           "1": {
             "engineers": [
               "The Sarge",
-              "Tod \"The Blaster\" McQuinn",
+              "Tod 'The Blaster' McQuinn",
               "Etienne Dorn"
             ]
           },
           "2": {
             "engineers": [
               "The Sarge",
-              "Tod \"The Blaster\" McQuinn",
+              "Tod 'The Blaster' McQuinn",
               "Etienne Dorn"
             ]
           },
           "3": {
             "engineers": [
               "The Sarge",
-              "Tod \"The Blaster\" McQuinn",
+              "Tod 'The Blaster' McQuinn",
               "Etienne Dorn"
             ]
           },
           "4": {
             "engineers": [
-              "Tod \"The Blaster\" McQuinn",
+              "Tod 'The Blaster' McQuinn",
               "Etienne Dorn"
             ]
           },
           "5": {
             "engineers": [
-              "Tod \"The Blaster\" McQuinn",
+              "Tod 'The Blaster' McQuinn",
               "Etienne Dorn"
             ]
           }
@@ -6653,33 +6593,33 @@
           "1": {
             "engineers": [
               "The Sarge",
-              "Tod \"The Blaster\" McQuinn",
+              "Tod 'The Blaster' McQuinn",
               "Etienne Dorn"
             ]
           },
           "2": {
             "engineers": [
               "The Sarge",
-              "Tod \"The Blaster\" McQuinn",
+              "Tod 'The Blaster' McQuinn",
               "Etienne Dorn"
             ]
           },
           "3": {
             "engineers": [
               "The Sarge",
-              "Tod \"The Blaster\" McQuinn",
+              "Tod 'The Blaster' McQuinn",
               "Etienne Dorn"
             ]
           },
           "4": {
             "engineers": [
-              "Tod \"The Blaster\" McQuinn",
+              "Tod 'The Blaster' McQuinn",
               "Etienne Dorn"
             ]
           },
           "5": {
             "engineers": [
-              "Tod \"The Blaster\" McQuinn",
+              "Tod 'The Blaster' McQuinn",
               "Etienne Dorn"
             ]
           }
@@ -6690,33 +6630,33 @@
           "1": {
             "engineers": [
               "The Sarge",
-              "Tod \"The Blaster\" McQuinn",
+              "Tod 'The Blaster' McQuinn",
               "Etienne Dorn"
             ]
           },
           "2": {
             "engineers": [
               "The Sarge",
-              "Tod \"The Blaster\" McQuinn",
+              "Tod 'The Blaster' McQuinn",
               "Etienne Dorn"
             ]
           },
           "3": {
             "engineers": [
               "The Sarge",
-              "Tod \"The Blaster\" McQuinn",
+              "Tod 'The Blaster' McQuinn",
               "Etienne Dorn"
             ]
           },
           "4": {
             "engineers": [
-              "Tod \"The Blaster\" McQuinn",
+              "Tod 'The Blaster' McQuinn",
               "Etienne Dorn"
             ]
           },
           "5": {
             "engineers": [
-              "Tod \"The Blaster\" McQuinn",
+              "Tod 'The Blaster' McQuinn",
               "Etienne Dorn"
             ]
           }
@@ -7157,16 +7097,12 @@
     ]
   },
   "sfn": {
-    "blueprints": {
-    },
-    "modifications": [
-    ]
+    "blueprints": {},
+    "modifications": []
   },
   "sc": {
-    "blueprints": {
-    },
-    "modifications": [
-    ]
+    "blueprints": {},
+    "modifications": []
   },
   "scb": {
     "blueprints": {
@@ -7505,10 +7441,8 @@
     ]
   },
   "xs": {
-    "blueprints": {
-    },
-    "modifications": [
-    ]
+    "blueprints": {},
+    "modifications": []
   },
   "t": {
     "blueprints": {
@@ -7517,7 +7451,7 @@
           "1": {
             "engineers": [
               "Elvira Martuuk",
-              "Felicty Farseer",
+              "Felicity Farseer",
               "Professor Palin",
               "Mel Brandon",
               "Chloe Sedesi"
@@ -7526,7 +7460,7 @@
           "2": {
             "engineers": [
               "Elvira Martuuk",
-              "Felicty Farseer",
+              "Felicity Farseer",
               "Professor Palin",
               "Mel Brandon",
               "Chloe Sedesi"
@@ -7534,7 +7468,7 @@
           },
           "3": {
             "engineers": [
-              "Felicty Farseer",
+              "Felicity Farseer",
               "Professor Palin",
               "Mel Brandon",
               "Chloe Sedesi"
@@ -7561,7 +7495,7 @@
           "1": {
             "engineers": [
               "Elvira Martuuk",
-              "Felicty Farseer",
+              "Felicity Farseer",
               "Professor Palin",
               "Mel Brandon",
               "Chloe Sedesi"
@@ -7570,7 +7504,7 @@
           "2": {
             "engineers": [
               "Elvira Martuuk",
-              "Felicty Farseer",
+              "Felicity Farseer",
               "Professor Palin",
               "Mel Brandon",
               "Chloe Sedesi"
@@ -7578,7 +7512,7 @@
           },
           "3": {
             "engineers": [
-              "Felicty Farseer",
+              "Felicity Farseer",
               "Professor Palin",
               "Mel Brandon",
               "Chloe Sedesi"
@@ -7605,7 +7539,7 @@
           "1": {
             "engineers": [
               "Elvira Martuuk",
-              "Felicty Farseer",
+              "Felicity Farseer",
               "Professor Palin",
               "Mel Brandon",
               "Chloe Sedesi"
@@ -7614,7 +7548,7 @@
           "2": {
             "engineers": [
               "Elvira Martuuk",
-              "Felicty Farseer",
+              "Felicity Farseer",
               "Professor Palin",
               "Mel Brandon",
               "Chloe Sedesi"
@@ -7622,7 +7556,7 @@
           },
           "3": {
             "engineers": [
-              "Felicty Farseer",
+              "Felicity Farseer",
               "Professor Palin",
               "Mel Brandon",
               "Chloe Sedesi"
@@ -7765,10 +7699,8 @@
     ]
   },
   "ntp": {
-    "blueprints": {
-    },
-    "modifications": [
-    ]
+    "blueprints": {},
+    "modifications": []
   },
   "ul": {
     "blueprints": {
@@ -8369,63 +8301,43 @@
     ]
   },
   "tbem": {
-    "blueprints": {
-    },
-    "modifications": [
-    ]
+    "blueprints": {},
+    "modifications": []
   },
   "tbrfl": {
-    "blueprints": {
-    },
-    "modifications": [
-    ]
+    "blueprints": {},
+    "modifications": []
   },
   "dtl": {
-    "blueprints": {
-    },
-    "modifications": [
-    ]
+    "blueprints": {},
+    "modifications": []
   },
   "mahr": {
-    "blueprints": {
-    },
-    "modifications": [
-    ]
+    "blueprints": {},
+    "modifications": []
   },
   "pwa": {
-    "blueprints": {
-    },
-    "modifications": [
-    ]
+    "blueprints": {},
+    "modifications": []
   },
   "scl": {
-    "blueprints": {
-    },
-    "modifications": [
-    ]
+    "blueprints": {},
+    "modifications": []
   },
   "sdm": {
-    "blueprints": {
-    },
-    "modifications": [
-    ]
+    "blueprints": {},
+    "modifications": []
   },
   "abl": {
-    "blueprints": {
-    },
-    "modifications": [
-    ]
+    "blueprints": {},
+    "modifications": []
   },
   "mh": {
-    "blueprints": {
-    },
-    "modifications": [
-    ]
+    "blueprints": {},
+    "modifications": []
   },
   "mm": {
-    "blueprints": {
-    },
-    "modifications": [
-    ]
+    "blueprints": {},
+    "modifications": []
   }
 }
