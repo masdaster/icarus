@@ -83,8 +83,8 @@ export default function Header ({ connected, active }) {
     if (typeof window !== 'undefined' && typeof window.edDataIcarus_version === 'function') {
       IS_WINDOWS_APP = true
     }
-    isWindowFullScreen().then(fullScreen => setIsFullScreen(fullScreen))
-    isWindowPinned().then(pinned => setIsPinned(pinned))
+    isWindowFullScreen()?.then(fullScreen => setIsFullScreen(fullScreen))
+    isWindowPinned()?.then(pinned => setIsPinned(pinned))
   }, [])
 
   useEffect(() => {
