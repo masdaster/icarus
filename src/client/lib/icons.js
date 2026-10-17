@@ -1,8 +1,5 @@
 import iconJson from '../public/fonts/icarus-terminal/icarus-terminal.json'
 import { SURFACE_PORTS, PLANETARY_BASES } from '../../shared/consts'
-class _Icons {
-
-}
 
 const _IconsProxyHandler = {
   get: function (obj, name) {
@@ -23,6 +20,6 @@ const _IconsProxyHandler = {
   }
 }
 
-const Icons = new Proxy(_Icons, _IconsProxyHandler)
+const Icons = new Proxy({}, _IconsProxyHandler)
 
 export default Icons
