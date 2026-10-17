@@ -54,12 +54,6 @@ if (!fs.existsSync(LOG_DIR)) {
   console.log('Loading save game data from', LOG_DIR)
 }
 
-// Check if web directory exists
-if (!fs.existsSync(WEB_DIR)) {
-  console.error('ERROR: Web directory not found:', WEB_DIR)
-  process.exit(1)
-}
-
 function getLogDir () {
   // Hard coded fallback
   const FALLBACK_LOG_DIR = path.join(os.homedir(), 'Saved Games', 'Frontier Developments', 'Elite Dangerous')
@@ -69,7 +63,7 @@ function getLogDir () {
   // variable to specify the direct path (relative or absolute). You can also
   // use a .env file. This is overriden by command line args.
   if (process.env.LOG_DIR) {
-    logDir = process.env.LOG_DIR.startsWith('/') ? process.env.LOG_DIR : path.join(__dirname, process.env.LOG_DIR)
+    logDir = process.env.LOG_DIR.startsWith('/') || process.env.LOG_DIR.charAt(1) === ':' ? process.env.LOG_DIR : path.join(__dirname, process.env.LOG_DIR)
   }
   // Use provided Save Game dir as base path to look for the the files we need
   // This must be obtained via native OS APIs so is typically passed by the client.
@@ -108,12 +102,16 @@ if (DEVELOPMENT) {
   // If DEVELOPMENT is specified then HTTP requests other than web socket
   // requests will be forwarded to a web server which is started on localhost
   // to allow UI changes to be tested without rebuilding the app.
-  exec('npx next src/client')
+  exec('npx next dev --webpack src/client')
   httpServer = http.createServer((req, res) => proxy.web(req, res, { target: 'http://localhost:3000' }))
 } else {
   // The default behaviour (i.e. production) is to serve static assets. When the
   // application is compiled to a native executable these assets will be bundled
   // with the executable in a virtual file system.
+  if (!fs.existsSync(WEB_DIR)) {
+    console.error('ERROR: Web directory not found:', WEB_DIR)
+    process.exit(1)
+  }
   const webServer = connect().use(serveStatic(WEB_DIR, { extensions: ['html'] }))
   httpServer = http.createServer(webServer)
 }
