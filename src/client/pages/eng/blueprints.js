@@ -176,8 +176,8 @@ function EngineeringMaterialsPageContent () {
       {selectedBlueprint &&
         <Panel layout='full-width' scrollable navigation={EngineeringPanelNavItems('Blueprints')}>
           <p style={{ marginTop: 0, marginBottom: '1rem' }}>
-            <Link href='/eng/blueprints'>
-              <a className='text-link text-uppercase'><span className='text-link-text'>Blueprints</span></a>
+            <Link href='/eng/blueprints' className='text-link text-uppercase'>
+              <span className='text-link-text'>Blueprints</span>
             </Link>
             <span className='text-link text-uppercase text-muted'>
               <i className='icon icarus-terminal-chevron-right' style={{ fontSize: '1rem' }} />

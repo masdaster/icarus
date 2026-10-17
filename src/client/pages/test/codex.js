@@ -40,8 +40,8 @@ function CodexEntry ({ codexEntry }) {
       <h1 style={{ marginBottom: '1rem' }}>{codexEntry.title}</h1>
       <div className='text-primary' dangerouslySetInnerHTML={{ __html: codexEntry.text.replace(/\n/g, '<br/>') }} />
       <hr style={{ marginTop: '1rem' }} />
-      <Link href='codex'>
-        <a className='text-link text-uppercase'><span className='text-link-text'>Back</span></a>
+      <Link href='codex' className='text-link text-uppercase'>
+        <span className='text-link-text'>Back</span>
       </Link>
     </div>
   )
@@ -53,8 +53,8 @@ function CodexEntries ({ codexEntries }) {
       <h1>Codex</h1>
       {codexEntries && Object.keys(codexEntries.index).map(codexEntry =>
         <p key={codexEntry}>
-          <Link href={`codex?name=${codexEntry}`}>
-            <a className='text-link text-uppercase'><span className='text-link-text'>{codexEntry}</span></a>
+          <Link href={`codex?name=${codexEntry}`} className='text-link text-uppercase'>
+            <span className='text-link-text'>{codexEntry}</span>
           </Link>
         </p>
       )}
