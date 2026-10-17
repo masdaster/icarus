@@ -1,4 +1,3 @@
-
 const EDCDMaterials = new (require('../data'))('edcd/fdevids/material')
 const MaterialUses = new (require('../data'))('material-uses')
 

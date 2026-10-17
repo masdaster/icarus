@@ -8,7 +8,7 @@ export default function CopyOnClick ({ children, prepend, append }) {
       const text = selectableText.current.innerHTML
       document.execCommand('copy')
       navigator.clipboard.writeText(text)
-      notification(() => <p><span className='text-primary'>text copied</span><br/><span>{`"${text}"`}</span></p>)
+      notification(() => <p><span className='text-primary'>text copied</span><br /><span>{`"${text}"`}</span></p>)
     } catch { /* don't care */ }
   }
   return (

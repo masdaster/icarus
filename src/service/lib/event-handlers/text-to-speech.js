@@ -4,7 +4,7 @@ const fs = require('fs')
 const say = require('../say')
 
 // FIXME Refactor Preferences handling into a singleton
-const PREFERENCES_DIR = path.join(os.homedir(), 'AppData', 'Local', 'ICARUS Terminal')
+const PREFERENCES_DIR = path.join(os.homedir(), 'AppData', 'Local', 'EDData-ICARUS Terminal')
 const PREFERENCES_FILE = path.join(PREFERENCES_DIR, 'Preferences.json')
 
 class TextToSpeech {
@@ -97,6 +97,7 @@ class TextToSpeech {
   getVoices () {
     return new Promise(resolve =>
       say.getInstalledVoices((err, voices) => {
+        if (err) return resolve([])
         resolve(voices)
       })
     )

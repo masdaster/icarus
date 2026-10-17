@@ -9,7 +9,7 @@ const { UNKNOWN_VALUE } = require('../../shared/consts')
 // https://www.edsm.net/api-system-v1/stations/market
 // https://www.edsm.net/api-system-v1/stations/shipyard
 
-const axios = require('axios')
+const axios = require('axios/dist/node/axios.cjs')
 const retry = require('async-retry')
 const { version } = require('../../../package.json')
 

@@ -1,4 +1,3 @@
-
 class Inventory {
   constructor ({ eliteLog, eliteJson }) {
     this.eliteLog = eliteLog

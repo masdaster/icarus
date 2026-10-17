@@ -1,7 +1,7 @@
 
 {
-  "name": "ICARUS Terminal",
-  "short_name": "ICARUS",
+  "name": "EDData Icarus",
+  "short_name": "Icarus",
   "icons": [
     {
       "src": "/icons/icon-maskable.png",

@@ -38,7 +38,7 @@ class Blueprints {
 
       return {
         symbol: blueprint.symbol,
-        name: name,
+        name,
         originalName: blueprint?.name,
         grades: Object.keys(blueprint.grades).map(k => {
           const grade = blueprint.grades[k]
@@ -53,7 +53,7 @@ class Blueprints {
 
           return {
             grade: parseInt(k),
-            components: components,
+            components,
             features: grade.features
           }
         }),

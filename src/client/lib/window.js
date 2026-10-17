@@ -1,22 +1,22 @@
-function isWindowsApp () { return (typeof window !== 'undefined' && typeof window.icarusTerminal_version === 'function') }
-function isWindowFullScreen () { if (isWindowsApp()) { return window.icarusTerminal_isFullScreen() } }
-function isWindowPinned () { if (isWindowsApp()) { return window.icarusTerminal_isPinned() } }
-function openReleaseNotes () { if (isWindowsApp()) { return window.icarusTerminal_openReleaseNotes() } }
-function openTerminalInBrowser () { if (isWindowsApp()) { return window.icarusTerminal_openTerminalInBrowser() } }
+function isWindowsApp () { return (typeof window !== 'undefined' && typeof window.edDataIcarus_version === 'function') }
+function isWindowFullScreen () { if (isWindowsApp()) { return window.edDataIcarus_isFullScreen() } }
+function isWindowPinned () { if (isWindowsApp()) { return window.edDataIcarus_isPinned() } }
+function openReleaseNotes () { if (isWindowsApp()) { return window.edDataIcarus_openReleaseNotes() } }
+function openTerminalInBrowser () { if (isWindowsApp()) { return window.edDataIcarus_openTerminalInBrowser() } }
 
 function appVersion () {
-  if (isWindowsApp()) { return window.icarusTerminal_version() }
+  if (isWindowsApp()) { return window.edDataIcarus_version() }
   return null
 }
 
 function newWindow () {
-  if (isWindowsApp()) { return window.icarusTerminal_newWindow() }
+  if (isWindowsApp()) { return window.edDataIcarus_newWindow() }
 
   window.open(`//${window.location.host}`)
 }
 
 function closeWindow () {
-  if (isWindowsApp()) { return window.icarusTerminal_quit() }
+  if (isWindowsApp()) { return window.edDataIcarus_quit() }
 
   window.close()
 }
@@ -24,18 +24,18 @@ function closeWindow () {
 async function checkForUpdate () {
   if (isWindowsApp()) {
     try {
-      return JSON.parse(await window.icarusTerminal_checkForUpdate())
+      return JSON.parse(await window.edDataIcarus_checkForUpdate())
     } catch {}
     return null
   }
 }
 
 function installUpdate () {
-  if (isWindowsApp()) { return window.icarusTerminal_installUpdate() }
+  if (isWindowsApp()) { return window.edDataIcarus_installUpdate() }
 }
 
 async function toggleFullScreen () {
-  if (isWindowsApp()) { return await window.icarusTerminal_toggleFullScreen() }
+  if (isWindowsApp()) { return await window.edDataIcarus_toggleFullScreen() }
 
   if (!document.fullscreenElement && !document.mozFullScreenElement && !document.webkitFullscreenElement && !document.webkitCurrentFullScreenElement) {
     if (document.documentElement.requestFullscreen) {
@@ -61,10 +61,10 @@ async function toggleFullScreen () {
 }
 
 async function togglePinWindow () {
-  if (isWindowsApp()) { return await window.icarusTerminal_togglePinWindow() }
+  if (isWindowsApp()) { return await window.edDataIcarus_togglePinWindow() }
 }
 
-module.exports = {
+export {
   isWindowsApp,
   isWindowFullScreen,
   isWindowPinned,

@@ -1,4 +1,5 @@
 import { useState, useEffect, Fragment } from 'react'
+import dynamic from 'next/dynamic'
 import animateTableEffect from 'lib/animate-table-effect'
 import { useRouter } from 'next/router'
 import distance from '../../../shared/distance'
@@ -9,7 +10,7 @@ import Layout from 'components/layout'
 import Panel from 'components/panel'
 import CopyOnClick from 'components/copy-on-click'
 
-export default function EngineeringEngineersPage () {
+function EngineeringEngineersPageContent () {
   const router = useRouter()
   const { query } = router
   const { connected, active, ready } = useSocket()
@@ -18,26 +19,30 @@ export default function EngineeringEngineersPage () {
   const [engineers, setEngineers] = useState()
 
   useEffect(animateTableEffect)
-  
-  useEffect(async () => {
+
+  useEffect(() => {
     if (!connected || !router.isReady) return
 
-    // Always refetch list of engineers to ensure up to date
-    const newEngineers = await sendEvent('getEngineers')
-    setEngineers(newEngineers)
+    ;(async () => {
+      // Always refetch list of engineers to ensure up to date
+      const newEngineers = await sendEvent('getEngineers')
+      setEngineers(newEngineers)
 
-    // Always refetch current system
-    const newSystem = await sendEvent('getSystem')
-    if (newSystem?.address) setCurrentSystem(newSystem)
-    setComponentReady(true)
-  }, [connected, ready, router.isReady, query])
-
-  useEffect(() => eventListener('newLogEntry', async (log) => {
-    if (['Location', 'FSDJump'].includes(log.event)) {
+      // Always refetch current system
       const newSystem = await sendEvent('getSystem')
       if (newSystem?.address) setCurrentSystem(newSystem)
-    }
-  }), [])
+      setComponentReady(true)
+    })()
+  }, [connected, ready, router.isReady, query])
+
+  useEffect(() => {
+    return eventListener('newLogEntry', async (log) => {
+      if (['Location', 'FSDJump'].includes(log.event)) {
+        const newSystem = await sendEvent('getSystem')
+        if (newSystem?.address) setCurrentSystem(newSystem)
+      }
+    })
+  }, [])
 
   return (
     <Layout connected={connected} active={active} ready={ready} loader={!componentReady}>
@@ -143,3 +148,8 @@ function ListEngineers ({ engineers, currentSystem }) {
     </>
   )
 }
+
+export default dynamic(() => Promise.resolve(EngineeringEngineersPageContent), {
+  ssr: false,
+  loading: () => null
+})

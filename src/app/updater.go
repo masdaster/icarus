@@ -3,19 +3,20 @@ package main
 import (
 	"encoding/json"
 	"errors"
-	"github.com/gonutz/w32/v2"
-	"github.com/jmoiron/jsonq"
 	"io"
-	"io/ioutil"
 	"net/http"
 	"os"
 	"path/filepath"
 	"regexp"
+	"strconv"
 	"strings"
 	"time"
+
+	"github.com/gonutz/w32/v2"
+	"github.com/jmoiron/jsonq"
 )
 
-const LATEST_RELEASE_URL = "https://api.github.com/repos/iaincollins/icarus/releases/latest"
+const LATEST_RELEASE_URL = "https://api.github.com/repos/EDDataAPI/eddata-icarus/releases/latest"
 
 type Release struct {
 	InstalledVersion string `json:"installedVersion"`
@@ -23,6 +24,41 @@ type Release struct {
 	DownloadUrl      string `json:"downloadUrl"`
 	ReleaseNotes     string `json:"releaseNotes"`
 	IsUpgrade        bool   `json:"isUpgrade"`
+}
+
+// compareVersions compares two semver version strings
+// Returns 1 if v1 > v2, -1 if v1 < v2, 0 if equal
+func compareVersions(v1, v2 string) int {
+	parts1 := strings.Split(v1, ".")
+	parts2 := strings.Split(v2, ".")
+
+	// Pad shorter version with zeros
+	maxLen := len(parts1)
+	if len(parts2) > maxLen {
+		maxLen = len(parts2)
+	}
+
+	for len(parts1) < maxLen {
+		parts1 = append(parts1, "0")
+	}
+	for len(parts2) < maxLen {
+		parts2 = append(parts2, "0")
+	}
+
+	// Compare each part
+	for i := 0; i < maxLen; i++ {
+		n1, _ := strconv.Atoi(parts1[i])
+		n2, _ := strconv.Atoi(parts2[i])
+
+		if n1 > n2 {
+			return 1
+		}
+		if n1 < n2 {
+			return -1
+		}
+	}
+
+	return 0
 }
 
 func CheckForUpdate() (bool, error) {
@@ -115,7 +151,7 @@ func GetLatestRelease() (Release, error) {
 		defer res.Body.Close()
 	}
 
-	body, readErr := ioutil.ReadAll(res.Body)
+	body, readErr := io.ReadAll(res.Body)
 	if readErr != nil {
 		return release, readErr
 	}
@@ -135,7 +171,7 @@ func GetLatestRelease() (Release, error) {
 	releaseNotes, _ := jq.String("body")
 
 	if downloadUrl == "" {
-		return release, errors.New("Could not get download URL")
+		return release, errors.New("could not get download URL")
 	}
 
 	installedVersion := GetCurrentAppVersion()
@@ -144,14 +180,17 @@ func GetLatestRelease() (Release, error) {
 	release.ProductVersion = productVersion
 	release.DownloadUrl = downloadUrl
 	release.ReleaseNotes = releaseNotes
-	release.IsUpgrade = !(installedVersion == productVersion)
+	release.IsUpgrade = compareVersions(productVersion, installedVersion) > 0
 
 	return release, nil
 }
 
 func DownloadUpdate(downloadUrl string) (string, error) {
-	tmpDir, _ := ioutil.TempDir("", "*")
-	tmpfile := filepath.Join(tmpDir, "ICARUS Update.exe")
+	tmpDir, err := os.MkdirTemp("", "*")
+	if err != nil {
+		return "", err
+	}
+	tmpfile := filepath.Join(tmpDir, "EDData-Icarus Update.exe")
 
 	// Get file to download
 	resp, err := http.Get(downloadUrl)
@@ -168,7 +207,9 @@ func DownloadUpdate(downloadUrl string) (string, error) {
 	defer out.Close()
 
 	// Write to file
-	_, err = io.Copy(out, resp.Body)
+	if _, err = io.Copy(out, resp.Body); err != nil {
+		return "", err
+	}
 
 	return tmpfile, nil
 }

@@ -1,5 +1,5 @@
 // Convert files from raw data to useable / enriched JSON
-const glob = require('glob')
+const { glob } = require('glob')
 const csv = require('csvtojson')
 const fs = require('fs')
 const path = require('path')
@@ -14,33 +14,33 @@ const { RESOURCES_DIR } = require('./lib/build-options')
 const ROOT_INPUT_DATA_DIR = path.join(RESOURCES_DIR, 'data')
 const ROOT_OUTPUT_DATA_DIR = path.join('src', 'service', 'data')
 
-;(async () => {
-  await fdevids()
-  coriolisDataBlueprints()
-  coriolisDataModules()
-  materialUses()
-  await codexArticles()
-})()
+  ; (async () => {
+    await fdevids()
+    coriolisDataBlueprints()
+    coriolisDataModules()
+    materialUses()
+    await codexArticles()
+  })()
 
-function fdevids () {
+function fdevids() {
   return new Promise((resolve, reject) => {
-      // This a sync task, as codexArticles depends on it's output
-      // Data from https://github.com/EDCD/FDevIDs
-      const dataDir = 'edcd/fdevids'
-      fs.mkdirSync(`${ROOT_OUTPUT_DATA_DIR}/${dataDir}`, { recursive: true })
-      glob(`${ROOT_INPUT_DATA_DIR}/${dataDir}/*.csv`, {}, async (error, files) => {
-        if (error) return console.error(error)
-        for (const pathToFile of files) {
-          const jsonOutput = await csv().fromFile(pathToFile)
-          const basename = path.basename(pathToFile, '.csv')
-          fs.writeFileSync(`${ROOT_OUTPUT_DATA_DIR}/${dataDir}/${basename}.json`, JSON.stringify(jsonOutput, null, 2))
-        }
-        resolve()
-      })
+    // This a sync task, as codexArticles depends on it's output
+    // Data from https://github.com/EDCD/FDevIDs
+    const dataDir = 'edcd/fdevids'
+    fs.mkdirSync(`${ROOT_OUTPUT_DATA_DIR}/${dataDir}`, { recursive: true })
+    glob(`${ROOT_INPUT_DATA_DIR}/${dataDir}/*.csv`, {}, async (error, files) => {
+      if (error) return console.error(error)
+      for (const pathToFile of files) {
+        const jsonOutput = await csv().fromFile(pathToFile)
+        const basename = path.basename(pathToFile, '.csv')
+        fs.writeFileSync(`${ROOT_OUTPUT_DATA_DIR}/${dataDir}/${basename}.json`, JSON.stringify(jsonOutput, null, 2))
+      }
+      resolve()
+    })
   })
 }
 
-function coriolisDataBlueprints () {
+function coriolisDataBlueprints() {
   // https://github.com/EDCD/coriolis-data
   const dataDir = 'edcd/coriolis/modifications'
   const outputDir = `${ROOT_OUTPUT_DATA_DIR}/edcd/coriolis`
@@ -91,7 +91,7 @@ function coriolisDataBlueprints () {
   fs.writeFileSync(`${outputDir}/blueprints.json`, JSON.stringify(output, null, 2))
 }
 
-function coriolisDataModules () {
+function coriolisDataModules() {
   // https://github.com/EDCD/coriolis-data
   const dataDir = 'edcd/coriolis/modules'
   const outputDir = `${ROOT_OUTPUT_DATA_DIR}/edcd/coriolis`
@@ -127,7 +127,7 @@ function coriolisDataModules () {
   })
 }
 
-function materialUses () {
+function materialUses() {
   const materials = JSON.parse(fs.readFileSync(`${ROOT_OUTPUT_DATA_DIR}/edcd/fdevids/material.json`))
   const blueprints = JSON.parse(fs.readFileSync(`${ROOT_OUTPUT_DATA_DIR}/edcd/coriolis/blueprints.json`))
 
@@ -160,8 +160,7 @@ function materialUses () {
   fs.writeFileSync(`${ROOT_OUTPUT_DATA_DIR}/material-uses.json`, JSON.stringify(materialUses, null, 2))
 }
 
-
-async function codexArticles () {
+async function codexArticles() {
   const pathToFile = path.join(RESOURCES_DIR, 'data', 'fandom', 'elite_dangerousfandomcom-20220527-wikidump', 'elite_dangerousfandomcom-20220527-current.xml')
   const xml = fs.readFileSync(pathToFile).toString()
   const wikiData = (await xmlParser.parseStringPromise(xml)).mediawiki
@@ -170,7 +169,7 @@ async function codexArticles () {
   const codexPages = wikiData.page.reduce((response, item) => {
     const page = item
     const title = page.title[0].trim()
-    const id = `${page.id}-${title.toLowerCase().replace(/[^A-z0-9\(\)\'-]/g, '_').replace(/(__+)/g, '_')}`
+    const id = `${page.id}-${title.toLowerCase().replace(/[^A-z0-9()'-]/g, '_').replace(/(__+)/g, '_')}`
 
     // Ignore Talk and User pages
     if (title.startsWith('Talk:') || title.startsWith('User:')) return response
@@ -214,8 +213,8 @@ async function codexArticles () {
       .replace(/(<br\/>+)/img, ' ')
       .replace(/[ ]{2,}/img, ' ') // Turn two or more spaces into a single space
       .replace(/Painite,CaZrAl<sub>9<\/sub>O<sub>15<\/sub>\(BO<sub>3<\/sub>\)\./, '') // This is just garbage data in the entry for Panite
-      .trim()
-      ?? null
+      .trim() ??
+      null
 
     // Clean up text / omit certain sections
     const text = parsedText
@@ -230,7 +229,7 @@ async function codexArticles () {
       .trim()
 
     // Experiment at extracting information about promiment systems
-    //if (rawText.includes('| power      = ')) console.log(title.trim(), '-', text.split("\n")?.[0]?.replace(/[ ]{2,}/img, ' ')?.trim())
+    // if (rawText.includes('| power      = ')) console.log(title.trim(), '-', text.split("\n")?.[0]?.replace(/[ ]{2,}/img, ' ')?.trim())
 
     response.push({
       id,
@@ -280,14 +279,12 @@ async function codexArticles () {
     // These are names that are different in the wiki to how they are listed in the fdevids file
     // (even after attempting to clean up errors in the file, not 100% sure which name is
     // canonical for these cases)
-    if (codexPage.title == 'Galactic Travel Guides') codexPage.title = 'Galactic Travel Guide'
-    if (codexPage.title == 'Political Prisoner') codexPage.title = 'Political Prisoners'
-    if (codexPage.title == 'Hostage') codexPage.title = 'Hostages'
-   
-    commodities.map(commodity => {
-      const commoditySymbol = commodity.symbol.toLowerCase()
-      let commodityDescription
+    if (codexPage.title === 'Galactic Travel Guides') codexPage.title = 'Galactic Travel Guide'
+    if (codexPage.title === 'Political Prisoner') codexPage.title = 'Political Prisoners'
+    if (codexPage.title === 'Hostage') codexPage.title = 'Hostages'
+    if (codexPage.title === 'Auto Fabricators') codexPage.title = 'Auto-Fabricators'
 
+    commodities.forEach(commodity => {
       if (commodity.name.replace(/ /img, '').toLowerCase() === codexPage.title.replace(/ /img, '').toLowerCase()) {
         commodityDescription = codexPage.quote
       }
@@ -307,7 +304,7 @@ async function codexArticles () {
       allCommodities[commoditySymbol] = commodity
     })
 
-    rareCommodities.map(rareCommodity => {
+    rareCommodities.forEach(rareCommodity => {
       if (rareCommodity.name.replace(/ /img, '').toLowerCase() === codexPage.title.replace(/ /img, '').toLowerCase()) {
         rareCommodity.description = codexPage.quote
         commodityDescriptions[rareCommodity.symbol.toLowerCase()] = codexPage.quote
@@ -319,17 +316,17 @@ async function codexArticles () {
 
   Object.keys(allCommodities).forEach(name => {
     const commodity = allCommodities[name]
-    if (!commodity.description || commodity.description == '') console.warn(`Warning: Commodity "${commodity.symbol}" has no description`)
+    if (!commodity.description || commodity.description === '') console.warn(`Warning: Commodity "${commodity.symbol}" has no description`)
   })
 
-  const allCommoditiesSortedList = {} 
-  Object.keys(allCommodities).sort().forEach(k => allCommoditiesSortedList[k] = allCommodities[k])
+  const allCommoditiesSortedList = {}
+  Object.keys(allCommodities).sort().forEach(k => { allCommoditiesSortedList[k] = allCommodities[k] })
 
   fs.writeFileSync(`${ROOT_OUTPUT_DATA_DIR}/commodity-descriptions.json`, JSON.stringify(commodityDescriptions, null, 2))
   fs.writeFileSync(`${ROOT_OUTPUT_DATA_DIR}/all-commodites.json`, JSON.stringify(allCommoditiesSortedList, null, 2))
 }
 
-function getEngineeringPropertyName (engineeringPropertyName) {
+function getEngineeringPropertyName(engineeringPropertyName) {
   const engineeringPropertyNames = {
     fallofffromrange: 'Damage Falloff Start',
     power: 'Power Draw',

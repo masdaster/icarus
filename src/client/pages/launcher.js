@@ -1,4 +1,5 @@
 import { useState, useEffect } from 'react'
+import dynamic from 'next/dynamic'
 import { formatBytes, eliteDateTime } from 'lib/format'
 import { newWindow, checkForUpdate, installUpdate, openReleaseNotes, openTerminalInBrowser } from 'lib/window'
 import { useSocket, eventListener, sendEvent } from 'lib/socket'
@@ -15,7 +16,7 @@ const defaultloadingStats = {
   loadingTime: 0
 }
 
-export default function IndexPage () {
+function LauncherContent () {
   const { connected } = useSocket()
   const [hostInfo, setHostInfo] = useState()
   const [update, setUpdate] = useState()
@@ -23,27 +24,31 @@ export default function IndexPage () {
   const [loadingProgress, setLoadingProgress] = useState(defaultloadingStats)
 
   // Display URL (IP address/port) to connect from a browser
-  useEffect(async () => setHostInfo(await sendEvent('hostInfo')), [])
+  useEffect(() => {
+    sendEvent('hostInfo').then(info => setHostInfo(info))
+  }, [])
 
-  useEffect(async () => {
-    const message = await sendEvent('getLoadingStatus')
-    setLoadingProgress(message)
-    if (message?.loadingComplete === true) {
-      document.getElementById('loadingProgressBar').style.opacity = 0
-    }
+  useEffect(() => {
+    sendEvent('getLoadingStatus').then(message => {
+      setLoadingProgress(message)
+      if (message?.loadingComplete === true) {
+        document.getElementById('loadingProgressBar').style.opacity = 0
+      }
+    })
 
-    setTimeout(async () => {
-      const update = await checkForUpdate()
-      setUpdate(update)
+    setTimeout(() => {
+      checkForUpdate().then(update => setUpdate(update))
     }, 3000)
   }, [connected])
 
-  useEffect(() => eventListener('loadingProgress', (message) => {
-    setLoadingProgress(message)
-    if (message?.loadingComplete === true) {
-      setTimeout(() => { document.getElementById('loadingProgressBar').style.opacity = 0 }, 500)
-    }
-  }), [])
+  useEffect(() => {
+    return eventListener('loadingProgress', (message) => {
+      setLoadingProgress(message)
+      if (message?.loadingComplete === true) {
+        setTimeout(() => { document.getElementById('loadingProgressBar').style.opacity = 0 }, 500)
+      }
+    })
+  }, [])
 
   return (
     <>
@@ -54,10 +59,10 @@ export default function IndexPage () {
       />
       <div style={{ padding: '.5rem 1rem', opacity: connected ? 1 : 0, zoom: '1.2', fontWeight: 'bold' }}>
         <h1 className='text-info' style={{ marginBottom: '.5rem' }}>
-          <i className='icon icarus-terminal-logo' style={{ position: 'relative', top: '.75rem' }} />ICARUS
+          <i className='icon icarus-terminal-logo' style={{ position: 'relative', top: '.75rem' }} />EDData-ICARUS
         </h1>
         <span className='launcher-title'>
-          <h3 className='text-primary'>ICARUS Terminal</h3>
+          <h3 className='text-primary'>EDData-ICARUS Terminal</h3>
           <h4 className='text-primary text-muted'>Version {packageJson.version}</h4>
         </span>
         {update && update.isUpgrade &&
@@ -81,9 +86,10 @@ export default function IndexPage () {
                 }}
               ><i className='icon icarus-terminal-download' /> Install Update
               </button>}
-            {downloadingUpdate && <p className='text-primary text-blink-slow'>
-              <i style={{position: 'relative', top: '.2rem', marginRight: '.2rem'}} className='icon icarus-terminal-download' /> Downloading update...
-            </p>}
+            {downloadingUpdate &&
+              <p className='text-primary text-blink-slow'>
+                <i style={{ position: 'relative', top: '.2rem', marginRight: '.2rem' }} className='icon icarus-terminal-download' /> Downloading update...
+              </p>}
           </div>}
         <div style={{ position: 'absolute', bottom: '.5rem', left: '1rem' }}>
           <p className='text-muted'>Connect from a browser on</p>
@@ -129,3 +135,8 @@ export default function IndexPage () {
     </>
   )
 }
+
+export default dynamic(() => Promise.resolve(LauncherContent), {
+  ssr: false,
+  loading: () => null
+})

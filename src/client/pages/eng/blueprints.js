@@ -1,4 +1,5 @@
 import { useState, useEffect } from 'react'
+import dynamic from 'next/dynamic'
 import animateTableEffect from 'lib/animate-table-effect'
 import { useRouter } from 'next/router'
 import Link from 'next/link'
@@ -10,7 +11,7 @@ import Layout from 'components/layout'
 import Panel from 'components/panel'
 import CopyOnClick from 'components/copy-on-click'
 
-export default function EngineeringMaterialsPage () {
+function EngineeringMaterialsPageContent () {
   const router = useRouter()
   const { query } = router
   const { connected, active, ready } = useSocket()
@@ -22,50 +23,58 @@ export default function EngineeringMaterialsPage () {
   const [selectedBlueprint, setSelectedBlueprint] = useState()
 
   useEffect(animateTableEffect)
-  
-  useEffect(async () => {
+
+  useEffect(() => {
     if (!connected || !router.isReady) return
 
-    if (!blueprints) {
-      const newBlueprints = await sendEvent('getBlueprints')
-      setBlueprints(newBlueprints)
-      setBlueprintsApplied(newBlueprints.filter(b => b.appliedToModules.length > 0))
-      setBlueprintsNotApplied(newBlueprints.filter(b => b.appliedToModules.length === 0))
-    }
-    const newSystem = await sendEvent('getSystem')
-    if (newSystem?.address) setCurrentSystem(newSystem)
-    setComponentReady(true)
-  }, [connected, router.isReady, query])
-
-  useEffect(async () => {
-    if (!blueprints) return
-    const newSelectedBlueprint = (query?.symbol && query?.symbol.trim() !== '')
-      ? blueprints?.filter(blueprint => query?.symbol.toLowerCase() === blueprint.symbol.toLowerCase())?.[0] ?? null
-      : null
-    setSelectedBlueprint(newSelectedBlueprint)
-    const newSystem = await sendEvent('getSystem')
-    if (newSystem?.address) setCurrentSystem(newSystem)
-  }, [blueprints, query])
-
-  useEffect(() => eventListener('newLogEntry', async (log) => {
-    if (['Materials', 'MaterialCollected', 'MaterialDiscarded', 'MaterialTrade', 'EngineerCraft'].includes(log.event)) {
-      const newBlueprints = await sendEvent('getBlueprints')
-      setBlueprints(newBlueprints)
-      setBlueprintsApplied(newBlueprints.filter(b => b.appliedToModules.length > 0))
-      setBlueprintsNotApplied(newBlueprints.filter(b => b.appliedToModules.length === 0))
-    }
-    if (['Location', 'FSDJump'].includes(log.event)) {
+    ;(async () => {
+      if (!blueprints) {
+        const newBlueprints = await sendEvent('getBlueprints')
+        setBlueprints(newBlueprints)
+        setBlueprintsApplied(newBlueprints.filter(b => b.appliedToModules.length > 0))
+        setBlueprintsNotApplied(newBlueprints.filter(b => b.appliedToModules.length === 0))
+      }
       const newSystem = await sendEvent('getSystem')
       if (newSystem?.address) setCurrentSystem(newSystem)
-    }
-  }), [])
+      setComponentReady(true)
+    })()
+  }, [connected, router.isReady, query])
 
-  useEffect(() => eventListener('gameStateChange', async () => {
-    const newBlueprints = await sendEvent('getBlueprints')
-    setBlueprints(newBlueprints)
-    setBlueprintsApplied(newBlueprints.filter(b => b.appliedToModules.length > 0))
-    setBlueprintsNotApplied(newBlueprints.filter(b => b.appliedToModules.length === 0))
-  }), [])
+  useEffect(() => {
+    if (!blueprints) return
+    ;(async () => {
+      const newSelectedBlueprint = (query?.symbol && query?.symbol.trim() !== '')
+        ? blueprints?.filter(blueprint => query?.symbol.toLowerCase() === blueprint.symbol.toLowerCase())?.[0] ?? null
+        : null
+      setSelectedBlueprint(newSelectedBlueprint)
+      const newSystem = await sendEvent('getSystem')
+      if (newSystem?.address) setCurrentSystem(newSystem)
+    })()
+  }, [blueprints, query])
+
+  useEffect(() => {
+    return eventListener('newLogEntry', async (log) => {
+      if (['Materials', 'MaterialCollected', 'MaterialDiscarded', 'MaterialTrade', 'EngineerCraft'].includes(log.event)) {
+        const newBlueprints = await sendEvent('getBlueprints')
+        setBlueprints(newBlueprints)
+        setBlueprintsApplied(newBlueprints.filter(b => b.appliedToModules.length > 0))
+        setBlueprintsNotApplied(newBlueprints.filter(b => b.appliedToModules.length === 0))
+      }
+      if (['Location', 'FSDJump'].includes(log.event)) {
+        const newSystem = await sendEvent('getSystem')
+        if (newSystem?.address) setCurrentSystem(newSystem)
+      }
+    })
+  }, [])
+
+  useEffect(() => {
+    return eventListener('gameStateChange', async () => {
+      const newBlueprints = await sendEvent('getBlueprints')
+      setBlueprints(newBlueprints)
+      setBlueprintsApplied(newBlueprints.filter(b => b.appliedToModules.length > 0))
+      setBlueprintsNotApplied(newBlueprints.filter(b => b.appliedToModules.length === 0))
+    })
+  }, [])
 
   return (
     <Layout connected={connected} active={active} ready={ready} loader={!componentReady}>
@@ -396,3 +405,8 @@ export default function EngineeringMaterialsPage () {
     </Layout>
   )
 }
+
+export default dynamic(() => Promise.resolve(EngineeringMaterialsPageContent), {
+  ssr: false,
+  loading: () => null
+})

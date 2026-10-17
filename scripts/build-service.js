@@ -1,10 +1,10 @@
 const fs = require('fs')
 const path = require('path')
-const { compile } = require('nexe')
-const changeExe = require('changeexe')
+const { exec } = require('@yao-pkg/pkg')
 const UPX = require('upx')({ brute: false }) // Brute on service seems to hang
-const yargs = require('yargs')
-const commandLineArgs = yargs.argv
+const yargs = require('yargs/yargs')
+const { hideBin } = require('yargs/helpers')
+const commandLineArgs = yargs(hideBin(process.argv)).argv
 
 const {
   DEVELOPMENT_BUILD: DEVELOPMENT_BUILD_DEFAULT,
@@ -37,43 +37,62 @@ function clean () {
 }
 
 async function build () {
-  await compile({
-    name: 'ICARUS Service',
-    ico: SERVICE_ICON,
-    input: ENTRY_POINT,
-    output: SERVICE_UNOPTIMIZED_BUILD,
-    target: 'windows-x86-14.15.3', // from https://github.com/nexe/nexe/releases/tag/v3.3.3
-    resources: [
-      path.join(BUILD_DIR, 'client'), // Include web client
-      'src/service/data' // Include dynamically loaded JSON files
-    ],
-    debug: DEBUG_CONSOLE,
-    build: false,
-    bundle: true,
-    runtime: {
-      nodeConfigureOpts: ['--fully-static']
-    },
-    // https://github.com/nodejs/node/blob/master/src/res/node.rc
-    rc: SERVICE_VERSION_INFO
-  })
+  // pkg arguments
+  const args = [
+    ENTRY_POINT,
+    '--target', 'node24-win-x64',
+    '--output', SERVICE_UNOPTIMIZED_BUILD,
+    '--assets', path.join(BUILD_DIR, 'client/**/*')
+  ]
 
-  await changeExe.icon(SERVICE_UNOPTIMIZED_BUILD, SERVICE_ICON)
-  await changeExe.versionInfo(SERVICE_UNOPTIMIZED_BUILD, SERVICE_VERSION_INFO)
+  console.log('Building with pkg (Node.js 24)...')
+  await exec(args)
 
-  if (DEVELOPMENT_BUILD) {
-    console.log('Development build (skipping compression)')
-    fs.copyFileSync(SERVICE_UNOPTIMIZED_BUILD, SERVICE_FINAL_BUILD)
-  } else {
-    if (COMPRESS_FINAL_BUILD) {
-      console.log('Optimizing service build...')
-      const optimisationStats = await UPX(SERVICE_UNOPTIMIZED_BUILD)
-        .output(SERVICE_OPTIMIZED_BUILD)
-        .start()
-      fs.copyFileSync(SERVICE_OPTIMIZED_BUILD, SERVICE_FINAL_BUILD)
-      console.log('Optimized service build', optimisationStats)
-    } else {
-      console.log('Compression disabled (skipping service build optimization)')
-      fs.copyFileSync(SERVICE_UNOPTIMIZED_BUILD, SERVICE_FINAL_BUILD)
-    }
+  console.log('Copying to final location...')
+  fs.copyFileSync(SERVICE_UNOPTIMIZED_BUILD, SERVICE_FINAL_BUILD)
+
+  // Copy data files next to exe for runtime access
+  console.log('Copying service data files...')
+  const dataSource = path.join(__dirname, '..', 'src', 'service', 'data')
+  const dataTarget = path.join(BIN_DIR, 'data')
+
+  if (!fs.existsSync(dataTarget)) {
+    fs.mkdirSync(dataTarget, { recursive: true })
   }
+
+  // Copy entire data directory
+  const copyRecursive = (src, dest) => {
+    if (!fs.existsSync(dest)) fs.mkdirSync(dest, { recursive: true })
+
+    fs.readdirSync(src).forEach(item => {
+      const srcPath = path.join(src, item)
+      const destPath = path.join(dest, item)
+
+      if (fs.statSync(srcPath).isDirectory()) {
+        copyRecursive(srcPath, destPath)
+      } else {
+        fs.copyFileSync(srcPath, destPath)
+      }
+    })
+  }
+
+  copyRecursive(dataSource, dataTarget)
+  console.log(`Copied data files to ${dataTarget}`)
+
+  // Copy client files next to exe for runtime access (pkg mode)
+  console.log('Copying client files for pkg mode...')
+  const clientSource = path.join(BUILD_DIR, 'client')
+  const clientTarget = path.join(BIN_DIR, 'client')
+
+  if (fs.existsSync(clientSource)) {
+    copyRecursive(clientSource, clientTarget)
+    console.log(`Copied client files to ${clientTarget}`)
+  } else {
+    console.warn('Warning: Client build directory not found. Run "npm run build:client" first.')
+  }
+
+  // Note: rcedit modifies PE headers and corrupts pkg binaries
+  // Icon/VersionInfo must be set before pkg bundling or using alternative tools
+  console.log('Build complete!')
+  console.log('Note: Icon/VersionInfo not set (rcedit corrupts pkg binaries)')
 }

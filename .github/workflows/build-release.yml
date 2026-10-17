@@ -1,0 +1,147 @@
+name: Build Release
+
+on:
+  push:
+    tags:
+      - 'v*.*.*'
+  workflow_dispatch:
+    inputs:
+      version:
+        description: 'Release version (e.g., 0.22.0)'
+        required: true
+        default: '0.22.0'
+
+permissions:
+  contents: write
+
+jobs:
+  build-installer:
+    runs-on: windows-latest
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: '24'
+          cache: 'npm'
+
+      - name: Setup Go
+        uses: actions/setup-go@v5
+        with:
+          go-version: '1.25'
+          cache-dependency-path: src/app/go.sum
+
+      - name: Install NSIS
+        run: |
+          choco install nsis -y
+          refreshenv
+
+      - name: Install dependencies
+        run: npm ci
+
+      - name: Build Client (Next.js)
+        run: npm run build:client
+
+      - name: Build Go Application
+        run: npm run build:app
+
+      - name: Build Service
+        run: npm run build:service
+
+      - name: Build Installer
+        run: npm run build:package
+        continue-on-error: false
+
+      - name: Debug - List dist directory
+        run: |
+          echo "Checking dist directory contents:"
+          if (Test-Path "dist") {
+            Get-ChildItem -Path "dist" -Recurse | Format-Table Name, Length, FullName
+          } else {
+            echo "dist directory does not exist!"
+          }
+        shell: pwsh
+
+      - name: Get version
+        id: version
+        run: |
+          if ("${{ github.event.inputs.version }}" -ne "") {
+            $VERSION = "${{ github.event.inputs.version }}"
+          } else {
+            $VERSION = "${{ github.ref_name }}".TrimStart('v')
+          }
+          echo "VERSION=$VERSION" >> $env:GITHUB_OUTPUT
+          echo "Building version: $VERSION"
+        shell: pwsh
+
+      - name: Find installer
+        id: find_installer
+        run: |
+          $INSTALLER = Get-ChildItem -Path "dist" -Filter "*.exe" | Select-Object -First 1
+          if ($INSTALLER) {
+            echo "INSTALLER_PATH=dist/$($INSTALLER.Name)" >> $env:GITHUB_OUTPUT
+            echo "INSTALLER_NAME=$($INSTALLER.Name)" >> $env:GITHUB_OUTPUT
+            echo "Found installer: $($INSTALLER.Name)"
+          } else {
+            echo "Error: No installer found in dist/"
+            exit 1
+          }
+        shell: pwsh
+
+      - name: Upload Installer as Artifact
+        uses: actions/upload-artifact@v4
+        with:
+          name: eddata-icarus-installer
+          path: ${{ steps.find_installer.outputs.INSTALLER_PATH }}
+          retention-days: 30
+
+      - name: Create Release
+        if: startsWith(github.ref, 'refs/tags/')
+        uses: softprops/action-gh-release@v1
+        with:
+          files: ${{ steps.find_installer.outputs.INSTALLER_PATH }}
+          tag_name: ${{ github.ref_name }}
+          name: EDData Icarus ${{ github.ref_name }}
+          draft: false
+          prerelease: ${{ contains(github.ref_name, 'alpha') || contains(github.ref_name, 'beta') || contains(github.ref_name, 'rc') }}
+          generate_release_notes: true
+          body: |
+            ## EDData Icarus v${{ steps.version.outputs.VERSION }}
+
+            ### 📦 Installation
+            Download and run `${{ steps.find_installer.outputs.INSTALLER_NAME }}`
+
+            ### ✨ What's New
+            - Updated to Next.js 15 with Turbopack
+            - Updated to React 19 with new Compiler
+            - Updated to Node.js 24 LTS
+            - Updated to Go 1.25
+            - Performance improvements and bug fixes
+
+            ### 📋 Requirements
+            - Windows 10 or newer
+            - No dependencies required (self-contained installer)
+
+            ### 🚀 Features
+            - Real-time Elite Dangerous companion interface
+            - System map and navigation tools
+            - Ship status and engineering information
+            - Multi-screen and remote access support
+            - VR overlay compatible
+
+            ---
+            For detailed changelog, see the full release notes below.
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+
+      - name: Comment on manual workflow
+        if: github.event_name == 'workflow_dispatch'
+        run: |
+          echo "✅ Build completed successfully!"
+          echo "📦 Installer: ${{ steps.find_installer.outputs.INSTALLER_NAME }}"
+          echo "📁 Download from the Artifacts section above"

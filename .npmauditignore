@@ -1,0 +1,12 @@
+# npm audit exceptions
+# These vulnerabilities are in development dependencies only
+# and do not affect the production runtime
+
+# nexe build tool - latest version, no stable release available
+# Vulnerabilities in nested dependencies (got, http-cache-semantics)
+# Used only during build process in isolated environment
+nexe@>=5.0.0-beta.4
+download@*
+got@*
+http-cache-semantics@*
+cacheable-request@*

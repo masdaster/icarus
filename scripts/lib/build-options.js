@@ -26,41 +26,41 @@ const ICON = path.join(ASSETS_DIR, 'icon.ico')
 
 const PATH_TO_MAKENSIS = 'C:\\Program Files (x86)\\NSIS\\makensis.exe'
 const INSTALLER_NSI = path.join(RESOURCES_DIR, 'installer', 'installer.nsi') // Installer config
-const INSTALLER_EXE = path.join(DIST_DIR, 'ICARUS Setup.exe') // Should match INSTALLER_NAME in .nsi
+const INSTALLER_EXE = path.join(DIST_DIR, 'EDData-ICARUS Setup.exe') // Should match INSTALLER_NAME in .nsi
 
-const APP_BINARY_NAME = 'ICARUS Terminal.exe'
+const APP_BINARY_NAME = 'EDData-ICARUS.exe'
 const APP_UNOPTIMIZED_BUILD = path.join(BUILD_DIR, `~UNOPT_${safeBinaryName(APP_BINARY_NAME)}`)
 const APP_OPTIMIZED_BUILD = path.join(BUILD_DIR, `~OPT_${safeBinaryName(APP_BINARY_NAME)}`)
 const APP_FINAL_BUILD = path.join(BIN_DIR, APP_BINARY_NAME)
 const APP_ICON = ICON
 
 const APP_VERSION_INFO = {
-  CompanyName: 'ICARUS',
-  ProductName: 'ICARUS Terminal',
-  FileDescription: 'ICARUS Terminal',
+  CompanyName: 'EDData',
+  ProductName: 'EDData-ICARUS',
+  FileDescription: 'EDData-ICARUS Terminal',
   FileVersion: APP_FILE_VERSION,
   ProductVersion: PRODUCT_VERSION,
-  OriginalFilename: 'ICARUS Terminal.exe',
-  InternalName: 'ICARUS Terminal',
-  LegalCopyright: 'ICARUS'
+  OriginalFilename: 'EDData-ICARUS.exe',
+  InternalName: 'EDData-ICARUS',
+  LegalCopyright: 'EDData'
 }
 
-const SERVICE_BINARY_NAME = 'ICARUS Service.exe'
+const SERVICE_BINARY_NAME = 'EDData-ICARUS Service.exe'
 const SERVICE_UNOPTIMIZED_BUILD = path.join(BUILD_DIR, `~UNOPT_${safeBinaryName(SERVICE_BINARY_NAME)}`)
 const SERVICE_OPTIMIZED_BUILD = path.join(BUILD_DIR, `~OPT_${safeBinaryName(SERVICE_BINARY_NAME)}`)
 const SERVICE_FINAL_BUILD = path.join(BIN_DIR, SERVICE_BINARY_NAME)
-const SERVICE_STANDALONE_BUILD = path.join(DIST_DIR, 'icarus-terminal-service')
+const SERVICE_STANDALONE_BUILD = path.join(DIST_DIR, 'eddata-icarus-service')
 const SERVICE_ICON = ICON
 
 const SERVICE_VERSION_INFO = {
-  CompanyName: 'ICARUS',
-  ProductName: 'ICARUS Terminal Service',
-  FileDescription: 'ICARUS Terminal Service',
+  CompanyName: 'EDData',
+  ProductName: 'EDData-ICARUS Service',
+  FileDescription: 'EDData-ICARUS Service',
   FileVersion: SERVICE_FILE_VERSION,
   ProductVersion: PRODUCT_VERSION,
-  OriginalFilename: 'ICARUS Service.exe',
-  InternalName: 'ICARUS Service',
-  LegalCopyright: 'ICARUS'
+  OriginalFilename: 'EDData-ICARUS Service.exe',
+  InternalName: 'EDData-ICARUS Service',
+  LegalCopyright: 'EDData'
 }
 
 // Some of the third party libraries used in buildings choke on characters

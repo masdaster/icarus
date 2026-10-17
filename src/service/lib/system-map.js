@@ -28,7 +28,7 @@ class SystemMap {
     // a great way to organise the information to make it easy to read.
     //
     // However, for this to work we need to to treat "Stars" that are more like
-    // Planets (e.g. Class Y Brown Dawrf Stars or Class T Tauri Stars) that 
+    // Planets (e.g. Class Y Brown Dawrf Stars or Class T Tauri Stars) that
     // orbit other stars as if they were regular planets.
     //
     // We use our own classification system (stored in ._type) for the purpose
@@ -42,7 +42,7 @@ class SystemMap {
 
     // Filter out megaships that are designated as rescue ships, they are almost
     // always out of date and clutter the map
-    stations = stations.filter(body => !body.name.toLowerCase().startsWith("rescue ship - "))
+    stations = stations.filter(body => !body.name.toLowerCase().startsWith('rescue ship - '))
 
     this.stars = bodies.filter(body => body?._type === 'Star')
     this.planets = bodies.filter(body => body?._type === 'Planet')
@@ -68,7 +68,7 @@ class SystemMap {
     this.init()
   }
 
-  #getUniqueObjectsByProperty(arrayOfSystemObjects, key) {
+  #getUniqueObjectsByProperty (arrayOfSystemObjects, key) {
     const systemObjectsBy64BitId = {}
 
     // The EDSM API sometimes returns data for multiple planets in a system
@@ -81,15 +81,14 @@ class SystemMap {
     //
     // The primary purpose of this is to de-dupe duplicate planets from EDSM
     // by only using the most recent data for an object, but the intention is to
-    // expand this to merge in data from ship scans and Full Spectrum Scans 
+    // expand this to merge in data from ship scans and Full Spectrum Scans
     // performed by players locally and display a unified view in the UI.
     arrayOfSystemObjects.forEach(systemObject => {
       const systemObjectWithTimestamp = JSON.parse(JSON.stringify(systemObject))
       systemObjectWithTimestamp.timestamp = systemObject?.discovery?.date
 
       // This should never happen
-      if (!systemObjectWithTimestamp.hasOwnProperty('id64'))
-        return console.log('#getUniqueObjectsByProperty error - systemObject does not have id64 property', systemObject)
+      if (!Object.prototype.hasOwnProperty.call(systemObjectWithTimestamp, 'id64')) { return console.log('#getUniqueObjectsByProperty error - systemObject does not have id64 property', systemObject) }
 
       if (systemObjectsBy64BitId[systemObjectWithTimestamp.id64]) {
         // If this item is newer, replace it with the one we already have
@@ -130,7 +129,7 @@ class SystemMap {
       // that exception).
       if (body.isMainStar === true) return
 
-      // If Star doesn't have any non-null parent objects (i.e. it's not 
+      // If Star doesn't have any non-null parent objects (i.e. it's not
       // orbiting a planet or star) then we still treat it as one of the
       // "main stars" and don't reclassify it as a Planet for the system map
       if (this.#getNearestNotNullParent(body) === null) return
@@ -150,17 +149,17 @@ class SystemMap {
     // orbiting a 'Star' to a 'Planet' so it's plotted correctly.
     bodies.forEach((body, i) => {
       (body?.parents ?? []).forEach((parent, i) => {
-        const [k, v] = Object.entries(parent)[0]
+        const [, v] = Object.entries(parent)[0]
         if (starsOrbitingStarsLikePlanets.includes(v)) {
           body.parents[i] = { Planet: v }
         }
       })
     })
-    
+
     return bodies
   }
 
-  #getNearestNotNullParent(body) {
+  #getNearestNotNullParent (body) {
     let nonNullParent = null
     ;(body?.parents || []).every(parent => {
       const [k, v] = Object.entries(parent)[0]
@@ -176,7 +175,7 @@ class SystemMap {
   init () {
     for (const systemObject of this.objectsInSystem) {
       if (!systemObject._type) systemObject._type = systemObject.type
-      
+
       systemObject.name = this.getSystemObjectName(systemObject.name)
       systemObject.label = this.getSystemObjectLabelFromSystemObject(systemObject)
 
@@ -200,22 +199,22 @@ class SystemMap {
           : nearestPlanet?.parents?.[0]?.[nearestPlanetParentType] ?? null
 
         // If the object doesn't have a nearby planet it's orbiting, then assume
-        // it's orbiting a star (e.g. like in Asterope which has 3 stars, no 
+        // it's orbiting a star (e.g. like in Asterope which has 3 stars, no
         // planets but a Mega Ship and Coriolis Starport).
-        // 
-        // FIXME reduce this to one check of 'Nearest Body Type' that returns 
-        // nearest body regardless of if it is a Star or Planet, so that if 
-        // the star is closer but there is a far away planet, that it doesn't 
+        //
+        // FIXME reduce this to one check of 'Nearest Body Type' that returns
+        // nearest body regardless of if it is a Star or Planet, so that if
+        // the star is closer but there is a far away planet, that it doesn't
         // show the object as orbiting the planet.
         systemObject.parents = parentBodyId === null
           ? nearestStar ? [{ Star: nearestStar.bodyId }] : [{ Null: 0 }]
           : [{ Planet: parentBodyId }]
-        
+
         systemObject.radius = 1000
 
         const shipServices = []
         const otherServices = []
-      
+
         if (systemObject.otherServices.includes('Repair')) shipServices.push('Repair')
         if (systemObject.otherServices.includes('Refuel')) shipServices.push('Refuel')
         if (systemObject.otherServices.includes('Restock')) shipServices.push('Restock')
@@ -337,7 +336,7 @@ class SystemMap {
 
       // Get every object that directly or indirectly orbits this item
       itemInOrbit._children
-        //.sort((a, b) => (a.distanceToArrival - b.distanceToArrival))
+        // .sort((a, b) => (a.distanceToArrival - b.distanceToArrival))
         .sort((a, b) => (a.bodyId - b.bodyId))
         .map(subItemInOrbit => {
           subItemInOrbit._r = subItemInOrbit.radius / R_DIVIDER
@@ -406,10 +405,10 @@ class SystemMap {
     const planets = this.objectsInSystem.filter(body => body._type === 'Planet')
     if (planets.length === 0) return null
     return planets.reduce((ob1, ob2) => {
-        return Math.abs(targetDistanceToArrival - ob2.distanceToArrival) < Math.abs(targetDistanceToArrival - ob1.distanceToArrival)
-          ? ob2
-          : ob1
-      })
+      return Math.abs(targetDistanceToArrival - ob2.distanceToArrival) < Math.abs(targetDistanceToArrival - ob1.distanceToArrival)
+        ? ob2
+        : ob1
+    })
   }
 
   getNearestLandablePlanet (systemObject) {
@@ -417,22 +416,22 @@ class SystemMap {
     const landablePlanets = this.objectsInSystem.filter(body => body._type === 'Planet' && body.isLandable)
     if (landablePlanets.length === 0) return null
     return landablePlanets.reduce((ob1, ob2) => {
-        return Math.abs(targetDistanceToArrival - ob2.distanceToArrival) < Math.abs(targetDistanceToArrival - ob1.distanceToArrival)
-          ? ob2
-          : ob1
-      })
+      return Math.abs(targetDistanceToArrival - ob2.distanceToArrival) < Math.abs(targetDistanceToArrival - ob1.distanceToArrival)
+        ? ob2
+        : ob1
+    })
   }
 
-  getNearestStar(systemObject) {
+  getNearestStar (systemObject) {
     const targetDistanceToArrival = systemObject.distanceToArrival
     const stars = this.objectsInSystem.filter(body => body._type === 'Star')
     if (stars.length === 0) return null
     if (stars.length === 1) return stars[0]
     return stars.reduce((ob1, ob2) => {
-        return Math.abs(targetDistanceToArrival - ob2?.distanceToArrival ?? 0) < Math.abs(targetDistanceToArrival - ob1?.distanceToArrival ?? 0)
-          ? ob2
-          : ob1
-      })
+      return Math.abs(targetDistanceToArrival - ob2?.distanceToArrival ?? 0) < Math.abs(targetDistanceToArrival - ob1?.distanceToArrival ?? 0)
+        ? ob2
+        : ob1
+    })
   }
 
   getChildren (targetBody, immediateChildren = true, filter = ['Planet'].concat(SPACE_STATIONS).concat(MEGASHIPS)) {
@@ -465,12 +464,12 @@ class SystemMap {
       if (!systemObject.parents) continue
 
       const nearestNonNullParent = this.#getNearestNotNullParent(systemObject)
-      
+
       // Some systems to have multiple Null points round which bodies orbit.
       // We noramlize these all into one Null orbit (Body ID 0) to allow the map
       // to better visualize bodies that are not orbiting any specific star.
       // This ONLY applies to bodies that are not also orbiting another body.
-      if ( primaryOrbitType === 'Null' && nearestNonNullParent === null) {
+      if (primaryOrbitType === 'Null' && nearestNonNullParent === null) {
         primaryOrbit = 0
       }
 
@@ -513,7 +512,7 @@ class SystemMap {
         // Sector, it needs to be ahead of the line that strips the name as
         // some systems in Witch Head have bodies that start with name name of
         // the star as well but some don't (messy!)
-        .replace(/Witch Head Sector ([A-z0-9\-]+) ([A-z0-9\-]+) /i, '')
+        .replace(/Witch Head Sector ([A-z0-9-]+) ([A-z0-9-]+) /i, '')
         .replace(new RegExp(`^${escapeRegExp(this.name)} `, 'i'), '')
         .trim()
     } else if (systemObject._type && systemObject._type === 'Star') {
@@ -521,7 +520,7 @@ class SystemMap {
       // If the label contains 'Witch Head Sector' but does not start with it
       // then it is a renamed system and the Witch Head Sector bit is stripped
       if (systemObjectLabel.match(/Witch Head Sector/i) && !systemObjectLabel.match(/^Witch Head Sector/i)) {
-       systemObjectLabel = systemObjectLabel.replace(/ Witch Head Sector ([A-z0-9\-]+) ([A-z0-9\-]+)/i, '').trim()
+        systemObjectLabel = systemObjectLabel.replace(/ Witch Head Sector ([A-z0-9-]+) ([A-z0-9-]+)/i, '').trim()
       }
       return systemObjectLabel
     } else {
@@ -533,7 +532,7 @@ class SystemMap {
     // If the name contains 'Witch Head Sector' but does not start with it
     // then it is a renamed system and the Witch Head Sector bit is stripped
     if (systemObjectName.match(/Witch Head Sector/i) && !systemObjectName.match(/^Witch Head Sector/i)) {
-     return systemObjectName.replace(/ Witch Head Sector ([A-z0-9\-]+) ([A-z0-9\-]+)/i, '').trim()
+      return systemObjectName.replace(/ Witch Head Sector ([A-z0-9-]+) ([A-z0-9-]+)/i, '').trim()
     }
     return systemObjectName
   }

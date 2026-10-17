@@ -1,4 +1,5 @@
 import { useState, useEffect } from 'react'
+import dynamic from 'next/dynamic'
 import { useSocket, sendEvent, eventListener } from 'lib/socket'
 import { ShipPanelNavItems } from 'lib/navigation-items'
 import Layout from 'components/layout'
@@ -6,7 +7,7 @@ import Panel from 'components/panel'
 import ShipModulesPanel from 'components/panels/ship/ship-modules-panel'
 import ShipModuleInspectorPanel from 'components/panels/ship/ship-module-inspector-panel'
 
-export default function ShipStatusPage () {
+function ShipStatusPageContent () {
   const { connected, active, ready } = useSocket()
   const [ship, setShip] = useState()
   const [selectedModule, setSelectedModule] = useState()
@@ -25,10 +26,15 @@ export default function ShipStatusPage () {
     hardpoints: false
   })
 
-  useEffect(async () => {
+  useEffect(() => {
     if (!connected) return
-    setShip(await sendEvent('getShipStatus'))
-    setCmdrStatus(await sendEvent('getCmdrStatus'))
+    Promise.all([
+      sendEvent('getShipStatus'),
+      sendEvent('getCmdrStatus')
+    ]).then(([ship, cmdrStatus]) => {
+      setShip(ship)
+      setCmdrStatus(cmdrStatus)
+    })
   }, [connected, ready])
 
   const toggleSwitch = async (switchName) => {
@@ -44,7 +50,7 @@ export default function ShipStatusPage () {
     */
   }
 
-  useEffect(async () => {
+  useEffect(() => {
     setToggleSwitches({
       lights: cmdrStatus?.flags?.lightsOn ?? false,
       nightVision: cmdrStatus?.flags?.nightVision ?? false,
@@ -54,17 +60,21 @@ export default function ShipStatusPage () {
     })
   }, [cmdrStatus])
 
-  useEffect(() => eventListener('gameStateChange', async () => {
-    setShip(await sendEvent('getShipStatus'))
-    setCmdrStatus(await sendEvent('getCmdrStatus'))
-  }), [])
-
-  useEffect(() => eventListener('newLogEntry', async (log) => {
-    setShip(await sendEvent('getShipStatus'))
-    if (['Location', 'FSDJump'].includes(log.event)) {
+  useEffect(() => {
+    return eventListener('gameStateChange', async () => {
+      setShip(await sendEvent('getShipStatus'))
       setCmdrStatus(await sendEvent('getCmdrStatus'))
-    }
-  }), [])
+    })
+  }, [])
+
+  useEffect(() => {
+    return eventListener('newLogEntry', async (log) => {
+      setShip(await sendEvent('getShipStatus'))
+      if (['Location', 'FSDJump'].includes(log.event)) {
+        setCmdrStatus(await sendEvent('getCmdrStatus'))
+      }
+    })
+  }, [])
 
   return (
     <Layout connected={connected} active={active} ready={ready} className='ship-panel'>
@@ -84,3 +94,8 @@ export default function ShipStatusPage () {
     </Layout>
   )
 }
+
+export default dynamic(() => Promise.resolve(ShipStatusPageContent), {
+  ssr: false,
+  loading: () => null
+})

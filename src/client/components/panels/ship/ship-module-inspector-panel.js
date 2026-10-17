@@ -67,11 +67,11 @@ export default function ShipModuleInspectorPanel ({ module, setSelectedModule })
             </div>
             <div className='ship-panel__module-section ship-panel__module-section--engineering text-uppercase'>
               <div className='ship-panel__module-section--engineering-tab'>
-                {module.engineering.modifiers.map(modifier =>
-                  modifier.improvement ? <EngineeringModifier module={module} modifier={modifier} /> : null
+                {module.engineering.modifiers.map((modifier, i) =>
+                  modifier.improvement ? <EngineeringModifier key={`modifier-improvement-${i}`} module={module} modifier={modifier} /> : null
                 )}
-                {module.engineering.modifiers.map(modifier =>
-                  !modifier.improvement ? <EngineeringModifier module={module} modifier={modifier} /> : null
+                {module.engineering.modifiers.map((modifier, i) =>
+                  !modifier.improvement ? <EngineeringModifier key={`modifier-no-improvement-${i}`} module={module} modifier={modifier} /> : null
                 )}
               </div>
             </div>

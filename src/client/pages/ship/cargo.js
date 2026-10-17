@@ -1,4 +1,5 @@
 import { useState, useEffect } from 'react'
+import dynamic from 'next/dynamic'
 import animateTableEffect from 'lib/animate-table-effect'
 import { useSocket, sendEvent, eventListener } from 'lib/socket'
 import { ShipPanelNavItems } from 'lib/navigation-items'
@@ -7,31 +8,36 @@ import Layout from 'components/layout'
 import Panel from 'components/panel'
 import CopyOnClick from 'components/copy-on-click'
 
-export default function ShipCargoPage () {
+function ShipCargoPageContent () {
   const { connected, active, ready } = useSocket()
   const [ship, setShip] = useState()
   const [cargo, setCargo] = useState(null)
 
   useEffect(animateTableEffect)
 
-  useEffect(async () => {
+  useEffect(() => {
     if (!connected) return
-    const newShip = await sendEvent('getShipStatus')
-    setShip(newShip)
-    setCargo(newShip?.cargo?.inventory ?? [])
+    sendEvent('getShipStatus').then(newShip => {
+      setShip(newShip)
+      setCargo(newShip?.cargo?.inventory ?? [])
+    })
   }, [connected, ready])
 
-  useEffect(() => eventListener('gameStateChange', async () => {
-    const newShip = await sendEvent('getShipStatus')
-    setShip(newShip)
-    setCargo(newShip?.cargo?.inventory ?? [])
-  }), [])
+  useEffect(() => {
+    return eventListener('gameStateChange', async () => {
+      const newShip = await sendEvent('getShipStatus')
+      setShip(newShip)
+      setCargo(newShip?.cargo?.inventory ?? [])
+    })
+  }, [])
 
-  useEffect(() => eventListener('newLogEntry', async () => {
-    const newShip = await sendEvent('getShipStatus')
-    setShip(newShip)
-    setCargo(newShip?.cargo?.inventory ?? [])
-  }), [])
+  useEffect(() => {
+    return eventListener('newLogEntry', async () => {
+      const newShip = await sendEvent('getShipStatus')
+      setShip(newShip)
+      setCargo(newShip?.cargo?.inventory ?? [])
+    })
+  }, [])
 
   return (
     <Layout connected={connected} active={active} ready={ready}>
@@ -89,3 +95,8 @@ export default function ShipCargoPage () {
     </Layout>
   )
 }
+
+export default dynamic(() => Promise.resolve(ShipCargoPageContent), {
+  ssr: false,
+  loading: () => null
+})

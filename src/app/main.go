@@ -4,24 +4,24 @@ import (
 	"encoding/json"
 	"flag"
 	"fmt"
-	"github.com/nvsoft/win"
-	"github.com/phayes/freeport"
-	"github.com/rodolfoag/gow32"
-	"github.com/sqweek/dialog"
-	"github.com/webview/webview"
-	"golang.org/x/sys/windows"
 	"os"
 	"os/exec"
 	"path/filepath"
 	"syscall"
 	"time"
-	"unsafe"
+
+	"github.com/jchv/go-webview2"
+	"github.com/nvsoft/win"
+	"github.com/phayes/freeport"
+	"github.com/rodolfoag/gow32"
+	"github.com/sqweek/dialog"
+	"golang.org/x/sys/windows"
 )
 
 var dirname = ""
 var defaultPort = 3300 // Set to 0 to be assigned a free high numbered port
 var port int           // Actual port we are running on
-var webViewInstance webview.WebView
+var webViewInstance webview2.WebView
 
 // Track main window size when switching to/from fullscreen
 var windowWidth = defaultWindowWidth
@@ -71,7 +71,7 @@ func main() {
 
 	pathToExecutable, err := os.Executable()
 	if err != nil {
-		dialog.Message("%s", "Failed to start ICARUS Terminal Service\n\nUnable to determine current directory.").Title("Error").Error()
+		dialog.Message("%s", "Failed to start EDData-Icarus Service\n\nUnable to determine current directory.").Title("Error").Error()
 		exitApplication(1)
 	}
 	dirname = filepath.Dir(pathToExecutable)
@@ -86,7 +86,7 @@ func main() {
 
 	// Check if we are starting in Terminal mode
 	if *terminalMode {
-		createWindow(TERMINAL_WINDOW_TITLE, url, defaultWindowWidth, defaultWindowHeight, webview.HintNone)
+		createWindow(TERMINAL_WINDOW_TITLE, url, defaultWindowWidth, defaultWindowHeight, webview2.HintNone)
 		return
 	}
 
@@ -94,14 +94,14 @@ func main() {
 
 	// Check not already running
 	if checkProcessAlreadyExists(LAUNCHER_WINDOW_TITLE) {
-		dialog.Message("%s", "ICARUS Terminal is already running.\n\nYou can only run one instance at a time.").Title("Information").Info()
+		dialog.Message("%s", "EDData-Icarus is already running.\n\nYou can only run one instance at a time.").Title("Information").Info()
 		exitApplication(1)
 	}
 
 	// Check for an update before running main launcher code
 	// updateAvailable, _ := CheckForUpdate()
 	// if updateAvailable {
-	// 	ok := dialog.Message("%s", "A new version of ICARUS Terminal is available.\n\nDo you want to install the update?").Title("New version available").YesNo()
+	// 	ok := dialog.Message("%s", "A new version of EDData-ICARUS Terminal is available.\n\nDo you want to install the update?").Title("New version available").YesNo()
 	// 	if ok {
 	// 		InstallUpdate()
 	// 		return
@@ -110,6 +110,10 @@ func main() {
 
 	// Use Windows API to get Save Game dir
 	saveGameDirPath, err := windows.KnownFolderPath(windows.FOLDERID_SavedGames, 0)
+	if err != nil {
+		dialog.Message("Failed to determine save game directory: %s", err.Error()).Title("Error").Error()
+		exitApplication(1)
+	}
 
 	// Run service
 	cmdArg0 := fmt.Sprintf("%s%d", "--port=", *portPtr)
@@ -122,7 +126,7 @@ func main() {
 	// Exit if service fails to start
 	if serviceCmdErr != nil {
 		fmt.Println("Error starting service", serviceCmdErr.Error())
-		dialog.Message("%s%s", "Failed to start ICARUS Terminal Service.\n\n", serviceCmdErr.Error()).Title("Error").Error()
+		dialog.Message("%s%s", "Failed to start EDData-Icarus Service.\n\n", serviceCmdErr.Error()).Title("Error").Error()
 		exitApplication(1)
 	}
 
@@ -144,18 +148,16 @@ func main() {
 
 		if diff.Seconds() < 10 {
 			// Show alternate dialog message if fails within X seconds of startup
-			dialog.Message("%s", "ICARUS Terminal Service failed to start.\n\nAntiVirus or Firewall software may have prevented it from starting or it may be conflicting with another application.").Title("Error").Error()
+			dialog.Message("%s", "EDData-Icarus Service failed to start.\n\nAntiVirus or Firewall software may have prevented it from starting or it may be conflicting with another application.").Title("Error").Error()
 		} else {
 			fmt.Println("Service stopped unexpectedly.")
-			dialog.Message("%s", "ICARUS Terminal Service stopped unexpectedly.").Title("Error").Error()
+			dialog.Message("%s", "EDData-Icarus Service stopped unexpectedly.").Title("Error").Error()
 		}
 		exitApplication(1)
 	}()
 
-	// TODO Only open a window once service is ready
-	time.Sleep(0 * time.Second)
-
 	// Open main window (block rest of main until closed)
+	// Navigate directly to launcher (skip loader)
 	createNativeWindow(LAUNCHER_WINDOW_TITLE, launcherUrl, defaultLauncherWindowWidth, defaultLauncherWindowHeight)
 
 	// Ensure we terminate all processes cleanly when window closes
@@ -163,15 +165,27 @@ func main() {
 }
 
 // createWindow() lets the webview library create a managed window for us
-func createWindow(LAUNCHER_WINDOW_TITLE string, url string, width int32, height int32, hint webview.Hint) {
-	// Passes the pointer to the window as an unsafe reference
-	w := webview.New(DEBUGGER)
+func createWindow(LAUNCHER_WINDOW_TITLE string, url string, width int32, height int32, hint webview2.Hint) {
+	w := webview2.NewWithOptions(webview2.WebViewOptions{
+		Debug:     DEBUGGER,
+		AutoFocus: true,
+		WindowOptions: webview2.WindowOptions{
+			Title:  LAUNCHER_WINDOW_TITLE,
+			Width:  uint(width),
+			Height: uint(height),
+			IconId: 0,
+		},
+	})
+	if w == nil {
+		fmt.Println("Failed to create webview")
+		return
+	}
 	defer w.Destroy()
 
 	hwndPtr := w.Window()
 	hwnd := win.HWND(hwndPtr)
 
-	// Center window and force it to redraw
+	// Center window
 	screenWidth := int32(win.GetSystemMetrics(win.SM_CXSCREEN))
 	screenHeight := int32(win.GetSystemMetrics(win.SM_CYSCREEN))
 	windowX := int32((screenWidth / 2) - (width / 2))
@@ -179,59 +193,29 @@ func createWindow(LAUNCHER_WINDOW_TITLE string, url string, width int32, height 
 	win.MoveWindow(hwnd, windowX, windowY, width, height, false)
 
 	// Set window icon
-	hIconSm := win.HICON(win.LoadImage(0, syscall.StringToUTF16Ptr(ICON), win.IMAGE_ICON, 32, 32, win.LR_LOADFROMFILE|win.LR_SHARED|win.LR_LOADTRANSPARENT))
-	hIcon := win.HICON(win.LoadImage(0, syscall.StringToUTF16Ptr(ICON), win.IMAGE_ICON, 64, 64, win.LR_LOADFROMFILE|win.LR_SHARED|win.LR_LOADTRANSPARENT))
-	win.SendMessage(hwnd, win.WM_SETICON, 0, uintptr(hIconSm))
-	win.SendMessage(hwnd, win.WM_SETICON, 1, uintptr(hIcon))
+	if iconPath, err := windows.UTF16PtrFromString(ICON); err == nil {
+		hIconSm := win.HICON(win.LoadImage(0, iconPath, win.IMAGE_ICON, 32, 32, win.LR_LOADFROMFILE|win.LR_SHARED|win.LR_LOADTRANSPARENT))
+		hIcon := win.HICON(win.LoadImage(0, iconPath, win.IMAGE_ICON, 64, 64, win.LR_LOADFROMFILE|win.LR_SHARED|win.LR_LOADTRANSPARENT))
+		win.SendMessage(hwnd, win.WM_SETICON, 0, uintptr(hIconSm))
+		win.SendMessage(hwnd, win.WM_SETICON, 1, uintptr(hIcon))
+	}
 
 	bindFunctionsToWebView(w)
 
-	w.SetTitle(LAUNCHER_WINDOW_TITLE)
 	w.SetSize(int(width), int(height), hint)
-	w.Navigate(LoadUrl(url))
+	// Navigate directly without loader
+	w.Navigate(url)
 	w.Run()
 }
 
-// createNativeWindow() explicitly creates a native window and passes the handle
-// for it to the webview, this allows for greater customisation
+// createNativeWindow() creates a webview window with custom launcher behavior
+// Note: go-webview2 manages window creation internally, so we use createWindow instead
 func createNativeWindow(LAUNCHER_WINDOW_TITLE string, url string, width int32, height int32) {
-	// Instance of this executable
-	hInstance := win.GetModuleHandle(nil)
-	if hInstance == 0 {
-		fmt.Println("GetModuleHandle failed:", win.GetLastError())
-	}
-
-	// Register window class
-	atom := RegisterClass(hInstance)
-	if atom == 0 {
-		fmt.Println("RegisterClass failed:", win.GetLastError())
-	}
-
-	// Create our own window
-	// We do this manually and pass it to webview so that we can set the window
-	// location (i.e. centered), style, etc before it is displayed.
-	hwndPtr := CreateWin32Window(hInstance, LAUNCHER_WINDOW_TITLE, width, height)
-	if hwndPtr == 0 {
-		fmt.Println("CreateWin32Window failed:", win.GetLastError())
-	}
-
-	// Center window
-	hwnd := win.HWND(hwndPtr)
-	screenWidth := int32(win.GetSystemMetrics(win.SM_CXSCREEN))
-	screenHeight := int32(win.GetSystemMetrics(win.SM_CYSCREEN))
-	windowX := int32((screenWidth / 2) - (width / 2))
-	windowY := int32((screenHeight / 2) - (height / 2))
-	win.MoveWindow(hwnd, windowX, windowY, width, height, false)
-
-	// Pass the pointer to the window as an unsafe reference
-	webViewInstance = webview.NewWindow(DEBUGGER, unsafe.Pointer(&hwndPtr))
-	defer webViewInstance.Destroy()
-	bindFunctionsToWebView(webViewInstance)
-	webViewInstance.Navigate(LoadUrl(url))
-	webViewInstance.Run()
+	// Use the standard createWindow with no size hints for launcher mode
+	createWindow(LAUNCHER_WINDOW_TITLE, url, width, height, webview2.HintNone)
 }
 
-func bindFunctionsToWebView(w webview.WebView) {
+func bindFunctionsToWebView(w webview2.WebView) {
 	hwndPtr := w.Window()
 	hwnd := win.HWND(hwndPtr)
 
@@ -239,11 +223,11 @@ func bindFunctionsToWebView(w webview.WebView) {
 	var isPinned = false
 	defaultWindowStyle := win.GetWindowLong(hwnd, win.GWL_STYLE)
 
-	w.Bind("icarusTerminal_version", func() string {
+	w.Bind("edDataIcarus_version", func() string {
 		return GetCurrentAppVersion()
 	})
 
-	w.Bind("icarusTerminal_checkForUpdate", func() string {
+	w.Bind("edDataIcarus_checkForUpdate", func() string {
 		latestRelease, latestReleaseErr := GetLatestRelease()
 		if latestReleaseErr != nil {
 			return ""
@@ -257,19 +241,19 @@ func bindFunctionsToWebView(w webview.WebView) {
 		return string(response)
 	})
 
-	w.Bind("icarusTerminal_installUpdate", func() {
+	w.Bind("edDataIcarus_installUpdate", func() {
 		InstallUpdate()
 	})
 
-	w.Bind("icarusTerminal_isFullScreen", func() bool {
+	w.Bind("edDataIcarus_isFullScreen", func() bool {
 		return isFullScreen
 	})
 
-	w.Bind("icarusTerminal_isPinned", func() bool {
+	w.Bind("edDataIcarus_isPinned", func() bool {
 		return isPinned
 	})
 
-	w.Bind("icarusTerminal_togglePinWindow", func() bool {
+	w.Bind("edDataIcarus_togglePinWindow", func() bool {
 		if isFullScreen {
 			// Do nothing if in fullscreen mode (option in UI should be disabled)
 			return false
@@ -298,7 +282,7 @@ func bindFunctionsToWebView(w webview.WebView) {
 		return isPinned
 	})
 
-	w.Bind("icarusTerminal_toggleFullScreen", func() bool {
+	w.Bind("edDataIcarus_toggleFullScreen", func() bool {
 		// FIXME Always go fullscreen on main monitor.
 		// If the window is on a second monitor, it should go fullscreen on that
 		// display instead. See the following URL for example of how to handle
@@ -338,7 +322,7 @@ func bindFunctionsToWebView(w webview.WebView) {
 		return isFullScreen
 	})
 
-	w.Bind("icarusTerminal_newWindow", func() int {
+	w.Bind("edDataIcarus_newWindow", func() int {
 		terminalCmdInstance := exec.Command(filepath.Join(dirname, TERMINAL_EXECUTABLE), "--terminal=true", fmt.Sprintf("--port=%d", port))
 		terminalCmdInstance.Dir = dirname
 		terminalCmdErr := terminalCmdInstance.Start()
@@ -359,11 +343,11 @@ func bindFunctionsToWebView(w webview.WebView) {
 		return 0
 	})
 
-	w.Bind("icarusTerminal_openReleaseNotes", func() {
+	w.Bind("edDataIcarus_openReleaseNotes", func() {
 		runUnelevated(RELEASE_NOTES_URL)
 	})
 
-	w.Bind("icarusTerminal_openTerminalInBrowser", func() {
+	w.Bind("edDataIcarus_openTerminalInBrowser", func() {
 		runUnelevated(url)
 	})
 
@@ -380,7 +364,7 @@ func bindFunctionsToWebView(w webview.WebView) {
 		})
 	*/
 
-	w.Bind("icarusTerminal_quit", func() int {
+	w.Bind("edDataIcarus_quit", func() int {
 		exitApplication(0)
 		return 0
 	})
@@ -393,9 +377,5 @@ func exitApplication(exitCode int) {
 
 func checkProcessAlreadyExists(windowTitle string) bool {
 	_, err := gow32.CreateMutex(windowTitle)
-	if err != nil {
-		return true
-	}
-
-	return false
+	return err != nil
 }

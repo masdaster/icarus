@@ -1,18 +1,19 @@
 module icarus-terminal
 
-go 1.17
-
-require github.com/webview/webview v0.0.0-20210330151455-f540d88dde4e
+go 1.25
 
 require (
-	github.com/TheTitanrain/w32 v0.0.0-20180517000239-4f5cfb03fabf // indirect
-	github.com/gonutz/w32/v2 v2.2.2 // indirect
-	github.com/jchv/go-webview2 v0.0.0-20211023023319-977d8719321f // indirect
-	github.com/jchv/go-winloader v0.0.0-20200815041850-dec1ee9a7fd5 // indirect
-	github.com/jmoiron/jsonq v0.0.0-20150511023944-e874b168d07e // indirect
-	github.com/nvsoft/win v0.0.0-20160111051136-23d143e32c41 // indirect
-	github.com/phayes/freeport v0.0.0-20180830031419-95f893ade6f2 // indirect
-	github.com/rodolfoag/gow32 v0.0.0-20160917004320-d95ff468acf8 // indirect
-	github.com/sqweek/dialog v0.0.0-20211002065838-9a201b55ab91 // indirect
-	golang.org/x/sys v0.0.0-20200814200057-3d37ad5750ed // indirect
+	github.com/gonutz/w32/v2 v2.12.1
+	github.com/jchv/go-webview2 v0.0.0-20250406165304-0bcfea011047
+	github.com/jmoiron/jsonq v0.0.0-20150511023944-e874b168d07e
+	github.com/nvsoft/win v0.0.0-20160111051136-23d143e32c41
+	github.com/phayes/freeport v0.0.0-20220201140144-74d24b5ae9f5
+	github.com/rodolfoag/gow32 v0.0.0-20230512144032-1e896a3c51aa
+	github.com/sqweek/dialog v0.0.0-20240226140203-065105509627
+	golang.org/x/sys v0.39.0
+)
+
+require (
+	github.com/TheTitanrain/w32 v0.0.0-20200114052255-2654d97dbd3d // indirect
+	github.com/jchv/go-winloader v0.0.0-20250406163304-c1995be93bd1 // indirect
 )

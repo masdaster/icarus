@@ -105,7 +105,7 @@ class System {
             biological: 0,
             human: 0
           }
-          
+
           // Merge in body signal scan data
           const FSSBodySignals = await this.eliteLog._query({ event: 'FSSBodySignals', BodyName: body.name }, 1)
           if (FSSBodySignals[0]?.Signals) {
@@ -119,6 +119,7 @@ class System {
               if (signal?.Type === '$SAA_SignalType_Human;') {
                 body.signals.human = signal?.Count ?? 0
               }
+              return signal
             })
           }
 
@@ -135,6 +136,7 @@ class System {
               if (signal?.Type === '$SAA_SignalType_Human;') {
                 body.signals.human = signal?.Count ?? 0
               }
+              return signal
             })
           }
 
@@ -143,6 +145,7 @@ class System {
             body.biologicalGenuses = []
             ;(SAASignalsFound[0]?.Genuses).map(biologicalSamples => {
               body.biologicalGenuses.push(biologicalSamples.Genus_Localised)
+              return biologicalSamples
             })
           }
 
@@ -162,7 +165,6 @@ class System {
         }
       }
 
-
       // Generate map data from the system data
       const systemMap = new SystemMap(system)
 
@@ -177,7 +179,7 @@ class System {
 
     // Determine how many bodies we actaully know of in the current system, and
     // how many we think there are based on FSS Discovery Scan
-    let numberOfBodiesFound = cacheResponse?.bodies?.length ?? 0
+    const numberOfBodiesFound = cacheResponse?.bodies?.length ?? 0
     let numberOfBodiesInSystem = numberOfBodiesFound // We start with this value (until we know otherwise)
     let scanPercentComplete = null
 
@@ -222,7 +224,6 @@ class System {
         scanPercentComplete,
         _cacheTimestamp: new Date().toISOString()
       }
-
     } else {
       // Handle if this is not the system the player is currently in
       return {

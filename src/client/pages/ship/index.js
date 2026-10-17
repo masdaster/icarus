@@ -1,4 +1,4 @@
-import Router from 'next/router'
+import { useEffect } from 'react'
 import Layout from 'components/layout'
 import Panel from 'components/panel'
 import { useSocket } from 'lib/socket'
@@ -6,7 +6,9 @@ import { useSocket } from 'lib/socket'
 export default function ShipPage () {
   const { connected, active } = useSocket()
 
-  if (typeof window !== 'undefined') Router.push('/ship/status')
+  useEffect(() => {
+    if (typeof window !== 'undefined') window.location.href = '/ship/status'
+  }, [])
 
   return (
     <Layout connected={connected} active={active}>

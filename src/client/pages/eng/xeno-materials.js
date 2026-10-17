@@ -1,4 +1,5 @@
 import { useState, useEffect } from 'react'
+import dynamic from 'next/dynamic'
 import animateTableEffect from 'lib/animate-table-effect'
 import { useSocket, sendEvent, eventListener } from 'lib/socket'
 import { EngineeringPanelNavItems } from 'lib/navigation-items'
@@ -6,22 +7,24 @@ import Layout from 'components/layout'
 import Panel from 'components/panel'
 import Materials from 'components/panels/eng/materials'
 
-export default function EngineeringMaterialsPage () {
+function EngineeringMaterialsPageContent () {
   const { connected, active, ready } = useSocket()
   const [materials, setMaterials] = useState()
 
   useEffect(animateTableEffect)
-  
-  useEffect(async () => {
+
+  useEffect(() => {
     if (!connected) return
-    setMaterials(await sendEvent('getMaterials'))
+    sendEvent('getMaterials').then(materials => setMaterials(materials))
   }, [connected, ready])
 
-  useEffect(() => eventListener('newLogEntry', async (log) => {
-    if (['Materials', 'MaterialCollected', 'MaterialDiscarded', 'MaterialTrade', 'EngineerCraft'].includes(log.event)) {
-      setMaterials(await sendEvent('getMaterials'))
-    }
-  }), [])
+  useEffect(() => {
+    return eventListener('newLogEntry', async (log) => {
+      if (['Materials', 'MaterialCollected', 'MaterialDiscarded', 'MaterialTrade', 'EngineerCraft'].includes(log.event)) {
+        setMaterials(await sendEvent('getMaterials'))
+      }
+    })
+  }, [])
 
   return (
     <Layout connected={connected} active={active} ready={ready}>
@@ -36,3 +39,8 @@ export default function EngineeringMaterialsPage () {
     </Layout>
   )
 }
+
+export default dynamic(() => Promise.resolve(EngineeringMaterialsPageContent), {
+  ssr: false,
+  loading: () => null
+})

@@ -1,4 +1,3 @@
-
 import { useState, useEffect, Fragment } from 'react'
 
 import { useRouter } from 'next/router'
@@ -26,7 +25,7 @@ export default function PanelNavigation ({ items = [], search = () => {}, exit }
             <>
               <button
                 id='secondary-navigation__search-toggle'
-                data-secondary-navigation={i+1}
+                data-secondary-navigation={i + 1}
                 tabIndex='2'
                 disabled={search === false}
                 className={`button--icon ${searchInputVisible ? 'button--selected button--secondary' : ''}`}
@@ -71,7 +70,7 @@ export default function PanelNavigation ({ items = [], search = () => {}, exit }
           {!item.type &&
             <button
               tabIndex='2'
-              data-secondary-navigation={i+1}
+              data-secondary-navigation={i + 1}
               className={`button--icon ${item.active ? 'button--active' : ''}`}
               onClick={
                 item.onClick

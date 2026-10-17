@@ -76,15 +76,15 @@ export default function Header ({ connected, active }) {
     document.activeElement.blur()
   }
 
-  useEffect(async () => {
-    // icarusTerminal_* methods are not always accessible while the app is loading.
+  useEffect(() => {
+    // edDataIcarus_* methods are not always accessible while the app is loading.
     // This handles that by calling them when the component is mounted.
     // It uses a global for isWindowsApp to reduce UI flicker.
-    if (typeof window !== 'undefined' && typeof window.icarusTerminal_version === 'function') {
+    if (typeof window !== 'undefined' && typeof window.edDataIcarus_version === 'function') {
       IS_WINDOWS_APP = true
     }
-    setIsFullScreen(await isWindowFullScreen())
-    setIsPinned(await isWindowPinned())
+    isWindowFullScreen().then(fullScreen => setIsFullScreen(fullScreen))
+    isWindowPinned().then(pinned => setIsPinned(pinned))
   }, [])
 
   useEffect(() => {
@@ -116,16 +116,16 @@ export default function Header ({ connected, active }) {
           className='text-primary text-center text-uppercase'
           style={{ display: 'inline-block', padding: 0, margin: 0, lineHeight: '1rem', minWidth: '7.5rem' }}
         >
-           <span style={{position: 'relative', top: '.3rem', fontSize: '2.4rem', paddingTop: '.25rem'}}>
-           {dateTime.time}
+          <span style={{ position: 'relative', top: '.3rem', fontSize: '2.4rem', paddingTop: '.25rem' }}>
+            {dateTime.time}
           </span>
-          <br/>
-          <span style={{fontSize: '1.1rem', position: 'relative', top: '.4rem'}}>
+          <br />
+          <span style={{ fontSize: '1.1rem', position: 'relative', top: '.4rem' }}>
             {dateTime.day} {dateTime.month} {dateTime.year}
           </span>
         </p>
 
-        <button disabled className='button--icon button--transparent' style={{ marginRight: '.5rem', opacity: active ? 1 : .25, transition: 'all .25s ease-out' }}>
+        <button disabled className='button--icon button--transparent' style={{ marginRight: '.5rem', opacity: active ? 1 : 0.25, transition: 'all .25s ease-out' }}>
           <i className={signalClassName} style={{ position: 'relative', transition: 'all .25s ease', fontSize: '3rem', lineHeight: '1.8rem', top: '.5rem', right: '.25rem' }} />
         </button>
 
@@ -153,7 +153,7 @@ export default function Header ({ connected, active }) {
         {NAV_BUTTONS.filter(button => button).map((button, i) =>
           <button
             key={button.name}
-            data-primary-navigation={i+1}
+            data-primary-navigation={i + 1}
             tabIndex='1'
             disabled={button.path === currentPath}
             className={button.path === currentPath ? 'button--active' : ''}

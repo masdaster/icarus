@@ -10,19 +10,21 @@ export default function CodexPage () {
   const [codexEntries, setCodexEntries] = useState()
   const [codexEntry, setCodexEntry] = useState()
 
-  useEffect(async () => {
+  useEffect(() => {
     if (!connected || !router.isReady) return
 
-    if (query.name) {
-      const newCodexEntry = await sendEvent('getCodexEntry', { name: query.name })
-      setCodexEntry(newCodexEntry || null)
-    } else {
-      setCodexEntry(null)
-    }
+    ;(async () => {
+      if (query.name) {
+        const newCodexEntry = await sendEvent('getCodexEntry', { name: query.name })
+        setCodexEntry(newCodexEntry || null)
+      } else {
+        setCodexEntry(null)
+      }
 
-    if (!codexEntries) {
-      setCodexEntries(await sendEvent('getCodexEntries'))
-    }
+      if (!codexEntries) {
+        setCodexEntries(await sendEvent('getCodexEntries'))
+      }
+    })()
   }, [connected, router.isReady, query])
 
   if (codexEntry) {
@@ -50,7 +52,7 @@ function CodexEntries ({ codexEntries }) {
     <div style={{ padding: '1rem' }}>
       <h1>Codex</h1>
       {codexEntries && Object.keys(codexEntries.index).map(codexEntry =>
-        <p>
+        <p key={codexEntry}>
           <Link href={`codex?name=${codexEntry}`}>
             <a className='text-link text-uppercase'><span className='text-link-text'>{codexEntry}</span></a>
           </Link>

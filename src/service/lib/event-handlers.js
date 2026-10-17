@@ -1,32 +1,29 @@
 const os = require('os')
 const fs = require('fs')
 const path = require('path')
-// const pjXML = require('pjxml')
-// const sendKeys = require('sendkeys-js')
-// onst keycode = require('keycodes')
 const { UNKNOWN_VALUE } = require('../../shared/consts')
 
 const { BROADCAST_EVENT: broadcastEvent } = global
 
 // const TARGET_WINDOW_TITLE = 'Elite - Dangerous (CLIENT)'
-const KEYBINDS_DIR = path.join(os.homedir(), 'AppData', 'Local', 'Frontier Developments', 'Elite Dangerous', 'Options', 'Bindings')
+// const KEYBINDS_DIR = path.join(os.homedir(), 'AppData', 'Local', 'Frontier Developments', 'Elite Dangerous', 'Options', 'Bindings')
 
 // Prefer Keybinds v4 file
 // TODO Check what version of game player has active
-const KEYBINDS_FILE_V3 = path.join(KEYBINDS_DIR, 'Custom.3.0.binds') // Horizons
-const KEYBINDS_FILE_V4 = path.join(KEYBINDS_DIR, 'Custom.4.0.binds') // Odyssey
+// const KEYBINDS_FILE_V3 = path.join(KEYBINDS_DIR, 'Custom.3.0.binds') // Horizons
+// const KEYBINDS_FILE_V4 = path.join(KEYBINDS_DIR, 'Custom.4.0.binds') // Odyssey
 
-// Map ICARUS Terminal names to in-game keybind names
-const KEYBINDS_MAP = {
-  lights: 'ShipSpotLightToggle',
-  nightVision: 'NightVisionToggle',
-  landingGear: 'LandingGearToggle',
-  cargoHatch: 'ToggleCargoScoop',
-  hardpoints: 'DeployHardpointToggle'
-}
+// Map EDData-ICARUS Terminal names to in-game keybind names
+// const KEYBINDS_MAP = {
+//   lights: 'ShipSpotLightToggle',
+//   nightVision: 'NightVisionToggle',
+//   landingGear: 'LandingGearToggle',
+//   cargoHatch: 'ToggleCargoScoop',
+//   hardpoints: 'DeployHardpointToggle'
+// }
 
 // FIXME Refactor Preferences handling into a singleton
-const PREFERENCES_DIR = path.join(os.homedir(), 'AppData', 'Local', 'ICARUS Terminal')
+const PREFERENCES_DIR = path.join(os.homedir(), 'AppData', 'Local', 'EDData-ICARUS Terminal')
 const PREFERENCES_FILE = path.join(PREFERENCES_DIR, 'Preferences.json')
 
 const System = require('./event-handlers/system')
@@ -115,7 +112,7 @@ class EventHandlers {
         //     return null
         //   }
         // },
-        testMessage: ({name, message}) => {
+        testMessage: ({ name, message }) => {
           // Method to simulate messages, intended for developers
           if (name !== 'testMessage') broadcastEvent(name, message)
         },

@@ -1,5 +1,4 @@
-/* global WebSocket, CustomEvent */
-import { createContext, useState, useContext } from 'react'
+import { createContext, useState, useContext, useEffect } from 'react'
 import notification from 'lib/notification'
 
 let socket = null// Store socket connection (defaults to null)
@@ -17,48 +16,75 @@ const socketOptions = {
   notifications: true
 }
 
-function socketDebugMessage () { /* console.log(...arguments) */ }
+function socketDebugMessage() { console.log(...arguments) }
 
-function connect (socketState, setSocketState) {
-  if (socket !== null) return
+function connect(socketState, setSocketState) {
+  console.log('[SOCKET] connect() called')
+  if (socket !== null) {
+    console.log('[SOCKET] Socket already exists, skipping')
+    return
+  }
+
+  // Skip connection during server-side rendering
+  if (typeof window === 'undefined') {
+    console.log('[SOCKET] Server-side rendering detected, skipping')
+    return
+  }
+
+  console.log('[SOCKET] Initializing WebSocket connection to ws://' + window.location.host)
 
   // Reset on reconnect
   callbackHandlers = {}
   deferredEventQueue = []
 
-  socket = new WebSocket('ws://' + window.location.host)
+  try {
+    socket = new WebSocket('ws://' + window.location.host)
+    console.log('[SOCKET] WebSocket created successfully')
+  } catch (error) {
+    console.error('[SOCKET] ERROR creating WebSocket:', error)
+    if (typeof window !== 'undefined') window.alert('SOCKET ERROR: Failed to create WebSocket\n' + error.message)
+    return
+  }
   socket.onmessage = (event) => {
-    const { requestId, name, message } = JSON.parse(event.data)
-    // Invoke callback to handler (if there is one)
-    if (requestId && callbackHandlers[requestId]) callbackHandlers[requestId](event, setSocketState)
+    console.log('[SOCKET] Message received:', event.data.substring(0, 100))
+    let requestId, name, message
+    try {
+      const parsed = JSON.parse(event.data)
+      requestId = parsed.requestId
+      name = parsed.name
+      message = parsed.message
+      // Invoke callback to handler (if there is one)
+      if (requestId && callbackHandlers[requestId]) callbackHandlers[requestId](event, setSocketState)
 
-    // Updating resync whern loading completes tells any components to resync
-    // with the server. it is useful for remote clients that disconnects then
-    // reconnects to tell them to update once the service is ready.
-    if (name === 'loadingProgress') {
-      if (message.loadingComplete) {
-        setSocketState(prevState => ({
-          ...prevState,
-          ready: true
-        }))
+      // Updating resync whern loading completes tells any components to resync
+      // with the server. it is useful for remote clients that disconnects then
+      // reconnects to tell them to update once the service is ready.
+      if (name === 'loadingProgress') {
+        if (message.loadingComplete) {
+          console.log('[SOCKET] Loading complete, setting ready=true')
+          setSocketState(prevState => ({
+            ...prevState,
+            ready: true
+          }))
+        }
       }
-    }
 
-    // Broadcast event to anything that is listening for an event with this name
-    if (!requestId && name) {
-      window.dispatchEvent(new CustomEvent(`socketEvent_${name}`, { detail: message }))
+      // Broadcast event to anything that is listening for an event with this name
+      if (!requestId && name) {
+        window.dispatchEvent(new CustomEvent(`socketEvent_${name}`, { detail: message }))
 
-      // When a broadcast message is received, use recentBroadcastEvents to
-      // track recent requests so the activity monitor in the UI can reflect
-      // that there is activity and that the client is receiving events.
-      recentBroadcastEvents++
-      setTimeout(() => {
-        recentBroadcastEvents--
-        setSocketState(prevState => ({
-          ...prevState,
-          active: socketRequestsPending()
-        }))
-      }, 500)
+        // When a broadcast message is received, use recentBroadcastEvents to
+        // track recent requests so the activity monitor in the UI can reflect
+        // that there is activity and that the client is receiving events.
+        recentBroadcastEvents++
+        setTimeout(() => {
+          recentBroadcastEvents--
+          setSocketState(prevState => ({
+            ...prevState,
+            active: socketRequestsPending()
+          }))
+        }, 500)
+      }
 
       // Trigger notifications for key actions
       // TODO Refactor out into a seperate handler
@@ -83,6 +109,8 @@ function connect (socketState, setSocketState) {
           if (message.event === 'Scanned') notification('Scan detected')
         }
       } catch (e) { console.log('NOTIFICATION_ERROR', e) }
+    } catch (error) {
+      console.error('[SOCKET] ERROR in onmessage:', error)
     }
     socketDebugMessage('Message received from socket server', requestId, name, message)
   }
@@ -109,7 +137,7 @@ function connect (socketState, setSocketState) {
         }))
         deferredEventQueue.shift() // Remove message from queue once delivered
         socketDebugMessage('Queued message sent to socket server', requestId, name, message)
-      } catch (e) {
+      } catch {
         // Edge case for flakey connections
         socketDebugMessage('Failed to deliver queued message socket server', requestId, name, message)
       }
@@ -126,6 +154,7 @@ function connect (socketState, setSocketState) {
     }
   }
   socket.onclose = (e) => {
+    console.log('[SOCKET] WebSocket closed, code:', e.code, 'reason:', e.reason)
     socket = null
     socketDebugMessage('Disconnected from socket server (will attempt reconnection)')
     setSocketState(prevState => ({
@@ -138,6 +167,8 @@ function connect (socketState, setSocketState) {
   }
 
   socket.onerror = function (err) {
+    console.error('[SOCKET] WebSocket error:', err)
+    if (typeof window !== 'undefined') window.alert('WEBSOCKET ERROR: ' + (err.message || JSON.stringify(err)))
     socketDebugMessage('Socket error', err.message)
     socket.close()
   }
@@ -145,12 +176,18 @@ function connect (socketState, setSocketState) {
 
 const SocketContext = createContext()
 
-function SocketProvider ({ children }) {
+function SocketProvider({ children }) {
   const [socketState, setSocketState] = useState(defaultSocketState)
 
-  if (typeof window !== 'undefined' && socketState.connected !== true) {
-    connect(socketState, setSocketState)
-  }
+  useEffect(() => {
+    console.log('SocketProvider useEffect running', typeof WebSocket)
+    if (typeof WebSocket !== 'undefined') {
+      console.log('Calling connect()')
+      connect(socketState, setSocketState)
+    }
+  }, [])
+
+  console.log('SocketProvider rendering', socketState)
 
   return (
     <SocketContext.Provider value={socketState}>
@@ -159,12 +196,25 @@ function SocketProvider ({ children }) {
   )
 }
 
-function useSocket () { return useContext(SocketContext) }
+function useSocket() { return useContext(SocketContext) }
 
-function sendEvent (name, message = null) {
+const CALLBACK_TIMEOUT_MS = 30000 // 30 second timeout for callbacks
+
+function sendEvent(name, message = null) {
   return new Promise((resolve, reject) => {
     const requestId = generateUuid()
+
+    // Timeout to prevent memory leaks from orphaned callbacks
+    const timeoutId = setTimeout(() => {
+      if (callbackHandlers[requestId]) {
+        delete callbackHandlers[requestId]
+        console.warn(`[SOCKET] Request ${requestId} (${name}) timed out after ${CALLBACK_TIMEOUT_MS}ms`)
+        reject(new Error(`Request timed out: ${name}`))
+      }
+    }, CALLBACK_TIMEOUT_MS)
+
     callbackHandlers[requestId] = (event, setSocketState) => {
+      clearTimeout(timeoutId)
       const { message } = JSON.parse(event.data)
       delete callbackHandlers[requestId]
       setSocketState(prevState => ({
@@ -183,21 +233,30 @@ function sendEvent (name, message = null) {
   })
 }
 
-function eventListener (eventName, callback) {
+function eventListener(eventName, callback) {
   const eventHandler = (e) => { callback(e.detail) }
   window.addEventListener(`socketEvent_${eventName}`, eventHandler)
   return () => window.removeEventListener(`socketEvent_${eventName}`, eventHandler)
 }
 
-function socketRequestsPending () {
+function socketRequestsPending() {
   return !!((Object.keys(callbackHandlers).length > 0 || deferredEventQueue.length > 0 || recentBroadcastEvents > 0))
 }
 
-function generateUuid () {
-  return Math.random().toString(36).substring(2, 15) + Math.random().toString(36).substring(2, 15)
+function generateUuid() {
+  // Use crypto API for better randomness if available
+  if (typeof crypto !== 'undefined' && crypto.randomUUID) {
+    return crypto.randomUUID()
+  }
+  // Fallback for older browsers
+  return 'xxxxxxxx-xxxx-4xxx-yxxx-xxxxxxxxxxxx'.replace(/[xy]/g, function (c) {
+    const r = Math.random() * 16 | 0
+    const v = c === 'x' ? r : (r & 0x3 | 0x8)
+    return v.toString(16)
+  })
 }
 
-module.exports = {
+export {
   SocketProvider,
   useSocket,
   sendEvent,

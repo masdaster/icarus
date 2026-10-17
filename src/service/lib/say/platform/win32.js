@@ -20,7 +20,9 @@ class SayPlatformWin32 extends SayPlatformBase {
     psCommand += 'Add-Type -AssemblyName System.speech;$speak = New-Object System.Speech.Synthesis.SpeechSynthesizer;'
 
     if (voice) {
-      psCommand += `$speak.SelectVoice('${voice}');`
+      // Sanitize voice name to prevent command injection
+      const sanitizedVoice = voice.replace(/[';$`\\]/g, '')
+      psCommand += `$speak.SelectVoice('${sanitizedVoice}');`
     }
 
     if (speed) {
@@ -46,7 +48,9 @@ class SayPlatformWin32 extends SayPlatformBase {
     psCommand += 'Add-Type -AssemblyName System.speech;$speak = New-Object System.Speech.Synthesis.SpeechSynthesizer;'
 
     if (voice) {
-      psCommand += `$speak.SelectVoice('${voice}');`
+      // Sanitize voice name to prevent command injection
+      const sanitizedVoice = voice.replace(/[';$`\\]/g, '')
+      psCommand += `$speak.SelectVoice('${sanitizedVoice}');`
     }
 
     if (speed) {

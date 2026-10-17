@@ -1,9 +1,11 @@
 package main
 
 import (
-	"github.com/nvsoft/win"
 	"syscall"
 	"unsafe"
+
+	"github.com/nvsoft/win"
+	"golang.org/x/sys/windows"
 )
 
 func WndProc(hwnd win.HWND, msg uint32, wParam, lParam uintptr) uintptr {
@@ -44,10 +46,16 @@ func RegisterClass(hInstance win.HINSTANCE) (atom win.ATOM) {
 	wc.CbWndExtra = 0
 	wc.HInstance = hInstance
 	wc.HbrBackground = win.GetSysColorBrush(win.COLOR_WINDOWFRAME)
-	wc.LpszMenuName = syscall.StringToUTF16Ptr("")
-	wc.LpszClassName = syscall.StringToUTF16Ptr(LPSZ_CLASS_NAME)
-	wc.HIconSm = win.HICON(win.LoadImage(hInstance, syscall.StringToUTF16Ptr(ICON), win.IMAGE_ICON, 32, 32, win.LR_LOADFROMFILE|win.LR_SHARED|win.LR_LOADTRANSPARENT))
-	wc.HIcon = win.HICON(win.LoadImage(hInstance, syscall.StringToUTF16Ptr(ICON), win.IMAGE_ICON, 64, 64, win.LR_LOADFROMFILE|win.LR_SHARED|win.LR_LOADTRANSPARENT))
+	if menuName, err := windows.UTF16PtrFromString(""); err == nil {
+		wc.LpszMenuName = menuName
+	}
+	if className, err := windows.UTF16PtrFromString(LPSZ_CLASS_NAME); err == nil {
+		wc.LpszClassName = className
+	}
+	if iconPath, err := windows.UTF16PtrFromString(ICON); err == nil {
+		wc.HIconSm = win.HICON(win.LoadImage(hInstance, iconPath, win.IMAGE_ICON, 32, 32, win.LR_LOADFROMFILE|win.LR_SHARED|win.LR_LOADTRANSPARENT))
+		wc.HIcon = win.HICON(win.LoadImage(hInstance, iconPath, win.IMAGE_ICON, 64, 64, win.LR_LOADFROMFILE|win.LR_SHARED|win.LR_LOADTRANSPARENT))
+	}
 	wc.HCursor = win.LoadCursor(0, win.MAKEINTRESOURCE(win.IDC_ARROW))
 	return win.RegisterClassEx(&wc)
 }
@@ -60,10 +68,19 @@ func CreateWin32Window(hInstance win.HINSTANCE, LAUNCHER_WINDOW_TITLE string, wi
 	windowX := int32((screenWidth / 2) - (width / 2))
 	windowY := int32((screenHeight / 2) - (height / 2))
 
+	className, err := windows.UTF16PtrFromString(LPSZ_CLASS_NAME)
+	if err != nil {
+		return 0
+	}
+	title, err := windows.UTF16PtrFromString(LAUNCHER_WINDOW_TITLE)
+	if err != nil {
+		return 0
+	}
+
 	return win.CreateWindowEx(
 		win.WS_EX_APPWINDOW,
-		syscall.StringToUTF16Ptr(LPSZ_CLASS_NAME),
-		syscall.StringToUTF16Ptr(LAUNCHER_WINDOW_TITLE),
+		className,
+		title,
 		win.WS_OVERLAPPED|win.WS_SYSMENU|win.WS_MINIMIZEBOX,
 		//win.WS_OVERLAPPEDWINDOW, // A normal window
 		windowX,

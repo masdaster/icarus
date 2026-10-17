@@ -64,7 +64,7 @@ export default function NavigationInspectorPanel ({ systemObject, setSystemObjec
 
   // Show exploration only if there is intersting data to show
   let showExploration = false
-  if (systemObject.hasOwnProperty('mapped')) showExploration = true
+  if (Object.prototype.hasOwnProperty.call(systemObject, 'mapped')) showExploration = true
   if (isLandable) showExploration = true
   if (systemObject.volcanismType !== 'No volcanism') showExploration = true
   if (systemObject?.signals?.biological > 0) showExploration = true
@@ -91,40 +91,37 @@ export default function NavigationInspectorPanel ({ systemObject, setSystemObjec
             <p className='text-info'>{systemObject.distanceToArrival.toLocaleString(undefined, { maximumFractionDigits: 0 })} Ls</p>
           </div>}
 
-          {systemObject.type == 'Planet' && showExploration == true &&
-            <div className='navigation-panel__inspector-section'>
-              <h4 className='text-primary'>Exploration</h4>
+        {systemObject.type === 'Planet' && showExploration === true &&
+          <div className='navigation-panel__inspector-section'>
+            <h4 className='text-primary'>Exploration</h4>
 
-              {systemObject.hasOwnProperty('mapped') && <>
-                {systemObject.mapped === true
-                  ? <p className='text-info text-muted'><i className='icarus-terminal-scan' style={{position: 'relative', top: '.3rem', fontSize: '1.5rem'}}/> Surface scanned</p>
-                  : <p className='text-info'><i className='icarus-terminal-scan' style={{position: 'relative', top: '.3rem', fontSize: '1.5rem'}}/> Surface scan required</p>}
-              </>}
-              {isLandable ? <p className='text-info'><i className='icarus-terminal-planet-lander' style={{position: 'relative', top: '.3rem', fontSize: '1.5rem'}}/> Landable surface</p> : null}
+            {Object.prototype.hasOwnProperty.call(systemObject, 'mapped') && <>
+              {systemObject.mapped === true
+                ? <p className='text-info text-muted'><i className='icarus-terminal-scan' style={{ position: 'relative', top: '.3rem', fontSize: '1.5rem' }} /> Surface scanned</p>
+                : <p className='text-info'><i className='icarus-terminal-scan' style={{ position: 'relative', top: '.3rem', fontSize: '1.5rem' }} /> Surface scan required</p>}
+            </>}
+            {isLandable ? <p className='text-info'><i className='icarus-terminal-planet-lander' style={{ position: 'relative', top: '.3rem', fontSize: '1.5rem' }} /> Landable surface</p> : null}
 
-              {systemObject.terraformingState && systemObject.terraformingState !== 'Not terraformable' && systemObject.terraformingState !== 'Terraformed' && 
-                <p className='text-info'><i className='icarus-terminal-planet-terraformable' style={{position: 'relative', top: '.2rem', fontSize: '1.5rem'}}/> Terraformable</p>}
+            {systemObject.terraformingState && systemObject.terraformingState !== 'Not terraformable' && systemObject.terraformingState !== 'Terraformed' &&
+              <p className='text-info'><i className='icarus-terminal-planet-terraformable' style={{ position: 'relative', top: '.2rem', fontSize: '1.5rem' }} /> Terraformable</p>}
 
-              {systemObject.volcanismType !== 'No volcanism' ? <p className='text-info text-no-wrap'><i className='icarus-terminal-planet-volcanic' style={{position: 'relative', top: '.2rem', fontSize: '1.5rem'}}/> {systemObject.volcanismType}</p> : null}
+            {systemObject.volcanismType !== 'No volcanism' ? <p className='text-info text-no-wrap'><i className='icarus-terminal-planet-volcanic' style={{ position: 'relative', top: '.2rem', fontSize: '1.5rem' }} /> {systemObject.volcanismType}</p> : null}
 
-              {systemObject?.signals?.biological > 0 && !systemObject?.biologicalGenuses && <>
-                {systemObject?.signals?.biological === 1 &&
-                  <p className='text-info'><i className='icarus-terminal-plant' style={{position: 'relative', top: '.2rem', fontSize: '1.5rem'}}/> {systemObject?.signals?.biological} Biological Signal</p>
-                }
-                {systemObject?.signals?.biological > 1 &&
-                  <p className='text-info'><i className='icarus-terminal-plant' style={{position: 'relative', top: '.2rem', fontSize: '1.5rem'}}/> {systemObject?.signals?.biological} Biological Signals</p>
-                }
-              </>}
+            {systemObject?.signals?.biological > 0 && !systemObject?.biologicalGenuses && <>
+              {systemObject?.signals?.biological === 1 &&
+                <p className='text-info'><i className='icarus-terminal-plant' style={{ position: 'relative', top: '.2rem', fontSize: '1.5rem' }} /> {systemObject?.signals?.biological} Biological Signal</p>}
+              {systemObject?.signals?.biological > 1 &&
+                <p className='text-info'><i className='icarus-terminal-plant' style={{ position: 'relative', top: '.2rem', fontSize: '1.5rem' }} /> {systemObject?.signals?.biological} Biological Signals</p>}
+            </>}
 
-              {systemObject.biologicalGenuses && <>
-                {systemObject.biologicalGenuses.map(genus => 
-                  <p key={`navigation-inspector_${systemObject.id}_bio-signal_${genus}`} className='text-info'><i className='icarus-terminal-plant' style={{position: 'relative', top: '.2rem', fontSize: '1.5rem'}}/> {genus}</p>
-                )}
-              </>}
+            {systemObject.biologicalGenuses && <>
+              {systemObject.biologicalGenuses.map(genus =>
+                <p key={`navigation-inspector_${systemObject.id}_bio-signal_${genus}`} className='text-info'><i className='icarus-terminal-plant' style={{ position: 'relative', top: '.2rem', fontSize: '1.5rem' }} /> {genus}</p>
+              )}
+            </>}
 
-              {/* {systemObject?.discovery?.commander && <p className='text-info'><span className='text-primary'>EDSM Credit</span><br/>Cmdr {systemObject.discovery.commander}</p>} */}
-          </div>
-        }
+            {/* {systemObject?.discovery?.commander && <p className='text-info'><span className='text-primary'>EDSM Credit</span><br/>Cmdr {systemObject.discovery.commander}</p>} */}
+          </div>}
 
         {systemObject.type === 'Star' &&
           <div className='navigation-panel__inspector-section'>
@@ -141,11 +138,12 @@ export default function NavigationInspectorPanel ({ systemObject, setSystemObjec
           <>
             <div className='navigation-panel__inspector-section'>
               <h4 className='text-primary'>Environment</h4>
-              {systemObject.gravity ?
-              <p className='text-info'>Gravity {Math.max(0.01, Number(systemObject.gravity.toFixed(2)))}g
-               {systemObject.gravity < .5 && ' (Low)'}
-               {systemObject.gravity > 1.5 && ' (High)'}
-              </p> : null}
+              {systemObject.gravity
+                ? <p className='text-info'>Gravity {Math.max(0.01, Number(systemObject.gravity.toFixed(2)))}g
+                  {systemObject.gravity < 0.5 && ' (Low)'}
+                  {systemObject.gravity > 1.5 && ' (High)'}
+                  </p>
+                : null}
               {systemObject.radius && <p className='text-info'>Radius {systemObject.radius.toLocaleString(undefined, { maximumFractionDigits: 0 })} Km</p>}
               {systemObject.surfaceTemperature &&
                 <p className='text-info'>
@@ -196,7 +194,7 @@ export default function NavigationInspectorPanel ({ systemObject, setSystemObjec
 
                 <p className='text-muted'>No Atmosphere</p>
               </div>}
-              {systemObject.solidComposition &&
+            {systemObject.solidComposition &&
               <div className='navigation-panel__inspector-section'>
                 <h4 className='text-primary'>Material Composition</h4>
                 <ul className='text-info'>
@@ -266,7 +264,7 @@ export default function NavigationInspectorPanel ({ systemObject, setSystemObjec
 
         {systemObject._otherServices && systemObject._otherServices.length > 0 &&
           <div className='navigation-panel__inspector-section'>
-            <h4 className='text-primary'>Other Services</h4>
+            <h4 className='text-primary'>Other services</h4>
             <ul className='text-info'>
               {systemObject._otherServices.map((service, i) => <li key={`navigation-inspector_${systemObject.id}_other-service_${service}_${i}`}>{service}</li>)}
             </ul>
@@ -275,11 +273,12 @@ export default function NavigationInspectorPanel ({ systemObject, setSystemObjec
         {Object.prototype.hasOwnProperty.call(systemObject, 'rotationalPeriod') &&
           <div className='navigation-panel__inspector-section'>
             <h4 className='text-primary'>Orbital properties</h4>
-            {systemObject?.rotationalPeriod !== null && <p className='text-info'>
-              <span className='text-primary'>Rotational Period</span>
-              <br />{systemObject.rotationalPeriod}
-              {systemObject?.rotationalPeriodTidallyLocked && <><br />Tidally Locked</>}
-            </p>}
+            {systemObject?.rotationalPeriod !== null &&
+              <p className='text-info'>
+                <span className='text-primary'>Rotational Period</span>
+                <br />{systemObject.rotationalPeriod}
+                {systemObject?.rotationalPeriodTidallyLocked && <><br />Tidally Locked</>}
+              </p>}
             {systemObject?.orbitalEccentricity !== null && <p className='text-info'><span className='text-primary'>Orbital Eccentricity</span><br />{systemObject.orbitalEccentricity}</p>}
             {systemObject?.orbitalInclination !== null && <p className='text-info'><span className='text-primary'>Orbital Inclination</span><br />{systemObject.orbitalInclination}</p>}
             {systemObject?.orbitalPeriod !== null && <p className='text-info'><span className='text-primary'>Orbital Period</span><br />{systemObject.orbitalPeriod}</p>}

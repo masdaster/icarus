@@ -10,10 +10,11 @@ const http = require('http')
 const httpProxy = require('http-proxy')
 const proxy = httpProxy.createProxyServer({})
 const WebSocket = require('ws')
-const yargs = require('yargs')
+const yargs = require('yargs/yargs')
+const { hideBin } = require('yargs/helpers')
 const packageJson = require('../../package.json')
 
-const commandLineArgs = yargs
+const commandLineArgs = yargs(hideBin(process.argv))
   .help()
   .usage('Usage: $0 --save-game-dir <directory> [--port <port>]')
   .option('port', {
@@ -31,12 +32,18 @@ const commandLineArgs = yargs
   .alias('h', 'help')
   .argv
 
-console.log(`ICARUS Terminal Service ${packageJson.version}`)
+console.log(`EDData Icarus Service ${packageJson.version}`)
 
 // Parse command line arguments
 const PORT = commandLineArgs.port || commandLineArgs.p || 3300 // Port to listen on
 const DEVELOPMENT = commandLineArgs.dev || false // Development mode
-const WEB_DIR = 'build/client'
+
+// Determine web directory based on whether we're running from pkg or not
+const isPkg = typeof process.pkg !== 'undefined'
+const WEB_DIR = isPkg
+  ? path.join(path.dirname(process.execPath), 'client')
+  : path.join(__dirname, '../../build/client')
+
 const LOG_DIR = getLogDir()
 
 if (!fs.existsSync(LOG_DIR)) {
@@ -45,6 +52,12 @@ if (!fs.existsSync(LOG_DIR)) {
   process.exit(1)
 } else {
   console.log('Loading save game data from', LOG_DIR)
+}
+
+// Check if web directory exists
+if (!fs.existsSync(WEB_DIR)) {
+  console.error('ERROR: Web directory not found:', WEB_DIR)
+  process.exit(1)
 }
 
 function getLogDir () {
@@ -105,7 +118,18 @@ if (DEVELOPMENT) {
   httpServer = http.createServer(webServer)
 }
 
-const webSocketServer = new WebSocket.Server({ server: httpServer })
+const webSocketServer = new WebSocket.Server({
+  server: httpServer,
+  // Validate WebSocket connections - only allow localhost origins
+  verifyClient: (info) => {
+    const origin = info.origin || info.req.headers.origin || ''
+    const isLocalhost = origin.includes('localhost') || origin.includes('127.0.0.1') || origin === ''
+    if (!isLocalhost) {
+      console.warn('WebSocket connection rejected from origin:', origin)
+    }
+    return isLocalhost
+  }
+})
 
 function webSocketDebugMessage () { /* console.log(...arguments) */ }
 
@@ -155,11 +179,28 @@ webSocketServer.on('error', function (error) {
     console.error(`Failed to start service, port ${PORT} already in use.`)
     process.exit(1)
   }
+  console.error('WebSocket Server Error:', error)
 })
 
 // Start server
-httpServer.listen(PORT)
-console.log(`Listening on port ${PORT}…`)
+httpServer.on('error', (error) => {
+  console.error('HTTP Server Error:', error)
+  if (error.code === 'EADDRINUSE') {
+    console.error(`Failed to start service, port ${PORT} already in use.`)
+  }
+  process.exit(1)
+})
 
-// Initialize app - start parsing data and watching for game state changes
-setTimeout(() => init(), 500)
+// Bind to localhost only for security (prevents network exposure)
+const BIND_HOST = process.env.BIND_HOST || '127.0.0.1'
+
+httpServer.listen(PORT, BIND_HOST, async () => {
+  console.log(`Listening on ${BIND_HOST}:${PORT}...`)
+  // Initialize app - start parsing data and watching for game state changes
+  try {
+    await init()
+  } catch (error) {
+    console.error('ERROR: Failed to initialize service:', error)
+    process.exit(1)
+  }
+})

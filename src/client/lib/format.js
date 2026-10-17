@@ -29,7 +29,7 @@ function eliteDateTime (timestamp = Date.now()) {
     date: dateTimeString.split(/^(.*)? (\d\d:\d\d)/)[1],
     time: dateTimeString.split(/^(.*)? (\d\d:\d\d)/)[2],
     day: date.getDate(),
-    month: date.toLocaleString('en-us',{month:'short'}),
+    month: date.toLocaleString('en-us', { month: 'short' }),
     year: date.getFullYear()
   }
 
@@ -99,7 +99,7 @@ function objectToHtml (obj, depth = 0, type = null, previousPropertyName) {
   return str
 }
 
-module.exports = {
+export {
   formatBytes,
   eliteDateTime,
   objectToHtml

@@ -1,0 +1,72 @@
+# Dependabot Configuration
+# Keeps dependencies up-to-date automatically
+
+version: 2
+updates:
+  # npm dependencies
+  - package-ecosystem: "npm"
+    directory: "/"
+    schedule:
+      interval: "weekly"
+      day: "monday"
+      time: "09:00"
+    open-pull-requests-limit: 10
+    reviewers:
+      - "EDDataAPI"
+    labels:
+      - "dependencies"
+      - "npm"
+    commit-message:
+      prefix: "chore"
+      include: "scope"
+    ignore:
+      # Ignore major version updates for stability
+      - dependency-name: "*"
+        update-types: ["version-update:semver-major"]
+    groups:
+      # Group React-related updates
+      react:
+        patterns:
+          - "react*"
+          - "next"
+      # Group build tools
+      build-tools:
+        patterns:
+          - "puppeteer"
+          - "nodemon"
+          - "standard"
+          - "svgtofont"
+      # Group production dependencies
+      production:
+        dependency-type: "production"
+
+  # Go modules
+  - package-ecosystem: "gomod"
+    directory: "/src/app"
+    schedule:
+      interval: "weekly"
+      day: "monday"
+      time: "09:00"
+    open-pull-requests-limit: 5
+    reviewers:
+      - "EDDataAPI"
+    labels:
+      - "dependencies"
+      - "go"
+    commit-message:
+      prefix: "chore"
+      include: "scope"
+
+  # GitHub Actions
+  - package-ecosystem: "github-actions"
+    directory: "/"
+    schedule:
+      interval: "monthly"
+    open-pull-requests-limit: 3
+    reviewers:
+      - "EDDataAPI"
+    labels:
+      - "dependencies"
+      - "github-actions"
+    commit-message:
+      prefix: "ci"

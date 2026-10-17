@@ -1,0 +1,99 @@
+name: Dependency Update
+
+on:
+  schedule:
+    # Runs every Monday at 9:00 AM UTC
+    - cron: '0 9 * * 1'
+  workflow_dispatch: # Allow manual trigger
+
+permissions:
+  contents: write
+  pull-requests: write
+
+jobs:
+  update-dependencies:
+    runs-on: windows-latest
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: '24'
+          cache: 'npm'
+
+      - name: Setup Go
+        uses: actions/setup-go@v5
+        with:
+          go-version: '1.24'
+          cache-dependency-path: src/app/go.sum
+
+      - name: Update npm dependencies
+        run: |
+          npm update
+          npm audit fix --omit=dev
+        continue-on-error: true
+
+      - name: Check security (Production only)
+        run: |
+          echo "Checking production dependencies for vulnerabilities..."
+          npm audit --omit=dev --audit-level=high
+        continue-on-error: true
+
+      - name: Update Go dependencies
+        working-directory: src/app
+        run: |
+          go get -u ./...
+          go mod tidy
+        continue-on-error: true
+
+      - name: Run tests
+        run: |
+          npm run lint
+        continue-on-error: true
+
+      - name: Check for changes
+        id: check_changes
+        run: |
+          git diff --quiet package.json package-lock.json src/app/go.mod src/app/go.sum || echo "changed=true" >> $GITHUB_OUTPUT
+        shell: bash
+
+      - name: Create Pull Request
+        if: steps.check_changes.outputs.changed == 'true'
+        uses: peter-evans/create-pull-request@v6
+        with:
+          token: ${{ secrets.GITHUB_TOKEN }}
+          commit-message: 'chore: update dependencies'
+          title: 'chore: automated dependency updates'
+          body: |
+            ## Automated Dependency Updates
+
+            This PR contains automated updates to project dependencies:
+
+            ### Updated Dependencies
+            - npm packages updated to latest compatible versions
+            - Go modules updated to latest versions
+
+            ### Actions Taken
+            - ✅ Dependencies updated
+            - ✅ npm audit fix applied
+            - ✅ Go modules tidied
+            - ✅ Linting checks performed
+
+            ### Review Checklist
+            - [ ] Review dependency changes
+            - [ ] Test the application
+            - [ ] Verify no breaking changes
+            - [ ] Check for security advisories
+
+            ---
+            *This PR was created automatically by GitHub Actions*
+          branch: deps/automated-update
+          delete-branch: true
+          labels: |
+            dependencies
+            automated

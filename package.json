@@ -1,10 +1,10 @@
 {
-  "name": "icarus",
-  "version": "0.23.0",
+  "name": "eddata-icarus",
+  "version": "1.0.0",
   "description": "ICARUS Terminal for Elite Dangerous",
   "scripts": {
     "build": "npm run build:client && npm run build:app && npm run build:service && npm run build:package",
-    "build:client": "cd src/client && next build && next export -o ../../build/client",
+    "build:client": "cd src/client && next build",
     "build:app": "node scripts/build-app.js",
     "build:service": "node scripts/build-service.js",
     "build:package": "node scripts/build-package.js",
@@ -15,54 +15,72 @@
     "build:debug": "npm run build:client && npm run build:debug:app && npm run build:debug:service",
     "build:debug:app": "node scripts/build-app.js --debug",
     "build:debug:service": "node scripts/build-service.js --debug",
+    "release": "pwsh -ExecutionPolicy Bypass -File scripts/release.ps1",
     "start": "npm run dev",
     "clean": "npm run build:clean",
     "dev": "node src/service/main.js --dev",
     "lint": "npm run lint:go && npm run lint:javascript",
     "lint:go": "go fmt src/app/main.go",
-    "lint:javascript": "npx standard --fix",
+    "lint:javascript": "npx eslint --fix src/client/**/*.js src/service/**/*.js",
     "compress-images": "npx imagemin src/client/public/images/** --out-dir src/client/public/images/"
   },
   "keywords": [],
   "author": "",
   "license": "ISC",
   "devDependencies": {
+    "@yao-pkg/pkg": "^6.10.1",
     "changeexe": "^1.0.2",
     "csvtojson": "^2.0.10",
-    "fs-extra": "^10.0.0",
+    "eslint": "^9.39.2",
+    "eslint-plugin-import": "^2.32.0",
+    "eslint-plugin-n": "^17.23.1",
+    "eslint-plugin-promise": "^7.2.1",
+    "eslint-plugin-react": "^7.37.5",
+    "fs-extra": "^11.2.0",
     "generate-icons": "^0.1.10",
-    "makensis": "^1.1.1",
-    "nexe": "^4.0.0-beta.19",
-    "next": "^12.1.5",
-    "nodemon": "^2.0.15",
-    "puppeteer": "^14.0.0",
-    "react": "^17.0.2",
-    "react-dom": "^17.0.2",
-    "react-hot-toast": "^2.2.0",
+    "makensis": "^3.0.3",
+    "next": "^16.1.1",
+    "nodemon": "^3.1.7",
+    "png-to-ico": "^3.0.1",
+    "puppeteer": "^24.15.2",
+    "react": "^19.2.3",
+    "react-dom": "^19.2.3",
+    "react-hot-toast": "^2.4.1",
     "sendkeys-js": "^0.0.4",
-    "standard": "^16.0.4",
-    "svgtofont": "^3.12.9",
-    "to-ico": "^1.0.1",
+    "svgtofont": "^6.5.0",
     "upx": "^1.0.6",
     "wikitext2plaintext": "^0.1.0",
-    "xml2js": "^0.4.23"
+    "xml2js": "^0.6.2"
   },
   "dependencies": {
     "async-retry": "^1.3.3",
-    "axios": "^0.24.0",
+    "axios": "^1.7.9",
     "connect": "^3.7.0",
-    "dotenv": "^10.0.0",
-    "glob": "^7.1.7",
+    "dotenv": "^17.2.3",
+    "glob": "^13.0.0",
     "http-proxy": "^1.18.1",
-    "nedb-promises": "^5.0.2",
-    "one-time": "^0.0.4",
+    "nedb-promises": "^6.2.3",
+    "one-time": "^1.0.0",
     "say": "^0.16.0",
-    "serve-static": "^1.14.1",
-    "ws": "^8.2.3",
-    "yargs": "^17.2.1"
+    "serve-static": "^2.2.1",
+    "ws": "^8.18.0",
+    "yargs": "^18.0.0"
   },
   "engines": {
-    "npm": "9.6.7",
-    "node": "18.17.1"
+    "npm": ">=10.9.0",
+    "node": ">=24.0.0"
+  },
+  "pkg": {
+    "assets": [
+      "build/client/**/*",
+      "src/service/data/**/*"
+    ],
+    "scripts": [
+      "node_modules/axios/**/*.js"
+    ],
+    "targets": [
+      "node24-win-x64"
+    ],
+    "outputPath": "build"
   }
 }

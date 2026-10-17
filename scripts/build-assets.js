@@ -4,7 +4,7 @@ const fs = require('fs')
 const path = require('path')
 const { execSync } = require('child_process')
 const fse = require('fs-extra')
-const toIco = require('to-ico')
+const pngToIco = require('png-to-ico')
 const svgtofont = require('svgtofont')
 const packageJson = require('../package.json')
 
@@ -38,13 +38,8 @@ async function build () {
   )
 
   // Convert icon.png to icon.ico (used for windows app icon)
-  const iconFiles = [
-    fs.readFileSync(path.join(ICONS_DIR, 'icon-256x256.png'))
-  ]
-  const buf = await toIco(iconFiles, {
-    resize: true,
-    sizes: [16, 24, 32, 48, 64, 128, 256]
-  })
+  const iconPath = path.join(ICONS_DIR, 'icon-256x256.png')
+  const buf = await pngToIco(iconPath)
   fs.writeFileSync(ICON, buf)
   fse.copySync(ICON, 'src/client/public/favicon.ico')
 
@@ -62,7 +57,7 @@ async function build () {
       normalize: true
     },
     website: {
-      title: 'ICARUS Terminal Font',
+      title: 'EDData-ICARUS Terminal Font',
       logo: false,
       version: packageJson.version
     }

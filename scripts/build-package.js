@@ -1,6 +1,5 @@
 const fs = require('fs')
 const { execSync } = require('child_process')
-const NSIS = require('makensis')
 
 const {
   BUILD_DIR,
@@ -29,13 +28,16 @@ function clean () {
 }
 
 async function build () {
+  // Dynamic import for ESM module
+  const { compile } = await import('makensis')
+
   // Sign binaries before packaging
   if (SIGN_BUILD) {
     execSync(`"${PATH_TO_SIGNTOOL}" sign /a /n "${SIGN_CERT_NAME}" /t ${SIGN_TIME_SERVER} /fd SHA256 /v "${APP_FINAL_BUILD}"`)
     execSync(`"${PATH_TO_SIGNTOOL}" sign /a /n "${SIGN_CERT_NAME}" /t ${SIGN_TIME_SERVER} /fd SHA256 /v "${SERVICE_FINAL_BUILD}"`)
   }
 
-  const installerOutput = NSIS.compile.sync(INSTALLER_NSI, {
+  const installerOutput = await compile(INSTALLER_NSI, {
     pathToMakensis: PATH_TO_MAKENSIS,
     verbose: 4,
     define: {
@@ -44,12 +46,23 @@ async function build () {
       INSTALLER_EXE
     }
   })
-  console.log(installerOutput)
+
+  console.log('Installer Output:', JSON.stringify(installerOutput, null, 2))
+  console.log('Status:', installerOutput.status)
+  if (installerOutput.warnings) {
+    console.warn('Warnings:', installerOutput.warnings)
+  }
+  if (installerOutput.stdout) {
+    console.log('STDOUT:', installerOutput.stdout)
+  }
+  if (installerOutput.stderr) {
+    console.error('STDERR:', installerOutput.stderr)
+  }
 
   if (SIGN_BUILD) {
     execSync(`"${PATH_TO_SIGNTOOL}" sign /a /n "${SIGN_CERT_NAME}" /t ${SIGN_TIME_SERVER} /fd SHA256 /v "${INSTALLER_EXE}"`)
   }
 
   // Open directory with installer
-  //execSync('explorer.exe dist')
+  // execSync('explorer.exe dist')
 }

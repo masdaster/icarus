@@ -27,7 +27,7 @@ class Say {
 module.exports = new Say() // Create a singleton automatically for backwards compatability
 module.exports.Say = Say // Allow users to `say = new Say.Say(platform)`
 module.exports.platforms = {
-  WIN32: WIN32,
-  MACOS: MACOS,
-  LINUX: LINUX
+  WIN32,
+  MACOS,
+  LINUX
 }

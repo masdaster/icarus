@@ -1,5 +1,3 @@
-const fs = require('fs')
-
 class Mission {
   constructor (missionId) {
     // Look up mission based on ID and populate mission object

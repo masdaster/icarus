@@ -1,4 +1,5 @@
 import { useState, useEffect } from 'react'
+import dynamic from 'next/dynamic'
 import animateTableEffect from 'lib/animate-table-effect'
 import { useRouter } from 'next/router'
 import { useSocket, sendEvent, eventListener } from 'lib/socket'
@@ -8,7 +9,7 @@ import Panel from 'components/panel'
 import NavigationListPanel from 'components/panels/nav/navigation-list-panel'
 import NavigationInspectorPanel from 'components/panels/nav/navigation-inspector-panel'
 
-export default function NavListPage () {
+function NavListPageContent () {
   const router = useRouter()
   const { query } = router
   const { connected, active, ready } = useSocket()
@@ -16,7 +17,7 @@ export default function NavListPage () {
   const [system, setSystem] = useState()
   const [systemObject, setSystemObject] = useState()
   const [helpVisible, setHelpVisible] = useState(false)
-  
+
   useEffect(animateTableEffect)
 
   const getSystem = async (systemName, useCache = true) => {
@@ -44,46 +45,50 @@ export default function NavListPage () {
     }
   }
 
-  useEffect(async () => {
+  useEffect(() => {
     if (!connected || !router.isReady) return
 
-    const newSystem = await sendEvent('getSystem', query.system ? { name: query.system, useCache: true } : null)
-    if (newSystem) {
-      setSystem(newSystem)
-    } else {
-      // If system lookup fails (i.e. no game data), fallback to Sol system
-      setSystem(await sendEvent('getSystem', { name: 'Sol', useCache: true }))
-    }
-
-    if (query.selected) {
-      const newSystemObject = newSystem.objectsInSystem.filter(child => child.name.toLowerCase() === query.selected.toLowerCase())[0]
-      if (newSystemObject) {
-        const el = document.querySelector(`[data-system-object-name="${newSystemObject.name}" i]`)
-        if (el) el.focus()
+    ;(async () => {
+      const newSystem = await sendEvent('getSystem', query.system ? { name: query.system, useCache: true } : null)
+      if (newSystem) {
+        setSystem(newSystem)
+      } else {
+        // If system lookup fails (i.e. no game data), fallback to Sol system
+        setSystem(await sendEvent('getSystem', { name: 'Sol', useCache: true }))
       }
-    }
-    setComponentReady(true)
+
+      if (query.selected) {
+        const newSystemObject = newSystem.objectsInSystem.filter(child => child.name.toLowerCase() === query.selected.toLowerCase())[0]
+        if (newSystemObject) {
+          const el = document.querySelector(`[data-system-object-name="${newSystemObject.name}" i]`)
+          if (el) el.focus()
+        }
+      }
+      setComponentReady(true)
+    })()
   }, [connected, ready, router.isReady])
 
-  useEffect(() => eventListener('newLogEntry', async (log) => {
-    if (['Location', 'FSDJump'].includes(log.event)) {
-      const newSystem = await sendEvent('getSystem', { useCache: false })
-      if (!newSystem) return // If no result, don't update map
-      setSystemObject(null) // Clear selected object
-      setSystem(newSystem)
-    }
-    if (['FSSDiscoveryScan', 'FSSAllBodiesFound', 'SAASignalsFound', 'FSSBodySignals', 'Scan'].includes(log.event)) {
-      const newSystem = await sendEvent('getSystem', { name: system?.name, useCache: false })
-      // Update system object so NavigationInspectorPanel is also updated
-      if (newSystem) {
-        if (systemObject?.name) {
-          const newSystemObject = newSystem.objectsInSystem.filter(child => child.name.toLowerCase() === systemObject.name?.toLowerCase())[0]
-          setSystemObject(newSystemObject)
-        }
+  useEffect(() => {
+    return eventListener('newLogEntry', async (log) => {
+      if (['Location', 'FSDJump'].includes(log.event)) {
+        const newSystem = await sendEvent('getSystem', { useCache: false })
+        if (!newSystem) return // If no result, don't update map
+        setSystemObject(null) // Clear selected object
         setSystem(newSystem)
       }
-    }
-  }), [system, systemObject])
+      if (['FSSDiscoveryScan', 'FSSAllBodiesFound', 'SAASignalsFound', 'FSSBodySignals', 'Scan'].includes(log.event)) {
+        const newSystem = await sendEvent('getSystem', { name: system?.name, useCache: false })
+        // Update system object so NavigationInspectorPanel is also updated
+        if (newSystem) {
+          if (systemObject?.name) {
+            const newSystemObject = newSystem.objectsInSystem.filter(child => child.name.toLowerCase() === systemObject.name?.toLowerCase())[0]
+            setSystemObject(newSystemObject)
+          }
+          setSystem(newSystem)
+        }
+      }
+    })
+  }, [system, systemObject])
 
   useEffect(() => {
     if (!router.isReady) return
@@ -169,3 +174,8 @@ export default function NavListPage () {
     </>
   )
 }
+
+export default dynamic(() => Promise.resolve(NavListPageContent), {
+  ssr: false,
+  loading: () => null
+})

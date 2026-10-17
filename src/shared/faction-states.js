@@ -1,4 +1,3 @@
-
 const factionStates = {
   expansion: {
     description: 'Faction expanding influence'

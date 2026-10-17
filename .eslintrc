@@ -1,0 +1,12 @@
+{
+  "extends": "standard",
+  "rules": {
+    "react/jsx-indent": "off",
+    "react/jsx-closing-tag-location": "off",
+    "no-unused-vars": ["error", {
+      "vars": "all",
+      "args": "none",
+      "varsIgnorePattern": "^[A-Z]|^_|^e$|^i$"
+    }]
+  }
+}

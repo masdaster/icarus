@@ -1,4 +1,4 @@
-import Router from 'next/router'
+import { useEffect } from 'react'
 import Layout from 'components/layout'
 import Panel from 'components/panel'
 import { useSocket } from 'lib/socket'
@@ -7,7 +7,9 @@ export default function NavPage () {
   const { connected, active } = useSocket()
 
   // Client side redirect to default map view
-  if (typeof window !== 'undefined') Router.push('/nav/map')
+  useEffect(() => {
+    if (typeof window !== 'undefined') window.location.href = '/nav/map'
+  }, [])
 
   return (
     <Layout connected={connected} active={active}>

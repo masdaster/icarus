@@ -1,0 +1,80 @@
+name: CI/CD
+
+on:
+  push:
+    branches: [ main, develop ]
+  pull_request:
+    branches: [ main, develop ]
+
+jobs:
+  lint-and-test:
+    runs-on: windows-latest
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: '24'
+          cache: 'npm'
+
+      - name: Setup Go
+        uses: actions/setup-go@v5
+        with:
+          go-version: '1.25'
+          cache-dependency-path: src/app/go.sum
+
+      - name: Install dependencies
+        run: npm ci
+
+      - name: Run linters
+        run: npm run lint
+
+      - name: Check Go formatting
+        working-directory: src/app
+        run: go fmt ./...
+
+      - name: Build Client
+        run: npm run build:client
+
+      - name: Build App
+        run: npm run build:app
+
+      - name: Build Service
+        run: npm run build:service
+
+  security-scan:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: '24'
+
+      - name: Install dependencies
+        run: npm ci
+
+      - name: Run npm audit (Production only)
+        run: |
+          npm audit --production --audit-level=high
+        continue-on-error: true
+
+      - name: Run npm audit (All dependencies - info only)
+        run: |
+          echo "::warning::Checking all dependencies including devDependencies"
+          npm audit --audit-level=moderate || echo "Some dev dependencies have vulnerabilities (acceptable for build tools)"
+        continue-on-error: true
+
+      - name: Run Snyk security scan
+        uses: snyk/actions/node@master
+        continue-on-error: true
+        env:
+          SNYK_TOKEN: ${{ secrets.SNYK_TOKEN }}
+        with:
+          args: --severity-threshold=high

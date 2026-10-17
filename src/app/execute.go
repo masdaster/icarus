@@ -1,11 +1,11 @@
 package main
 
 import (
-	"path/filepath"
-	"syscall"
 	"golang.org/x/sys/windows"
 	"os"
 	"os/exec"
+	"path/filepath"
+	"syscall"
 )
 
 func runUnelevated(pathToExecutable string) {

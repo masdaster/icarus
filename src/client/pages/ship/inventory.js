@@ -1,4 +1,5 @@
 import { useState, useEffect } from 'react'
+import dynamic from 'next/dynamic'
 import animateTableEffect from 'lib/animate-table-effect'
 import { useSocket, sendEvent, eventListener } from 'lib/socket'
 import { ShipPanelNavItems } from 'lib/navigation-items'
@@ -6,26 +7,32 @@ import Layout from 'components/layout'
 import Panel from 'components/panel'
 import CopyOnClick from 'components/copy-on-click'
 
-export default function ShipInventoryPage () {
+function ShipInventoryPageContent () {
   const { connected, active, ready } = useSocket()
   const [inventory, setInventory] = useState()
   const [componentReady, setComponentReady] = useState(false)
 
   useEffect(animateTableEffect)
 
-  useEffect(async () => {
+  useEffect(() => {
     if (!connected) return
-    setInventory(await sendEvent('getInventory'))
-    setComponentReady(true)
+    sendEvent('getInventory').then(inventory => {
+      setInventory(inventory)
+      setComponentReady(true)
+    })
   }, [connected, ready])
 
-  useEffect(() => eventListener('gameStateChange', async () => {
-    setInventory(await sendEvent('getInventory'))
-  }), [])
+  useEffect(() => {
+    return eventListener('gameStateChange', async () => {
+      setInventory(await sendEvent('getInventory'))
+    })
+  }, [])
 
-  useEffect(() => eventListener('newLogEntry', async () => {
-    setInventory(await sendEvent('getInventory'))
-  }), [])
+  useEffect(() => {
+    return eventListener('newLogEntry', async () => {
+      setInventory(await sendEvent('getInventory'))
+    })
+  }, [])
 
   return (
     <Layout connected={connected} active={active} ready={ready} loader={!componentReady}>
@@ -105,3 +112,8 @@ function LockerItems ({ heading, items, count = false, max = false }) {
     </>
   )
 }
+
+export default dynamic(() => Promise.resolve(ShipInventoryPageContent), {
+  ssr: false,
+  loading: () => null
+})

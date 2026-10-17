@@ -121,7 +121,7 @@ function SettingsNavItems (activePanel) {
   return navigationItems
 }
 
-module.exports = {
+export {
   ShipPanelNavItems,
   NavPanelNavItems,
   EngineeringPanelNavItems,
