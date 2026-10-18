@@ -13,7 +13,7 @@ const { BROADCAST_EVENT: broadcastEvent } = global
 // const KEYBINDS_FILE_V3 = path.join(KEYBINDS_DIR, 'Custom.3.0.binds') // Horizons
 // const KEYBINDS_FILE_V4 = path.join(KEYBINDS_DIR, 'Custom.4.0.binds') // Odyssey
 
-// Map EDData-ICARUS Terminal names to in-game keybind names
+// Map ICARUS Terminal names to in-game keybind names
 // const KEYBINDS_MAP = {
 //   lights: 'ShipSpotLightToggle',
 //   nightVision: 'NightVisionToggle',
@@ -23,7 +23,7 @@ const { BROADCAST_EVENT: broadcastEvent } = global
 // }
 
 // FIXME Refactor Preferences handling into a singleton
-const PREFERENCES_DIR = path.join(os.homedir(), 'AppData', 'Local', 'EDData-ICARUS Terminal')
+const PREFERENCES_DIR = path.join(os.homedir(), 'AppData', 'Local', 'ICARUS Terminal')
 const PREFERENCES_FILE = path.join(PREFERENCES_DIR, 'Preferences.json')
 
 const System = require('./event-handlers/system')

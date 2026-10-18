@@ -41,7 +41,7 @@ class Preferences {
       case 'darwin': // Mac OS
         return path.join(os.homedir(), 'Library', 'EDData Icarus')
       default: // Default to a location for some other form of unix
-        return path.join(os.homedir(), '.eddata-icarus')
+        return path.join(os.homedir(), '.icarus')
     }
   }
 }

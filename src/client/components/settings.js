@@ -58,7 +58,7 @@ function SoundSettings ({ visible }) {
     <div className='modal-dialog__panel modal-dialog__panel--with-navigation scrollable'>
       <h3 className='text-primary'>Sounds</h3>
       <p>
-        EDData-ICARUS Terminal includes a voice assistant that can give confirmation of
+        ICARUS Terminal includes a voice assistant that can give confirmation of
         commands and relay information about your ship and your surroundings.
       </p>
       <p className='text-danger'>
@@ -92,7 +92,7 @@ function SoundSettings ({ visible }) {
         The current implementation is only intended for debugging / testing.
       </p>
       <p>
-        Audio will be played through the computer EDData-ICARUS Terminal is running on.
+        Audio will be played through the computer ICARUS Terminal is running on.
       </p>
       <p>
         This setting uses your computers native Text To Speech capabilities.

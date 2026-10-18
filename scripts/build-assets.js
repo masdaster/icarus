@@ -57,7 +57,7 @@ async function build () {
       normalize: true
     },
     website: {
-      title: 'EDData-ICARUS Terminal Font',
+      title: 'ICARUS Terminal Font',
       logo: false,
       version: packageJson.version
     }

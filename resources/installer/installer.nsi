@@ -1,11 +1,11 @@
-!define APP_NAME "EDData-ICARUS"
+!define APP_NAME "ICARUS"
 !define COMP_NAME "EDData"
 !define VERSION "${PRODUCT_VERSION}"
 !define COPYRIGHT "EDData"
 !define DESCRIPTION "Companion App for Elite Dangerous"
-!define INSTALLER_NAME "../../dist/EDData-ICARUS Setup.exe"
-!define APP_EXE "EDData-ICARUS.exe"
-!define SERVICE_EXE "EDData-ICARUS Service.exe"
+!define INSTALLER_NAME "../../dist/ICARUS Setup.exe"
+!define APP_EXE "ICARUS.exe"
+!define SERVICE_EXE "ICARUS Service.exe"
 !define INSTALL_TYPE "SetShellVarContext current"
 !define REG_ROOT "HKCU"
 !define REG_APP_PATH "Software\Microsoft\Windows\CurrentVersion\App Paths\${APP_EXE}"
@@ -142,7 +142,7 @@ Function .onInit
 		Abort
 
 	checkService:
-	# Check if EDData-ICARUS Service is running (language-independent check)
+	# Check if ICARUS Service is running (language-independent check)
 	nsExec::ExecToStack 'tasklist /FI "IMAGENAME eq ${SERVICE_EXE}" /NH'
 	Pop $0
 	Pop $1

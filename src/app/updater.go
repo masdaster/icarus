@@ -16,7 +16,7 @@ import (
 	"github.com/jmoiron/jsonq"
 )
 
-const LATEST_RELEASE_URL = "https://api.github.com/repos/EDDataAPI/eddata-icarus/releases/latest"
+const LATEST_RELEASE_URL = "https://api.github.com/repos/masdaster/icarus/releases/latest"
 
 type Release struct {
 	InstalledVersion string `json:"installedVersion"`
@@ -190,7 +190,7 @@ func DownloadUpdate(downloadUrl string) (string, error) {
 	if err != nil {
 		return "", err
 	}
-	tmpfile := filepath.Join(tmpDir, "EDData-Icarus Update.exe")
+	tmpfile := filepath.Join(tmpDir, "Icarus Update.exe")
 
 	// Get file to download
 	resp, err := http.Get(downloadUrl)

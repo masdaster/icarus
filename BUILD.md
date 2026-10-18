@@ -2,7 +2,7 @@
 
 _This documentation is intended for developers who want to build from source._
 
-EDData-ICARUS is a Windows (Win32) application built primarily in JavaScript, using Node.js + WebSockets and Go with a fork of custom [Edge/WebView2 abstraction in C/C++](https://github.com/iaincollins/webview).
+ICARUS is a Windows (Win32) application built primarily in JavaScript, using Node.js + WebSockets and Go with a fork of custom [Edge/WebView2 abstraction in C/C++](https://github.com/iaincollins/webview).
 
 The self-contained installer is around 20 MB and has no dependencies. If you are running an older but supported release of Microsoft Windows, any required Microsoft provided DLLs that are not found will be automatically loaded by the bundled Microsoft installer (e.g. the Microsoft Edge common runtime used to render the user interface).
 
@@ -15,7 +15,7 @@ It is possible to build the entire project (or any of the individual components)
 The codebase is split up into three parts:
 
 * `src/app` — "ICARUS Terminal.exe", a Win32 application written in Go
-* `src/service` — "EDData-ICARUS Service.exe", a Win32 application written in Node.js
+* `src/service` — "ICARUS Service.exe", a Win32 application written in Node.js
 * `src/client` — A web based client interface, developed in Next.js/React
 
 The web client is bundled into the service, and you can use web browser to connect directly to the service instead of (or as well as ) using "ICARUS Terminal.exe" to launch a native window to display the UI.
@@ -32,13 +32,13 @@ The service uses sockets to interact with clients on the local network and is ab
 
 There can be multiple instances of "ICARUS Terminal.exe" running. ICARUS Terminal is designed to allow you to pin multiple windows to a single screen, or run multiple windows across different screens. The first instance will be designated as the "launcher" window. The launcher will have a different interface to the terminal windows and is responsible for starting and stopping the background service, for checking for updates and for shutting down terminal windows when the main window (the launcher) is closed.
 
-### EDData-ICARUS Service.exe
+### ICARUS Service.exe
 
-"EDData-ICARUS Service.exe" is a self contained service, websocket server and a static webserver. The service interfaces with the game, broadcasts events to terminals (using a two way socket based API) and allows the graphical interface to be accessed remotely from computers, tablets and phones. EDData-ICARUS Service is invoked automatically by "EDData-ICARUS Terminal.exe" and is stopped when "EDData-ICARUS Terminal.exe" is quit.
+"ICARUS Service.exe" is a self contained service, websocket server and a static webserver. The service interfaces with the game, broadcasts events to terminals (using a two way socket based API) and allows the graphical interface to be accessed remotely from computers, tablets and phones. ICARUS Service is invoked automatically by "ICARUS Terminal.exe" and is stopped when "ICARUS Terminal.exe" is quit.
 
-The user interface is written in Next.js/React and is statically exported and the assets bundled inside "EDData-ICARUS Service.exe", making it an entirely self contained service that can be used without "EDData-ICARUS Terminal.exe", by connecting to the service via a web browser - an approach which makes the codebase highly portable, as it leaves "EDData-ICARUS Terminal.exe" to handle interactions with native OS APIs for things like window management and software updates.
+The user interface is written in Next.js/React and is statically exported and the assets bundled inside "ICARUS Service.exe", making it an entirely self contained service that can be used without "ICARUS Terminal.exe", by connecting to the service via a web browser - an approach which makes the codebase highly portable, as it leaves "ICARUS Terminal.exe" to handle interactions with native OS APIs for things like window management and software updates.
 
-All terminals (and any web clients) connect to the same single instance of service which receives and broadcasts messages to all of them using a websocket interface. There should only ever one instance of "EDData-ICARUS Service.exe" running at a time. It defaults to runnning on port 3300, although this is configurable at run time using command line flags.
+All terminals (and any web clients) connect to the same single instance of service which receives and broadcasts messages to all of them using a websocket interface. There should only ever one instance of "ICARUS Service.exe" running at a time. It defaults to runnning on port 3300, although this is configurable at run time using command line flags.
 
 ## Building
 
@@ -47,7 +47,7 @@ All terminals (and any web clients) connect to the same single instance of servi
 To build the entire application you need to be running Microsoft Windows and have the following dependencies installed:
 
 * [Go Lang](https://golang.org/) to build the Win32 app (ICARUS Terminal)
-* [Node.js](https://nodejs.org/en/download/)  to build the socket service (EDData-ICARUS Service) and React UI
+* [Node.js](https://nodejs.org/en/download/)  to build the socket service (ICARUS Service) and React UI
 * [NSIS](https://nsis.sourceforge.io/) to build the Windows installer (can install with `winget install NSIS.NSIS`)
 
 You may also need the following dependencies, depending on the build steps you wish to run (e.g. if you are building assets):
@@ -63,7 +63,7 @@ With the required build tools and dependencies installed (`npm install`) you can
 
 * `npm run build`
 
-This will output a standalone installer "EDData-ICARUS Setup.exe" in `dist/` directory.
+This will output a standalone installer "ICARUS Setup.exe" in `dist/` directory.
 
 Intermediate builds can be found in `build/` directory. See `build/bin` for the final binaries, these can be run in place without having to run the installer. If you run "ICARUS Terminal.exe" it will start the "ICARUS Service.exe" automatically in the background (and shut it down again when the main Terminal window is closed).
 
@@ -72,7 +72,7 @@ You can also run each build step independently:
 * `npm run build:app` builds only the GUI app (ICARUS Terminal.exe)
 * `npm run build:service` builds only the service (ICARUS Service.exe)
 * `npm run build:client` builds only the web interface; required to build the service as is an embedded resource
-* `npm run build:package` builds only the Windows installer (EDData-ICARUS Setup.exe)
+* `npm run build:package` builds only the Windows installer (ICARUS Setup.exe)
 * `npm run build:assets` builds assets (icons, fonts, etc) - e.g. used to update the icon font
 * `npm run build:clean` resets the build environment
 

@@ -96,7 +96,7 @@ jobs:
       - name: Upload Installer as Artifact
         uses: actions/upload-artifact@v4
         with:
-          name: eddata-icarus-installer
+          name: icarus-installer
           path: ${{ steps.find_installer.outputs.INSTALLER_PATH }}
           retention-days: 30
 
