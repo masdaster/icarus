@@ -10,33 +10,68 @@ const http = require('http')
 const httpProxy = require('http-proxy')
 const proxy = httpProxy.createProxyServer({})
 const WebSocket = require('ws')
-const yargs = require('yargs/yargs')
-const { hideBin } = require('yargs/helpers')
 const packageJson = require('../../package.json')
+const { parseArgs } = require('util')
 
-const commandLineArgs = yargs(hideBin(process.argv))
-  .help()
-  .usage('Usage: $0 --save-game-dir <directory> [--port <port>]')
-  .option('port', {
-    type: 'number',
-    alias: 'p',
-    description: 'Port to listen on (default: 3300)'
-  })
-  .option('save-game-dir', {
+// Parse command line arguments using native Node.js util.parseArgs
+const options = {
+  port: {
+    type: 'string', // parseArgs handles numbers as strings or we convert them
+    short: 'p'
+  },
+  'save-game-dir': {
     type: 'string',
-    alias: 's',
-    description: 'Elite Dangerous Save Game Directory'
-  })
-  .version(packageJson.version)
-  .alias('v', 'version')
-  .alias('h', 'help')
-  .argv
+    short: 's'
+  },
+  dev: {
+    type: 'boolean'
+  },
+  help: {
+    type: 'boolean',
+    short: 'h'
+  },
+  version: {
+    type: 'boolean',
+    short: 'v'
+  }
+};
 
-console.log(`EDData Icarus Service ${packageJson.version}`)
+let commandLineArgs;
+try {
+  const parsed = parseArgs({ options, allowPositionals: true });
+  commandLineArgs = parsed.values;
+} catch (e) {
+  console.error(`ERROR: ${e.message}\n`);
+  printHelp();
+  process.exit(1);
+}
 
-// Parse command line arguments
-const PORT = commandLineArgs.port || commandLineArgs.p || 3300 // Port to listen on
-const DEVELOPMENT = commandLineArgs.dev || false // Development mode
+// Handle --version flag
+if (commandLineArgs.version) {
+  console.log(packageJson.version);
+  process.exit(0);
+}
+
+// Handle --help flag
+if (commandLineArgs.help) {
+  printHelp();
+  process.exit(0);
+}
+
+function printHelp() {
+  console.log(`Usage: node main.js --save-game-dir <directory> [--port <port>]`);
+  console.log(`Options:`);
+  console.log(`  -p, --port           Port to listen on (default: 3300)`);
+  console.log(`  -s, --save-game-dir  Elite Dangerous Save Game Directory`);
+  console.log(`  -h, --help           Show help`);
+  console.log(`  -v, --version        Show version number`);
+}
+
+console.log(`EDData Icarus Service ${packageJson.version}`);
+
+// Parse command line arguments into variables
+const PORT = commandLineArgs.port ? parseInt(commandLineArgs.port, 10) : 3300;
+const DEVELOPMENT = commandLineArgs.dev || false;
 
 // Determine web directory based on whether we're running from pkg or not
 const isPkg = typeof process.pkg !== 'undefined'
@@ -48,7 +83,7 @@ const LOG_DIR = getLogDir()
 
 if (!fs.existsSync(LOG_DIR)) {
   console.error('ERROR: No save game data found in', LOG_DIR, '\n')
-  yargs.showHelp()
+  printHelp()
   process.exit(1)
 } else {
   console.log('Loading save game data from', LOG_DIR)

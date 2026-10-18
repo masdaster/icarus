@@ -41,8 +41,7 @@ async function build () {
   const args = [
     ENTRY_POINT,
     '--target', 'node24-win-x64',
-    '--output', SERVICE_UNOPTIMIZED_BUILD,
-    '--assets', path.join(BUILD_DIR, 'client/**/*')
+    '--output', SERVICE_UNOPTIMIZED_BUILD
   ]
 
   console.log('Building with pkg (Node.js 24)...')
