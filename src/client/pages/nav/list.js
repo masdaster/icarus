@@ -111,7 +111,7 @@ function NavListPageContent () {
         <div className='modal-dialog__panel scrollable text-primary navigation-panel__legend'>
           <h3>Exploration Icons</h3>
           <p className='text-info'>
-            Icons indicating interesting features of planets in the system.
+            Icons indicating interesting features of planets in the system. When there is a number next to the geological or biological icon that's how many signals are there after an FSS scan.
           </p>
           <div className='text-uppercase'>
             <p className='text-secondary'>
@@ -121,7 +121,7 @@ function NavListPageContent () {
               <i className='icon icarus-terminal-planet-atmosphere' /> Atmosphere
             </p>
             <p>
-              <i className='icon icarus-terminal-planet-volcanic' /> Volcanic activity
+              <i className='icon icarus-terminal-planet-volcanic' /> Volcanic activity or geological signals
             </p>
             <p>
               <i className='icon icarus-terminal-planet-terraformable' /> Terraformable
@@ -142,10 +142,7 @@ function NavListPageContent () {
               <i className='icon icarus-terminal-planet-gas-giant' /> Gas Giant
             </p>
             <p>
-              <i className='icon icarus-terminal-plant' /> Biological signal
-            </p>
-            <p>
-              <i className='icon icarus-terminal-planet-water-based-life' /> Water based life
+              <i className='icon icarus-terminal-planet-water-based-life' /> Water based life or biological signals
             </p>
             <p>
               <i className='icon icarus-terminal-planet-ammonia-based-life' /> Ammonia based life
