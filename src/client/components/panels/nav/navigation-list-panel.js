@@ -15,8 +15,10 @@ export default function NavigationListPanel ({ system, systemObject, setSystemOb
     }
   }
   //get stored signals from this system on startup
-  useEffect(async () => {
-    await initData(system)
+  useEffect(() => {
+    ; (async () => {
+      await initData(system)
+    })()
   }, [system])
 
   useEffect(() => eventListener('newLogEntry', async (log) => {

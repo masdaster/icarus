@@ -3,6 +3,7 @@
 ## Forks of Icarus
 
 * **[EDData.dev](https://github.com/EDDataAPI/icarus)**
+* **[Michal Gubriansky](https://github.com/mufty/icarus)**
 
 ## Credits & Acknowledgments
 

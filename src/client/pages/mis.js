@@ -129,12 +129,15 @@ export default function MisPage () {
     missionEntriesRef.current = missionEntries;
   }, [missionEntries]);
 
-  useEffect(async () => {
+  useEffect(() => {
     if (!connected) return
-    setComponentReady(false)
-    const newMissionEntries = await sendEvent('getActiveMissions', { count: 100 })
-    updateAllMissions(newMissionEntries)
-    setComponentReady(true)
+
+    ; (async () => {
+      setComponentReady(false)
+      const newMissionEntries = await sendEvent('getActiveMissions', { count: 100 })
+      updateAllMissions(newMissionEntries)
+      setComponentReady(true)
+    })()
   }, [connected])
 
   useEffect(() => eventListener('newLogEntry', async (newLogEntry) => {
