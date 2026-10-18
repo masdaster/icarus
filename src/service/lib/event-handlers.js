@@ -16,6 +16,7 @@ const KEYBINDS_DIR = path.join(os.homedir(), 'AppData', 'Local', 'Frontier Devel
 const KEYBINDS_FILE_V3 = path.join(KEYBINDS_DIR, 'Custom.3.0.binds')
 const KEYBINDS_FILE_V4 = path.join(KEYBINDS_DIR, 'Custom.4.0.binds')
 const KEYBINDS_FILE_V4_1 = path.join(KEYBINDS_DIR, 'Custom.4.1.binds')
+const KEYBINDS_FILE_V4_2 = path.join(KEYBINDS_DIR, 'Custom.4.2.binds')
 
 // Map ICARUS Terminal names to in-game keybind names
 const KEYBINDS_MAP = {
@@ -146,7 +147,9 @@ async function sendKey (bindingName) {
     let KEYBINDS_FILE
     const KEYBIND_XML_ELEMENT = KEYBINDS_MAP[bindingName]
 
-    if (fs.existsSync(KEYBINDS_FILE_V4_1)) {
+    if (fs.existsSync(KEYBINDS_FILE_V4_2)) {
+      KEYBINDS_FILE = KEYBINDS_FILE_V4_2
+    } else if (fs.existsSync(KEYBINDS_FILE_V4_1)) {
       KEYBINDS_FILE = KEYBINDS_FILE_V4_1
     } else if (fs.existsSync(KEYBINDS_FILE_V4)) {
       KEYBINDS_FILE = KEYBINDS_FILE_V4
