@@ -4,6 +4,7 @@
 
 * **[EDData.dev](https://github.com/EDDataAPI/icarus)**
 * **[Michal Gubriansky](https://github.com/mufty/icarus)**
+* **[Fayaz](https://github.com/FayazAshraf/icarus)**
 
 ## Credits & Acknowledgments
 
