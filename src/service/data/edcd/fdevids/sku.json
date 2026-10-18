@@ -144,47 +144,127 @@
     "requirement": "unlocked via Human Tech Broker"
   },
   {
-    "sku": "ELITE_SPECIFIC_V_POWER_100000",
-    "requirement": "unlocked via allegiance to Aisling Duval power"
+    "sku": "ELITE_SPECIFIC_V_POWER_200010",
+    "requirement": "unlocked via Powerplay 2.0 (Imperial Hammer Rail Gun)"
   },
   {
-    "sku": "ELITE_SPECIFIC_V_POWER_100010",
-    "requirement": "unlocked via allegiance to Edmund Mahon power"
+    "sku": "ELITE_SPECIFIC_V_POWER_200020",
+    "requirement": "unlocked via Powerplay 2.0 (Prismatic Shield Generator)"
   },
   {
-    "sku": "ELITE_SPECIFIC_V_POWER_100020",
-    "requirement": "unlocked via allegiance to Arissa Lavigny-Duval power"
+    "sku": "ELITE_SPECIFIC_V_POWER_200030",
+    "requirement": "unlocked via Powerplay 2.0 (Cytoscrambler Burst Laser)"
   },
   {
-    "sku": "ELITE_SPECIFIC_V_POWER_100040",
-    "requirement": "unlocked via allegiance to Felicia Winters power"
+    "sku": "ELITE_SPECIFIC_V_POWER_200050",
+    "requirement": "unlocked via Powerplay 2.0 (Advanced Plasma Accelerator)"
   },
   {
-    "sku": "ELITE_SPECIFIC_V_POWER_100050",
-    "requirement": "unlocked via allegiance to Denton Patreus power"
+    "sku": "ELITE_SPECIFIC_V_POWER_200060",
+    "requirement": "unlocked via Powerplay 2.0 (Retributor Beam Laser)"
   },
   {
-    "sku": "ELITE_SPECIFIC_V_POWER_100060",
-    "requirement": "unlocked via allegiance to Zachary Hudson power"
+    "sku": "ELITE_SPECIFIC_V_POWER_200070",
+    "requirement": "unlocked via Powerplay 2.0 (Pulse Disruptor Laser)"
   },
   {
-    "sku": "ELITE_SPECIFIC_V_POWER_100070",
-    "requirement": "unlocked via allegiance to Li Yong-Rui power"
+    "sku": "ELITE_SPECIFIC_V_POWER_200080",
+    "requirement": "unlocked via Powerplay 2.0 (Pack-Hound Missile Rack)"
   },
   {
-    "sku": "ELITE_SPECIFIC_V_POWER_100080",
-    "requirement": "unlocked via allegiance to Zemina Torval power"
+    "sku": "ELITE_SPECIFIC_V_POWER_200090",
+    "requirement": "unlocked via Powerplay 2.0 (Enforcer Cannon)"
   },
   {
-    "sku": "ELITE_SPECIFIC_V_POWER_100090",
-    "requirement": "unlocked via allegiance to Pranav Antal power"
+    "sku": "ELITE_SPECIFIC_V_POWER_200100",
+    "requirement": "unlocked via Powerplay 2.0 (Rocket Propelled FSD Disruptor)"
   },
   {
-    "sku": "ELITE_SPECIFIC_V_POWER_100100",
-    "requirement": "unlocked via allegiance to Archon Delaine power"
+    "sku": "ELITE_SPECIFIC_V_POWER_200120",
+    "requirement": "unlocked via Powerplay 2.0 (Mining Lance)"
   },
   {
-    "sku": "ELITE_SPECIFIC_V_POWER_100120",
-    "requirement": "unlocked via allegiance to Yuri Grom power"
+    "sku": "ELITE_SPECIFIC_V_POWER_200130",
+    "requirement": "unlocked via Powerplay 2.0 (Concord Cannon)"
+  },
+  {
+    "sku": "ELITE_SPECIFIC_V_POWER_200140",
+    "requirement": "unlocked via Powerplay 2.0 (Pacifier Frag-Cannon)"
+  },
+  {
+    "sku": "ELITE_V_COBRA_MKV",
+    "requirement": "was early access purchase in the arx store (not required anymore)"
+  },
+  {
+    "sku": "ELITE_V_CORSAIR",
+    "requirement": "was early access purchase in the arx store (not required anymore)"
+  },
+  {
+    "sku": "ELITE_V_EXPLORER_NX",
+    "requirement": "was early access purchase in the arx store (not required anymore)"
+  },
+  {
+    "sku": "ELITE_V_LAKON_MINER",
+    "requirement": "was early access purchase in the arx store (not required anymore)"
+  },
+  {
+    "sku": "ELITE_V_LARGEBUGGYBAY_FREE",
+    "requirement": "early access purchase in the arx store"
+  },
+  {
+    "sku": "ELITE_V_MANDALAY",
+    "requirement": "was early access purchase in the arx store (not required anymore)"
+  },
+  {
+    "sku": "ELITE_V_MEDIUM_TRANSPORT_01",
+    "requirement": "was free from day one"
+  },
+  {
+    "sku": "ELITE_V_MKIFIGHTERBAY_FREE",
+    "requirement": "early access purchase in the arx store"
+  },
+  {
+    "sku": "ELITE_V_MKIIFIGHTERBAY",
+    "requirement": "early access purchase in the arx store"
+  },
+  {
+    "sku": "ELITE_V_MKIIFIGHTERBAY_FREE",
+    "requirement": "early access purchase in the arx store"
+  },
+  {
+    "sku": "ELITE_V_PANTHER_MKII",
+    "requirement": "was early access purchase in the arx store (not required anymore)"
+  },
+  {
+    "sku": "ELITE_V_PYTHON_NX",
+    "requirement": "was early access purchase in the arx store (not required anymore)"
+  },
+  {
+    "sku": "ELITE_V_SMALL_COMBAT_01",
+    "requirement": "early access purchase in the arx store"
+  },
+  {
+    "sku": "ELITE_V_TYPE8",
+    "requirement": "was early access purchase in the arx store (not required anymore)"
+  },
+  {
+    "sku": "FORC_FDEV_V_CHIEFTAIN_BUNDLE_001",
+    "requirement": "purchase in the arx store"
+  },
+  {
+    "sku": "FORC_FDEV_V_DIAMOND_EXPLORER_BUNDLE_001",
+    "requirement": "purchase in the arx store"
+  },
+  {
+    "sku": "FORC_FDEV_V_PYTHON_MKII_BUNDLE_001",
+    "requirement": "purchase in the arx store"
+  },
+  {
+    "sku": "FORC_FDEV_V_PYTHON_MKII_BUNDLE_002",
+    "requirement": "purchase in the arx store"
+  },
+  {
+    "sku": "FORC_FDEV_V_TYPE6_BUNDLE_001",
+    "requirement": "purchase in the arx store"
   }
 ]

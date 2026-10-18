@@ -501,7 +501,7 @@ id,symbol,category,name,mount,guidance,ship,class,rating,entitlement
 128064351,Int_FuelTank_Size6_Class3,standard,Fuel Tank,,,,6,C,
 128064352,Int_FuelTank_Size7_Class3,standard,Fuel Tank,,,,7,C,
 128064353,Int_FuelTank_Size8_Class3,standard,Fuel Tank,,,,8,C,
-128066402,Int_DroneControl_ResourceSiphon,internal,Limpet Control,,,,1,I,
+128066402,Int_DroneControl_ResourceSiphon,internal,Hatch Breaker Limpet Controller,,,,1,I,
 128066532,Int_DroneControl_ResourceSiphon_Size1_Class1,internal,Hatch Breaker Limpet Controller,,,,1,E,
 128066533,Int_DroneControl_ResourceSiphon_Size1_Class2,internal,Hatch Breaker Limpet Controller,,,,1,D,
 128066534,Int_DroneControl_ResourceSiphon_Size1_Class3,internal,Hatch Breaker Limpet Controller,,,,1,C,
@@ -761,14 +761,14 @@ id,symbol,category,name,mount,guidance,ship,class,rating,entitlement
 128671288,Int_DroneControl_Prospector_Size7_Class5,internal,Prospector Limpet Controller,,,,7,A,
 128671321,Hpt_Slugshot_Gimbal_Large,hardpoint,Fragment Cannon,Gimballed,,,3,C,
 128671322,Hpt_Slugshot_Turret_Large,hardpoint,Fragment Cannon,Turreted,,,3,C,
-128671323,Int_ShieldGenerator_Size1_Class5_Strong,internal,Prismatic Shield Generator,,,,1,A,ELITE_SPECIFIC_V_POWER_100000
-128671324,Int_ShieldGenerator_Size2_Class5_Strong,internal,Prismatic Shield Generator,,,,2,A,ELITE_SPECIFIC_V_POWER_100000
-128671325,Int_ShieldGenerator_Size3_Class5_Strong,internal,Prismatic Shield Generator,,,,3,A,ELITE_SPECIFIC_V_POWER_100000
-128671326,Int_ShieldGenerator_Size4_Class5_Strong,internal,Prismatic Shield Generator,,,,4,A,ELITE_SPECIFIC_V_POWER_100000
-128671327,Int_ShieldGenerator_Size5_Class5_Strong,internal,Prismatic Shield Generator,,,,5,A,ELITE_SPECIFIC_V_POWER_100000
-128671328,Int_ShieldGenerator_Size6_Class5_Strong,internal,Prismatic Shield Generator,,,,6,A,ELITE_SPECIFIC_V_POWER_100000
-128671329,Int_ShieldGenerator_Size7_Class5_Strong,internal,Prismatic Shield Generator,,,,7,A,ELITE_SPECIFIC_V_POWER_100000
-128671330,Int_ShieldGenerator_Size8_Class5_Strong,internal,Prismatic Shield Generator,,,,8,A,ELITE_SPECIFIC_V_POWER_100000
+128671323,Int_ShieldGenerator_Size1_Class5_Strong,internal,Prismatic Shield Generator,,,,1,A,ELITE_SPECIFIC_V_POWER_200020
+128671324,Int_ShieldGenerator_Size2_Class5_Strong,internal,Prismatic Shield Generator,,,,2,A,ELITE_SPECIFIC_V_POWER_200020
+128671325,Int_ShieldGenerator_Size3_Class5_Strong,internal,Prismatic Shield Generator,,,,3,A,ELITE_SPECIFIC_V_POWER_200020
+128671326,Int_ShieldGenerator_Size4_Class5_Strong,internal,Prismatic Shield Generator,,,,4,A,ELITE_SPECIFIC_V_POWER_200020
+128671327,Int_ShieldGenerator_Size5_Class5_Strong,internal,Prismatic Shield Generator,,,,5,A,ELITE_SPECIFIC_V_POWER_200020
+128671328,Int_ShieldGenerator_Size6_Class5_Strong,internal,Prismatic Shield Generator,,,,6,A,ELITE_SPECIFIC_V_POWER_200020
+128671329,Int_ShieldGenerator_Size7_Class5_Strong,internal,Prismatic Shield Generator,,,,7,A,ELITE_SPECIFIC_V_POWER_200020
+128671330,Int_ShieldGenerator_Size8_Class5_Strong,internal,Prismatic Shield Generator,,,,8,A,ELITE_SPECIFIC_V_POWER_200020
 128671331,Int_ShieldGenerator_Size1_Class3_Fast,internal,Bi-Weave Shield Generator,,,,1,C,
 128671332,Int_ShieldGenerator_Size2_Class3_Fast,internal,Bi-Weave Shield Generator,,,,2,C,
 128671333,Int_ShieldGenerator_Size3_Class3_Fast,internal,Bi-Weave Shield Generator,,,,3,C,
@@ -777,16 +777,16 @@ id,symbol,category,name,mount,guidance,ship,class,rating,entitlement
 128671336,Int_ShieldGenerator_Size6_Class3_Fast,internal,Bi-Weave Shield Generator,,,,6,C,
 128671337,Int_ShieldGenerator_Size7_Class3_Fast,internal,Bi-Weave Shield Generator,,,,7,C,
 128671338,Int_ShieldGenerator_Size8_Class3_Fast,internal,Bi-Weave Shield Generator,,,,8,C,
-128671339,Hpt_PlasmaAccelerator_Fixed_Large_Advanced,hardpoint,Advanced Plasma Accelerator,Fixed,,,3,B,ELITE_SPECIFIC_V_POWER_100050
-128671340,Hpt_MiningLaser_Fixed_Small_Advanced,hardpoint,Mining Lance,Fixed,,,1,D,ELITE_SPECIFIC_V_POWER_100080
-128671341,Hpt_Railgun_Fixed_Medium_Burst,hardpoint,Imperial Hammer Rail Gun,Fixed,,,2,B,ELITE_SPECIFIC_V_POWER_100020
-128671342,Hpt_PulseLaser_Fixed_Medium_Disruptor,hardpoint,Pulse Disruptor Laser,Fixed,,,2,E,ELITE_SPECIFIC_V_POWER_100040
-128671343,Hpt_Slugshot_Fixed_Large_Range,hardpoint,Pacifier Frag-Cannon,Fixed,,,3,C,ELITE_SPECIFIC_V_POWER_100060
-128671344,Hpt_DrunkMissileRack_Fixed_Medium,hardpoint,Pack-Hound Missile Rack,Fixed,Swarm,,2,B,ELITE_SPECIFIC_V_POWER_100070
-128671345,Hpt_MultiCannon_Fixed_Small_Strong,hardpoint,Enforcer Cannon,Fixed,,,1,F,ELITE_SPECIFIC_V_POWER_100090
-128671346,Hpt_BeamLaser_Fixed_Small_Heat,hardpoint,Retributor Beam Laser,Fixed,,,1,E,ELITE_SPECIFIC_V_POWER_100010
+128671339,Hpt_PlasmaAccelerator_Fixed_Large_Advanced,hardpoint,Advanced Plasma Accelerator,Fixed,,,3,B,ELITE_SPECIFIC_V_POWER_200050
+128671340,Hpt_MiningLaser_Fixed_Small_Advanced,hardpoint,Mining Lance,Fixed,,,1,D,ELITE_SPECIFIC_V_POWER_200120
+128671341,Hpt_Railgun_Fixed_Medium_Burst,hardpoint,Imperial Hammer Rail Gun,Fixed,,,2,B,ELITE_SPECIFIC_V_POWER_200010
+128671342,Hpt_PulseLaser_Fixed_Medium_Disruptor,hardpoint,Pulse Disruptor Laser,Fixed,,,2,E,ELITE_SPECIFIC_V_POWER_200070
+128671343,Hpt_Slugshot_Fixed_Large_Range,hardpoint,Pacifier Frag-Cannon,Fixed,,,3,C,ELITE_SPECIFIC_V_POWER_200140
+128671344,Hpt_DrunkMissileRack_Fixed_Medium,hardpoint,Pack-Hound Missile Rack,Fixed,Swarm,,2,B,ELITE_SPECIFIC_V_POWER_200080
+128671345,Hpt_MultiCannon_Fixed_Small_Strong,hardpoint,Enforcer Cannon,Fixed,,,1,F,ELITE_SPECIFIC_V_POWER_200090
+128671346,Hpt_BeamLaser_Fixed_Small_Heat,hardpoint,Retributor Beam Laser,Fixed,,,1,E,ELITE_SPECIFIC_V_POWER_200060
 128671448,Hpt_MineLauncher_Fixed_Small_Impulse,hardpoint,Shock Mine Launcher,Fixed,,,1,I,
-128671449,Hpt_PulseLaserBurst_Fixed_Small_Scatter,hardpoint,Cytoscrambler Burst Laser,Fixed,,,1,F,ELITE_SPECIFIC_V_POWER_100100
+128671449,Hpt_PulseLaserBurst_Fixed_Small_Scatter,hardpoint,Cytoscrambler Burst Laser,Fixed,,,1,F,ELITE_SPECIFIC_V_POWER_200030
 128671832,DiamondBackXL_Armour_Grade1,standard,Lightweight Alloy,,,Diamondback Explorer,1,I,
 128671833,DiamondBackXL_Armour_Grade2,standard,Reinforced Alloy,,,Diamondback Explorer,1,I,
 128671834,DiamondBackXL_Armour_Grade3,standard,Military Grade Composite,,,Diamondback Explorer,1,I,
@@ -850,10 +850,10 @@ id,symbol,category,name,mount,guidance,ship,class,rating,entitlement
 128727927,Int_PassengerCabin_Size6_Class2,internal,Business Class Passenger Cabin,,,,6,D,
 128727928,Int_PassengerCabin_Size6_Class3,internal,First Class Passenger Cabin,,,,6,C,
 128727929,Int_PassengerCabin_Size6_Class4,internal,Luxury Class Passenger Cabin,,,,6,B,
-128727930,Int_FighterBay_Size5_Class1,internal,Fighter Hangar,,,,5,D,ELITE_HORIZONS_V_PLANETARY_LANDINGS
-128727931,Int_FighterBay_Size6_Class1,internal,Fighter Hangar,,,,6,D,ELITE_HORIZONS_V_PLANETARY_LANDINGS
-128727932,Int_FighterBay_Size7_Class1,internal,Fighter Hangar,,,,7,D,ELITE_HORIZONS_V_PLANETARY_LANDINGS
-128732552,Hpt_DumbfireMissileRack_Fixed_Medium_Lasso,hardpoint,Rocket Propelled FSD Disruptor,Fixed,Dumbfire,,2,B,ELITE_SPECIFIC_V_POWER_100120
+128727930,Int_FighterBay_Size5_Class1,internal,Vessel Hangar,,,,5,D,ELITE_HORIZONS_V_PLANETARY_LANDINGS
+128727931,Int_FighterBay_Size6_Class1,internal,Vessel Hangar,,,,6,D,ELITE_HORIZONS_V_PLANETARY_LANDINGS
+128727932,Int_FighterBay_Size7_Class1,internal,Vessel Hangar,,,,7,D,ELITE_HORIZONS_V_PLANETARY_LANDINGS
+128732552,Hpt_DumbfireMissileRack_Fixed_Medium_Lasso,hardpoint,Rocket Propelled FSD Disruptor,Fixed,Dumbfire,,2,B,ELITE_SPECIFIC_V_POWER_200100
 128734690,Int_PassengerCabin_Size2_Class1,internal,Economy Class Passenger Cabin,,,,2,E,
 128734691,Int_PassengerCabin_Size3_Class1,internal,Economy Class Passenger Cabin,,,,3,E,
 128734692,Int_PassengerCabin_Size3_Class2,internal,Business Class Passenger Cabin,,,,3,D,
@@ -924,7 +924,7 @@ id,symbol,category,name,mount,guidance,ship,class,rating,entitlement
 128793942,Int_DroneControl_Decontamination_Size3_Class1,internal,Decontamination Limpet Controller,,,,3,E,ELITE_HORIZONS_V_PLANETARY_LANDINGS
 128793943,Int_DroneControl_Decontamination_Size5_Class1,internal,Decontamination Limpet Controller,,,,5,E,ELITE_HORIZONS_V_PLANETARY_LANDINGS
 128793944,Int_DroneControl_Decontamination_Size7_Class1,internal,Decontamination Limpet Controller,,,,7,E,ELITE_HORIZONS_V_PLANETARY_LANDINGS
-128808878,Hpt_XenoScannerMk2_Basic_Tiny,utility,Unknown Xeno Scanner Mk II,,,,?,?,ELITE_HORIZONS_V_PLANETARY_LANDINGS
+128808878,Hpt_XenoScannerMk2_Basic_Tiny,utility,Enhanced Xeno Scanner,,,,0,C,ELITE_HORIZONS_V_PLANETARY_LANDINGS
 128816569,Krait_MkII_Armour_Grade1,standard,Lightweight Alloy,,,Krait MkII,1,I,ELITE_HORIZONS_V_PLANETARY_LANDINGS
 128816570,Krait_MkII_Armour_Grade2,standard,Reinforced Alloy,,,Krait MkII,1,I,ELITE_HORIZONS_V_PLANETARY_LANDINGS
 128816571,Krait_MkII_Armour_Grade3,standard,Military Grade Composite,,,Krait MkII,1,I,ELITE_HORIZONS_V_PLANETARY_LANDINGS
@@ -1067,3 +1067,171 @@ id,symbol,category,name,mount,guidance,ship,class,rating,entitlement
 129001928,Int_MultiDroneControl_Xeno_Size3_Class4,internal,Xeno Multi Limpet Controller,,,,3,B,
 129001929,Int_MultiDroneControl_Universal_Size7_Class3,internal,Universal Multi Limpet Controller,,,,7,C,
 129001930,Int_MultiDroneControl_Universal_Size7_Class5,internal,Universal Multi Limpet Controller,,,,7,A,
+129019260,Int_ExpModuleStabiliser_Size3_Class3,internal,Experimental Weapon Stabiliser,,,,3,F,
+129019261,Int_ExpModuleStabiliser_Size5_Class3,internal,Experimental Weapon Stabiliser,,,,5,F,ELITE_HORIZONS_V_EXPERIMENTALSTABILISER_SIZE5
+129019262,Hpt_CausticSinkLauncher_Turret_Tiny,utility,Caustic Sink Launcher,,,,0,I,?
+129022079,Hpt_ATDumbfireMissile_Fixed_Large_V2,hardpoint,Enhanced AX Missile Rack,Fixed,Dumbfire,,3,B,ELITE_HORIZONS_V_PLANETARY_LANDINGS
+129022080,Hpt_ATMultiCannon_Fixed_Medium_V2,hardpoint,Enhanced AX Multi-Cannon,Fixed,,,2,D,ELITE_HORIZONS_V_PLANETARY_LANDINGS
+129022081,Hpt_ATDumbfireMissile_Fixed_Medium_V2,hardpoint,Enhanced AX Missile Rack,Fixed,Dumbfire,,2,D,ELITE_HORIZONS_V_PLANETARY_LANDINGS
+129022082,Hpt_ATDumbfireMissile_Turret_Large_V2,hardpoint,Enhanced AX Missile Rack,Turreted,Dumbfire,,3,D,ELITE_HORIZONS_V_PLANETARY_LANDINGS
+129022083,Hpt_ATDumbfireMissile_Turret_Medium_V2,hardpoint,Enhanced AX Missile Rack,Turreted,Dumbfire,,2,E,ELITE_HORIZONS_V_PLANETARY_LANDINGS
+129022084,Hpt_ATMultiCannon_Fixed_Large_V2,hardpoint,Enhanced AX Multi-Cannon,Fixed,,,3,B,ELITE_HORIZONS_V_PLANETARY_LANDINGS
+129022085,Hpt_ATMultiCannon_Turret_Large_V2,hardpoint,Enhanced AX Multi-Cannon,Turreted,,,3,D,ELITE_HORIZONS_V_PLANETARY_LANDINGS
+129022086,Hpt_ATMultiCannon_Turret_Medium_V2,hardpoint,Enhanced AX Multi-Cannon,Turreted,,,2,E,ELITE_HORIZONS_V_PLANETARY_LANDINGS
+129022088,Hpt_ATMultiCannon_Gimbal_Large,hardpoint,Enhanced AX Multi-Cannon,Gimballed,,,3,C,ELITE_HORIZONS_V_PLANETARY_LANDINGS
+129022089,Hpt_ATMultiCannon_Gimbal_Medium,hardpoint,Enhanced AX Multi-Cannon,Gimballed,,,2,E,ELITE_HORIZONS_V_PLANETARY_LANDINGS
+129022663,Hpt_AntiUnknownShutdown_Tiny_V2,utility,Thargoid Pulse Neutraliser,,,,0,E,?
+129022952,Hpt_XenoScanner_Advanced_Tiny,utility,Pulse Wave Xeno Scanner,,,,0,C,
+129028577,Hpt_Human_Extraction_Fixed_Medium,hardpoint,Sub-Surface Extraction Missile,Fixed,Seeker,,2,B,
+129030049,Hpt_ATVentDisruptorPylon_Fixed_Medium,hardpoint,Guardian Nanite Torpedo Pylon,Fixed,,,2,I,
+129030050,Hpt_ATVentDisruptorPylon_Fixed_Large,hardpoint,Guardian Nanite Torpedo Pylon,Fixed,,,3,I,
+129030051,Hpt_Cannon_Gimbal_Medium_Burst,hardpoint,Concord Cannon,Gimballed,,,2,D,ELITE_SPECIFIC_V_POWER_200130
+129030466,Python_NX_Armour_Grade1,standard,Lightweight Alloy,,,Python MkII,1,I,ELITE_V_PYTHON_NX
+129030467,Python_NX_Armour_Grade2,standard,Reinforced Alloy,,,Python MkII,1,I,ELITE_V_PYTHON_NX
+129030468,Python_NX_Armour_Grade3,standard,Military Grade Composite,,,Python MkII,1,I,ELITE_V_PYTHON_NX
+129030469,Python_NX_Armour_Mirrored,standard,Mirrored Surface Composite,,,Python MkII,1,I,ELITE_V_PYTHON_NX
+129030470,Python_NX_Armour_Reactive,standard,Reactive Surface Composite,,,Python MkII,1,I,ELITE_V_PYTHON_NX
+129030474,Int_Hyperdrive_Overcharge_Size5_Class3,standard,Frame Shift Drive (SCO),,,,5,C,
+129030483,Int_Hyperdrive_Overcharge_Size7_Class3,standard,Frame Shift Drive (SCO),,,,7,C,
+129030484,Int_Hyperdrive_Overcharge_Size6_Class3,standard,Frame Shift Drive (SCO),,,,6,C,
+129030485,Int_Hyperdrive_Overcharge_Size4_Class3,standard,Frame Shift Drive (SCO),,,,4,C,
+129030486,Int_Hyperdrive_Overcharge_Size3_Class3,standard,Frame Shift Drive (SCO),,,,3,C,
+129030487,Int_Hyperdrive_Overcharge_Size2_Class3,standard,Frame Shift Drive (SCO),,,,2,C,
+129030535,Type8_Armour_Grade1,standard,Lightweight Alloy,,,Type-8 Transporter,1,I,ELITE_V_TYPE8
+129030536,Type8_Armour_Grade2,standard,Reinforced Alloy,,,Type-8 Transporter,1,I,ELITE_V_TYPE8
+129030537,Type8_Armour_Grade3,standard,Military Grade Composite,,,Type-8 Transporter,1,I,ELITE_V_TYPE8
+129030538,Type8_Armour_Mirrored,standard,Mirrored Surface Composite,,,Type-8 Transporter,1,I,ELITE_V_TYPE8
+129030539,Type8_Armour_Reactive,standard,Reactive Surface Composite,,,Type-8 Transporter,1,I,ELITE_V_TYPE8
+129030577,Int_Hyperdrive_Overcharge_Size2_Class1,standard,Frame Shift Drive (SCO),,,,2,E,
+129030578,Int_Hyperdrive_Overcharge_Size2_Class2,standard,Frame Shift Drive (SCO),,,,2,D,
+129030579,Int_Hyperdrive_Overcharge_Size2_Class4,standard,Frame Shift Drive (SCO),,,,2,B,
+129030580,Int_Hyperdrive_Overcharge_Size2_Class5,standard,Frame Shift Drive (SCO),,,,2,A,
+129030581,Int_Hyperdrive_Overcharge_Size3_Class1,standard,Frame Shift Drive (SCO),,,,3,E,
+129030582,Int_Hyperdrive_Overcharge_Size3_Class2,standard,Frame Shift Drive (SCO),,,,3,D,
+129030583,Int_Hyperdrive_Overcharge_Size3_Class4,standard,Frame Shift Drive (SCO),,,,3,B,
+129030584,Int_Hyperdrive_Overcharge_Size3_Class5,standard,Frame Shift Drive (SCO),,,,3,A,
+129030585,Int_Hyperdrive_Overcharge_Size4_Class1,standard,Frame Shift Drive (SCO),,,,4,E,
+129030586,Int_Hyperdrive_Overcharge_Size4_Class2,standard,Frame Shift Drive (SCO),,,,4,D,
+129030587,Int_Hyperdrive_Overcharge_Size4_Class4,standard,Frame Shift Drive (SCO),,,,4,B,
+129030588,Int_Hyperdrive_Overcharge_Size4_Class5,standard,Frame Shift Drive (SCO),,,,4,A,
+129030589,Int_Hyperdrive_Overcharge_Size5_Class1,standard,Frame Shift Drive (SCO),,,,5,E,
+129030590,Int_Hyperdrive_Overcharge_Size5_Class2,standard,Frame Shift Drive (SCO),,,,5,D,
+129030591,Int_Hyperdrive_Overcharge_Size5_Class4,standard,Frame Shift Drive (SCO),,,,5,B,
+129030592,Int_Hyperdrive_Overcharge_Size5_Class5,standard,Frame Shift Drive (SCO),,,,5,A,
+129030593,Int_Hyperdrive_Overcharge_Size6_Class1,standard,Frame Shift Drive (SCO),,,,6,E,
+129030594,Int_Hyperdrive_Overcharge_Size6_Class2,standard,Frame Shift Drive (SCO),,,,6,D,
+129030595,Int_Hyperdrive_Overcharge_Size6_Class4,standard,Frame Shift Drive (SCO),,,,6,B,
+129030596,Int_Hyperdrive_Overcharge_Size6_Class5,standard,Frame Shift Drive (SCO),,,,6,A,
+129030597,Int_Hyperdrive_Overcharge_Size7_Class1,standard,Frame Shift Drive (SCO),,,,7,E,
+129030598,Int_Hyperdrive_Overcharge_Size7_Class2,standard,Frame Shift Drive (SCO),,,,7,D,
+129030599,Int_Hyperdrive_Overcharge_Size7_Class4,standard,Frame Shift Drive (SCO),,,,7,B,
+129030600,Int_Hyperdrive_Overcharge_Size7_Class5,standard,Frame Shift Drive (SCO),,,,7,A,
+129030681,Mandalay_Armour_Grade1,standard,Lightweight Alloy,,,Mandalay,1,I,ELITE_V_MANDALAY
+129030682,Mandalay_Armour_Grade2,standard,Reinforced Alloy,,,Mandalay,1,I,ELITE_V_MANDALAY
+129030683,Mandalay_Armour_Grade3,standard,Military Grade Composite,,,Mandalay,1,I,ELITE_V_MANDALAY
+129030684,Mandalay_Armour_Mirrored,standard,Mirrored Surface Composite,,,Mandalay,1,I,ELITE_V_MANDALAY
+129030685,Mandalay_Armour_Reactive,standard,Reactive Surface Composite,,,Mandalay,1,I,ELITE_V_MANDALAY
+129031231,CobraMkV_Armour_Grade1,standard,Lightweight Alloy,,,Cobra MkV,1,I,ELITE_V_COBRA_MKV
+129031232,CobraMkV_Armour_Grade2,standard,Reinforced Alloy,,,Cobra MkV,1,I,ELITE_V_COBRA_MKV
+129031233,CobraMkV_Armour_Grade3,standard,Military Grade Composite,,,Cobra MkV,1,I,ELITE_V_COBRA_MKV
+129031234,CobraMkV_Armour_Mirrored,standard,Mirrored Surface Composite,,,Cobra MkV,1,I,ELITE_V_COBRA_MKV
+129031235,CobraMkV_Armour_Reactive,standard,Reactive Surface Composite,,,Cobra MkV,1,I,ELITE_V_COBRA_MKV
+129031322,Corsair_Armour_Grade1,standard,Lightweight Alloy,,,Corsair,1,I,ELITE_V_CORSAIR
+129031323,Corsair_Armour_Grade2,standard,Reinforced Alloy,,,Corsair,1,I,ELITE_V_CORSAIR
+129031324,Corsair_Armour_Grade3,standard,Military Grade Composite,,,Corsair,1,I,ELITE_V_CORSAIR
+129031325,Corsair_Armour_Mirrored,standard,Mirrored Surface Composite,,,Corsair,1,I,ELITE_V_CORSAIR
+129031326,Corsair_Armour_Reactive,standard,Reactive Surface Composite,,,Corsair,1,I,ELITE_V_CORSAIR
+129034271,PantherMkII_Armour_Grade1,standard,Lightweight Alloy,,,Panther Clipper MkII,1,I,ELITE_V_PANTHER_MKII
+129034272,PantherMkII_Armour_Grade2,standard,Reinforced Alloy,,,Panther Clipper MkII,1,I,ELITE_V_PANTHER_MKII
+129034273,PantherMkII_Armour_Grade3,standard,Military Grade Composite,,,Panther Clipper MkII,1,I,ELITE_V_PANTHER_MKII
+129034274,PantherMkII_Armour_Mirrored,standard,Mirrored Surface Composite,,,Panther Clipper MkII,1,I,ELITE_V_PANTHER_MKII
+129034275,PantherMkII_Armour_Reactive,standard,Reactive Surface Composite,,,Panther Clipper MkII,1,I,ELITE_V_PANTHER_MKII
+129034963,Int_LargeCargoRack_Size7_Class1,internal,Mk II Cargo Rack,,,,7,D,
+129034964,Int_LargeCargoRack_Size8_class1,internal,Mk II Cargo Rack,,,,8,D,
+129036132,LakonMiner_Armour_Grade1,standard,Lightweight Alloy,,,Type-11 Prospector,1,I,ELITE_V_LAKON_MINER
+129036133,LakonMiner_Armour_Grade2,standard,Reinforced Alloy,,,Type-11 Prospector,1,I,ELITE_V_LAKON_MINER
+129036134,LakonMiner_Armour_Grade3,standard,Military Grade Composite,,,Type-11 Prospector,1,I,ELITE_V_LAKON_MINER
+129036135,LakonMiner_Armour_Mirrored,standard,Mirrored Surface Composite,,,Type-11 Prospector,1,I,ELITE_V_LAKON_MINER
+129036136,LakonMiner_Armour_Reactive,standard,Reactive Surface Composite,,,Type-11 Prospector,1,I,ELITE_V_LAKON_MINER
+129036137,Hpt_MiningToolV2_Fixed_Large,hardpoint,Mining Volley Repeater,Fixed,,,3,C,
+129036138,Int_MultiDroneControl_MiningV2_Size5_Class5,internal,Mk II Mining Multi-Limpet Controller,,,,5,A,
+129036571,Explorer_NX_Armour_Grade1,standard,Mk II Ablative Lightweight Alloys,,,Caspian Explorer,1,C,ELITE_V_EXPLORER_NX
+129036572,Explorer_NX_Armour_Grade2,standard,Mk II Ablative Reinforced Alloys,,,Caspian Explorer,1,B,ELITE_V_EXPLORER_NX
+129036573,Explorer_NX_Armour_Grade3,standard,Mk II Ablative Military Grade Composite,,,Caspian Explorer,1,A,ELITE_V_EXPLORER_NX
+129036574,Explorer_NX_Armour_Mirrored,standard,Mk II Ablative Mirrored Surface Composite,,,Caspian Explorer,1,A,ELITE_V_EXPLORER_NX
+129036575,Explorer_NX_Armour_Reactive,standard,Mk II Ablative Reactive Surface Composite,,,Caspian Explorer,1,A,ELITE_V_EXPLORER_NX
+129036576,Int_Hyperdrive_Overcharge_Size8_Class1,standard,Frame Shift Drive (SCO),,,,8,E,
+129036577,Int_Hyperdrive_Overcharge_Size8_Class2,standard,Frame Shift Drive (SCO),,,,8,D,
+129036578,Int_Hyperdrive_Overcharge_Size8_Class3,standard,Frame Shift Drive (SCO),,,,8,C,
+129036579,Int_Hyperdrive_Overcharge_Size8_Class4,standard,Frame Shift Drive (SCO),,,,8,B,
+129036580,Int_Hyperdrive_Overcharge_Size8_Class5,standard,Frame Shift Drive (SCO),,,,8,A,
+129036581,Explorer_NX_Armour_Grade1_Default,standard,Lightweight Alloy,,,Caspian Explorer,1,C,ELITE_V_EXPLORER_NX
+129038968,Int_Hyperdrive_Overcharge_Size8_Class5_OverchargeBooster_MkII,standard,Mk II Supercharge Optimised Frame Shift Drive (SCO),,,,8,A,
+129039228,Int_Engine_Size7_Class5_GravityOptimised_MkII,standard,Mk II Gravity Optimised Thrusters,,,,7,A,
+129039243,SmallCombat01_NX_Armour_Grade1,standard,Lightweight Alloy,,,Kestrel Mk II,1,C,ELITE_V_SMALL_COMBAT_01
+129039244,SmallCombat01_NX_Armour_Grade2,standard,Reinforced Alloy,,,Kestrel Mk II,1,B,ELITE_V_SMALL_COMBAT_01
+129039245,SmallCombat01_NX_Armour_Grade3,standard,Military Grade Composite,,,Kestrel Mk II,1,A,ELITE_V_SMALL_COMBAT_01
+129039246,SmallCombat01_NX_Armour_Mirrored,standard,Mirrored Surface Composite,,,Kestrel Mk II,1,A,ELITE_V_SMALL_COMBAT_01
+129039247,SmallCombat01_NX_Armour_Reactive,standard,Reactive Surface Composite,,,Kestrel Mk II,1,A,ELITE_V_SMALL_COMBAT_01
+129040538,Hpt_MkIIPlasmaShockAutocannon_Fixed_Large,hardpoint,Mk II Plasma Shock Accelerator,Fixed,,,3,B,
+129041074,Int_MkIIAgileBoost_Engine_Size5_Class5,standard,Mk II Agile Boost Thrusters,mount,,,5,A,
+129041444,MediumTransport01_Armour_Grade1,standard,Lightweight Alloy,,,Lynx Highliner,1,C,ELITE_V_MEDIUM_TRANSPORT_01
+129041445,MediumTransport01_Armour_Grade2,standard,Reinforced Alloy,,,Lynx Highliner,1,B,ELITE_V_MEDIUM_TRANSPORT_01
+129041446,MediumTransport01_Armour_Grade3,standard,Military Grade Composite,,,Lynx Highliner,1,A,ELITE_V_MEDIUM_TRANSPORT_01
+129041447,MediumTransport01_Armour_Mirrored,standard,Mirrored Surface Composite,,,Lynx Highliner,1,A,ELITE_V_MEDIUM_TRANSPORT_01
+129041448,MediumTransport01_Armour_Reactive,standard,Reactive Surface Composite,,,Lynx Highliner,1,A,ELITE_V_MEDIUM_TRANSPORT_01
+129043770,Int_MkII_PassengerCabin_Size2_Class1,internal,MkII Economy Class Passenger Cabin,,,,2,D,
+129043771,Int_MkII_PassengerCabin_Size3_Class1,internal,MkII Economy Class Passenger Cabin,,,,3,D,
+129043772,Int_MkII_PassengerCabin_Size3_Class2,internal,MkII Business Class Passenger Cabin,,,,3,C,
+129043773,Int_MkII_PassengerCabin_Size4_Class1,internal,MkII Economy Class Passenger Cabin,,,,4,D,
+129043774,Int_MkII_PassengerCabin_Size4_Class2,internal,MkII Business Class Passenger Cabin,,,,4,C,
+129043775,Int_MkII_PassengerCabin_Size5_Class1,internal,MkII Economy Class Passenger Cabin,,,,5,D,
+129043776,Int_MkII_PassengerCabin_Size5_Class2,internal,MkII Business Class Passenger Cabin,,,,5,C,
+129043777,Int_MkII_PassengerCabin_Size6_Class1,internal,MkII Economy Class Passenger Cabin,,,,5,D,
+129043778,Int_MkII_PassengerCabin_Size6_Class2,internal,MkII Business Class Passenger Cabin,,,,5,C,
+129044375,Hpt_Railgun_Fixed_Medium,mercgear,Enduring Feedback Rail Gun,,,,2,B,
+129044376,Int_PowerDistributor_Size5_Class5,mercgear,Balanced Power Distributor,,,,5,A,
+129044377,Int_ModuleReinforcement_Size5_Class2,mercgear,Heavy Duty Module Reinforcement Package,,,,5,D,
+129045428,Hpt_Mining_AbrBlstr_Fixed_Small,mercgear,Far-Reaching Abrasion Blaster,Fixed,,,1,D,
+129045429,Hpt_CausticMissile_Fixed_Medium,mercgear,High-Yield Enzyme Missile Rack,Fixed,Dumbfire,,2,B,
+129045430,Hpt_Slugshot_Gimbal_Large,mercgear,Double Screaming Fragment Cannon,Gimballed,,,3,C,
+129045431,Hpt_Slugshot_Gimbal_Small,mercgear,Double Screaming Fragment Cannon,Gimballed,,,1,E,
+129045432,Hpt_MiningLaser_Fixed_Small,mercgear,Long Range Mining Laser,Fixed,,,1,D,
+129045433,Hpt_MultiCannon_Fixed_Medium,mercgear,Rapid Phase Multi-Cannon,Fixed,,,2,E,
+129045434,Hpt_BasicMissileRack_Fixed_Medium,mercgear,Drag Seeker Missile Rack,Fixed,Seeker,,2,B,
+129045435,Hpt_BasicMissileRack_Fixed_Medium,mercgear,Lightweight Thermal Seeker Missile Rack,Fixed,Seeker,,2,B,
+129045436,Hpt_BasicMissileRack_Fixed_Medium,mercgear,Lockdown Seeker Missile Rack,Fixed,Seeker,,2,B,
+129045437,Hpt_BasicMissileRack_Fixed_Large,mercgear,Lockdown Seeker Missile Rack,Fixed,Seeker,,3,A,
+129045438,Int_PowerDistributor_Size3_Class2,mercgear,Support Focused Power Distributor,,,,3,D,
+129045439,Int_PowerDistributor_Size3_Class5,mercgear,Support Focused Power Distributor,,,,3,A,
+129045440,Int_PowerDistributor_Size4_Class2,mercgear,Support Focused Power Distributor,,,,4,D,
+129045441,Int_PowerDistributor_Size4_Class5,mercgear,Support Focused Power Distributor,,,,4,A,
+129045442,Int_PowerDistributor_Size6_Class5,mercgear,Support Focused Power Distributor,,,,6,A,
+129045443,Int_CargoRack_Size5_Class1,mercgear,Extended Cargo Rack,,,,5,E,
+129045444,Int_CargoRack_Size6_Class1,mercgear,Extended Cargo Rack,,,,6,E,
+129045445,Int_DetailedSurfaceScanner_Tiny,mercgear,Long Range Detailed Surface Scanner,,,,1,I,
+129045539,Int_FighterBayMk2_Size6_Class1,internal,Mk II Vessel Hangar,,,,6,D,ELITE_V_MKIIFIGHTERBAY
+129045540,Int_FighterBayMk2_Size5_Class1,internal,Mk II Vessel Hangar,,,,5,D,ELITE_V_MKIIFIGHTERBAY
+129045541,Int_FighterBayMk2_Size7_Class1,internal,Mk II Vessel Hangar,,,,7,D,ELITE_V_MKIIFIGHTERBAY
+129045677,Int_FighterBayMk2_Size5_Class1_Free,internal,Mk II Vessel Hangar,,,,5,D,ELITE_V_MKIIFIGHTERBAY_FREE
+129045678,Int_FighterBayMk2_Size6_Class1_Free,internal,Mk II Vessel Hangar,,,,6,D,ELITE_V_MKIIFIGHTERBAY_FREE
+129045679,Int_FighterBayMk2_Size7_Class1_Free,internal,Mk II Vessel Hangar,,,,7,D,ELITE_V_MKIIFIGHTERBAY_FREE
+129045963,Int_FighterBay_Size5_Class1_Free,internal,Vessel Hangar,,,,5,D,ELITE_V_MKIFIGHTERBAY_FREE
+129045964,Int_FighterBay_Size6_Class1_Free,internal,Vessel Hangar,,,,6,D,ELITE_V_MKIFIGHTERBAY_FREE
+129045965,Int_FighterBay_Size7_Class1_Free,internal,Vessel Hangar,,,,7,D,ELITE_V_MKIFIGHTERBAY_FREE
+129046055,Int_LargeBuggyBay_Size2_Class3,internal,Large Planetary Vehicle Hangar,,,,2,F,ELITE_HORIZONS_V_PLANETARY_LANDINGS
+129046056,Int_LargeBuggyBay_Size4_Class3,internal,Large Planetary Vehicle Hangar,,,,4,F,ELITE_HORIZONS_V_PLANETARY_LANDINGS
+129046057,Int_LargeBuggyBay_Size6_Class3,internal,Large Planetary Vehicle Hangar,,,,6,F,ELITE_HORIZONS_V_PLANETARY_LANDINGS
+129046058,Int_MkIILargeBuggyBay_Size2_Class3,internal,Mk II Large Planetary Vehicle Hangar,,,,2,F,ELITE_HORIZONS_V_PLANETARY_LANDINGS
+129046059,Int_MkIILargeBuggyBay_Size4_Class3,internal,Mk II Large Planetary Vehicle Hangar,,,,4,F,ELITE_HORIZONS_V_PLANETARY_LANDINGS
+129046060,Int_MkIILargeBuggyBay_Size6_Class3,internal,Mk II Large Planetary Vehicle Hangar,,,,6,F,ELITE_HORIZONS_V_PLANETARY_LANDINGS
+129046181,Int_LargeBuggyBay_Size2_Class3_Free,internal,Large Planetary Vehicle Hangar,,,,2,F,ELITE_V_LARGEBUGGYBAY_FREE
+129046182,Int_LargeBuggyBay_Size4_Class3_Free,internal,Large Planetary Vehicle Hangar,,,,4,F,ELITE_V_LARGEBUGGYBAY_FREE
+129046183,Int_LargeBuggyBay_Size6_Class3_Free,internal,Large Planetary Vehicle Hangar,,,,6,F,ELITE_V_LARGEBUGGYBAY_FREE
+129046184,Int_MkIILargeBuggyBay_Size2_Class3_Free,internal,Mk II Large Planetary Vehicle Hangar,,,,2,F,ELITE_V_LARGEBUGGYBAY_FREE
+129046185,Int_MkIILargeBuggyBay_Size4_Class3_Free,internal,Mk II Large Planetary Vehicle Hangar,,,,4,F,ELITE_V_LARGEBUGGYBAY_FREE
+129046186,Int_MkIILargeBuggyBay_Size6_Class3_Free,internal,Mk II Large Planetary Vehicle Hangar,,,,6,F,ELITE_V_LARGEBUGGYBAY_FREE
+129046187,Hpt_Cannon_Fixed_Huge,mercgear,Force Impact Cannon,Fixed,,,4,B,
+129046188,Hpt_PulseLaserBurst_Gimbal_Medium,mercgear,Regenerative Burst Laser,Gimballed,,,2,F,
+129046189,Hpt_BeamLaser_Fixed_Huge,mercgear,Overloaded Beam Laser,Fixed,,,4,A,
+129046190,Hpt_BasicMissileRack_Fixed_Large,mercgear,Exposing Missiles,Fixed,Seeker,,3,A,

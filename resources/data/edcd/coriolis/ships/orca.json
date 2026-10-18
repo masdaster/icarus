@@ -6,10 +6,12 @@
       "name": "Orca",
       "manufacturer": "Saud Kruger",
       "class": 3,
-      "hullCost": 47790590,
+      "hullCost": 47800723,
       "speed": 300,
       "boost": 380,
+      "minthrust": 66.667,
       "boostEnergy": 16,
+      "boostInt": 4,
       "baseShieldStrength": 220,
       "baseArmour": 220,
       "heatCapacity": 262,
@@ -24,7 +26,7 @@
       "crew": 2,
       "reserveFuelCapacity": 0.79
     },
-    "retailCost": 48539900,
+    "retailCost": 48539887,
     "bulkheads": [
       {
         "id": "BM",
@@ -37,59 +39,64 @@
         "explres": -0.4,
         "kinres": -0.2,
         "thermres": 0,
-        "hullboost": 0.8
+        "hullboost": 0.8,
+        "name": "Lightweight Alloy"
       },
       {
         "id": "BN",
         "edID": 128049329,
         "eddbID": 799,
         "grp": "bh",
-        "cost": 19415950,
+        "cost": 19415954,
         "mass": 21,
         "causres": 0,
         "explres": -0.4,
         "kinres": -0.2,
         "thermres": 0,
-        "hullboost": 1.52
+        "hullboost": 1.52,
+        "name": "Reinforced Alloy"
       },
       {
         "id": "BO",
         "edID": 128049330,
         "eddbID": 800,
         "grp": "bh",
-        "cost": 43685900,
+        "cost": 43685898,
         "mass": 87,
         "causres": 0,
         "explres": -0.4,
         "kinres": -0.2,
         "thermres": 0,
-        "hullboost": 2.5
+        "hullboost": 2.5,
+        "name": "Military Grade Composite"
       },
       {
         "id": "BP",
         "edID": 128049331,
         "eddbID": 801,
         "grp": "bh",
-        "cost": 103244340,
+        "cost": 103244339,
         "mass": 87,
         "causres": 0,
         "explres": -0.5,
         "kinres": -0.75,
         "thermres": 0.5,
-        "hullboost": 2.5
+        "hullboost": 2.5,
+        "name": "Mirrored Surface Composite"
       },
       {
         "id": "BQ",
         "edID": 128049332,
         "eddbID": 802,
         "grp": "bh",
-        "cost": 114408510,
+        "cost": 114408513,
         "mass": 87,
         "causres": 0,
         "explres": 0.2,
         "kinres": 0.25,
         "thermres": -0.4,
-        "hullboost": 2.5
+        "hullboost": 2.5,
+        "name": "Reactive Surface Composite"
       }
     ],
     "slots": {
@@ -120,7 +127,14 @@
         3,
         2,
         2,
-        1
+        1,
+        {
+          "class": 1,
+          "name": "PlanetaryApproachSuite",
+          "eligible": {
+            "pas": 1
+          }
+        }
       ]
     },
     "defaults": {
@@ -151,7 +165,8 @@
         0,
         0,
         "",
-        0
+        0,
+        "4F"
       ]
     }
   }

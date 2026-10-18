@@ -12,7 +12,8 @@
       "mass": 0,
       "symbol": "Int_CargoRack_Size1_Class1",
       "ukName": "Cargo Rack",
-      "ukDiscript": "Standardised storage rack for use in automated cargo transfer system."
+      "ukDiscript": "Standardised storage rack for use in automated cargo transfer system.",
+      "engineering": false
     },
     {
       "cargo": 4,
@@ -26,12 +27,13 @@
       "mass": 0,
       "symbol": "Int_CargoRack_Size2_Class1",
       "ukName": "Cargo Rack",
-      "ukDiscript": "Standardised storage rack for use in automated cargo transfer system."
+      "ukDiscript": "Standardised storage rack for use in automated cargo transfer system.",
+      "engineering": false
     },
     {
       "cargo": 8,
       "class": 3,
-      "cost": 10560,
+      "cost": 10563,
       "edID": 128064340,
       "eddbID": 1193,
       "grp": "cr",
@@ -40,12 +42,13 @@
       "mass": 0,
       "symbol": "Int_CargoRack_Size3_Class1",
       "ukName": "Cargo Rack",
-      "ukDiscript": "Standardised storage rack for use in automated cargo transfer system."
+      "ukDiscript": "Standardised storage rack for use in automated cargo transfer system.",
+      "engineering": false
     },
     {
       "cargo": 16,
       "class": 4,
-      "cost": 34330,
+      "cost": 34328,
       "edID": 128064341,
       "eddbID": 1194,
       "grp": "cr",
@@ -54,12 +57,13 @@
       "mass": 0,
       "symbol": "Int_CargoRack_Size4_Class1",
       "ukName": "Cargo Rack",
-      "ukDiscript": "Standardised storage rack for use in automated cargo transfer system."
+      "ukDiscript": "Standardised storage rack for use in automated cargo transfer system.",
+      "engineering": false
     },
     {
       "cargo": 32,
       "class": 5,
-      "cost": 111570,
+      "cost": 111566,
       "edID": 128064342,
       "eddbID": 1195,
       "grp": "cr",
@@ -68,12 +72,13 @@
       "mass": 0,
       "symbol": "Int_CargoRack_Size5_Class1",
       "ukName": "Cargo Rack",
-      "ukDiscript": "Standardised storage rack for use in automated cargo transfer system."
+      "ukDiscript": "Standardised storage rack for use in automated cargo transfer system.",
+      "engineering": false
     },
     {
       "cargo": 64,
       "class": 6,
-      "cost": 362590,
+      "cost": 362591,
       "edID": 128064343,
       "eddbID": 1196,
       "grp": "cr",
@@ -82,7 +87,8 @@
       "mass": 0,
       "symbol": "Int_CargoRack_Size6_Class1",
       "ukName": "Cargo Rack",
-      "ukDiscript": "Standardised storage rack for use in automated cargo transfer system."
+      "ukDiscript": "Standardised storage rack for use in automated cargo transfer system.",
+      "engineering": false
     },
     {
       "cargo": 128,
@@ -96,12 +102,13 @@
       "mass": 0,
       "symbol": "Int_CargoRack_Size7_Class1",
       "ukName": "Cargo Rack",
-      "ukDiscript": "Standardised storage rack for use in automated cargo transfer system."
+      "ukDiscript": "Standardised storage rack for use in automated cargo transfer system.",
+      "engineering": false
     },
     {
       "cargo": 256,
       "class": 8,
-      "cost": 3829870,
+      "cost": 3829866,
       "edID": 128064345,
       "eddbID": 1198,
       "grp": "cr",
@@ -110,7 +117,8 @@
       "mass": 0,
       "symbol": "Int_CargoRack_Size8_Class1",
       "ukName": "Cargo Rack",
-      "ukDiscript": "Standardised storage rack for use in automated cargo transfer system."
+      "ukDiscript": "Standardised storage rack for use in automated cargo transfer system.",
+      "engineering": false
     },
     {
       "cargo": 1,
@@ -125,12 +133,13 @@
       "mass": 0,
       "symbol": "Int_CorrosionProofCargoRack_Size1_Class1",
       "ukName": "Corrosion Resistant Cargo Rack",
-      "ukDiscript": "Specialised storage rack for use in automated cargo transfer system that can resist the effects of corrosive cargo."
+      "ukDiscript": "Specialised storage rack for use in automated cargo transfer system that can resist the effects of corrosive cargo.",
+      "engineering": false
     },
     {
       "cargo": 2,
       "class": 1,
-      "cost": 12563,
+      "cost": 0,
       "edID": 128681992,
       "eddbID": 1552,
       "grp": "cr",
@@ -140,7 +149,8 @@
       "mass": 0,
       "symbol": "Int_CorrosionProofCargoRack_Size1_Class2",
       "ukName": "Corrosion Resistant Cargo Rack",
-      "ukDiscript": "Specialised storage rack for use in automated cargo transfer system that can resist the effects of corrosive cargo."
+      "ukDiscript": "Specialised storage rack for use in automated cargo transfer system that can resist the effects of corrosive cargo.",
+      "engineering": false
     },
     {
       "cargo": 16,
@@ -155,7 +165,88 @@
       "mass": 0,
       "symbol": "Int_CorrosionProofCargoRack_Size4_Class1",
       "ukName": "Corrosion Resistant Cargo Rack",
-      "ukDiscript": "Specialised storage rack for use in automated cargo transfer system that can resist the effects of corrosive cargo."
+      "ukDiscript": "Specialised storage rack for use in automated cargo transfer system that can resist the effects of corrosive cargo.",
+      "engineering": false
+    },
+    {
+      "cargo": 32,
+      "class": 5,
+      "cost": 0,
+      "edID": 128957069,
+      "grp": "cr",
+      "id": "5E",
+      "name": "Corrosion Resistant",
+      "rating": "E",
+      "mass": 0,
+      "symbol": "Int_CorrosionProofCargoRack_Size5_Class1",
+      "ukName": "Corrosion Resistant Cargo Rack",
+      "ukDiscript": "Specialised storage rack for use in automated cargo transfer system that can resist the effects of corrosive cargo.",
+      "engineering": false
+    },
+    {
+      "cargo": 64,
+      "class": 6,
+      "cost": 0,
+      "edID": null,
+      "grp": "cr",
+      "id": "5F",
+      "name": "Corrosion Resistant",
+      "rating": "E",
+      "mass": 0,
+      "symbol": "Int_CorrosionProofCargoRack_Size6_Class1",
+      "ukName": "Corrosion Resistant Cargo Rack",
+      "ukDiscript": "Specialised storage rack for use in automated cargo transfer system that can resist the effects of corrosive cargo.",
+      "engineering": false
+    },
+    {
+      "cargo": 32,
+      "class": 5,
+      "cost": 0,
+      "edID": 128064342,
+      "grp": "cr",
+      "id": "7X",
+      "rating": "E",
+      "preEngineered": {
+        "reengineerable": false,
+        "gradeChangeable": false,
+        "blueprints": [
+          "CargoRack_IncreasedCapacity"
+        ],
+        "grade": 5,
+        "canApplyExperimental": false,
+        "description": "This module has been pre-engineered with Grade 5 Expanded Capacity.",
+        "availability": "CG"
+      },
+      "mass": 0,
+      "symbol": "Int_CargoRack_Size5_Class1",
+      "name": "Expanded Capacity Cargo Rack",
+      "ukName": "Expanded Capacity Cargo Rack",
+      "ukDiscript": "Standardised storage rack for use in automated cargo transfer system."
+    },
+    {
+      "cargo": 64,
+      "class": 6,
+      "cost": 0,
+      "edID": 128064343,
+      "grp": "cr",
+      "id": "7Y",
+      "rating": "E",
+      "preEngineered": {
+        "reengineerable": false,
+        "gradeChangeable": false,
+        "blueprints": [
+          "CargoRack_IncreasedCapacity"
+        ],
+        "grade": 5,
+        "canApplyExperimental": false,
+        "description": "This module has been pre-engineered with Grade 5 Expanded Capacity.",
+        "availability": "CG"
+      },
+      "mass": 0,
+      "symbol": "Int_CargoRack_Size6_Class1",
+      "name": "Expanded Capacity Cargo Rack",
+      "ukName": "Expanded Capacity Cargo Rack",
+      "ukDiscript": "Standardised storage rack for use in automated cargo transfer system."
     }
   ]
 }

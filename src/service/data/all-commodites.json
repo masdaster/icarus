@@ -167,7 +167,8 @@
     "id": "129015433",
     "symbol": "AncientRelicTG",
     "category": "Salvage",
-    "name": "Unclassified Relic"
+    "name": "Unclassified Relic",
+    "description": "A Guardian artefact which does not match any currently established categorisation."
   },
   "ancienttablet": {
     "id": "128732186",
@@ -363,6 +364,12 @@
     "category": "Legal Drugs",
     "name": "Narcotics",
     "description": "Synthetically created substances tailored to create mood enhancement in a human. Widely outlawed due to their addictive nature, and the resultant longer term effects on human consumers."
+  },
+  "bastnasite": {
+    "id": "129046168",
+    "symbol": "Bastnasite",
+    "category": "Minerals",
+    "name": "Bastnasite"
   },
   "bastsnakegin": {
     "id": "128667065",
@@ -745,6 +752,12 @@
     "rare": true,
     "description": "Transparent spheres crafted from the finest crystal and containing a clear liquid full of snow that swirls when shaken"
   },
+  "curatedcommodity": {
+    "id": "129045961",
+    "symbol": "CuratedCommodity",
+    "category": "Industrial Materials",
+    "name": "Curated Commodity Package"
+  },
   "damagedescapepod": {
     "id": "128672811",
     "symbol": "DamagedEscapePod",
@@ -789,12 +802,24 @@
     "rare": true,
     "description": "More of a lichen than the fungus that they resemble. They have a similar musty flavor to ancient Earth truffles, but the process of metabolising Deuringas's surface - which is why Deuringas truffles must be shaved in preparation for eating."
   },
+  "deuterium": {
+    "id": "129046169",
+    "symbol": "Deuterium",
+    "category": "Minerals",
+    "name": "Deuterium"
+  },
   "diagnosticsensor": {
     "id": "128673875",
     "symbol": "DiagnosticSensor",
     "category": "Technology",
     "name": "Hardware Diagnostic Sensor",
     "description": "Diagnostic sensors that provide hardware monitoring and telemetry for a variety of systems. These can be found at Kanwar Gateway in the Xiripa system."
+  },
+  "diamond": {
+    "id": "129046175",
+    "symbol": "Diamond",
+    "category": "Minerals",
+    "name": "Diamond"
   },
   "diplomaticbag": {
     "id": "128672131",
@@ -872,7 +897,7 @@
     "symbol": "EncryptedCorrespondence",
     "category": "Salvage",
     "name": "Encrypted Correspondence",
-    "description": "Heavily encrypted data that is of little interest, although some hackers use it for training or practise, or simply enjoy the challenge of breaking the encryption. There is a limited black market for these items."
+    "description": "Heavily encrypted data that is of little interest, although some hackers use it for training or practice, or simply enjoy the challenge of breaking the encryption. There is a limited black market for these items."
   },
   "eraninpearlwhisky": {
     "id": "128666746",
@@ -1169,6 +1194,18 @@
     "name": "Microbial Furnaces",
     "description": "Bio-engineered microbes that separate specific elements from powdered ore. Produced on high tech worlds, their name is historic having replaced thermal furnaces for the refining or many ores."
   },
+  "helium": {
+    "id": "129046166",
+    "symbol": "Helium",
+    "category": "Chemicals",
+    "name": "Helium"
+  },
+  "helium3": {
+    "id": "129046167",
+    "symbol": "Helium3",
+    "category": "Chemicals",
+    "name": "Helium-3"
+  },
   "helvetitjpearls": {
     "id": "128667052",
     "symbol": "HelvetitjPearls",
@@ -1321,6 +1358,12 @@
     "category": "Machinery",
     "name": "Ion Distributor",
     "description": "Ion distributors are used to control the flows of ions within a device. These can be found at Stevens Orbital in the HIP 18327 system."
+  },
+  "iridium": {
+    "id": "129046165",
+    "symbol": "Iridium",
+    "category": "Metals",
+    "name": "Iridium"
   },
   "jadeite": {
     "id": "128672776",
@@ -1621,6 +1664,12 @@
     "name": "Mollusc Soft Tissue",
     "description": "A sample of soft tissue from a space-based mollusc."
   },
+  "magnesite": {
+    "id": "129046177",
+    "symbol": "Magnesite",
+    "category": "Minerals",
+    "name": "Magnesite"
+  },
   "magneticemittercoil": {
     "id": "128673869",
     "symbol": "MagneticEmitterCoil",
@@ -1705,7 +1754,7 @@
     "symbol": "MilitaryGradeFabrics",
     "category": "Textiles",
     "name": "Military Grade Fabrics",
-    "description": "Made fom high-grade fabrics which are highly durable as well as adaptive to different temperatures and weather conditions, this clothing is essential for military personnel."
+    "description": "Made from high-grade fabrics which are highly durable as well as adaptive to different temperatures and weather conditions, this clothing is essential for military personnel."
   },
   "militaryintelligence": {
     "id": "128668552",
@@ -1932,6 +1981,12 @@
     "rare": true,
     "description": "Due to the relaxation of various genetic modification laws, Ochoeng prides itself on having produced the galaxy's hottest chilli pepper. There have been numerous calls to reclassify the substances as toxic, however the produce remains legal in most systems."
   },
+  "olivine": {
+    "id": "129046172",
+    "symbol": "Olivine",
+    "category": "Minerals",
+    "name": "Olivine"
+  },
   "onionhead": {
     "id": "128667029",
     "symbol": "OnionHead",
@@ -1973,8 +2028,7 @@
     "id": "128924332",
     "symbol": "Opal",
     "category": "Minerals",
-    "name": "Void Opals",
-    "description": "Void opals are a mineraloid prized by various cultures. Their lack of reflectivity means that they seem almost to absorb light, hence their name."
+    "name": "Void Opal"
   },
   "ophiuchiexinoartefacts": {
     "id": "128667668",
@@ -2050,6 +2104,12 @@
     "category": "Medicines",
     "name": "Performance Enhancers",
     "description": "A broad category of engineered substances that enhance human physical or mental or emotional capabilities. Produced on high tech worlds, and widely consumed. There are some risks from excessive consumption and they are illegal in some jurisdictions."
+  },
+  "periclasedunite": {
+    "id": "129046173",
+    "symbol": "PericlaseDunite",
+    "category": "Minerals",
+    "name": "Periclase Dunite"
   },
   "personaleffects": {
     "id": "128672126",
@@ -2176,6 +2236,12 @@
     "name": "Pyrophyllite",
     "description": "This phyllosilicate mineral is used in high pressure experiments. On some worlds it's also a material for intricate arts and crafts."
   },
+  "quartzpyroxenite": {
+    "id": "129046171",
+    "symbol": "QuartzPyroxenite",
+    "category": "Minerals",
+    "name": "Quartz Pyroxenite"
+  },
   "radiationbaffle": {
     "id": "128673865",
     "symbol": "RadiationBaffle",
@@ -2244,6 +2310,12 @@
     "category": "Chemicals",
     "name": "Rockforth Fertiliser",
     "description": "A synthetic material designed to provide growing plants with essential nutrients."
+  },
+  "ruby": {
+    "id": "129046176",
+    "symbol": "Ruby",
+    "category": "Minerals",
+    "name": "Ruby"
   },
   "rusanioldsmokey": {
     "id": "128667082",
@@ -2335,6 +2407,12 @@
     "name": "SAP 8 Core Container",
     "description": "This container holds a crystalline shard of unknown origin. Scans indicate that the foot long shard is suspended inside a modified, self-sustaining, fusion-core containment field. Any breach of the field will result in the containers destruction."
   },
+  "sapphire": {
+    "id": "129046174",
+    "symbol": "Sapphire",
+    "category": "Minerals",
+    "name": "Sapphire"
+  },
   "saxonwine": {
     "id": "128667671",
     "symbol": "SaxonWine",
@@ -2343,7 +2421,7 @@
     "name": "Saxon Wine",
     "limit": 13,
     "rare": true,
-    "description": "A near perfect replication of the famed 2093 vintage wines produced on ancient Earth. That year's wine was universally declared the best ever produced, and has yet to be topped. Scientists on Hill Orbital station were able to replicate the famous wine, and now guard the secrets of their formular with great care."
+    "description": "A near perfect replication of the famed 2093 vintage wines produced on ancient Earth. That year's wine was universally declared the best ever produced, and has yet to be topped. Scientists on Hill Orbital station were able to replicate the famous wine, and now guard the secrets of their formula with great care."
   },
   "scientificresearch": {
     "id": "128672132",
@@ -2449,7 +2527,8 @@
     "id": "129031238",
     "symbol": "Steel",
     "category": "Metals",
-    "name": "Steel"
+    "name": "Steel",
+    "description": "???"
   },
   "structuralregulators": {
     "id": "128672311",
@@ -2498,7 +2577,7 @@
     "symbol": "SyntheticReagents",
     "category": "Chemicals",
     "name": "Synthetic Reagents",
-    "description": "A selection of inorganic molecules used in the creation and manipulation of a wide range of organic compounds"
+    "description": "A selection of inorganic molecules used in the creation and manipulation of a wide range of organic compounds."
   },
   "taaffeite": {
     "id": "128672775",
@@ -2593,19 +2672,22 @@
     "id": "129030461",
     "symbol": "ThargoidBoneFragments",
     "category": "Salvage",
-    "name": "Bone Fragments"
+    "name": "Bone Fragments",
+    "description": "An abrasion sample taken from a destroyed Thargoid Titan's hardened debris."
   },
   "thargoidcystspecimen": {
     "id": "129030460",
     "symbol": "ThargoidCystSpecimen",
     "category": "Salvage",
-    "name": "Cyst Specimen"
+    "name": "Cyst Specimen",
+    "description": "An abrasion sample taken from a destroyed Thargoid Titan's soft inner hull debris."
   },
   "thargoidgeneratortissuesample": {
     "id": "129019259",
     "symbol": "ThargoidGeneratorTissueSample",
     "category": "Salvage",
-    "name": "Caustic Tissue Sample"
+    "name": "Caustic Tissue Sample",
+    "description": "A sample of bio-mechanical tissue taken from a caustic generator."
   },
   "thargoidheart": {
     "id": "128793127",
@@ -2618,7 +2700,8 @@
     "id": "129030462",
     "symbol": "ThargoidOrganSample",
     "category": "Salvage",
-    "name": "Organ Sample"
+    "name": "Organ Sample",
+    "description": "An abrasion sample taken from a destroyed Thargoid Titan's internal remnants."
   },
   "thargoidpod": {
     "id": "129022406",
@@ -2644,19 +2727,22 @@
     "id": "129022402",
     "symbol": "ThargoidTissueSampleType10a",
     "category": "Salvage",
-    "name": "Titan Maw Deep Tissue Sample"
+    "name": "Titan Maw Deep Tissue Sample",
+    "description": "A high-quality tissue sample taken from the cavernous, maw-like feature of a Thargoid Titan. This material is less frequently obtained by research limpets."
   },
   "thargoidtissuesampletype10b": {
     "id": "129022403",
     "symbol": "ThargoidTissueSampleType10b",
     "category": "Salvage",
-    "name": "Titan Maw Tissue Sample"
+    "name": "Titan Maw Tissue Sample",
+    "description": "A typical sample of bio-mechanical tissue taken from a Thargoid Titan maw."
   },
   "thargoidtissuesampletype10c": {
     "id": "129022404",
     "symbol": "ThargoidTissueSampleType10c",
     "category": "Salvage",
-    "name": "Titan Maw Partial Tissue Sample"
+    "name": "Titan Maw Partial Tissue Sample",
+    "description": "A low-quality tissue sample taken from the cavernous, maw-like feature of a Thargoid Titan. This sample is mostly comprised of dense surface material."
   },
   "thargoidtissuesampletype2": {
     "id": "128793129",
@@ -2683,13 +2769,15 @@
     "id": "129019258",
     "symbol": "ThargoidTissueSampleType5",
     "category": "Salvage",
-    "name": "Thargoid Orthrus Tissue Sample"
+    "name": "Thargoid Orthrus Tissue Sample",
+    "description": "A sample of bio-mechanical tissue taken from a Thargoid Interceptor-class vessel. This sample has been taken from a variant known as an Orthrus."
   },
   "thargoidtissuesampletype6": {
     "id": "129022395",
     "symbol": "ThargoidTissueSampleType6",
     "category": "Salvage",
-    "name": "Thargoid Glaive Tissue Sample"
+    "name": "Thargoid Glaive Tissue Sample",
+    "description": "A sample of bio-mechanical tissue taken from a Thargoid Hunter-class vessel. This sample has been taken from a variant known as a Glaive and contains both biological and mechanical elements."
   },
   "thargoidtissuesampletype7": {
     "id": "129022396",
@@ -2701,25 +2789,29 @@
     "id": "129022398",
     "symbol": "ThargoidTissueSampleType9a",
     "category": "Salvage",
-    "name": "Titan Deep Tissue Sample"
+    "name": "Titan Deep Tissue Sample",
+    "description": "A high-quality sample of bio-mechanical tissue taken from a Thargoid Titan, containing material less frequently obtained by research limpets."
   },
   "thargoidtissuesampletype9b": {
     "id": "129022399",
     "symbol": "ThargoidTissueSampleType9b",
     "category": "Salvage",
-    "name": "Titan Tissue Sample"
+    "name": "Titan Tissue Sample",
+    "description": "A typical sample of bio-mechanical tissue taken from a Thargoid Titan, with an adequate quantity of material for study."
   },
   "thargoidtissuesampletype9c": {
     "id": "129022400",
     "symbol": "ThargoidTissueSampleType9c",
     "category": "Salvage",
-    "name": "Titan Partial Tissue Sample"
+    "name": "Titan Partial Tissue Sample",
+    "description": "A low-quality sample of bio-mechanical tissue taken from a Thargoid Titan."
   },
   "thargoidtitandrivecomponent": {
     "id": "129030459",
     "symbol": "ThargoidTitanDriveComponent",
     "category": "Salvage",
-    "name": "Titan Drive Component"
+    "name": "Titan Drive Component",
+    "description": "A component of a large Thargoid propulsion drive found in the wreckage of a Titan."
   },
   "thehuttonmug": {
     "id": "128672121",
@@ -2744,6 +2836,12 @@
     "category": "Metals",
     "name": "Thorium",
     "description": "Thorium, Th, atomic number 90. Melting point 2023K. A radioactive actinide metal. It was once used in ancient fission reactions. It is still used by some medical technology and as a component in advanced ceramics."
+  },
+  "thortveitite": {
+    "id": "129046170",
+    "symbol": "Thortveitite",
+    "category": "Minerals",
+    "name": "Thortveitite"
   },
   "thrutiscream": {
     "id": "128667066",
@@ -2901,7 +2999,8 @@
     "id": "129022087",
     "symbol": "UnocuppiedEscapePod",
     "category": "Salvage",
-    "name": "Unoccupied Escape Pod"
+    "name": "Unoccupied Escape Pod",
+    "description": "A jettisoned escape pod with no occupant. It is unknown why the pod is empty."
   },
   "unstabledatacore": {
     "id": "128672810",

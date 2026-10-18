@@ -6,10 +6,12 @@
       "name": "Vulture",
       "manufacturer": "Core Dynamics",
       "class": 1,
-      "hullCost": 4689640,
+      "hullCost": 4692214,
       "speed": 210,
       "boost": 340,
+      "minthrust": 90.476,
       "boostEnergy": 16,
+      "boostInt": 4.5,
       "baseShieldStrength": 240,
       "baseArmour": 160,
       "heatCapacity": 237,
@@ -23,7 +25,7 @@
       "crew": 2,
       "reserveFuelCapacity": 0.57
     },
-    "retailCost": 4925620,
+    "retailCost": 4925615,
     "bulkheads": [
       {
         "id": "B8",
@@ -36,59 +38,64 @@
         "explres": -0.4,
         "kinres": -0.2,
         "thermres": 0,
-        "hullboost": 0.8
+        "hullboost": 0.8,
+        "name": "Lightweight Alloy"
       },
       {
         "id": "B9",
         "edID": 128049311,
         "eddbID": 784,
         "grp": "bh",
-        "cost": 1970250,
+        "cost": 1970246,
         "mass": 17,
         "causres": 0,
         "explres": -0.4,
         "kinres": -0.2,
         "thermres": 0,
-        "hullboost": 1.52
+        "hullboost": 1.52,
+        "name": "Reinforced Alloy"
       },
       {
         "id": "Ba",
         "edID": 128049312,
         "eddbID": 785,
         "grp": "bh",
-        "cost": 4433050,
+        "cost": 4433053,
         "mass": 35,
         "causres": 0,
         "explres": -0.4,
         "kinres": -0.2,
         "thermres": 0,
-        "hullboost": 2.5
+        "hullboost": 2.5,
+        "name": "Military Grade Composite"
       },
       {
         "id": "Bb",
         "edID": 128049313,
         "eddbID": 786,
         "grp": "bh",
-        "cost": 10476780,
+        "cost": 10476783,
         "mass": 35,
         "causres": 0,
         "explres": -0.5,
         "kinres": -0.75,
         "thermres": 0.5,
-        "hullboost": 2.5
+        "hullboost": 2.5,
+        "name": "Mirrored Surface Composite"
       },
       {
         "id": "Bc",
         "edID": 128049314,
         "eddbID": 787,
         "grp": "bh",
-        "cost": 11609670,
+        "cost": 11609674,
         "mass": 35,
         "causres": 0,
         "explres": 0.2,
         "kinres": 0.25,
         "thermres": -0.4,
-        "hullboost": 2.5
+        "hullboost": 2.5,
+        "name": "Reactive Surface Composite"
       }
     ],
     "slots": {
@@ -129,7 +136,14 @@
         1,
         1,
         1,
-        1
+        1,
+        {
+          "class": 1,
+          "name": "PlanetaryApproachSuite",
+          "eligible": {
+            "pas": 1
+          }
+        }
       ]
     },
     "defaults": {
@@ -158,7 +172,8 @@
         0,
         "",
         0,
-        0
+        0,
+        "4F"
       ]
     }
   }

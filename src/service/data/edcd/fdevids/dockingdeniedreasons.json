@@ -16,5 +16,8 @@
   },
   {
     "id": "TooLarge"
+  },
+  {
+    "id": "RestrictedAccess"
   }
 ]

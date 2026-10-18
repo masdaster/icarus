@@ -14,34 +14,35 @@ const { RESOURCES_DIR } = require('./lib/build-options')
 const ROOT_INPUT_DATA_DIR = path.join(RESOURCES_DIR, 'data')
 const ROOT_OUTPUT_DATA_DIR = path.join('src', 'service', 'data')
 
-  ; (async () => {
-    await fdevids()
-    coriolisDataBlueprints()
-    coriolisDataModules()
-    materialUses()
-    await codexArticles()
-  })()
+; (async () => {
+  await fdevids()
+  coriolisDataBlueprints()
+  await coriolisDataModules()
+  materialUses()
+  await codexArticles()
+})()
 
-function fdevids() {
-  return new Promise((resolve, reject) => {
-    // This a sync task, as codexArticles depends on it's output
-    // Data from https://github.com/EDCD/FDevIDs
-    const dataDir = 'edcd/fdevids'
-    fs.mkdirSync(`${ROOT_OUTPUT_DATA_DIR}/${dataDir}`, { recursive: true })
-    glob(`${ROOT_INPUT_DATA_DIR}/${dataDir}/*.csv`, {}, async (error, files) => {
-      if (error) return console.error(error)
-      for (const pathToFile of files) {
-        const jsonOutput = await csv().fromFile(pathToFile)
-        const basename = path.basename(pathToFile, '.csv')
-        fs.writeFileSync(`${ROOT_OUTPUT_DATA_DIR}/${dataDir}/${basename}.json`, JSON.stringify(jsonOutput, null, 2))
-      }
-      resolve()
-    })
-  })
+async function fdevids() {
+  // This a sync task, as codexArticles depends on it's output
+  // Data from https://github.com/EDCD/FDevIDs
+  const dataDir = 'edcd/fdevids'
+  fs.mkdirSync(`${ROOT_OUTPUT_DATA_DIR}/${dataDir}`, { recursive: true })
+  try {
+    const files = await glob(`${ROOT_INPUT_DATA_DIR}/${dataDir}/*.csv`, {})
+
+    for (const pathToFile of files) {
+      const jsonOutput = await csv().fromFile(pathToFile)
+      const basename = path.basename(pathToFile, '.csv')
+      fs.writeFileSync(`${ROOT_OUTPUT_DATA_DIR}/${dataDir}/${basename}.json`, JSON.stringify(jsonOutput, null, 2))
+    }
+  } catch (error) {
+    console.error('Error processing FDev IDs:', error)
+    throw error
+  }
 }
 
 function coriolisDataBlueprints() {
-  // https://github.com/EDCD/coriolis-data
+  // https://github.com/Brighter-Applications/coriolis-data
   const dataDir = 'edcd/coriolis/modifications'
   const outputDir = `${ROOT_OUTPUT_DATA_DIR}/edcd/coriolis`
   fs.mkdirSync(outputDir, { recursive: true })
@@ -91,14 +92,14 @@ function coriolisDataBlueprints() {
   fs.writeFileSync(`${outputDir}/blueprints.json`, JSON.stringify(output, null, 2))
 }
 
-function coriolisDataModules() {
-  // https://github.com/EDCD/coriolis-data
+async function coriolisDataModules() {
+  // https://github.com/Brighter-Applications/coriolis-data
   const dataDir = 'edcd/coriolis/modules'
   const outputDir = `${ROOT_OUTPUT_DATA_DIR}/edcd/coriolis`
   fs.mkdirSync(outputDir, { recursive: true })
 
-  glob(`${ROOT_INPUT_DATA_DIR}/${dataDir}/**/*.json`, {}, async (error, files) => {
-    if (error) return console.error(error)
+  try {
+    const files = await glob(`${ROOT_INPUT_DATA_DIR}/${dataDir}/**/*.json`, {})
 
     let modules = []
     files.forEach(async (name) => {
@@ -124,7 +125,10 @@ function coriolisDataModules() {
     })
 
     fs.writeFileSync(`${outputDir}/modules.json`, JSON.stringify(modules, null, 2))
-  })
+  } catch (error) {
+    console.error('Error processing coriolis data modules:', error)
+    throw error
+  }
 }
 
 function materialUses() {
@@ -161,7 +165,7 @@ function materialUses() {
 }
 
 async function codexArticles() {
-  const pathToFile = path.join(RESOURCES_DIR, 'data', 'fandom', 'elite_dangerousfandomcom-20220527-wikidump', 'elite_dangerousfandomcom-20220527-current.xml')
+  const pathToFile = path.join(RESOURCES_DIR, 'data', 'fandom', 'elite-dangerous.fandom.com-20260407-wikidump', 'elite-dangerous.fandom.com-20260407-current.xml')
   const xml = fs.readFileSync(pathToFile).toString()
   const wikiData = (await xmlParser.parseStringPromise(xml)).mediawiki
   const codexIndex = {}
@@ -285,6 +289,9 @@ async function codexArticles() {
     if (codexPage.title === 'Auto Fabricators') codexPage.title = 'Auto-Fabricators'
 
     commodities.forEach(commodity => {
+      const commoditySymbol = commodity.symbol.toLowerCase()
+      let commodityDescription
+
       if (commodity.name.replace(/ /img, '').toLowerCase() === codexPage.title.replace(/ /img, '').toLowerCase()) {
         commodityDescription = codexPage.quote
       }

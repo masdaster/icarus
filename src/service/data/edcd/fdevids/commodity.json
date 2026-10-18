@@ -1371,7 +1371,7 @@
     "id": "128924332",
     "symbol": "Opal",
     "category": "Minerals",
-    "name": "Void Opals"
+    "name": "Void Opal"
   },
   {
     "id": "128924333",
@@ -1534,5 +1534,89 @@
     "symbol": "Haematite",
     "category": "Minerals",
     "name": "Haematite"
+  },
+  {
+    "id": "129045961",
+    "symbol": "CuratedCommodity",
+    "category": "Industrial Materials",
+    "name": "Curated Commodity Package"
+  },
+  {
+    "id": "129046165",
+    "symbol": "Iridium",
+    "category": "Metals",
+    "name": "Iridium"
+  },
+  {
+    "id": "129046166",
+    "symbol": "Helium",
+    "category": "Chemicals",
+    "name": "Helium"
+  },
+  {
+    "id": "129046167",
+    "symbol": "Helium3",
+    "category": "Chemicals",
+    "name": "Helium-3"
+  },
+  {
+    "id": "129046168",
+    "symbol": "Bastnasite",
+    "category": "Minerals",
+    "name": "Bastnasite"
+  },
+  {
+    "id": "129046169",
+    "symbol": "Deuterium",
+    "category": "Minerals",
+    "name": "Deuterium"
+  },
+  {
+    "id": "129046170",
+    "symbol": "Thortveitite",
+    "category": "Minerals",
+    "name": "Thortveitite"
+  },
+  {
+    "id": "129046171",
+    "symbol": "QuartzPyroxenite",
+    "category": "Minerals",
+    "name": "Quartz Pyroxenite"
+  },
+  {
+    "id": "129046172",
+    "symbol": "Olivine",
+    "category": "Minerals",
+    "name": "Olivine"
+  },
+  {
+    "id": "129046173",
+    "symbol": "PericlaseDunite",
+    "category": "Minerals",
+    "name": "Periclase Dunite"
+  },
+  {
+    "id": "129046174",
+    "symbol": "Sapphire",
+    "category": "Minerals",
+    "name": "Sapphire"
+  },
+  {
+    "id": "129046175",
+    "symbol": "Diamond",
+    "category": "Minerals",
+    "name": "Diamond"
+  },
+  {
+    "id": "129046176",
+    "symbol": "Ruby",
+    "category": "Minerals",
+    "name": "Ruby"
+  },
+  {
+    "id": "129046177",
+    "symbol": "Magnesite",
+    "category": "Minerals",
+    "name": "Magnesite"
   }
 ]

@@ -6,10 +6,12 @@
       "name": "Keelback",
       "manufacturer": "Lakon",
       "class": 2,
-      "hullCost": 2943870,
+      "hullCost": 2946463,
       "speed": 200,
       "boost": 300,
+      "minthrust": 45.0,
       "boostEnergy": 10,
+      "boostInt": 4,
       "baseShieldStrength": 135,
       "baseArmour": 270,
       "hardness": 45,
@@ -24,7 +26,7 @@
       "crew": 2,
       "reserveFuelCapacity": 0.39
     },
-    "retailCost": 3126150,
+    "retailCost": 3126154,
     "bulkheads": [
       {
         "id": "cb",
@@ -37,59 +39,64 @@
         "explres": -0.4,
         "kinres": -0.2,
         "thermres": 0,
-        "hullboost": 0.8
+        "hullboost": 0.8,
+        "name": "Lightweight Alloy"
       },
       {
         "id": "cc",
         "edID": 128672272,
         "eddbID": 1514,
         "grp": "bh",
-        "cost": 1250460,
+        "cost": 1250461,
         "mass": 12,
         "causres": 0,
         "explres": -0.4,
         "kinres": -0.2,
         "thermres": 0,
-        "hullboost": 1.52
+        "hullboost": 1.52,
+        "name": "Reinforced Alloy"
       },
       {
         "id": "cd",
         "edID": 128672273,
         "eddbID": 1515,
         "grp": "bh",
-        "cost": 2813540,
+        "cost": 2813538,
         "mass": 23,
         "causres": 0,
         "explres": -0.4,
         "kinres": -0.2,
         "thermres": 0,
-        "hullboost": 2.5
+        "hullboost": 2.5,
+        "name": "Military Grade Composite"
       },
       {
         "id": "ce",
         "edID": 128672274,
         "eddbID": 1516,
         "grp": "bh",
-        "cost": 6649330,
+        "cost": 6649329,
         "mass": 23,
         "causres": 0,
         "explres": -0.5,
         "kinres": -0.75,
         "thermres": 0.5,
-        "hullboost": 2.5
+        "hullboost": 2.5,
+        "name": "Mirrored Surface Composite"
       },
       {
         "id": "cf",
         "edID": 128672275,
         "eddbID": 1517,
         "grp": "bh",
-        "cost": 7368340,
+        "cost": 7368344,
         "mass": 23,
         "causres": 0,
         "explres": 0.2,
         "kinres": 0.25,
         "thermres": -0.4,
-        "hullboost": 2.5
+        "hullboost": 2.5,
+        "name": "Reactive Surface Composite"
       }
     ],
     "slots": {
@@ -118,7 +125,14 @@
         3,
         2,
         2,
-        1
+        1,
+        {
+          "class": 1,
+          "name": "PlanetaryApproachSuite",
+          "eligible": {
+            "pas": 1
+          }
+        }
       ]
     },
     "defaults": {
@@ -147,7 +161,8 @@
         "44",
         "00",
         "",
-        0
+        0,
+        "4F"
       ]
     }
   }

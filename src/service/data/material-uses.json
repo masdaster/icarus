@@ -3321,7 +3321,8 @@
         "symbol": "FSDinterdictor_Expanded",
         "name": "Expanded capture arc",
         "grades": [
-          "3"
+          "3",
+          "5"
         ]
       },
       {
@@ -5628,6 +5629,13 @@
         ]
       },
       {
+        "symbol": "FSDinterdictor_Expanded",
+        "name": "Expanded capture arc",
+        "grades": [
+          "5"
+        ]
+      },
+      {
         "symbol": "FSDinterdictor_LongRange",
         "name": "Long range",
         "grades": [
@@ -5748,6 +5756,13 @@
     "symbol": "ClassifiedScanData",
     "name": "Classified Scan Fragment",
     "blueprints": [
+      {
+        "symbol": "FSDinterdictor_Expanded",
+        "name": "Expanded capture arc",
+        "grades": [
+          "5"
+        ]
+      },
       {
         "symbol": "Scanner_WideAngle",
         "name": "Wide angle",

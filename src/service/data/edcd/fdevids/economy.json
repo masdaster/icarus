@@ -62,5 +62,9 @@
   {
     "id": "$economy_Carrier;",
     "name": "Private Enterprise"
+  },
+  {
+    "id": "$economy_Engineer;",
+    "name": "Engineering"
   }
 ]

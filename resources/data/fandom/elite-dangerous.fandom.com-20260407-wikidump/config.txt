@@ -1,0 +1,25 @@
+{
+    "api": "https://elite-dangerous.fandom.com/api.php",
+    "api_chunksize": 50,
+    "curonly": true,
+    "date": "20260407",
+    "delay": 0.1,
+    "exnamespaces": [],
+    "export": "",
+    "failfast": false,
+    "http_method": "POST",
+    "images": true,
+    "index": "https://elite-dangerous.fandom.com/index.php",
+    "logs": false,
+    "namespaces": [
+        "all"
+    ],
+    "path": "./elite-dangerous.fandom.com-20260407-wikidump",
+    "redirects": false,
+    "retries": 5,
+    "templates": false,
+    "xml": true,
+    "xmlapiexport": false,
+    "xmlrevisions": false,
+    "xmlrevisions_page": false
+}

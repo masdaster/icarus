@@ -58,5 +58,13 @@
   {
     "id": "$government_Carrier;",
     "name": "Private Ownership"
+  },
+  {
+    "id": "$government_Prison;",
+    "name": "Prison"
+  },
+  {
+    "id": "$government_Megaconstruction;",
+    "name": "Megaconstruction"
   }
 ]

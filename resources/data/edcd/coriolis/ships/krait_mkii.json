@@ -6,10 +6,12 @@
       "name": "Krait Mk II",
       "manufacturer": "Faulcon DeLacy",
       "class": 2,
-      "hullCost": 42409425,
+      "hullCost": 44160710,
       "speed": 240,
       "boost": 330,
+      "minthrust": 62.30,
       "boostEnergy": 13,
+      "boostInt": 4.5,
       "baseShieldStrength": 220,
       "heatCapacity": 300,
       "baseArmour": 220,
@@ -37,59 +39,64 @@
         "explres": -0.4,
         "kinres": -0.2,
         "thermres": 0,
-        "hullboost": 0.8
+        "hullboost": 0.8,
+        "name": "Lightweight Alloy"
       },
       {
         "id": "2U",
         "edID": 128816570,
         "eddbID": 1646,
         "grp": "bh",
-        "cost": 22791270,
+        "cost": 18325682,
         "mass": 36,
         "causres": 0,
         "explres": -0.4,
         "kinres": -0.2,
         "thermres": 0,
-        "hullboost": 1.52
+        "hullboost": 1.52,
+        "name": "Reinforced Alloy"
       },
       {
         "id": "2V",
         "edID": 128816571,
         "eddbID": 1647,
         "grp": "bh",
-        "cost": 51280360,
+        "cost": 41232784,
         "mass": 67,
         "causres": 0,
         "explres": -0.4,
         "kinres": -0.2,
         "thermres": 0,
-        "hullboost": 2.5
+        "hullboost": 2.5,
+        "name": "Military Grade Composite"
       },
       {
         "id": "2W",
         "edID": 128816572,
         "eddbID": 1648,
         "grp": "bh",
-        "cost": 121192590,
+        "cost": 97446814,
         "mass": 67,
         "causres": 0,
         "explres": -0.5,
         "kinres": -0.75,
         "thermres": 0.5,
-        "hullboost": 2.5
+        "hullboost": 2.5,
+        "name": "Mirrored Surface Composite"
       },
       {
         "id": "2X",
         "edID": 128816573,
         "eddbID": 1649,
         "grp": "bh",
-        "cost": 134297570,
+        "cost": 88322097,
         "mass": 67,
         "causres": 0,
         "explres": 0.2,
         "kinres": 0.25,
         "thermres": -0.4,
-        "hullboost": 2.5
+        "hullboost": 2.5,
+        "name": "Reactive Surface Composite"
       }
     ],
     "slots": {
@@ -122,7 +129,14 @@
         3,
         3,
         2,
-        1
+        1,
+        {
+          "class": 1,
+          "name": "PlanetaryApproachSuite",
+          "eligible": {
+            "pas": 1
+          }
+        }
       ]
     },
     "defaults": {
@@ -155,7 +169,8 @@
         "",
         0,
         "00",
-        0
+        0,
+        "4F"
       ]
     }
   }
