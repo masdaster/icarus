@@ -17,6 +17,7 @@ function NavListPageContent () {
   const [system, setSystem] = useState()
   const [systemObject, setSystemObject] = useState()
   const [helpVisible, setHelpVisible] = useState(false)
+  const [cmdrStatus, setCmdrStatus] = useState()
 
   useEffect(animateTableEffect)
 
@@ -49,6 +50,8 @@ function NavListPageContent () {
     if (!connected || !router.isReady) return
 
     ;(async () => {
+      setCmdrStatus(await sendEvent('getCmdrStatus'))
+
       const newSystem = await sendEvent('getSystem', query.system ? { name: query.system, useCache: true } : null)
       if (newSystem) {
         setSystem(newSystem)
@@ -68,8 +71,15 @@ function NavListPageContent () {
     })()
   }, [connected, ready, router.isReady])
 
+  useEffect(() => eventListener('gameStateChange', async () => {
+    setCmdrStatus(await sendEvent('getCmdrStatus'))
+  }), [])
+
   useEffect(() => {
     return eventListener('newLogEntry', async (log) => {
+      if (['Location', 'FSDJump', 'ApproachBody', 'LeaveBody', 'Touchdown', 'Liftoff', 'SupercruiseExit'].includes(log.event)) {
+        setCmdrStatus(await sendEvent('getCmdrStatus'))
+      }
       if (['Location', 'FSDJump'].includes(log.event)) {
         const newSystem = await sendEvent('getSystem', { useCache: false })
         if (!newSystem) return // If no result, don't update map
@@ -164,7 +174,7 @@ function NavListPageContent () {
       </div>
       <Layout connected={connected} active={active} ready={ready} loader={!componentReady}>
         <Panel layout='full-width' navigation={NavPanelNavItems('List', query)} search={search} exit={system?.isCurrentLocation === false ? () => getSystem() : null}>
-          <NavigationListPanel system={system} systemObject={systemObject} setSystemObject={setSystemObject} showHelp={() => setHelpVisible(true)} />
+          <NavigationListPanel system={system} systemObject={systemObject} setSystemObject={setSystemObject} cmdrStatus={cmdrStatus} showHelp={() => setHelpVisible(true)} />
           <NavigationInspectorPanel systemObject={systemObject} setSystemObjectByName={setSystemObjectByName} />
         </Panel>
       </Layout>

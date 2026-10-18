@@ -18,7 +18,10 @@ function Settings ({ visible, toggleVisible = () => {}, defaultActiveSettingsPan
               <button
                 tabIndex='2'
                 className={`button--icon ${item.active ? 'button--active' : ''}`}
-                onClick={() => setActiveSettingsPanel(item.name)}
+                onClick={() => {
+                  if (item.action === 'reload') return window.location.reload()
+                  setActiveSettingsPanel(item.name)
+                }}
               >
                 <i className={`icon icarus-terminal-${item.icon}`} />
               </button>
@@ -109,6 +112,8 @@ function ThemeSettings () {
   const [primaryColorModifier, setPrimaryColorModifier] = useState(getPrimaryColorModifier())
   const [secondaryColor, setSecondaryColor] = useState(getSecondaryColorAsHex())
   const [secondaryColorModifier, setSecondaryColorModifier] = useState(getSecondaryColorModifier())
+  const [textGlow, setTextGlow] = useState(getTextGlow())
+  const [localTime, setLocalTime] = useState(getLocalTime())
 
   // Update this component if another window updates the theme settings
   const storageEventHandler = (event) => {
@@ -117,6 +122,8 @@ function ThemeSettings () {
       setPrimaryColorModifier(getPrimaryColorModifier())
       setSecondaryColor(getSecondaryColorAsHex())
       setSecondaryColorModifier(getSecondaryColorModifier())
+      setTextGlow(getTextGlow())
+      setLocalTime(getLocalTime())
     }
   }
 
@@ -131,6 +138,8 @@ function ThemeSettings () {
       setPrimaryColorModifier(getPrimaryColorModifier())
       setSecondaryColor(getSecondaryColorAsHex())
       setSecondaryColorModifier(getSecondaryColorModifier())
+      setTextGlow(getTextGlow())
+      setLocalTime(getLocalTime())
     }
   }), [])
 
@@ -216,6 +225,63 @@ function ThemeSettings () {
           </tr>
         </tbody>
       </table>
+      <h4 className='text-primary'>Text glow</h4>
+      <div
+        style={{
+          display: 'flex',
+          alignItems: 'center',
+          gap: '1rem',
+          marginBottom: '1rem'
+        }}
+      >
+        <p style={{ flex: 1, margin: 0 }}>
+          Turn off glow effect around text elements.
+        </p>
+        <label
+          className='checkbox'
+          style={{ flex: 'none', width: '5rem', height: '2rem' }}
+        >
+          <input
+            type='checkbox'
+            checked={textGlow}
+            onChange={(event) => {
+              setTextGlow(event.target.checked)
+              document.documentElement.dataset.textGlow = event.target.checked
+              saveColorSettings()
+            }}
+          />
+          <span className='checkbox__control' />
+        </label>
+      </div>
+      <h4 className='text-primary'>Local time</h4>
+      <div
+        style={{
+          display: 'flex',
+          alignItems: 'center',
+          gap: '1rem',
+          marginBottom: '1rem'
+        }}
+      >
+        <p style={{ flex: 1, margin: 0 }}>
+          Show times in local time instead of the ship clock, which always uses
+          GMT.
+        </p>
+        <label
+          className='checkbox'
+          style={{ flex: 'none', width: '5rem', height: '2rem' }}
+        >
+          <input
+            type='checkbox'
+            checked={localTime}
+            onChange={(event) => {
+              setLocalTime(event.target.checked)
+              document.documentElement.dataset.localTime = event.target.checked
+              saveColorSettings()
+            }}
+          />
+          <span className='checkbox__control' />
+        </label>
+      </div>
       <h4 className='text-primary'>Sync theme across devices</h4>
       <p>
         Theme settings apply to all terminals on this computer / device.
@@ -240,7 +306,9 @@ function ThemeSettings () {
                 g: parseInt(window.getComputedStyle(document.documentElement).getPropertyValue('--color-secondary-g')),
                 b: parseInt(window.getComputedStyle(document.documentElement).getPropertyValue('--color-secondary-b')),
                 modifier: parseInt(window.getComputedStyle(document.documentElement).getPropertyValue('--color-secondary-dark-modifier'))
-              }
+              },
+              textGlow: getTextGlow(),
+              localTime: getLocalTime()
             }
             sendEvent('syncMessage', { name: 'colorSettings', message: colorSettings })
             document.activeElement.blur()
@@ -263,6 +331,8 @@ function ThemeSettings () {
               setPrimaryColorModifier(getPrimaryColorModifier())
               setSecondaryColor(getSecondaryColorAsHex())
               setSecondaryColorModifier(getSecondaryColorModifier())
+              setTextGlow(getTextGlow())
+              setLocalTime(getLocalTime())
               window.localStorage.removeItem('color-settings')
               document.activeElement.blur()
             } catch (err) {
@@ -315,6 +385,16 @@ const getSecondaryColorModifier = () => {
   return parseInt(window.getComputedStyle(document.documentElement).getPropertyValue('--color-secondary-dark-modifier'))
 }
 
+const getTextGlow = () => {
+  if (typeof document === 'undefined') return true
+  return document.documentElement.dataset.textGlow !== 'false'
+}
+
+const getLocalTime = () => {
+  if (typeof document === 'undefined') return false
+  return document.documentElement.dataset.localTime === 'true'
+}
+
 const saveColorSettings = () => {
   const colorSettings = {
     version: packageJson.version,
@@ -329,7 +409,9 @@ const saveColorSettings = () => {
       g: parseInt(window.getComputedStyle(document.documentElement).getPropertyValue('--color-secondary-g')),
       b: parseInt(window.getComputedStyle(document.documentElement).getPropertyValue('--color-secondary-b')),
       modifier: parseInt(window.getComputedStyle(document.documentElement).getPropertyValue('--color-secondary-dark-modifier'))
-    }
+    },
+    textGlow: getTextGlow(),
+    localTime: getLocalTime()
   }
   try {
     window.localStorage.setItem('color-settings', JSON.stringify({ ...colorSettings, timestamp: Date.now() }))
@@ -357,6 +439,10 @@ const loadColorSettings = () => {
     document.documentElement.style.setProperty('--color-secondary-g', colorSettings.secondaryColor.g)
     document.documentElement.style.setProperty('--color-secondary-b', colorSettings.secondaryColor.b)
     document.documentElement.style.setProperty('--color-secondary-dark-modifier', colorSettings.secondaryColor.modifier)
+
+    // Settings saved before text glow could be turned off don't have this value
+    document.documentElement.dataset.textGlow = colorSettings.textGlow ?? true
+    document.documentElement.dataset.localTime = colorSettings.localTime ?? false
   } catch (err) {
     console.error('Unable to read color settings from localStorage', err)
     return loadDefaultColorSettings()
@@ -389,6 +475,9 @@ const loadDefaultColorSettings = () => {
 
   const defaultSecondaryColorModifier = window.getComputedStyle(document.documentElement).getPropertyValue('--color-default-secondary-dark-modifier')
   document.documentElement.style.setProperty('--color-secondary-dark-modifier', defaultSecondaryColorModifier)
+
+  document.documentElement.dataset.textGlow = true
+  document.documentElement.dataset.localTime = false
 }
 
 // Returns: 1 = v1 is bigger, 0 = same version, -1 = v1 is smaller

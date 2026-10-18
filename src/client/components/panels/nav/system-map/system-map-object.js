@@ -87,6 +87,8 @@ export default function SystemMapObject ({ systemObject, setSystemObject, parent
       const imageX = x - CORRECT_FOR_IMAGE_OFFSET_X
       const imageY = y - CORRECT_FOR_IMAGE_OFFSET_Y
 
+      const hasBiologicalSignals = systemObject?.signals?.biological > 0
+
       let hasPlanetaryPort = false
       let hasPlanetaryFacilities = false
 
@@ -99,6 +101,11 @@ export default function SystemMapObject ({ systemObject, setSystemObject, parent
           hasPlanetaryPort = true
         }
       })
+
+      // Biological signals are drawn to the left of the surface icon, which
+      // stays where it is so surface icons stay lined up with each other from
+      // one body to the next
+      const biologicalIconOffsetX = 900
 
       return (
         <g
@@ -143,6 +150,16 @@ export default function SystemMapObject ({ systemObject, setSystemObject, parent
               </text>
             </>}
           <g className='system-map__body'>
+            {/* A star glows using a circle that fades out, as filters on SVG
+                are not rendered the same way in every browser */}
+            {systemObject.type === 'Star' &&
+              <circle
+                className='system-map__star-glow'
+                cx={x}
+                cy={y}
+                r={r * 1.225}
+                mask='url(#svg-mask__star-glow)'
+              />}
             <g className='system-map__planet'>
               <circle
                 id={`navigation-panel__${systemObject.id}`}
@@ -229,6 +246,14 @@ export default function SystemMapObject ({ systemObject, setSystemObject, parent
                 y={imageY - 100}
               >
                 {Icons['Planet Lander']}
+              </svg>}
+            {hasBiologicalSignals &&
+              <svg
+                className='system-map__biological-icon'
+                x={imageX - biologicalIconOffsetX}
+                y={imageY - 100}
+              >
+                {Icons.Plant}
               </svg>}
           </g>
         </g>

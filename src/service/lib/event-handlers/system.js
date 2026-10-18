@@ -1,7 +1,10 @@
 const EDSM = require('../edsm')
 const SystemMap = require('../system-map')
+const { getBodiesFromJournal } = require('../journal-bodies')
 const { UNKNOWN_VALUE } = require('../../../shared/consts')
 const distance = require('../../../shared/distance')
+
+const SAMPLES_TO_COMPLETE = 3 // Samples needed to complete a biological species
 
 class System {
   constructor ({ eliteLog }) {
@@ -71,6 +74,79 @@ class System {
     return currentLocation
   }
 
+  // Some events only identify a system by address, so we need to be able to
+  // resolve one from a system name to find them
+  async getSystemAddress (systemName, currentLocation = null) {
+    if (systemName.toLowerCase() === currentLocation?.name?.toLowerCase() && currentLocation?.address) {
+      return currentLocation.address
+    }
+
+    const cachedAddress = global.CACHE.SYSTEMS[systemName.toLowerCase()]?.address
+    if (cachedAddress && cachedAddress !== UNKNOWN_VALUE) return cachedAddress
+
+    const [Scan] = await this.eliteLog._query({ event: 'Scan', StarSystem: systemName }, 1)
+    return Scan?.SystemAddress ?? null
+  }
+
+  // Progress collecting biological samples on a body, keyed by genus. Three
+  // samples complete a species; the logs record the first as a 'Log', the
+  // second and third as a 'Sample' and write an 'Analyse' once the set is
+  // complete. Starting a new set on a species writes another 'Log', which
+  // starts the count again.
+  async getBiologicalSamples (systemAddress, bodyId) {
+    const samplesByGenus = {}
+
+    if (!systemAddress || systemAddress === UNKNOWN_VALUE) return samplesByGenus
+    if (bodyId === undefined || bodyId === null) return samplesByGenus
+
+    const scans = await this.eliteLog._query(
+      { event: 'ScanOrganic', SystemAddress: systemAddress, Body: bodyId },
+      0,
+      { timestamp: 1 } // Oldest first, so samples are counted in the order taken
+    )
+
+    for (const scan of scans) {
+      const genus = scan.Genus_Localised ?? scan.Genus
+      if (!genus) continue
+
+      if (!samplesByGenus[genus]) samplesByGenus[genus] = { samples: 0, complete: false }
+      const progress = samplesByGenus[genus]
+
+      if (scan.Species_Localised) progress.species = scan.Species_Localised
+
+      switch (scan.ScanType) {
+        case 'Log': // First sample of a set
+          progress.samples = 1
+          progress.complete = false
+          break
+        case 'Sample': // Second and third samples
+          progress.samples = Math.min(progress.samples + 1, SAMPLES_TO_COMPLETE)
+          break
+        case 'Analyse': // Written once the third sample is taken
+          progress.samples = SAMPLES_TO_COMPLETE
+          progress.complete = true
+          break
+      }
+    }
+
+    return samplesByGenus
+  }
+
+  // Timestamp of the most recent event in the logs that changes what we know
+  // about a system. Scans identify the system by name, but the events written
+  // while surface scanning it only have a system address, so both are checked.
+  async getLocalDataTimestamp (systemName, systemAddress = null) {
+    const systemIdentifiers = [{ StarSystem: systemName }, { SystemName: systemName }]
+    if (systemAddress && systemAddress !== UNKNOWN_VALUE) systemIdentifiers.push({ SystemAddress: systemAddress })
+
+    const [mostRecentEvent] = await this.eliteLog._query({
+      event: { $in: ['Scan', 'FSSDiscoveryScan', 'FSSAllBodiesFound', 'SAAScanComplete', 'FSSBodySignals', 'SAASignalsFound', 'ScanOrganic'] },
+      $or: systemIdentifiers
+    }, 1)
+
+    return mostRecentEvent?.timestamp ?? null
+  }
+
   async getSystem ({ name = null, useCache = true } = {}) {
     const currentLocation = await this.getCurrentLocation()
 
@@ -85,17 +161,56 @@ class System {
       }
     }
 
+    // What we know about a system changes as the player scans it, so a cache
+    // entry is only good for as long as there are no newer events for the
+    // system in the logs. Without this a system cached before it was scanned
+    // is served indefinitely (until the service is restarted) to anything that
+    // doesn't explicitly ask to bypass the cache.
+    const systemAddress = await this.getSystemAddress(systemName, currentLocation)
+    const localDataTimestamp = await this.getLocalDataTimestamp(systemName, systemAddress)
+
     // Check for entry in cache in case we have it already
     // Note: System names are unique (they can change, but will still be unique)
     // so is okay to use them as a key.
-    if (!global.CACHE.SYSTEMS[systemName.toLowerCase()] || useCache === false) {
+    if (!global.CACHE.SYSTEMS[systemName.toLowerCase()] ||
+        useCache === false ||
+        global.CACHE.SYSTEMS[systemName.toLowerCase()]._localDataTimestamp !== localDataTimestamp) {
       // Get system from EDSM
       const system = await EDSM.system(systemName)
 
-      // TODO Look up recent local data we have in the logs for bodies in the
-      // system and merge data with about bodies and stations from EDSM,
-      // overwriting data from EDSM with with more recent local where there are
-      // conflicts.
+      // EDSM has no bodies for systems nobody has explored and uploaded yet, so
+      // add in any bodies the player has scanned themselves. EDSM is left as
+      // the source of truth for bodies it does know about.
+      // See: https://github.com/iaincollins/icarus/issues/85
+      //
+      // TODO This merges whole bodies, not the values on them, so a body EDSM
+      // already knows about keeps EDSM's data even where the local logs are
+      // more recent (e.g. EDSM only has Full Spectrum Scan data for a body the
+      // player has since surface scanned). Merging at the field level needs a
+      // list of which values the logs own; the identity of a body (id, id64,
+      // bodyId) has to stay EDSM's, as bodies built from the logs only have a
+      // synthetic id64. Stations are not merged from local data at all yet.
+      const bodiesFromJournal = await getBodiesFromJournal(this.eliteLog, systemName)
+      if (bodiesFromJournal.length > 0) {
+        if (!system.bodies) system.bodies = []
+        // EDSM returns a null body id for the main star in some systems (the
+        // same quirk SystemMap patches around) so treat that as body id 0,
+        // otherwise we add the star a second time from the journal
+        const bodyIdsFromEDSM = system.bodies.map(body => (body.type === 'Star' && body.bodyId === null) ? 0 : body.bodyId)
+        system.bodies = system.bodies
+          .concat(bodiesFromJournal.filter(body => !bodyIdsFromEDSM.includes(body.bodyId)))
+          .sort((a, b) => a.bodyId - b.bodyId)
+
+        // If EDSM doesn't know the system at all we can still name and place it
+        // using the player's own logs
+        if (system.name === UNKNOWN_VALUE) system.name = systemName
+        if (system.address === UNKNOWN_VALUE && currentLocation?.address && systemName.toLowerCase() === currentLocation?.name?.toLowerCase()) {
+          system.address = currentLocation.address
+        }
+        if (!system.position && currentLocation?.position && systemName.toLowerCase() === currentLocation?.name?.toLowerCase()) {
+          system.position = currentLocation.position
+        }
+      }
 
       // Merge in local scan data with information about the body
       if (system?.bodies) {
@@ -149,6 +264,12 @@ class System {
             })
           }
 
+          // Merge in how far along we are collecting samples from each genus
+          if (body.signals.biological > 0) {
+            const biologicalSamples = await this.getBiologicalSamples(systemAddress, body.bodyId)
+            if (Object.keys(biologicalSamples).length > 0) body.biologicalSamples = biologicalSamples
+          }
+
           // Only log discovered / mapped if in an unhabited system
           // FIXME Suspect this logic isn't entirely correct
           const inhabitedSystem = (system?.population > 0 || system?.stations?.length > 0 || system?.ports?.length > 0 || system?.megaships?.length > 0 || system?.settlements?.length > 0)
@@ -171,7 +292,8 @@ class System {
       // Create/Update cache entry with merged system and system map data
       global.CACHE.SYSTEMS[systemName.toLowerCase()] = {
         ...system,
-        ...systemMap
+        ...systemMap,
+        _localDataTimestamp: localDataTimestamp
       }
     }
 
