@@ -40,6 +40,13 @@ function NavMapPageContent () {
     setSystem(newSystem)
   }
 
+  const plotRoute = async (systemName) => {
+    const successful = await sendEvent('plotRoute', { systemName })
+    if (successful) {
+      router.push({ pathname: '/nav/route' })
+    }
+  }
+
   const setSystemObjectByName = (name) => {
     const el = document.querySelector(`[data-system-object-name="${name}" i]`)
     if (el) {
@@ -124,7 +131,7 @@ function NavMapPageContent () {
   return (
     <Layout connected={connected} active={active} ready={ready} loader={!componentReady}>
       <Panel layout='full-width' navigation={NavPanelNavItems('Map', query)} search={search} exit={system?.isCurrentLocation === false ? () => getSystem() : null}>
-        <NavigationSystemMapPanel system={system} systemObject={systemObject} setSystemObject={setSystemObject} getSystem={getSystem} cmdrStatus={cmdrStatus} rescanSystem={rescanSystem} rescanInProgress={rescanInProgress} />
+        <NavigationSystemMapPanel system={system} systemObject={systemObject} setSystemObject={setSystemObject} cmdrStatus={cmdrStatus} rescanSystem={rescanSystem} rescanInProgress={rescanInProgress} plotRoute={plotRoute} />
         <NavigationInspectorPanel systemObject={systemObject} setSystemObjectByName={setSystemObjectByName} />
       </Panel>
     </Layout>

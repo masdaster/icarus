@@ -23,7 +23,9 @@ function ShipStatusPageContent () {
     nightVision: false,
     cargoHatch: false,
     landingGear: false,
-    hardpoints: false
+    hardpoints: false,
+    flightAssist: false,
+    silentRunning: false
   })
 
   useEffect(() => {
@@ -38,16 +40,14 @@ function ShipStatusPageContent () {
   }, [connected, ready])
 
   const toggleSwitch = async (switchName) => {
-
-    /*
     // Only toggle switch value if we think it was successful
-    const switchToggled = await sendEvent('toggleSwitch', { switchName })
+    const switchToggled = (['lights', 'nightVision'].includes(switchName) || cmdrStatus?.flags?.supercruise === false)
+      && await sendEvent('toggleSwitch', { switchName })
 
     setToggleSwitches({
       ...toggleSwitches,
       [switchName]: switchToggled ? !toggleSwitches[switchName] : toggleSwitches[switchName]
     })
-    */
   }
 
   useEffect(() => {
@@ -56,7 +56,9 @@ function ShipStatusPageContent () {
       nightVision: cmdrStatus?.flags?.nightVision ?? false,
       cargoHatch: cmdrStatus?.flags?.cargoScoopDeployed ?? false,
       landingGear: cmdrStatus?.flags?.landingGearDown ?? false,
-      hardpoints: cmdrStatus?.flags?.hardpointsDeployed ?? false
+      hardpoints: cmdrStatus?.flags?.hardpointsDeployed ?? false,
+      flightAssist: cmdrStatus?.flags?.flightAssistOff === false ?? true,
+      silentRunning: cmdrStatus?.flags?.silentRunning ?? false
     })
   }, [cmdrStatus])
 
@@ -84,8 +86,6 @@ function ShipStatusPageContent () {
           cmdrStatus={cmdrStatus}
           toggleSwitches={toggleSwitches}
           toggleSwitch={toggleSwitch}
-          selectedModule={selectedModule}
-          setSelectedModule={setSelectedModule}
         />
       </Panel>
       <Panel>

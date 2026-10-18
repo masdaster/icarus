@@ -36,7 +36,7 @@ export default function ShipInstrumentation ({ ship, cmdrStatus, toggleSwitches,
   }, [scaledWrapper.current, scaledContent.current])
 
   return (
-    <div ref={scaledWrapper} style={{ position: 'fixed', pointerEvents: 'none', top: '14.25rem', bottom: '2rem', right: '1rem', left: '5rem', xoverflow: 'hidden' }}>
+    <div ref={scaledWrapper} style={{ position: 'fixed', top: '14.25rem', bottom: '2rem', right: '1rem', left: '5rem', xoverflow: 'hidden' }}>
       <div
         ref={scaledContent}
         className='ship-panel__instrumentation fx-fade-in'
@@ -63,7 +63,6 @@ export default function ShipInstrumentation ({ ship, cmdrStatus, toggleSwitches,
                     type='checkbox'
                     checked={ship.onBoard && toggleSwitches?.lights}
                     onChange={() => toggleSwitch('lights')}
-                    disabled
                   />
                   <span className='checkbox__control' />
                 </label>
@@ -77,7 +76,6 @@ export default function ShipInstrumentation ({ ship, cmdrStatus, toggleSwitches,
                     type='checkbox'
                     checked={ship.onBoard && toggleSwitches?.nightVision}
                     onChange={() => toggleSwitch('nightVision')}
-                    disabled
                   />
                   <span className='checkbox__control' />
                 </label>
@@ -91,7 +89,6 @@ export default function ShipInstrumentation ({ ship, cmdrStatus, toggleSwitches,
                     type='checkbox'
                     checked={ship.onBoard && toggleSwitches?.cargoHatch}
                     onChange={() => toggleSwitch('cargoHatch')}
-                    disabled
                   />
                   <span className='checkbox__control' />
                 </label>
@@ -105,21 +102,45 @@ export default function ShipInstrumentation ({ ship, cmdrStatus, toggleSwitches,
                     type='checkbox'
                     checked={ship.onBoard && toggleSwitches?.landingGear}
                     onChange={() => toggleSwitch('landingGear')}
-                    disabled
                   />
                   <span className='checkbox__control' />
                 </label>
               </td>
               <td>
                 <label className='checkbox'>
-                  <span className={`checkbox__text ${(!ship.onBoard || !toggleSwitches.hardpoints || cmdrStatus?.flags?.supercruise) ? 'text-muted' : ''}`}>
+                  <span className={`checkbox__text ${(!ship.onBoard || !toggleSwitches.hardpoints) ? 'text-muted' : ''}`}>
                     Hard points
                   </span>
                   <input
                     type='checkbox'
-                    checked={ship.onBoard && cmdrStatus?.flags?.supercruise === false && toggleSwitches?.hardpoints}
+                    checked={ship.onBoard && toggleSwitches?.hardpoints}
                     onChange={() => toggleSwitch('hardpoints')}
-                    disabled
+                  />
+                  <span className='checkbox__control' />
+                </label>
+              </td>
+              <td>
+                <label className='checkbox'>
+                  <span className={`checkbox__text ${(!ship.onBoard || !toggleSwitches.flightAssist) && 'text-muted'}`}>
+                    Flight Assist
+                  </span>
+                  <input
+                    type='checkbox'
+                    checked={ship.onBoard && toggleSwitches?.flightAssist}
+                    onChange={() => toggleSwitch('flightAssist')}
+                  />
+                  <span className='checkbox__control' />
+                </label>
+              </td>
+              <td>
+                <label className='checkbox'>
+                  <span className={`checkbox__text ${(!ship.onBoard || !toggleSwitches.silentRunning) && 'text-muted'}`}>
+                    Silent Running
+                  </span>
+                  <input
+                    type='checkbox'
+                    checked={ship.onBoard && toggleSwitches?.silentRunning}
+                    onChange={() => toggleSwitch('silentRunning')}
                   />
                   <span className='checkbox__control' />
                 </label>
@@ -280,8 +301,8 @@ export default function ShipInstrumentation ({ ship, cmdrStatus, toggleSwitches,
                 </span>
               </td>
               <td>
-                <span className={ship.onBoard && cmdrStatus?.flags?.flightAssistOff ? 'ship-panel__light--on' : 'ship-panel__light--off'}>
-                  <span className='ship-panel__light-text'>Flight assist off</span>
+                <span className={ship.onBoard && cmdrStatus?.flags?.shieldsUp ? 'ship-panel__light--on' : 'ship-panel__light--off'}>
+                  <span className='ship-panel__light-text'>Shield up</span>
                 </span>
               </td>
               <td>
@@ -290,8 +311,8 @@ export default function ShipInstrumentation ({ ship, cmdrStatus, toggleSwitches,
                 </span>
               </td>
               <td>
-                <span className={ship.onBoard && cmdrStatus?.flags?.silentRunning ? 'ship-panel__light--on' : 'ship-panel__light--off'}>
-                  <span className='ship-panel__light-text'>Silent running</span>
+                <span className={ship.onBoard && ['Wanted', 'Hostile', 'Warrant'].includes(cmdrStatus?.legalstate) ? 'ship-panel__light--danger' : 'ship-panel__light--off'}>
+                  <span className='ship-panel__light-text'>{cmdrStatus?.legalstate ?? 'None'}</span>
                 </span>
               </td>
               <td>
