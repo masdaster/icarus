@@ -73,12 +73,7 @@ console.log(`EDData Icarus Service ${packageJson.version}`);
 const PORT = commandLineArgs.port ? parseInt(commandLineArgs.port, 10) : 3300;
 const DEVELOPMENT = commandLineArgs.dev || false;
 
-// Determine web directory based on whether we're running from pkg or not
-const isPkg = typeof process.pkg !== 'undefined'
-const WEB_DIR = isPkg
-  ? path.join(path.dirname(process.execPath), 'client')
-  : path.join(__dirname, '../../build/client')
-
+const WEB_DIR = path.join(__dirname, '../../build/client')
 const LOG_DIR = getLogDir()
 
 if (!fs.existsSync(LOG_DIR)) {

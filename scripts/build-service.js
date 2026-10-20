@@ -21,6 +21,7 @@ const {
 const DEVELOPMENT_BUILD = commandLineArgs.debug || DEVELOPMENT_BUILD_DEFAULT
 const DEBUG_CONSOLE = commandLineArgs.debug || DEBUG_CONSOLE_DEFAULT
 const ENTRY_POINT = path.join(__dirname, '..', 'src', 'service', 'main.js')
+const CONFIG_PATH = path.join(__dirname, '..', 'package.json')
 const COMPRESS_FINAL_BUILD = false
 
 ;(async () => {
@@ -41,7 +42,8 @@ async function build () {
   const args = [
     ENTRY_POINT,
     '--target', 'node24-win-x64',
-    '--output', SERVICE_UNOPTIMIZED_BUILD
+    '--output', SERVICE_UNOPTIMIZED_BUILD,
+    '--config', CONFIG_PATH
   ]
 
   console.log('Building with pkg (Node.js 24)...')
@@ -49,46 +51,6 @@ async function build () {
 
   console.log('Copying to final location...')
   fs.copyFileSync(SERVICE_UNOPTIMIZED_BUILD, SERVICE_FINAL_BUILD)
-
-  // Copy data files next to exe for runtime access
-  console.log('Copying service data files...')
-  const dataSource = path.join(__dirname, '..', 'src', 'service', 'data')
-  const dataTarget = path.join(BIN_DIR, 'data')
-
-  if (!fs.existsSync(dataTarget)) {
-    fs.mkdirSync(dataTarget, { recursive: true })
-  }
-
-  // Copy entire data directory
-  const copyRecursive = (src, dest) => {
-    if (!fs.existsSync(dest)) fs.mkdirSync(dest, { recursive: true })
-
-    fs.readdirSync(src).forEach(item => {
-      const srcPath = path.join(src, item)
-      const destPath = path.join(dest, item)
-
-      if (fs.statSync(srcPath).isDirectory()) {
-        copyRecursive(srcPath, destPath)
-      } else {
-        fs.copyFileSync(srcPath, destPath)
-      }
-    })
-  }
-
-  copyRecursive(dataSource, dataTarget)
-  console.log(`Copied data files to ${dataTarget}`)
-
-  // Copy client files next to exe for runtime access (pkg mode)
-  console.log('Copying client files for pkg mode...')
-  const clientSource = path.join(BUILD_DIR, 'client')
-  const clientTarget = path.join(BIN_DIR, 'client')
-
-  if (fs.existsSync(clientSource)) {
-    copyRecursive(clientSource, clientTarget)
-    console.log(`Copied client files to ${clientTarget}`)
-  } else {
-    console.warn('Warning: Client build directory not found. Run "npm run build:client" first.')
-  }
 
   // Note: rcedit modifies PE headers and corrupts pkg binaries
   // Icon/VersionInfo must be set before pkg bundling or using alternative tools
