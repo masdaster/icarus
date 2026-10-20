@@ -3,7 +3,7 @@ const fs = require('fs')
 const path = require('path')
 const pjXML = require('pjxml')
 const keysender = require('keysender')
-const clipboard = require('node-clipboardy')
+const { exec } = require('child_process');
 const { UNKNOWN_VALUE } = require('../../shared/consts')
 
 const { BROADCAST_EVENT: broadcastEvent } = global
@@ -162,8 +162,8 @@ class EventHandlers {
           this.textToSpeech.speak(text, voice, true)
         },
         toggleSwitch: async ({ switchName }) => sendKey(switchName),
-        plotRoute: async ({ systemName }) => {
-          await clipboard.write(systemName)
+        plotRoute: ({ systemName }) => {
+          copyToClipboard(systemName)
           return sendKey('galaxyMap')
         },
         getFSSBodySignalsForSystem: async ({ system }) => {
@@ -251,6 +251,14 @@ async function sendKey (bindingName) {
     console.error('ERROR_SENDING_KEY', bindingName, e.toString())
     return false
   }
+}
+
+function copyToClipboard (value) {
+  // Safely escape single quotes for PowerShell
+  const escaped = value.replace(/'/g, "''")
+  exec(`powershell -sta "Set-Clipboard -Value '${escaped}'"`, { windowsHide: true }, (error, stdout, stderr) => {
+    if (error) console.error(`Failed to copy to clipboard: ${error.message}`)
+  })
 }
 
 function convertEliteDangerousKeyBindingToInputKey (rawKeyValue) {
