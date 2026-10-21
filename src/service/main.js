@@ -23,6 +23,9 @@ const options = {
     type: 'string',
     short: 's'
   },
+  public: {
+    type: 'boolean'
+  },
   dev: {
     type: 'boolean'
   },
@@ -63,6 +66,7 @@ function printHelp() {
   console.log(`Options:`);
   console.log(`  -p, --port           Port to listen on (default: 3300)`);
   console.log(`  -s, --save-game-dir  Elite Dangerous Save Game Directory`);
+  console.log(`      --public         Do not bind to localhost only`);
   console.log(`  -h, --help           Show help`);
   console.log(`  -v, --version        Show version number`);
 }
@@ -71,6 +75,7 @@ console.log(`EDData Icarus Service ${packageJson.version}`);
 
 // Parse command line arguments into variables
 const PORT = commandLineArgs.port ? parseInt(commandLineArgs.port, 10) : 3300;
+const PUBLIC = commandLineArgs.public || false;
 const DEVELOPMENT = commandLineArgs.dev || false;
 
 const WEB_DIR = path.join(__dirname, '../../build/client')
@@ -152,10 +157,9 @@ const webSocketServer = new WebSocket.Server({
   verifyClient: (info) => {
     const origin = info.origin || info.req.headers.origin || ''
     const isLocalhost = origin.includes('localhost') || origin.includes('127.0.0.1') || origin === ''
-    if (!isLocalhost) {
-      console.warn('WebSocket connection rejected from origin:', origin)
-    }
-    return isLocalhost
+    if (isLocalhost || PUBLIC) return true
+    else console.warn('WebSocket connection rejected from origin:', origin)
+    return false
   }
 })
 
@@ -219,8 +223,7 @@ httpServer.on('error', (error) => {
   process.exit(1)
 })
 
-// Bind to localhost only for security (prevents network exposure)
-const BIND_HOST = process.env.BIND_HOST || '127.0.0.1'
+const BIND_HOST = PUBLIC ? '0.0.0.0' : process.env.BIND_HOST || '127.0.0.1'
 
 httpServer.listen(PORT, BIND_HOST, async () => {
   console.log(`Listening on ${BIND_HOST}:${PORT}...`)
